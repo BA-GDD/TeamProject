@@ -7,6 +7,13 @@ namespace BTVisual
         public EnemyBrain brain;
         public BehaviourTree tree;
 
+        private bool _active = false;
+        public bool Active
+        {
+            get => _active;
+            set => _active = value;
+        }
+
         private void Start()
         {
             tree = tree.Clone(); //복제해서 시작함.
@@ -16,7 +23,8 @@ namespace BTVisual
 
         private void Update()
         {
-            tree.Update();
+            if (_active)
+                tree.Update();
         }
     }
 }
