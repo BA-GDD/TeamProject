@@ -10,6 +10,10 @@ public class AgentMovement : MonoBehaviour
     private CharacterController _characterController;
 
     private float _yVelocity;
+    private bool _isAir;
+    private bool _isGround;
+
+    [SerializeField] private LayerMask _whatIsGround;
 
     public float Speed;
 
@@ -23,7 +27,7 @@ public class AgentMovement : MonoBehaviour
     }
     public void Jump()
     {
-        if (_characterController.isGrounded)
+        if (_isGround)
         {
             _yVelocity = 7f;
         }
@@ -32,17 +36,25 @@ public class AgentMovement : MonoBehaviour
     {
         CalculateMovement();
 
-        _characterController.Move(_dirVec*Time.fixedDeltaTime);
+        _characterController.Move(_dirVec * Time.fixedDeltaTime);
     }
     private void CalculateMovement()
     {
-        if (!_characterController.isGrounded)
+        _isGround = Physics.Raycast(transform.position, Vector3.down, 0.08f, _whatIsGround);
+        if (!_isGround)
         {
             _yVelocity -= 9.8f * Time.fixedDeltaTime;
+            _isAir = true;
         }
         else
         {
+            if(_isAir == true)
+            {
+                _yVelocity = 0;
+                _isAir = false;
+            }
         }
+
         _dirVec = (_inputVec.x * transform.right + _inputVec.y * transform.forward) * Speed;
         _dirVec.y = _yVelocity;
     }
