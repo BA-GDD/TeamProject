@@ -244,7 +244,7 @@ GameObject:
   - component: {fileID: 274707080}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -756,6 +756,7 @@ GameObject:
   - component: {fileID: 1384023096}
   - component: {fileID: 1384023097}
   - component: {fileID: 1384023098}
+  - component: {fileID: 1384023099}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -794,6 +795,7 @@ MonoBehaviour:
   targetTrm: {fileID: 274707083}
   movePos: {x: 0, y: 0, z: 0}
   isMove: 0
+  enemyHealth: {fileID: 1384023099}
 --- !u!114 &1384023098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -808,6 +810,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brain: {fileID: 1384023097}
   tree: {fileID: 11400000, guid: a21d95063f9ebe5468998afca3cd1cea, type: 2}
+--- !u!114 &1384023099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1384023095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1455cf3e3f789a4b89e61da052de567, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onHitTrigger:
+    m_PersistentCalls:
+      m_Calls: []
+  onDieTrigger:
+    m_PersistentCalls:
+      m_Calls: []
+  curHp: 100
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
