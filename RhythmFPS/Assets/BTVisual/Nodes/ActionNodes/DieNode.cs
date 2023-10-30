@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using BTVisual;
-public class IsDieNode : ActionNode
+
+public class DieNode : ActionNode
 {
     protected override void OnStart()
     {
@@ -14,10 +15,7 @@ public class IsDieNode : ActionNode
 
     protected override State OnUpdate()
     {
-        if(brain.enemyHealth.curHp <= 0)
-        {
-            return State.SUCCESS;
-        }
-        return State.FAILURE;
+        brain.enemyHealth.Die();
+        return State.SUCCESS;
     }
 }
