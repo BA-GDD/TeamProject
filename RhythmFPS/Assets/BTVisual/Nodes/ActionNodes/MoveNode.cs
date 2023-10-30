@@ -19,24 +19,16 @@ public class MoveNode : ActionNode
     protected override State OnUpdate()
     {
         Debug.Log("Moved");
-
         Vector3 pos = Random.onUnitSphere * 10.0f;
-
-        if (pos.x >= maximumBoundOfMap.x)
-            pos.x = maximumBoundOfMap.x;
-        
-        else if (pos.x <= minimumBoundOfMap.x)
-            pos.x = minimumBoundOfMap.x;
-        
-        else if (pos.z >= maximumBoundOfMap.y)
-            pos.z = maximumBoundOfMap.y;
-        
-        else if(pos.z <= minimumBoundOfMap.y)
-            pos.z = minimumBoundOfMap.y;
-        
         pos.y = Mathf.Abs(pos.y);
-        brain.movePos = brain.targetTrm.position + pos;
 
+        if (Mathf.Abs(pos.x - brain.targetTrm.position.x) < 2.0f) pos.x = 2.0f;
+        if (Mathf.Abs(pos.z - brain.targetTrm.position.z) < 2.0f) pos.z = 2.0f;
+
+        Mathf.Clamp(pos.x, minimumBoundOfMap.x, maximumBoundOfMap.x);
+        Mathf.Clamp(pos.z, minimumBoundOfMap.y, maximumBoundOfMap.y);
+       
+        brain.movePos = brain.targetTrm.position + pos;
 
         blackboard.curPattern = Random.Range(0, 3);
         return State.SUCCESS;
