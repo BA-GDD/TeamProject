@@ -36,7 +36,7 @@ public class AgentMovement : MonoBehaviour
         if (_isAir)
         {
             _spacialJump = true;
-            StartCoroutine(timerSpacialJump(3f));
+            StartCoroutine(timerSpacialJump(5f));
             return;
         }
         if (_isGround)
@@ -79,7 +79,7 @@ public class AgentMovement : MonoBehaviour
             if(_spacialJump == false)
                 _yVelocity -= 9.8f * Time.fixedDeltaTime;
             else
-                _yVelocity -= 9.8f * 0.15f * Time.fixedDeltaTime;
+                _yVelocity -= 9.8f * 0.2f * Time.fixedDeltaTime;
             _isAir = true;
         }
         else

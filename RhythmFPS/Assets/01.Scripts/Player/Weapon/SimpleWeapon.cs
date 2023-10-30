@@ -4,13 +4,24 @@ using UnityEngine;
 
 public class SimpleWeapon : Weapon
 {
+    public BulletTrail trailPrefab;
+    public Transform firePos;
+
     public override void Fire()
     {
         print("슈우웃~~ 실패!");
+        BulletTrail trail = Instantiate(trailPrefab);
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, 50f, whatIsEnemy))
         {
-            //타이밍 맞추기
-            hit.transform.GetComponent<IDamageable>().TakeDamage(5);
+            if (hit.transform.TryGetComponent<IDamageable>(out IDamageable damageable))
+            {
+                damageable.TakeDamage(5);
+            }
+            trail.DrawTrail(firePos.position, hit.point, 0.1f);
+        }
+        else
+        {
+            trail.DrawTrail(firePos.position, cam.transform.forward*500f, 0.1f);
         }
     }
 }
