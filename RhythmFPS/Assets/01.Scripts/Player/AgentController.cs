@@ -12,6 +12,9 @@ public class AgentController : MonoBehaviour
 
     private void Awake()
     {
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = false;
+
         _stateDictionary = new Dictionary<StateType, IState>();
         Transform stateTrm = transform.Find("States");
 
