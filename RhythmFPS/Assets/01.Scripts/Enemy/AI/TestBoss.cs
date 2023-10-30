@@ -15,6 +15,7 @@ public class TestBoss : EnemyBrain
         else isMove = true;
         
         transform.position = Vector3.Lerp(transform.position, movePos, Time.deltaTime * 10.0f);
-        transform.rotation = Quaternion.LookRotation(targetTrm.position - transform.position);
+
+        if (isRot) transform.rotation = Quaternion.LookRotation(targetTrm.position - transform.position);
     }
 }

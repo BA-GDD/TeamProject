@@ -15,7 +15,8 @@ public class CheckPatternNode : ActionNode
 
     protected override State OnUpdate()
     {
-        Debug.Log("Check pattern index!");
+        brain.isRot = true;
+        Debug.Log($"Check pattern index! {curPatternIndex} ");
         if (blackboard.curPattern != curPatternIndex)
         {
             return State.FAILURE;

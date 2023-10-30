@@ -6,6 +6,11 @@ public class SpawnerManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] enemies;
 
+    private void Start()
+    {
+        SpawnRandomized();
+    }
+
     [ContextMenu("SpawnMethod")]
     public void SpawnRandomized()
     {

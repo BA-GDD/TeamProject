@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using BTVisual;
-
+using Core;
 public class MoveNode : ActionNode
 {
     public Vector2 maximumBoundOfMap;
@@ -20,15 +20,22 @@ public class MoveNode : ActionNode
     {
         Debug.Log("Moved");
         Vector3 pos = Random.onUnitSphere * 10.0f;
-        pos.y = Mathf.Abs(pos.y);
+        Vector3 finalPos = brain.targetTrm.position + pos;
+        finalPos.y = Mathf.Abs(finalPos.y);
 
-        if (Mathf.Abs(pos.x - brain.targetTrm.position.x) < 2.0f) pos.x = 2.0f;
-        if (Mathf.Abs(pos.z - brain.targetTrm.position.z) < 2.0f) pos.z = 2.0f;
+        RaycastHit hit;
+        bool isHit = Physics.Raycast(brain.transform.position, finalPos - brain.transform.position, out hit, Vector2.Distance(brain.transform.position,pos), 
+            LayerMask.NameToLayer(Define.GROUND));
 
-        Mathf.Clamp(pos.x, minimumBoundOfMap.x, maximumBoundOfMap.x);
-        Mathf.Clamp(pos.z, minimumBoundOfMap.y, maximumBoundOfMap.y);
+        if (isHit)
+        {
+            return State.SUCCESS;
+        }
+
+        Mathf.Clamp(finalPos.x, minimumBoundOfMap.x, maximumBoundOfMap.x);
+        Mathf.Clamp(finalPos.z, minimumBoundOfMap.y, maximumBoundOfMap.y);
        
-        brain.movePos = brain.targetTrm.position + pos;
+        brain.movePos = finalPos;
 
         blackboard.curPattern = Random.Range(0, 3);
         return State.SUCCESS;

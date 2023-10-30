@@ -15,5 +15,9 @@ namespace Core{
                 return mainCam;
             }
         }
+        public static string PLAYER = "Player";
+        public static string GROUND = "Ground";
     }
+
+    
 }
