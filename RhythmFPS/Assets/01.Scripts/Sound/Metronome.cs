@@ -12,8 +12,17 @@ public class Metronome : MonoBehaviour
     private AudioSource metronomeAudioSource;
     [SerializeField]
     private MusicDataSO musicDataSO;
-    private float oneTimeDuration;
+    [SerializeField]
+    private bool isTestMode = false;
+    [SerializeField]
+    private float judgementRangeFrame;
+    [SerializeField]
+    private float judgementOffsetFrame;
+    private float durationPerTime;
     private float samplePerTime;
+    private float judgementRangeSample;
+    private float judgementOffsetSample;
+    private float judgementPointSample;
     private float nextSample;
 
     private void Awake()
@@ -23,8 +32,10 @@ public class Metronome : MonoBehaviour
 
     private void Start()
     {
-        oneTimeDuration = 60f / musicDataSO.beatPerMinute * (musicDataSO.timeNumerator / musicDataSO.timeDenominator);
-        samplePerTime = oneTimeDuration * musicAudioSource.clip.frequency;
+        durationPerTime = 60f / musicDataSO.beatPerMinute * (musicDataSO.timeNumerator / musicDataSO.timeDenominator);
+        samplePerTime = durationPerTime * musicAudioSource.clip.frequency;
+        judgementRangeSample = musicAudioSource.clip.frequency * (judgementRangeFrame / 60f);
+        judgementOffsetSample = musicAudioSource.clip.frequency * (judgementOffsetFrame / 60f);
         nextSample = musicAudioSource.clip.frequency * musicDataSO.offset;
 
         StartCoroutine(PlayMusic());
@@ -32,10 +43,16 @@ public class Metronome : MonoBehaviour
 
     private void Update()
     {
-        if (musicAudioSource.timeSamples >= nextSample)
+        if (isTestMode && musicAudioSource.timeSamples >= nextSample)
         {
             StartCoroutine(PlayMetronome());
         }
+    }
+    public bool Judgement()
+    {
+        judgementPointSample = musicAudioSource.timeSamples - judgementOffsetSample;
+
+        return Mathf.Min(-(nextSample - samplePerTime - judgementPointSample), -(judgementPointSample - nextSample)) <= judgementRangeSample;
     }
 
     private IEnumerator PlayMetronome()

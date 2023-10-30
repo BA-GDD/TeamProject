@@ -242,3 +242,5 @@ MonoBehaviour:
   musicAudioSource: {fileID: 6498305241353887962}
   metronomeAudioSource: {fileID: 2093579550531786158}
   musicDataSO: {fileID: 0}
+  judgementRangeFrame: 6
+  judgementOffsetFrame: 3
