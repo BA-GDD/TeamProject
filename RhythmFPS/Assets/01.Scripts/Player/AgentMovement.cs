@@ -12,6 +12,7 @@ public class AgentMovement : MonoBehaviour
     private float _yVelocity;
     private bool _isAir;
     private bool _isGround;
+    private bool _spacialJump;
 
     [SerializeField] private LayerMask _whatIsGround;
 
@@ -27,10 +28,36 @@ public class AgentMovement : MonoBehaviour
     }
     public void Jump()
     {
+        if (_spacialJump == true)
+        {
+            _spacialJump = false;
+            return;
+        }
+        if (_isAir)
+        {
+            _spacialJump = true;
+            StartCoroutine(timerSpacialJump(3f));
+            return;
+        }
         if (_isGround)
         {
             _yVelocity = 7f;
         }
+    }
+    private IEnumerator timerSpacialJump(float time)
+    {
+        float timer = 0;
+        while(time > timer)
+        {
+            if (_spacialJump == false) break;
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        _spacialJump = false;
+    }
+    private void Update()
+    {
+        _isGround = Physics.Raycast(transform.position, Vector3.down, 0.08f, _whatIsGround);
     }
     private void FixedUpdate()
     {
@@ -40,22 +67,29 @@ public class AgentMovement : MonoBehaviour
     }
     private void CalculateMovement()
     {
-        _isGround = Physics.Raycast(transform.position, Vector3.down, 0.08f, _whatIsGround);
+        CalculateYvelocity();
+
+        _dirVec = (_inputVec.x * transform.right + _inputVec.y * transform.forward) * Speed;
+        _dirVec.y = _yVelocity;
+    }
+    private void CalculateYvelocity()
+    {
         if (!_isGround)
         {
-            _yVelocity -= 9.8f * Time.fixedDeltaTime;
+            if(_spacialJump == false)
+                _yVelocity -= 9.8f * Time.fixedDeltaTime;
+            else
+                _yVelocity -= 9.8f * 0.15f * Time.fixedDeltaTime;
             _isAir = true;
         }
         else
         {
-            if(_isAir == true)
+            _spacialJump = false;
+            if (_isAir == true)
             {
                 _yVelocity = 0;
                 _isAir = false;
             }
         }
-
-        _dirVec = (_inputVec.x * transform.right + _inputVec.y * transform.forward) * Speed;
-        _dirVec.y = _yVelocity;
     }
 }
