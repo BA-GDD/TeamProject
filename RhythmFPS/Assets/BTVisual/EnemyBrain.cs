@@ -16,6 +16,7 @@ public abstract class EnemyBrain : MonoBehaviour
     {
         movePos = transform.position;
         enemyHealth = GetComponent<EnemyHealth>();
+        targetTrm = SubManager.Instance.playerTrm;
     }
 
     protected virtual void Update()
