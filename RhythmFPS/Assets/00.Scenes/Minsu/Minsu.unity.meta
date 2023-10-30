@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:RhythmFPS/Assets/00.Scenes/ltg.unity.meta
+guid: 0b74f070785a7b5428f9eb9dbe997788
+========
 guid: 69bae8c828005624ca70bb66fa98b454
+>>>>>>>> origin/Minsu:RhythmFPS/Assets/00.Scenes/Minsu/Minsu.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

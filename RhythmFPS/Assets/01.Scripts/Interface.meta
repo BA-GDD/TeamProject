@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:RhythmFPS/Assets/01.Scripts/Sound.meta
+guid: 0213b8c449b600f4c8c148fcdcb699ba
+========
 guid: 10b0eeaeeea2ee34ba575879200827ba
+>>>>>>>> origin/Minsu:RhythmFPS/Assets/01.Scripts/Interface.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
