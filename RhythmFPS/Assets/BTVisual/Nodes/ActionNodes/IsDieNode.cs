@@ -14,7 +14,7 @@ public class IsDieNode : ActionNode
 
     protected override State OnUpdate()
     {
-        if(context.curHp <= 0)
+        if(brain.enemyHealth.curHp <= 0)
         {
             return State.SUCCESS;
         }

@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using BTVisual;
-public class CheckPatternNode : ActionNode
+
+public class DieNode : ActionNode
 {
-    public int curPatternIndex = 0;
     protected override void OnStart()
     {
     }
@@ -15,13 +15,7 @@ public class CheckPatternNode : ActionNode
 
     protected override State OnUpdate()
     {
-        brain.isRot = true;
-        Debug.Log($"Check pattern index! {curPatternIndex} ");
-        if (blackboard.curPattern != curPatternIndex)
-        {
-            return State.FAILURE;
-        }
-
+        brain.enemyHealth.Die();
         return State.SUCCESS;
     }
 }

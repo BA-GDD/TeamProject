@@ -1,5 +1,30 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8992266061992500625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f4727fcd715b947b8109231eda504c, type: 3}
+  m_Name: DieNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: dfe437eb2cb02c8419328e15be1a7b2a
+  position: {x: -1506.1118, y: 607}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+    enemySpotPosition: {x: 0, y: 0, z: 0}
+    whatIsEnemy:
+      serializedVersion: 2
+      m_Bits: 0
+    curPattern: 0
+  brain: {fileID: 0}
+  description: 
 --- !u!114 &-6011613422453029512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26,7 +51,7 @@ MonoBehaviour:
   brain: {fileID: 0}
   description: 
   child: {fileID: -1406938198974188144}
---- !u!114 &-4298804247937601351
+--- !u!114 &-3076181486044750630
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -35,13 +60,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6012be6a74eb932439f29a161f929d0e, type: 3}
-  m_Name: TestPatternNode
+  m_Script: {fileID: 11500000, guid: 5b68040bd66c33c44a5be5d334cab94c, type: 3}
+  m_Name: GroundSlamPatternNode
   m_EditorClassIdentifier: 
   state: 0
   started: 0
-  guid: e385861b013397e44b3fde8b7f44f5b3
-  position: {x: 300, y: 609}
+  guid: 33f39900bcd24f7408be86dbc3d8443e
+  position: {x: 149.11777, y: 602.3875}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     enemySpotPosition: {x: 0, y: 0, z: 0}
@@ -51,7 +76,12 @@ MonoBehaviour:
     curPattern: 0
   brain: {fileID: 0}
   description: 
-  bullet: {fileID: 6978751305190297461, guid: 1cbd4e9a841792c40a58ebefb76d9456, type: 3}
+  ground:
+    serializedVersion: 2
+    m_Bits: 2048
+  player:
+    serializedVersion: 2
+    m_Bits: 2097152
 --- !u!114 &-2861816820056853775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67,7 +97,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 566ed441e7e950444abc0f7b293cd85a
-  position: {x: -169, y: 609}
+  position: {x: -342.88226, y: 602.3875}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     enemySpotPosition: {x: 0, y: 0, z: 0}
@@ -78,6 +108,31 @@ MonoBehaviour:
   brain: {fileID: 0}
   description: 
   curPatternIndex: 1
+--- !u!114 &-2264220440341237753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1272d043241a0140938a343ff45b1ce, type: 3}
+  m_Name: IsDieNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: de769fa0d5b43014fafb093b5d4983c0
+  position: {x: -1673.1117, y: 607}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+    enemySpotPosition: {x: 0, y: 0, z: 0}
+    whatIsEnemy:
+      serializedVersion: 2
+      m_Bits: 0
+    curPattern: 0
+  brain: {fileID: 0}
+  description: 
 --- !u!114 &-1406938198974188144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104,6 +159,60 @@ MonoBehaviour:
   brain: {fileID: 0}
   description: 
   child: {fileID: 7026491950924364250}
+--- !u!114 &-1372673853075660730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d51511581714b8095f11b31446a8a5c, type: 3}
+  m_Name: WaitNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 7ca267b5f95868e4e9c79be0f2e9374e
+  position: {x: 367.11774, y: 602.3875}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+    enemySpotPosition: {x: 0, y: 0, z: 0}
+    whatIsEnemy:
+      serializedVersion: 2
+      m_Bits: 0
+    curPattern: 0
+  brain: {fileID: 0}
+  description: 
+  duration: 1
+--- !u!114 &-809738192315548917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59ff18e011eb4e1ba59c08354a7ff280, type: 3}
+  m_Name: SequenceNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 92af735f45c0d2645b21f0f7a9fdafaf
+  position: {x: -1581.1118, y: 462.00003}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+    enemySpotPosition: {x: 0, y: 0, z: 0}
+    whatIsEnemy:
+      serializedVersion: 2
+      m_Bits: 0
+    curPattern: 0
+  brain: {fileID: 0}
+  description: 
+  children:
+  - {fileID: -2264220440341237753}
+  - {fileID: -8992266061992500625}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,14 +238,18 @@ MonoBehaviour:
   - {fileID: 1145704613363949762}
   - {fileID: 9081888203897355604}
   - {fileID: 783792788187044407}
-  - {fileID: 4103154455047707399}
   - {fileID: 7566650970417493683}
   - {fileID: 3188024387595702123}
   - {fileID: -2861816820056853775}
   - {fileID: 3780637655786855321}
   - {fileID: 4013785173222188660}
-  - {fileID: -4298804247937601351}
   - {fileID: 8242456422146800601}
+  - {fileID: -809738192315548917}
+  - {fileID: -2264220440341237753}
+  - {fileID: -8992266061992500625}
+  - {fileID: -3076181486044750630}
+  - {fileID: -1372673853075660730}
+  - {fileID: 598815773895737634}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     enemySpotPosition: {x: 0, y: 0, z: 0}
@@ -144,6 +257,34 @@ MonoBehaviour:
       serializedVersion: 2
       m_Bits: 0
     curPattern: 0
+--- !u!114 &598815773895737634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84e303c7705be3744b744887ee19513d, type: 3}
+  m_Name: MoveToPlayerNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: ca6df4d25a971f445b4d6f18902ea9b4
+  position: {x: -157.88222, y: 602.3875}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+    enemySpotPosition: {x: 0, y: 0, z: 0}
+    whatIsEnemy:
+      serializedVersion: 2
+      m_Bits: 0
+    curPattern: 0
+  brain: {fileID: 0}
+  description: 
+  ground:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &783792788187044407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,7 +300,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: d902a342a3991e6499d42b12b0bdd3be
-  position: {x: -548, y: 609}
+  position: {x: -1038.1118, y: 609}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     enemySpotPosition: {x: 0, y: 0, z: 0}
@@ -169,6 +310,8 @@ MonoBehaviour:
     curPattern: 0
   brain: {fileID: 0}
   description: 
+  maximumBoundOfMap: {x: 10, y: 10}
+  minimumBoundOfMap: {x: -10, y: -10}
 --- !u!114 &1145704613363949762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,7 +327,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 956015cd7e216e7449677608b8b4e1b0
-  position: {x: 0, y: 609}
+  position: {x: -0.8822479, y: 602.3875}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     enemySpotPosition: {x: 0, y: 0, z: 0}
@@ -210,7 +353,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 90b25a81c0e507d4ebc42fdcad3ff868
-  position: {x: -548, y: 449}
+  position: {x: -1038.1118, y: 449}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     enemySpotPosition: {x: 0, y: 0, z: 0}
@@ -240,7 +383,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: ccab3bd0f96454e408141dcef6cb75b2
-  position: {x: -867, y: 609}
+  position: {x: -1357.1118, y: 609}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     enemySpotPosition: {x: 0, y: 0, z: 0}
@@ -266,7 +409,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: c18aa3704aa6dc340aa663cfb4885748
-  position: {x: 502, y: 609}
+  position: {x: 708.39636, y: 608.9999}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     enemySpotPosition: {x: 0, y: 0, z: 0}
@@ -292,7 +435,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: c779c31d303ee2b40880b1736467e1db
-  position: {x: -398, y: 609}
+  position: {x: -888.1119, y: 609}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     enemySpotPosition: {x: 0, y: 0, z: 0}
@@ -303,31 +446,6 @@ MonoBehaviour:
   brain: {fileID: 0}
   description: 
   bullet: {fileID: 6978751305190297461, guid: 1cbd4e9a841792c40a58ebefb76d9456, type: 3}
---- !u!114 &4103154455047707399
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6ed14413d11e5d49a1c1281056ab4d8, type: 3}
-  m_Name: MoveNode
-  m_EditorClassIdentifier: 
-  state: 0
-  started: 0
-  guid: 3b9604273c71d51428c6cd253178cefe
-  position: {x: 150, y: 609}
-  blackboard:
-    moveToPosition: {x: 0, y: 0, z: 0}
-    enemySpotPosition: {x: 0, y: 0, z: 0}
-    whatIsEnemy:
-      serializedVersion: 2
-      m_Bits: 0
-    curPattern: 0
-  brain: {fileID: 0}
-  description: 
 --- !u!114 &7026491950924364250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -354,6 +472,7 @@ MonoBehaviour:
   brain: {fileID: 0}
   description: 
   children:
+  - {fileID: -809738192315548917}
   - {fileID: 1547346855238517998}
   - {fileID: 8901341021156488525}
   - {fileID: 8327423762105784683}
@@ -372,7 +491,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: e33ce874b4300354a939585b8b24b4c3
-  position: {x: 821, y: 609}
+  position: {x: 1027.3962, y: 608.9999}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     enemySpotPosition: {x: 0, y: 0, z: 0}
@@ -382,6 +501,8 @@ MonoBehaviour:
     curPattern: 0
   brain: {fileID: 0}
   description: 
+  maximumBoundOfMap: {x: 10, y: 10}
+  minimumBoundOfMap: {x: -10, y: -10}
 --- !u!114 &7861860818813005678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -397,7 +518,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: e96f7ab6aca1ffc4398d0e40ac88b6ac
-  position: {x: -698, y: 609}
+  position: {x: -1188.1118, y: 609}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     enemySpotPosition: {x: 0, y: 0, z: 0}
@@ -423,7 +544,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 93866b029e852d84aaaf61c8bb552025
-  position: {x: 971, y: 609}
+  position: {x: 1177.3964, y: 608.9999}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     enemySpotPosition: {x: 0, y: 0, z: 0}
@@ -449,7 +570,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: b8c816974fc4d7f4da5ada3bc4319a3a
-  position: {x: 671, y: 449}
+  position: {x: 877.39636, y: 448.9999}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     enemySpotPosition: {x: 0, y: 0, z: 0}
@@ -491,9 +612,10 @@ MonoBehaviour:
   description: 
   children:
   - {fileID: -2861816820056853775}
+  - {fileID: 598815773895737634}
   - {fileID: 1145704613363949762}
-  - {fileID: 4103154455047707399}
-  - {fileID: -4298804247937601351}
+  - {fileID: -3076181486044750630}
+  - {fileID: -1372673853075660730}
 --- !u!114 &9081888203897355604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -509,7 +631,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: f92a8db83a64a7e4282ec9d93d0adcbf
-  position: {x: 671, y: 609}
+  position: {x: 877.39636, y: 608.9999}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     enemySpotPosition: {x: 0, y: 0, z: 0}
