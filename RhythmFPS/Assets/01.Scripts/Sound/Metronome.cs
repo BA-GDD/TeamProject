@@ -25,6 +25,10 @@ public class Metronome : MonoBehaviour
     private float judgementPointSample;
     private float nextSample;
 
+    private bool isCheckCurBeat;
+
+    public float percent { get => (nextSample - musicAudioSource.timeSamples) / samplePerTime; }
+
     private void Awake()
     {
         musicAudioSource.clip = musicDataSO.music;
@@ -50,15 +54,16 @@ public class Metronome : MonoBehaviour
     }
     public bool Judgement()
     {
+        if (isCheckCurBeat == false) return false;
         judgementPointSample = musicAudioSource.timeSamples - judgementOffsetSample;
-
+        isCheckCurBeat = false;
         return Mathf.Min(-(nextSample - samplePerTime - judgementPointSample), -(judgementPointSample - nextSample)) <= judgementRangeSample;
     }
 
     private IEnumerator PlayMetronome()
     {
         nextSample += samplePerTime;
-
+        isCheckCurBeat = true;
         metronomeAudioSource.PlayOneShot(metronomeClip);
 
         yield return null;
