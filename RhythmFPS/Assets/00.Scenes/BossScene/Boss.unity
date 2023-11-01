@@ -2772,6 +2772,8 @@ MonoBehaviour:
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 0
+  trailPrefab: {fileID: 0}
+  firePos: {fileID: 0}
 --- !u!65 &1878759434
 BoxCollider:
   m_ObjectHideFlags: 0
