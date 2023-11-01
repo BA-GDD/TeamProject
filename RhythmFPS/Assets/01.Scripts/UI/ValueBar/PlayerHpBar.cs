@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerHpBar : ValueBarBase
 {
-    public override void GetDamage(float damage)
+    public override void DiminishValue(float damage)
     {
-        base.GetDamage(damage);
+        base.DiminishValue(damage);
     }
 
 }

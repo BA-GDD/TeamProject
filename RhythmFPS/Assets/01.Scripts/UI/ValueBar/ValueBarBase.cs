@@ -21,9 +21,9 @@ public class ValueBarBase : MonoBehaviour
             _hpValueText.text = $"{_maxValue} / {_curenValue}";
     }
 
-    public virtual void GetDamage(float damage) // Hp 매개변수로 받은 damage 만큼 까기
+    public virtual void DiminishValue(float value) // value 만큼 까기
     {
-        _curenValue -= Mathf.Clamp(_curenValue - damage, 0, _maxValue);
+        _curenValue -= Mathf.Clamp(_curenValue - value, 0, _maxValue);
         isLerping = true;
 
         if(_hpValueText != null)
