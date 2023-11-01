@@ -10,23 +10,13 @@ public class ValueBarBase : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _hpValueText;
 
     private float _curenValue;
-    private float _maxValue;
-    public float maxValue // 외부에서 설정 필수
-    {
-        get
-        {
-            return _maxValue;
-        }
-        set
-        {
-            _maxValue = _curenValue = value;
-        }
-    }
+    [SerializeField] private float _maxValue;
     [SerializeField] private float _lerpTime; // 러핑 속도
     private bool isLerping; // 러핑 체크
 
     private void Start()
     {
+        _curenValue = _maxValue;
         if (_hpValueText != null)
             _hpValueText.text = $"{_maxValue} / {_curenValue}";
     }
