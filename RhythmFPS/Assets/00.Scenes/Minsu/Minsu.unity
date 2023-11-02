@@ -1943,7 +1943,7 @@ MonoBehaviour:
   _whatIsGround:
     serializedVersion: 2
     m_Bits: 2048
-  speed: 0
+  speed: 7
 --- !u!114 &1068351013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1995,7 +1995,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be9e1cc6f1ca8a9479c1dd662afef9c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _curWeapon: {fileID: 0}
+  _curWeapon: {fileID: 1099758241}
 --- !u!114 &1068351016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2005,9 +2005,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1068351008}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbef3d77325a8b04aa5fd957f736a594, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b647362138055d4e821fb043f43c14c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maxHP: 50
+  hitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  dieEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1090496690
 GameObject:
   m_ObjectHideFlags: 0
@@ -2232,11 +2239,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66c85c81e617ef44493840c9dc63f717, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maxBullet: 12
   _whatIsEnemy:
     serializedVersion: 2
-    m_Bits: 0
-  _trailPrefab: {fileID: 0}
-  _firePos: {fileID: 0}
+    m_Bits: 1
+  lackOfAmmoEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  _trailPrefab: {fileID: 1793055067134655000, guid: 0c6093d1a4d303c46b7cbf0da9b04c3a,
+    type: 3}
+  _firePos: {fileID: 1500770160}
   metronome: {fileID: 1698900138}
 --- !u!1 &1299085165
 GameObject:

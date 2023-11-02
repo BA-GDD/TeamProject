@@ -14,6 +14,10 @@ public class AgentWeapon : MonoBehaviour
     {
         _curWeapon?.Fire();
     }
+    public void Reload()
+    {
+        _curWeapon?.Reload();
+    }
     public void ChangeWeapon(Weapon newWeapon)
     {
         _curWeapon = newWeapon;

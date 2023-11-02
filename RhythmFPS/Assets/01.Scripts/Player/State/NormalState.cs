@@ -11,6 +11,11 @@ public class NormalState : CommonState
         inputReader.movementEvent += OnMovementHandle;
         inputReader.rotationCameraEvt += OnRotateHandle;
         inputReader.fireEvnet += OnFireHandle;
+        inputReader.reloadEvent += OnReloadHandle;
+    }
+    private void OnReloadHandle()
+    {
+        agentWeapon?.Reload();
     }
     private void OnFireHandle()
     {
@@ -35,6 +40,7 @@ public class NormalState : CommonState
         inputReader.movementEvent -= OnMovementHandle;
         inputReader.rotationCameraEvt -= OnRotateHandle;
         inputReader.fireEvnet -= OnFireHandle;
+        inputReader.reloadEvent -= OnReloadHandle;
     }
 
 

@@ -10,6 +10,7 @@ public class InputReader : ScriptableObject, IPlayerActions
 {
     public event Action fireEvnet;
     public event Action jumpEvent;
+    public event Action reloadEvent;
     public event Action<Vector2> movementEvent;
     public event Action<Vector2> rotationCameraEvt;
 
@@ -25,7 +26,7 @@ public class InputReader : ScriptableObject, IPlayerActions
         }
         _controlAction.Player.Enable();
     }
-    
+
     public void OnMovement(InputAction.CallbackContext context)
     {
         Vector2 inputVec = context.ReadValue<Vector2>();
@@ -34,14 +35,14 @@ public class InputReader : ScriptableObject, IPlayerActions
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if(context.performed)
+        if (context.performed)
         {
             jumpEvent?.Invoke();
         }
     }
     public void OnFire(InputAction.CallbackContext context)
     {
-        if(context.performed)
+        if (context.performed)
         {
             fireEvnet?.Invoke();
         }
@@ -53,4 +54,12 @@ public class InputReader : ScriptableObject, IPlayerActions
         rotationCameraEvt?.Invoke(delta);
     }
 
+    public void OnReload(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            reloadEvent?.Invoke();
+
+        }
+    }
 }

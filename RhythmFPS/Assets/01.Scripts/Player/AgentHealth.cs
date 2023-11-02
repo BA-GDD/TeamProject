@@ -5,7 +5,7 @@ using UnityEngine;
 public class AgentHealth : MonoBehaviour,IDamageable
 {
     protected int _curHP;
-    protected int _maxHP;
+    [SerializeField]protected int _maxHP;
 
     public int CurHP => _curHP;
     public int MaxHP => _maxHP;
