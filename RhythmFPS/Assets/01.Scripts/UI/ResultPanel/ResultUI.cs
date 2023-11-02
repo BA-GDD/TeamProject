@@ -10,7 +10,6 @@ public class ResultUI : MonoBehaviour
 {
     [Header("ÂüÁ¶")]
     [SerializeField] private Transform _resultPanel;
-    [SerializeField] private TextMeshProUGUI[] _resultMain;
     [SerializeField] private TextMeshProUGUI[] _resultSyntex;
     [SerializeField] private TextMeshProUGUI _infoTxt;
     [SerializeField] private Transform _scoreGroupTrm;
@@ -47,7 +46,7 @@ public class ResultUI : MonoBehaviour
 
             txt.text = sb.ToString();
 
-            txt.transform.DOLocalMove(_scoreGroupStartPos + (i * _merginValue), 0.6f);
+            txt.transform.DOLocalMove(_scoreGroupStartPos + (i * _merginValue), 0.6f).SetEase(Ease.InOutQuart);
             yield return new WaitForSeconds(0.2f);
         }
         yield return new WaitForSeconds(0.5f);
