@@ -8,10 +8,11 @@ using static Controls;
 [CreateAssetMenu(menuName = "SO/Input/Reader", fileName = " New Input reader")]
 public class InputReader : ScriptableObject, IPlayerActions
 {
-    public event Action FireEvnet;
-    public event Action JumpEvent;
-    public event Action<Vector2> MovementEvent;
-    public event Action<Vector2> RotationCameraEvt;
+    public event Action fireEvnet;
+    public event Action jumpEvent;
+    public event Action reloadEvent;
+    public event Action<Vector2> movementEvent;
+    public event Action<Vector2> rotationCameraEvt;
 
     private Controls _controlAction;
 
@@ -25,32 +26,40 @@ public class InputReader : ScriptableObject, IPlayerActions
         }
         _controlAction.Player.Enable();
     }
-    
+
     public void OnMovement(InputAction.CallbackContext context)
     {
         Vector2 inputVec = context.ReadValue<Vector2>();
-        MovementEvent?.Invoke(inputVec);
+        movementEvent?.Invoke(inputVec);
     }
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if(context.performed)
+        if (context.performed)
         {
-            JumpEvent?.Invoke();
+            jumpEvent?.Invoke();
         }
     }
     public void OnFire(InputAction.CallbackContext context)
     {
-        if(context.performed)
+        if (context.performed)
         {
-            FireEvnet?.Invoke();
+            fireEvnet?.Invoke();
         }
     }
 
     public void OnMouseDelta(InputAction.CallbackContext context)
     {
         Vector2 delta = context.ReadValue<Vector2>();
-        RotationCameraEvt?.Invoke(delta);
+        rotationCameraEvt?.Invoke(delta);
     }
 
+    public void OnReload(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            reloadEvent?.Invoke();
+
+        }
+    }
 }

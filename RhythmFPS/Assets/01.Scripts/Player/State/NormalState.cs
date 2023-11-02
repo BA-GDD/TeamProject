@@ -7,10 +7,15 @@ public class NormalState : CommonState
 {
     public override void OnEnterState()
     {
-        inputReader.JumpEvent += OnJumpDownHandle;
-        inputReader.MovementEvent += OnMovementHandle;
-        inputReader.RotationCameraEvt += OnRotateHandle;
-        inputReader.FireEvnet += OnFireHandle;
+        inputReader.jumpEvent += OnJumpDownHandle;
+        inputReader.movementEvent += OnMovementHandle;
+        inputReader.rotationCameraEvt += OnRotateHandle;
+        inputReader.fireEvnet += OnFireHandle;
+        inputReader.reloadEvent += OnReloadHandle;
+    }
+    private void OnReloadHandle()
+    {
+        agentWeapon?.Reload();
     }
     private void OnFireHandle()
     {
@@ -31,10 +36,11 @@ public class NormalState : CommonState
 
     public override void OnExitState()
     {
-        inputReader.JumpEvent -= OnJumpDownHandle;
-        inputReader.MovementEvent -= OnMovementHandle;
-        inputReader.RotationCameraEvt -= OnRotateHandle;
-        inputReader.FireEvnet -= OnFireHandle;
+        inputReader.jumpEvent -= OnJumpDownHandle;
+        inputReader.movementEvent -= OnMovementHandle;
+        inputReader.rotationCameraEvt -= OnRotateHandle;
+        inputReader.fireEvnet -= OnFireHandle;
+        inputReader.reloadEvent -= OnReloadHandle;
     }
 
 

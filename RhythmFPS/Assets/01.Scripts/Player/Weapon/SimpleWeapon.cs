@@ -4,30 +4,56 @@ using UnityEngine;
 
 public class SimpleWeapon : Weapon
 {
-    public BulletTrail trailPrefab;
-    public Transform firePos;
+    public BulletTrail _trailPrefab;
+    public Transform _firePos;
     public Metronome metronome;
+
+    private void Awake()
+    {
+        _currentBullet = _maxBullet;
+    }
 
     public override void Fire()
     {
-        if (metronome.Judgement() == false)
+
+        if (metronome.Judgement() == false)return;
+        if (_isReadyReload == true) return;
+        if(_currentBullet <= 0)
         {
-            print("안맞음!");
+            lackOfAmmoEvent?.Invoke();
             return;
         }
         print("맞음!");
-        BulletTrail trail = Instantiate(trailPrefab);
-        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, 50f, whatIsEnemy))
+        _currentBullet--;
+        BulletTrail trail = Instantiate(_trailPrefab);
+        if (Physics.Raycast(_cam.transform.position, _cam.transform.forward, out RaycastHit hit, 50f, _whatIsEnemy))
         {
             if (hit.transform.TryGetComponent<IDamageable>(out IDamageable damageable))
             {
                 damageable.TakeDamage(5);
             }
-            trail.DrawTrail(firePos.position, hit.point, 0.1f);
+            trail.DrawTrail(_firePos.position, hit.point, 0.1f);
         }
         else
         {
-            trail.DrawTrail(firePos.position, cam.transform.forward*500f, 0.1f);
+            trail.DrawTrail(_firePos.position, _cam.transform.forward*500f, 0.1f);
         }
+    }
+
+    public override void Reload()
+    {
+        print("리로드");
+        if (metronome.Judgement() == false) return;
+        if (_currentBullet == _maxBullet) return;
+        if(_isReadyReload == true)
+        {
+            _currentBullet = _maxBullet;
+            _isReadyReload = false;
+        }
+        else
+        {
+            _isReadyReload = true;
+        }
+
     }
 }
