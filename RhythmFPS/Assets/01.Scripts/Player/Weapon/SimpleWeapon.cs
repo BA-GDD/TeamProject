@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SimpleWeapon : Weapon
 {
-    public BulletTrail trailPrefab;
-    public Transform firePos;
+    public BulletTrail _trailPrefab;
+    public Transform _firePos;
     public Metronome metronome;
 
     public override void Fire()
@@ -16,18 +16,22 @@ public class SimpleWeapon : Weapon
             return;
         }
         print("¸ÂÀ½!");
-        BulletTrail trail = Instantiate(trailPrefab);
-        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, 50f, whatIsEnemy))
+        BulletTrail trail = Instantiate(_trailPrefab);
+        if (Physics.Raycast(_cam.transform.position, _cam.transform.forward, out RaycastHit hit, 50f, _whatIsEnemy))
         {
             if (hit.transform.TryGetComponent<IDamageable>(out IDamageable damageable))
             {
                 damageable.TakeDamage(5);
             }
-            trail.DrawTrail(firePos.position, hit.point, 0.1f);
+            trail.DrawTrail(_firePos.position, hit.point, 0.1f);
         }
         else
         {
-            trail.DrawTrail(firePos.position, cam.transform.forward*500f, 0.1f);
+            trail.DrawTrail(_firePos.position, _cam.transform.forward*500f, 0.1f);
         }
+    }
+
+    public override void Reload()
+    {
     }
 }

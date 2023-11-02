@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class AgentWeapon : MonoBehaviour
 {
-    [SerializeField]private Weapon curWeapon;
+    [SerializeField]private Weapon _curWeapon;
 
     private void Awake()
     {
-        curWeapon?.Init();
+        _curWeapon?.Init();
     }
     public void Active()
     {
-        curWeapon?.Fire();
+        _curWeapon?.Fire();
     }
     public void ChangeWeapon(Weapon newWeapon)
     {
-        curWeapon = newWeapon;
+        _curWeapon = newWeapon;
     }
 }

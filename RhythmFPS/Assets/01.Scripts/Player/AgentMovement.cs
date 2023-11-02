@@ -16,7 +16,7 @@ public class AgentMovement : MonoBehaviour
 
     [SerializeField] private LayerMask _whatIsGround;
 
-    public float Speed;
+    public float speed;
 
     private void Awake()
     {
@@ -69,7 +69,7 @@ public class AgentMovement : MonoBehaviour
     {
         CalculateYvelocity();
 
-        _dirVec = (_inputVec.x * transform.right + _inputVec.y * transform.forward) * Speed;
+        _dirVec = (_inputVec.x * transform.right + _inputVec.y * transform.forward) * speed;
         _dirVec.y = _yVelocity;
     }
     private void CalculateYvelocity()

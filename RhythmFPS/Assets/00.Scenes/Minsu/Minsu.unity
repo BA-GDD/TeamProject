@@ -1889,6 +1889,7 @@ GameObject:
   - component: {fileID: 1068351011}
   - component: {fileID: 1068351014}
   - component: {fileID: 1068351015}
+  - component: {fileID: 1068351016}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1942,7 +1943,7 @@ MonoBehaviour:
   _whatIsGround:
     serializedVersion: 2
     m_Bits: 2048
-  Speed: 5
+  speed: 0
 --- !u!114 &1068351013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1994,7 +1995,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be9e1cc6f1ca8a9479c1dd662afef9c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  curWeapon: {fileID: 1099758241}
+  _curWeapon: {fileID: 0}
+--- !u!114 &1068351016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068351008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbef3d77325a8b04aa5fd957f736a594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1090496690
 GameObject:
   m_ObjectHideFlags: 0
@@ -2219,12 +2232,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66c85c81e617ef44493840c9dc63f717, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  whatIsEnemy:
+  _whatIsEnemy:
     serializedVersion: 2
-    m_Bits: 2048
-  trailPrefab: {fileID: 1793055067134655000, guid: 0c6093d1a4d303c46b7cbf0da9b04c3a,
-    type: 3}
-  firePos: {fileID: 1500770160}
+    m_Bits: 0
+  _trailPrefab: {fileID: 0}
+  _firePos: {fileID: 0}
   metronome: {fileID: 1698900138}
 --- !u!1 &1299085165
 GameObject:
