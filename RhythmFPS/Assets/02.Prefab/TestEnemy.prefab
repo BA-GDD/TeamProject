@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2894455026801682982}
   - component: {fileID: 8084455402052206704}
   - component: {fileID: 2902877754912670277}
-  - component: {fileID: 7003427206443449190}
   m_Layer: 0
   m_Name: VISUAL
   m_TagString: Untagged
@@ -84,29 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &7003427206443449190
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1297333703270234356}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7756969726004482074
 GameObject:
   m_ObjectHideFlags: 0
@@ -119,6 +95,7 @@ GameObject:
   - component: {fileID: 2220311356032763562}
   - component: {fileID: 625157398667431384}
   - component: {fileID: 1982489058152423047}
+  - component: {fileID: 1134432194271540140}
   m_Layer: 0
   m_Name: TestEnemy
   m_TagString: Untagged
@@ -157,6 +134,7 @@ MonoBehaviour:
   targetTrm: {fileID: 0}
   movePos: {x: 0, y: 0, z: 0}
   isMove: 0
+  isRot: 0
   enemyHealth: {fileID: 1982489058152423047}
 --- !u!114 &625157398667431384
 MonoBehaviour:
@@ -203,3 +181,26 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   curHp: 100
+--- !u!136 &1134432194271540140
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7756969726004482074}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}

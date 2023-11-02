@@ -6,10 +6,16 @@ public class SimpleWeapon : Weapon
 {
     public BulletTrail trailPrefab;
     public Transform firePos;
+    public Metronome metronome;
 
     public override void Fire()
     {
-        print("½´¿ì¿ô~~ ½ÇÆÐ!");
+        if (metronome.Judgement() == false)
+        {
+            print("¾È¸ÂÀ½!");
+            return;
+        }
+        print("¸ÂÀ½!");
         BulletTrail trail = Instantiate(trailPrefab);
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, 50f, whatIsEnemy))
         {
