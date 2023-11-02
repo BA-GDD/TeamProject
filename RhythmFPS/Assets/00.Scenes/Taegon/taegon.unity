@@ -394,7 +394,7 @@ PrefabInstance:
     - target: {fileID: 2421134265722203291, guid: bda594d935a162a4ea3a6e3a3aaaadb6,
         type: 3}
       propertyPath: m_Name
-      value: Metronome
+      value: RhythmManager
       objectReference: {fileID: 0}
     - target: {fileID: 7244565360183333492, guid: bda594d935a162a4ea3a6e3a3aaaadb6,
         type: 3}
@@ -407,6 +407,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: c41f00fd30c4cb74283071938c299b1a,
         type: 2}
+    - target: {fileID: 7244565360183333492, guid: bda594d935a162a4ea3a6e3a3aaaadb6,
+        type: 3}
+      propertyPath: _musicDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: c41f00fd30c4cb74283071938c299b1a,
+        type: 2}
+    - target: {fileID: 7244565360183333492, guid: bda594d935a162a4ea3a6e3a3aaaadb6,
+        type: 3}
+      propertyPath: _metronomeMode
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
