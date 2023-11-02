@@ -25,13 +25,18 @@ public class ResultUI : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(GeneradeScorePosition(10, 20, "5m 42s", "4899"));
-        
+        ActiveResultPanel(10, 10, 200, 10);
     }
 
-    IEnumerator GeneradeScorePosition(float score, float combo, string clearTime, string damage)
+    public void ActiveResultPanel(float score, float combo, float time, float damage) // ÆÐ³Î
     {
-        string [] txts = { score.ToString(), combo.ToString(), clearTime, damage };
+        string t = $"{Mathf.FloorToInt(time / 60)}m {time % 60}";
+        StartCoroutine(GeneradeScorePosition(score, combo, t, damage));
+    }
+
+    IEnumerator GeneradeScorePosition(float score, float combo, string clearTime, float damage)
+    {
+        string [] txts = { score.ToString(), combo.ToString(), clearTime, damage.ToString() };
         Sequence seq = DOTween.Sequence();
         seq.Append(_resultPanel.DOLocalMoveY(0, 0.6f));
 
