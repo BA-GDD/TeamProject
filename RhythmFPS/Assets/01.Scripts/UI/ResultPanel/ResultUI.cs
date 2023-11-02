@@ -23,11 +23,6 @@ public class ResultUI : MonoBehaviour
     [SerializeField] private string[] _scoreTxtGroup = new string[4];
     [SerializeField] private Vector2 _rankPos;
 
-    private void Start()
-    {
-        ActiveResultPanel(10, 10, 200, 10);
-    }
-
     public void ActiveResultPanel(float score, float combo, float time, float damage) // ÆÐ³Î
     {
         string t = $"{Mathf.FloorToInt(time / 60)}m {time % 60}";

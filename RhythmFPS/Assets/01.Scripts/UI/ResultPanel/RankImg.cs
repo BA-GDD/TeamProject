@@ -20,7 +20,6 @@ public class RankImg : MonoBehaviour
 
         for(int i = 0; i < _scoreLimits.Length; i++)
         {
-            Debug.Log($"{score} | {_scoreLimits[i]}");
             if(score >= _scoreLimits[i])
             {
                 img.sprite = _imgs[i];
