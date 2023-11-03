@@ -4,38 +4,30 @@ using UnityEngine;
 
 public class VisualSpectrum : MonoBehaviour
 {
-    [SerializeField] private RectTransform[] barGroup = new RectTransform[8];
-    private AudioSource audioSur;
-    private float[] samples = new float[64];
-
+    [SerializeField] protected RectTransform[] _barGroup = new RectTransform[8];
+    private AudioSource _audioSur;
+    private float[] _samples = new float[64];
+    [SerializeField] private Vector2 _startSizeDelta;
     [SerializeField] private bool _isStart = false;
-
-    private int _value;
 
     private void OnEnable()
     {
-        for (int i = 0; i < barGroup.Length; i++)
+        for (int i = 0; i < _barGroup.Length; i++)
         {
-            barGroup[i].sizeDelta = new Vector2(30, 100);
+            _barGroup[i].sizeDelta = _startSizeDelta;
         }
 
-        audioSur = GetComponent<AudioSource>();
-        audioSur.Play();
-    }
-
-    [ContextMenu("AudioPlay")]
-    public void PlaySound()
-    {
-        audioSur.Play();
+        _audioSur = GameObject.Find("AudioAmple").GetComponent<AudioSource>();
     }
 
     private void Update()
     {
-        audioSur.GetSpectrumData(samples, 0, FFTWindow.Rectangular);
-        _value = 100;
-        for (int i = 0; i < barGroup.Length; i++)
+        //if (!_isStart) return;
+
+        _audioSur.GetSpectrumData(_samples, 0, FFTWindow.Rectangular);
+        for (int i = 0; i < _barGroup.Length; i++)
         {
-            barGroup[i].sizeDelta = new Vector2(30, samples[i] * (100 + (40 * i)));
+            _barGroup[i].sizeDelta = new Vector2(30, _samples[i] * (100 + (40 * i)));
         }
     }
 }
