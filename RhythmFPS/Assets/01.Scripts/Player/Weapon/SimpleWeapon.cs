@@ -6,7 +6,7 @@ public class SimpleWeapon : Weapon
 {
     public BulletTrail _trailPrefab;
     public Transform _firePos;
-    public Metronome metronome;
+    public RhythmManager rhythmManager;
 
     private void Awake()
     {
@@ -16,7 +16,7 @@ public class SimpleWeapon : Weapon
     public override void Fire()
     {
 
-        if (metronome.Judgement() == false)return;
+        if (rhythmManager.Judgement(RhythmAction.Shoot) == false)return;
         if (_isReadyReload == true) return;
         if(_currentBullet <= 0)
         {
@@ -43,7 +43,7 @@ public class SimpleWeapon : Weapon
     public override void Reload()
     {
         print("¸®·Îµå");
-        if (metronome.Judgement() == false) return;
+        if (rhythmManager.Judgement(RhythmAction.Reload) == false) return;
         if (_currentBullet == _maxBullet) return;
         if(_isReadyReload == true)
         {

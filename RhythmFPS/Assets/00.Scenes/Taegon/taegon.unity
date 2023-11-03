@@ -411,7 +411,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _musicDataSO
       value: 
-      objectReference: {fileID: 11400000, guid: c41f00fd30c4cb74283071938c299b1a,
+      objectReference: {fileID: 11400000, guid: 01e02e436f0dd7a40982d2661bdd01a8,
         type: 2}
     - target: {fileID: 7244565360183333492, guid: bda594d935a162a4ea3a6e3a3aaaadb6,
         type: 3}
