@@ -14,6 +14,7 @@ public class AgentAbility : MonoBehaviour
     private Dictionary<string, Ability> _keyAction = new();
     public List<Ability> defaultAbility;
 
+
     private void Awake()
     {
         //foreach(var key in (int[])Enum.GetValues(typeof(AbillityKey)))
@@ -37,6 +38,8 @@ public class AgentAbility : MonoBehaviour
 
     public void ActiveAbility(string key)
     {
+        if (RhythmManager.instance.Judgement(RhythmAction.Ability) == false) return;
+
         if (_keyAction.ContainsKey(key))
         {
             _keyAction[key]?.Active(gameObject);
