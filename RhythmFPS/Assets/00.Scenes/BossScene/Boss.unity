@@ -1183,7 +1183,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -1508,6 +1508,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7244565360183333492, guid: bda594d935a162a4ea3a6e3a3aaaadb6,
         type: 3}
+      propertyPath: isTestMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7244565360183333492, guid: bda594d935a162a4ea3a6e3a3aaaadb6,
+        type: 3}
       propertyPath: musicDataSO
       value: 
       objectReference: {fileID: 11400000, guid: c41f00fd30c4cb74283071938c299b1a,
@@ -1700,7 +1705,7 @@ Transform:
   m_GameObject: {fileID: 570222035}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6, y: 1.4, z: -5.2}
+  m_LocalPosition: {x: 0, y: 1.36, z: -5.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2227,7 +2232,7 @@ Transform:
   m_GameObject: {fileID: 848781491}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6, y: 0, z: -5.5}
+  m_LocalPosition: {x: 0, y: -0.04, z: -5.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3495,7 +3500,7 @@ Transform:
   m_GameObject: {fileID: 1148263620}
   serializedVersion: 2
   m_LocalRotation: {x: 0.08248064, y: 0, z: 0, w: 0.9965927}
-  m_LocalPosition: {x: -6, y: 1.4, z: -5.2}
+  m_LocalPosition: {x: 0, y: 1.36, z: -5.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
