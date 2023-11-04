@@ -2,14 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum BarType
-{
-    playerHp,
-    enemyHp,
-    bossHp,
-    bulletCount
-}
-
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
@@ -20,6 +12,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Vector3 _resultPanelCreatePos;
     [SerializeField] ResultUI _resultPanel;
 
+    [SerializeField] private float _spectrumNormalValue;
+    public float bgm_SpectrumSizeValue;
+    public float sfx_SpectrumSizeValue;
+
     private void Awake()
     {
         if(Instance != null)
@@ -28,6 +24,21 @@ public class UIManager : MonoBehaviour
             return;
         }
         Instance = this;
+    }
+
+    public void SetSpectrumValue(SoundType st, float value)
+    {
+        switch (st)
+        {
+            case SoundType.bgm:
+                bgm_SpectrumSizeValue = _spectrumNormalValue * value;
+                break;
+            case SoundType.sfx:
+                sfx_SpectrumSizeValue = _spectrumNormalValue * value;
+                break;
+            default:
+                break;
+        }
     }
 
     [ContextMenu("리절트 패널 활성화")]

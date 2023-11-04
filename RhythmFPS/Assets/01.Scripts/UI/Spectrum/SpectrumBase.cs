@@ -8,6 +8,7 @@ public abstract class SpectrumBase : MonoBehaviour
     private AudioSource _audioSur;
     protected float[] _samples = new float[64];
     [SerializeField] protected Vector2 _startSizeDelta;
+    protected float _spectrumValue;
 
     private void OnEnable()
     {
@@ -21,6 +22,13 @@ public abstract class SpectrumBase : MonoBehaviour
 
     private void Update()
     {
+        if (_audioSur.volume == 0)
+        {
+            for(int i = 0; i < _visualGroup.Length; i++)
+            {
+                _visualGroup[i].sizeDelta = Vector2.zero;
+            }
+        }
         _audioSur.GetSpectrumData(_samples, 0, FFTWindow.Rectangular);
         RhythmVisuallizing();
     }
