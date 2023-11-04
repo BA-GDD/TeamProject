@@ -9,6 +9,7 @@ public class AgentMovement : MonoBehaviour
     private Vector3 _dirVec;
 
     private CharacterController _characterController;
+    private PlayerAnimator _animator;
 
     private float _yVelocity;
     private bool _isAir;
@@ -26,6 +27,7 @@ public class AgentMovement : MonoBehaviour
     private void Awake()
     {
         _characterController = GetComponent<CharacterController>();
+        _animator = transform.Find("Visual").GetComponent<PlayerAnimator>();
     }
     public void OnMovementHandle(Vector2 dir)
     {
@@ -55,6 +57,7 @@ public class AgentMovement : MonoBehaviour
         CalculateYvelocity();
 
         _dirVec = (_inputVec.x * transform.right + _inputVec.y * transform.forward) * speed;
+        _animator.SetFloatSpeed(_dirVec.sqrMagnitude);
         _dirVec.y = _yVelocity;
     }
     private void CalculateYvelocity()

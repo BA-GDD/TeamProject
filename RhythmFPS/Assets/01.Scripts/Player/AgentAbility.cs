@@ -12,7 +12,7 @@ public enum AbillityKey
 public class AgentAbility : MonoBehaviour
 {
     private Dictionary<string, Ability> _keyAction = new();
-    public List<Ability> defaultAbility;
+    [SerializeField]private List<Ability> _defaultAbility;
 
 
     private void Awake()
@@ -21,7 +21,7 @@ public class AgentAbility : MonoBehaviour
         //{
         //_keyAction?.Add((AbillityKey)key,null);
         //}
-        foreach (Ability ability in defaultAbility)
+        foreach (Ability ability in _defaultAbility)
         {
             _keyAction.Add(ability.key.ToString(), ability);
         }
