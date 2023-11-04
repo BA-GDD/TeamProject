@@ -131,12 +131,12 @@ Material:
     - _diffuse_min: 0.6
     - _dot_max: 1.3
     - _dot_min: -1.53
-    - _dot_off: -0.01
+    - _dot_off: -0.9
     - _fresnel_pow: 0
     - _fresnel_step: 6.07
     - _ml: 39.2
     - _pw: 4.95
-    - _resolution: 40.83
+    - _resolution: 1.69
     - _rotation: 2.32
     - _voronoi_multiplier: 0.5
     - _voronou_dencity: 60

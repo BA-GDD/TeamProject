@@ -47,7 +47,7 @@ public class BTEditor : EditorWindow
         template.style.flexGrow = 1;
         root.Add(template);
 
-        var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/BTVisual/Editor/BTEditor.uss");
+        var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/01.Scripts/Enemy/BTVisual/Editor/BTEditor.uss");
         root.styleSheets.Add(styleSheet);
 
         _treeView = root.Q<BehaviourTreeView>("TreeView"); //이름은 생략해도 동작한다.
