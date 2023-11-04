@@ -24,7 +24,7 @@ public class LLineSpectrum : SpectrumBase
             
 
             _visualGroup[i].localPosition =  
-            new Vector3(_visualGroup[i].localPosition.x, _visualY[i] + _samples[i % 4] * random * 100);
+            new Vector3(_visualGroup[i].localPosition.x, _visualY[i] + _samples[i % 5] * random * 100);
         }
 
         for(int i = 0; i < _rects.Length; i++)
