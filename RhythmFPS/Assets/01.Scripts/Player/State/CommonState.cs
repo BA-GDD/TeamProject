@@ -17,6 +17,7 @@ public abstract class CommonState : MonoBehaviour, IState
     protected AgentMovement agentMovement;
     protected AgentRotater agentRotater;
     protected AgentWeapon agentWeapon;
+    protected AgentAbility agentAbility;
     protected Camera mainCam;
     protected InputReader inputReader;
 
@@ -28,6 +29,7 @@ public abstract class CommonState : MonoBehaviour, IState
         agentMovement = agentRoot.GetComponent<AgentMovement>();
         agentRotater = agentRoot.GetComponent<AgentRotater>();
         agentWeapon = agentRoot.GetComponent<AgentWeapon>();
+        agentAbility = agentRoot.GetComponent<AgentAbility>();
         mainCam = Define.MainCam;
 
         this.inputReader = inputReader;

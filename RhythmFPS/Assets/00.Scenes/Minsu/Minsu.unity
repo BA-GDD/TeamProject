@@ -1890,6 +1890,7 @@ GameObject:
   - component: {fileID: 1068351014}
   - component: {fileID: 1068351015}
   - component: {fileID: 1068351016}
+  - component: {fileID: 1068351017}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -2015,6 +2016,20 @@ MonoBehaviour:
   dieEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1068351017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068351008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72f460931da285f479820d53915a0f96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultAbility:
+  - {fileID: 11400000, guid: 3d9e2634562c7fd42bd308ca23e0eb59, type: 2}
 --- !u!1 &1090496690
 GameObject:
   m_ObjectHideFlags: 0
