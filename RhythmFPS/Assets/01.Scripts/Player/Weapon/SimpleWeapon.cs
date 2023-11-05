@@ -6,7 +6,6 @@ public class SimpleWeapon : Weapon
 {
     public BulletTrail _trailPrefab;
     public Transform _firePos;
-    public RhythmManager rhythmManager;
 
     private void Awake()
     {
@@ -16,15 +15,21 @@ public class SimpleWeapon : Weapon
     public override void Fire()
     {
 
-        if (rhythmManager.Judgement(RhythmAction.Shoot) == false)return;
-        if (_isReadyReload == true) return;
-        if(_currentBullet <= 0)
+        if (_isReadyReload == true)
+        {
+            _animator.SetRigBoolIsReload(false);
+            _animator.SetRigTriggerReload(false);
+            _animator.SetRigTriggerReloadCancel(true);
+            _isReadyReload = false;
+        }
+        if (_currentBullet <= 0)
         {
             lackOfAmmoEvent?.Invoke();
             return;
         }
         print("맞음!");
         _currentBullet--;
+        _animator.SetRigTriggerFIre(true);
         BulletTrail trail = Instantiate(_trailPrefab);
         if (Physics.Raycast(_cam.transform.position, _cam.transform.forward, out RaycastHit hit, 50f, _whatIsEnemy))
         {
@@ -36,22 +41,29 @@ public class SimpleWeapon : Weapon
         }
         else
         {
-            trail.DrawTrail(_firePos.position, _cam.transform.forward*500f, 0.1f);
+            trail.DrawTrail(_firePos.position, _cam.transform.forward * 500f, 0.1f);
         }
+        return;
     }
 
     public override void Reload()
     {
         print("리로드");
-        if (rhythmManager.Judgement(RhythmAction.Reload) == false) return;
         if (_currentBullet == _maxBullet) return;
-        if(_isReadyReload == true)
+        if (_isReadyReload == true)
         {
-            _currentBullet = _maxBullet;
-            _isReadyReload = false;
+
+            _currentBullet++;
+            _animator.SetRigTriggerReload(true);
+            if (_currentBullet == _maxBullet)
+            {
+                _isReadyReload = false;
+                _animator.SetRigBoolIsReload(false);
+            }
         }
         else
         {
+            _animator.SetRigBoolIsReload(true);
             _isReadyReload = true;
         }
 

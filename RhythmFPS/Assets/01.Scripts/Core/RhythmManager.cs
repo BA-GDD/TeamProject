@@ -6,7 +6,7 @@ public enum RhythmAction
 {
     Shoot,
     Reload,
-    Dash,
+    Ability,
 }
 
 public class RhythmManager : MonoBehaviour

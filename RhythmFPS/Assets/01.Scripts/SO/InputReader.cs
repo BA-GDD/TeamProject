@@ -14,6 +14,8 @@ public class InputReader : ScriptableObject, IPlayerActions
     public event Action<Vector2> movementEvent;
     public event Action<Vector2> rotationCameraEvt;
 
+    public event Action<string> OnAbillityEvent;
+
     private Controls _controlAction;
 
 
@@ -60,6 +62,15 @@ public class InputReader : ScriptableObject, IPlayerActions
         {
             reloadEvent?.Invoke();
 
+        }
+    }
+
+    public void OnAbillity(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+        {
+            Debug.Log(context.control.displayName);
+            OnAbillityEvent?.Invoke(context.control.displayName);
         }
     }
 }

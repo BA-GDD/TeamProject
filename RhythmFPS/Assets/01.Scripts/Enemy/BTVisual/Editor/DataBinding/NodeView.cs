@@ -13,7 +13,7 @@ namespace BTVisual
         public Port input;
         public Port output;
         public Action<NodeView> OnNodeSelected;
-        public NodeView(Node node) : base("Assets/BTVisual/Editor/NodeView/NodeView.uxml")
+        public NodeView(Node node) : base("Assets/01.Scripts/Enemy/BTVisual/Editor/NodeView/NodeView.uxml")
         {
             this.node = node;
             this.title = node.name;
