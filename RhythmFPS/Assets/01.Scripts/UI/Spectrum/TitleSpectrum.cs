@@ -39,7 +39,7 @@ public class TitleSpectrum : SpectrumBase
             Vector2 first = _visualGroup[i].localPosition;
             Vector2 second = _visualGroup[i + 1].localPosition;
 
-            _rects[i].sizeDelta = new Vector2(20,
+            _rects[i].sizeDelta = new Vector2(7,
                                   Mathf.Sqrt(Mathf.Pow(second.x - first.x, 2)
                                 + Mathf.Pow(second.y - first.y, 2)));
 
