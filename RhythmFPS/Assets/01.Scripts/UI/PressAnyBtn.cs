@@ -7,10 +7,12 @@ using UnityEngine.UI;
 
 public class PressAnyBtn : MonoBehaviour
 {
+    [SerializeField] private RectTransform _startScene;
     [SerializeField] private Image _volume;
     [SerializeField] private List<Image> _bitLineList = new List<Image>();
     private TextMeshProUGUI _pressABtn;
     private bool isGameStart;
+    [SerializeField] private float _turm;
 
     private void Awake()
     {
@@ -25,7 +27,7 @@ public class PressAnyBtn : MonoBehaviour
     IEnumerator FadeText()
     {
         float fadecount = 1;
-        while (true)
+        while (!isGameStart)
         {
             _pressABtn.color = new Color(1, 1, 1, fadecount);
             fadecount += 0.02f;
@@ -44,15 +46,27 @@ public class PressAnyBtn : MonoBehaviour
         {
             if (isGameStart) return;
             isGameStart = true;
-
-            GameStart();
+            _pressABtn.enabled = false;
+            StartCoroutine(GameStart());
         }
     }
 
-    private void GameStart()
+    IEnumerator GameStart()
     {
-        Sequence seq = DOTween.Sequence();
+        for (int j = 0; j < 3; j++)
+        {
+            Color co = Random.ColorHSV();
 
-        seq.Append()
+            _volume.DOColor(co, _turm);
+            _pressABtn.DOColor(co, _turm);
+            for (int i = 0; i < _bitLineList.Count; i++)
+            {
+                _bitLineList[i].DOColor(co, _turm);
+            }
+            yield return new WaitForSeconds(_turm);
+        }
+
+        Debug.Log("게임 스타트 로직 구현 해주새요 >.<"); // 할 수 있지?
+        Destroy(_startScene.gameObject);
     }
 }
