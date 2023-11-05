@@ -28,6 +28,8 @@ public class UIManager : MonoBehaviour
             return;
         }
         Instance = this;
+
+        bgm_SpectrumSizeValue = sfx_SpectrumSizeValue = _spectrumNormalValue;
     }
 
     public void SetSpectrumValue(SoundType st, float value)
