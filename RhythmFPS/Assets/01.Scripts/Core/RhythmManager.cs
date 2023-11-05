@@ -20,11 +20,11 @@ public class RhythmManager : MonoBehaviour
     private AudioSource _metronomeAudioSource;
     [SerializeField]
     private MusicDataSO _musicDataSO;
-    [SerializeField]
+    [SerializeField, Tooltip("If this true, metronome clip will be play in noted time.\n만약 이 변수가 true라면 메트로놈 클립이 노트가 있는 박자에 재생됩니다.")]
     private bool _metronomeMode = false;
-    [SerializeField]
+    [SerializeField, Tooltip("If you call judgement method in +- range frame from noted time, return true, else return false.\n만약 판정 함수를 노트가 있는 박자로부터 +- 범위 프레임 내에 호출하면 true를, 아니면 false를 반환합니다.")]
     private float _judgementRangeFrame;
-    [SerializeField]
+    [SerializeField, Tooltip("If you call judgement method, judged by calculate fast as offset frame.\n만약 판정 함수를 호출하면, 오프셋 프레임만큼 빠르게 계산해서 판정됩니다.")]
     private float _judgementOffsetFrame;
     private int _comboCount;
     public int ComboCount => _comboCount;
