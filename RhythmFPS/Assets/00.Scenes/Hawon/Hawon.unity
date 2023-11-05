@@ -1129,7 +1129,6 @@ GameObject:
   m_Component:
   - component: {fileID: 443968496}
   - component: {fileID: 443968495}
-  - component: {fileID: 443968497}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: Untagged
@@ -1149,6 +1148,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dce2dc2b972f8c40a35e176e8ce41db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canvasTrm: {fileID: 2133036238}
+  _resultPanelCreatePos: {x: 0, y: -1000, z: 0}
+  _resultPanel: {fileID: 9114344137849969699, guid: 13f68e2a4f883ef4f91cdf2d5d240375,
+    type: 3}
 --- !u!4 &443968496
 Transform:
   m_ObjectHideFlags: 0
@@ -1164,18 +1167,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &443968497
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 443968494}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f27dc5ecc769f934d81e0742a17ed9ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &445043550
 GameObject:
   m_ObjectHideFlags: 0

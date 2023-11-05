@@ -7,16 +7,17 @@ public class AgentRotater : MonoBehaviour
     private float _rotateX;
     private float _rotateY;
 
-    private Transform _eye;
+    [SerializeField]private Transform _eye;
 
     public float HorizontalRespons;
     public float VerizontalRespons;
-    private void Awake()
-    {
-        _eye = transform.Find("Visual/Eye");
-    }
+
+#if UNITY_EDITOR
+    public bool StopRotate;
+#endif
     public void Rotate(Vector2 value)
     {
+        if (StopRotate == true) return;
         _rotateX += value.y * HorizontalRespons;
         _rotateX = Mathf.Clamp(_rotateX, -70, 70);
         _rotateY += value.x * VerizontalRespons;

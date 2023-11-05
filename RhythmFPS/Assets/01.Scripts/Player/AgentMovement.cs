@@ -4,23 +4,30 @@ using UnityEngine;
 
 public class AgentMovement : MonoBehaviour
 {
+    const int _jumpCnt = 2;
     private Vector2 _inputVec;
     private Vector3 _dirVec;
 
     private CharacterController _characterController;
+    private PlayerAnimator _animator;
 
     private float _yVelocity;
     private bool _isAir;
     private bool _isGround;
-    private bool _spacialJump;
+    private int _curJumpCnt;
 
     [SerializeField] private LayerMask _whatIsGround;
 
-    public float Speed;
+    public float speed;
+    public bool canMove = true;
 
+    #region 프로퍼티
+    public Vector3 InputforVec => _inputVec.x * transform.right + _inputVec.y * transform.forward;
+    #endregion
     private void Awake()
     {
         _characterController = GetComponent<CharacterController>();
+        _animator = transform.Find("Visual").GetComponent<PlayerAnimator>();
     }
     public void OnMovementHandle(Vector2 dir)
     {
@@ -28,32 +35,11 @@ public class AgentMovement : MonoBehaviour
     }
     public void Jump()
     {
-        if (_spacialJump == true)
+        if (_curJumpCnt > 0)
         {
-            _spacialJump = false;
-            return;
+            _curJumpCnt--;
+            _yVelocity = _curJumpCnt == 0 ? 8f : 5f;
         }
-        if (_isAir)
-        {
-            _spacialJump = true;
-            StartCoroutine(timerSpacialJump(5f));
-            return;
-        }
-        if (_isGround)
-        {
-            _yVelocity = 7f;
-        }
-    }
-    private IEnumerator timerSpacialJump(float time)
-    {
-        float timer = 0;
-        while(time > timer)
-        {
-            if (_spacialJump == false) break;
-            timer += Time.deltaTime;
-            yield return null;
-        }
-        _spacialJump = false;
     }
     private void Update()
     {
@@ -61,6 +47,7 @@ public class AgentMovement : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if (canMove == false) return;
         CalculateMovement();
 
         _characterController.Move(_dirVec * Time.fixedDeltaTime);
@@ -69,27 +56,34 @@ public class AgentMovement : MonoBehaviour
     {
         CalculateYvelocity();
 
-        _dirVec = (_inputVec.x * transform.right + _inputVec.y * transform.forward) * Speed;
+        _dirVec = (_inputVec.x * transform.right + _inputVec.y * transform.forward) * speed;
+        _animator.SetFloatSpeed(_dirVec.sqrMagnitude);
         _dirVec.y = _yVelocity;
     }
     private void CalculateYvelocity()
     {
         if (!_isGround)
         {
-            if(_spacialJump == false)
-                _yVelocity -= 9.8f * Time.fixedDeltaTime;
-            else
-                _yVelocity -= 9.8f * 0.2f * Time.fixedDeltaTime;
+            _yVelocity -= 9.8f * Time.fixedDeltaTime;
             _isAir = true;
         }
         else
         {
-            _spacialJump = false;
             if (_isAir == true)
             {
+
                 _yVelocity = 0;
+                _curJumpCnt = _jumpCnt;
                 _isAir = false;
             }
         }
+    }
+    public void StopImmediately()
+    {
+        _dirVec = Vector3.zero;
+    }
+    public void ManualMove(Vector3 dir)
+    {
+        _characterController.Move(dir);
     }
 }
