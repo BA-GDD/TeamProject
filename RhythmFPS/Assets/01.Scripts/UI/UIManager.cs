@@ -10,8 +10,12 @@ public class UIManager : MonoBehaviour
 
     [Header("결과 패널")]
     [SerializeField] private Vector3 _resultPanelCreatePos;
-    [SerializeField] ResultUI _resultPanel;
+    [SerializeField] private ResultUI _resultPanel;
 
+    [Header("옵션 패널")]
+    [SerializeField] private OptionPanel _optionPanel;
+
+    [Header("스펙트럼 조정")]
     [SerializeField] private float _spectrumNormalValue;
     public float bgm_SpectrumSizeValue;
     public float sfx_SpectrumSizeValue;
@@ -42,11 +46,21 @@ public class UIManager : MonoBehaviour
     }
 
     [ContextMenu("리절트 패널 활성화")]
-    public void ActiveResultPanel()
+    public void ActiveResultPanel(/* 매개변수 받기 */)
     {
         ResultUI ru = Instantiate(_resultPanel, _canvasTrm);
         ru.transform.localPosition = _resultPanelCreatePos;
         ru.gameObject.name = "Result";
-        ru.ActiveResultPanel(1, 1, 1, 1);
+        ru.ActiveResultPanel(1, 1, 1, 1 /*매개변수 설정*/);
+    }
+
+    // 옵션 나오는거 만드셈
+    [ContextMenu("옵션 패널 활성화")]
+    public void ActiveOptionPanel()
+    {
+        OptionPanel op = Instantiate(_optionPanel, _canvasTrm);
+        op.transform.localPosition = Vector3.zero;
+        op.gameObject.name = "OptionPanel";
+        op.OpenPanel();
     }
 }

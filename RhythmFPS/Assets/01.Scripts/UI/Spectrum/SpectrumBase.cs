@@ -18,6 +18,7 @@ public abstract class SpectrumBase : MonoBehaviour
         }
 
         _audioSur = GameObject.Find("AudioAmple").GetComponent<AudioSource>();
+        Debug.Log(_audioSur);
     }
 
     private void Update()
