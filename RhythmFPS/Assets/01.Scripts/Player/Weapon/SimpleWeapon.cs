@@ -26,6 +26,7 @@ public class SimpleWeapon : Weapon
             _animator.SetRigTriggerReloadCancel(true);
             _isReadyReload = false;
         }
+        fireFeedback?.Invoke();
         print("¸ÂÀ½!");
         _currentBullet--;
         _animator.SetRigTriggerFIre(true);
