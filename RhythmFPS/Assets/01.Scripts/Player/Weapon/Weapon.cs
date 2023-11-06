@@ -43,6 +43,7 @@ public abstract class Weapon : MonoBehaviour
         {
             _isReadyReload = false;
             _animator.SetRigBoolIsReload(false);
+            _animator.SetRigTriggerReload(false);
         }
     }
 }
