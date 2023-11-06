@@ -5,8 +5,12 @@ using DG.Tweening;
 
 public class PanelManaging : MonoBehaviour
 {
+    [Header("사이즈 셋팅")]
     [SerializeField] private RectTransform[] _panels;
     [SerializeField] private float moveValue;
+
+    [Header("맵 페널 셋팅")]
+    public MapEnterPanel selectMapEnterPanel;
 
     public void EnterPointPnanel(RectTransform trm)
     {
@@ -26,7 +30,6 @@ public class PanelManaging : MonoBehaviour
             }
         }
     }
-
     public void ExitPointPnanel(RectTransform trm)
     {
         int idx = 3;
