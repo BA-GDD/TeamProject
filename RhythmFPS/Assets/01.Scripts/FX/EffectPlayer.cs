@@ -12,7 +12,7 @@ public class EffectPlayer : MonoBehaviour
 
     private void Update()
     {
-        if (Keyboard.current.gKey.wasPressedThisFrame)
+        if (Keyboard.current.anyKey.wasPressedThisFrame || Input.GetMouseButtonDown(0)) 
         {
             EffectPlay();
         }
