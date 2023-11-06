@@ -3,8 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MobAttackNode : ActionNode
+public class InRangeNode : ActionNode
 {
+    public float range;
+
     protected override void OnStart()
     {
 
@@ -17,8 +19,6 @@ public class MobAttackNode : ActionNode
 
     protected override State OnUpdate()
     {
-        brain.Attack();
-
         return State.SUCCESS;
     }
 }
