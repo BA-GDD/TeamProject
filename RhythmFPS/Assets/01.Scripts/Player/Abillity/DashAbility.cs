@@ -22,6 +22,7 @@ public class DashAbility : Ability
         Vector3 dir = movement.InputforVec;
         movement.canMove = false;
         movement.StopImmediately();
+        movement.YVelocity = 0;
 
         float percent = 0;
         float timer= 0;

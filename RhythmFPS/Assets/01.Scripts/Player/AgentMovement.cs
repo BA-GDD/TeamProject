@@ -23,6 +23,7 @@ public class AgentMovement : MonoBehaviour
 
     #region 프로퍼티
     public Vector3 InputforVec => _inputVec.x * transform.right + _inputVec.y * transform.forward;
+    public float YVelocity { get => _yVelocity; set { _yVelocity = value; } }
     #endregion
     private void Awake()
     {
@@ -37,8 +38,14 @@ public class AgentMovement : MonoBehaviour
     {
         if (_curJumpCnt > 0)
         {
-            _curJumpCnt--;
-            _yVelocity = _curJumpCnt == 0 ? 8f : 5f;
+            if (_isAir == true) _curJumpCnt = 0;
+            else _curJumpCnt--;
+            if (_curJumpCnt == 0)
+            {
+                _yVelocity = 8f;
+            }
+            else
+                _yVelocity = 5f;
         }
     }
     private void Update()

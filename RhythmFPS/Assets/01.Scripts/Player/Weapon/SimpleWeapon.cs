@@ -15,17 +15,17 @@ public class SimpleWeapon : Weapon
     public override void Fire()
     {
 
+        if (_currentBullet <= 0)
+        {
+            lackOfAmmoEvent?.Invoke();
+            return;
+        }
         if (_isReadyReload == true)
         {
             _animator.SetRigBoolIsReload(false);
             _animator.SetRigTriggerReload(false);
             _animator.SetRigTriggerReloadCancel(true);
             _isReadyReload = false;
-        }
-        if (_currentBullet <= 0)
-        {
-            lackOfAmmoEvent?.Invoke();
-            return;
         }
         print("¸ÂÀ½!");
         _currentBullet--;
