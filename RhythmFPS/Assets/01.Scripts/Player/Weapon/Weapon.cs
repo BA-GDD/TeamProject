@@ -18,6 +18,8 @@ public abstract class Weapon : MonoBehaviour
     public AnimationClip relaodStartClip;
     public AnimationClip relaodClip;
     public AnimationClip reloadEndClip;
+
+    public UnityEvent fireFeedback;
     public UnityEvent lackOfAmmoEvent;
 
 
