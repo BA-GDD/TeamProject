@@ -17,6 +17,8 @@ public class SlashPatternNode : ActionNode
 
     protected override State OnUpdate()
     {
+        //캐스트만 따로
+
         return State.SUCCESS;
     }
 }
