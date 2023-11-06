@@ -53,13 +53,8 @@ public class SimpleWeapon : Weapon
         if (_isReadyReload == true)
         {
 
-            _currentBullet++;
             _animator.SetRigTriggerReload(true);
-            if (_currentBullet == _maxBullet)
-            {
-                _isReadyReload = false;
-                _animator.SetRigBoolIsReload(false);
-            }
+            
         }
         else
         {
