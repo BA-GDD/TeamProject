@@ -18,7 +18,7 @@ public abstract class EnemyBrain : MonoBehaviour
         isRot = true;
         movePos = transform.position;
         enemyHealth = GetComponent<EnemyHealth>();
-        targetTrm = SubManager.Instance.playerTrm;
+        targetTrm = GameManager.instance.playerTransform;
     }
 
     protected virtual void Update()
