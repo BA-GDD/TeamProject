@@ -11,6 +11,7 @@ public class PanelManaging : MonoBehaviour
 
     [Header("¸Ê Æä³Î ¼ÂÆÃ")]
     public MapEnterPanel selectMapEnterPanel;
+    public bool isSelect;
 
     public void EnterPointPnanel(RectTransform trm)
     {
