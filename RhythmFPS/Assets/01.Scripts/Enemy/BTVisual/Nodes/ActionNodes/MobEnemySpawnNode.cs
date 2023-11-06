@@ -6,6 +6,8 @@ using UnityEngine;
 public class MobEnemySpawnNode : ActionNode
 {
     public GameObject mobEnemyPrefab;
+    [SerializeField]
+    private List<Vector3> _spawnPointList;
 
     protected override void OnStart()
     {
@@ -21,8 +23,7 @@ public class MobEnemySpawnNode : ActionNode
     {
         for(int i = 0; i < 4; ++i)
         {
-            GameObject newMob = Instantiate(mobEnemyPrefab);
-            newMob.transform.position = new Vector3(i * 2f, 0, i * 2f);
+            GameObject newMob = Instantiate(mobEnemyPrefab, brain.transform.position + _spawnPointList[i], Quaternion.identity);
         }
         blackboard.curPattern = Random.Range(0, 2);
         return State.SUCCESS;

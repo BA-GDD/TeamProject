@@ -248,7 +248,11 @@ MonoBehaviour:
     curPattern: 0
   brain: {fileID: 0}
   description: 
-  _mobEnemyPrefab: {fileID: 0}
+  mobEnemyPrefab: {fileID: 0}
+  _spawnPointList:
+  - {x: 0, y: 0, z: 2.5}
+  - {x: 2.5, y: 0, z: 1.5}
+  - {x: -2.5, y: 0, z: 1.5}
 --- !u!114 &1570231025362751907
 MonoBehaviour:
   m_ObjectHideFlags: 0
