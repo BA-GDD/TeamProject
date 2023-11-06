@@ -2201,8 +2201,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87c4ea68910ed3a49a4975037c51dd27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _eye: {fileID: 0}
   HorizontalRespons: 0.3
   VerizontalRespons: 0.5
+  StopRotate: 0
 --- !u!114 &848781495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2219,6 +2221,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   speed: 0
+  canMove: 1
 --- !u!114 &848781496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2762,6 +2765,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dce2dc2b972f8c40a35e176e8ce41db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canvasTrm: {fileID: 404336941}
+  _resultPanelCreatePos: {x: 0, y: 0, z: 0}
+  _resultPanel: {fileID: 0}
+  _optionPanel: {fileID: 0}
+  _spectrumNormalValue: 0
+  bgm_SpectrumSizeValue: 0
+  sfx_SpectrumSizeValue: 0
 --- !u!4 &939561200
 Transform:
   m_ObjectHideFlags: 0
@@ -5634,12 +5644,14 @@ MonoBehaviour:
   _whatIsEnemy:
     serializedVersion: 2
     m_Bits: 0
+  relaodStartClip: {fileID: 0}
+  relaodClip: {fileID: 0}
+  reloadEndClip: {fileID: 0}
   lackOfAmmoEvent:
     m_PersistentCalls:
       m_Calls: []
   _trailPrefab: {fileID: 0}
   _firePos: {fileID: 0}
-  rhythmManager: {fileID: 0}
 --- !u!65 &1878759434
 BoxCollider:
   m_ObjectHideFlags: 0
