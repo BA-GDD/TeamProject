@@ -34,4 +34,13 @@ public abstract class Weapon : MonoBehaviour
     ///  실제 총이 발사하는 장전
     /// </summary>
     public abstract void Reload();
+    public virtual void AddBullet()
+    {
+        _currentBullet++;
+        if (_currentBullet == _maxBullet)
+        {
+            _isReadyReload = false;
+            _animator.SetRigBoolIsReload(false);
+        }
+    }
 }
