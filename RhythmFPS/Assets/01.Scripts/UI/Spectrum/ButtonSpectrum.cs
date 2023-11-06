@@ -11,7 +11,7 @@ public class ButtonSpectrum : SpectrumBase
         for (int i = 0; i < _visualGroup.Length; i++)
         {
             _visualGroup[i].sizeDelta = 
-                new Vector2(_startSizeDelta.x, _samples[i] * (_spectrumValue + _addValue + (40 * i)));
+                new Vector2(_startSizeDelta.x, _samples[i % 3 + 2] * (_spectrumValue + _addValue + (40 * i)));
         }
     }
 }
