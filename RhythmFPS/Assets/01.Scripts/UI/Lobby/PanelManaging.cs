@@ -6,19 +6,57 @@ using DG.Tweening;
 public class PanelManaging : MonoBehaviour
 {
     [Header("사이즈 셋팅")]
-    [SerializeField] private RectTransform[] _panels;
+    [SerializeField] private PlayPanel[] _panels;
     [SerializeField] private float moveValue;
 
     [Header("맵 페널 셋팅")]
+    public PlayPanel selectPlayPanel;
     public MapEnterPanel selectMapEnterPanel;
-    public bool isSelect;
+    public RectTransform activePanelMark;
 
-    public void EnterPointPnanel(RectTransform trm)
+    public bool IsExistSelectPanel()
+    {
+        for (int i = 0; i < _panels.Length; i++)
+        {
+            if (_panels[i].isSelect)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public PlayPanel FindSelectPanel()
+    {
+        for (int i = 0; i < _panels.Length; i++)
+        {
+            if (_panels[i].isSelect)
+            {
+                return _panels[i];
+            }
+        }
+        return null;
+    }
+
+    public void RefreshPanelSize()
+    {
+        for(int i = 0; i < _panels.Length; i++)
+        {
+            if (_panels[i].isSelect)
+            {
+                _panels[i].isSelect = false;
+                //_panels[i].OnExitPointerInThisPanel();
+                break;
+            }
+        }
+    }
+
+    public void EnterPointPnanel(PlayPanel pp)
     {
         int idx = 3;
         for(int i = 0; i < _panels.Length; i++)
         {
-            if(_panels[i] == trm)
+            if(_panels[i] == pp)
             {
                 idx = i;
                 continue;
@@ -26,17 +64,16 @@ public class PanelManaging : MonoBehaviour
 
             if(idx < i)
             {
-                PlayPanel pp = _panels[i].GetComponent<PlayPanel>();
-                pp.PanelMove(-moveValue);
+                _panels[i].PanelMove(-moveValue);
             }
         }
     }
-    public void ExitPointPnanel(RectTransform trm)
+    public void ExitPointPnanel(PlayPanel pp)
     {
         int idx = 3;
         for (int i = 0; i < _panels.Length; i++)
         {
-            if (_panels[i] == trm)
+            if (_panels[i] == pp)
             {
                 idx = i;
                 continue;
@@ -44,8 +81,7 @@ public class PanelManaging : MonoBehaviour
 
             if (idx < i)
             {
-                PlayPanel pp = _panels[i].GetComponent<PlayPanel>();
-                pp.PanelMove(0);
+                _panels[i].PanelMove(0);
             }
         }
     }

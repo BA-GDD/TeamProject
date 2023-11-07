@@ -32,7 +32,6 @@ public class MuteBox : MonoBehaviour
             _slider.onValueChanged.AddListener(_soundSlider.SoundChange);
             _slider.onValueChanged.AddListener(_visualizer.ValueChangeEvent);
             _slider.onValueChanged?.Invoke(_slider.value);
-            Debug.Log(_slider.value);
         }
     }
 }
