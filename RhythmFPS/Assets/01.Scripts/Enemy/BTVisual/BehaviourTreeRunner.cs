@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace BTVisual
 {
-    public class BehviourTreeRunner : MonoBehaviour
+    public class BehaviourTreeRunner : MonoBehaviour
     {
         public EnemyBrain brain;
         public BehaviourTree tree;
