@@ -238,6 +238,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f8619089f7d25d41aff5ce49567d809, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onNotedTimeEvent:
+    m_PersistentCalls:
+      m_Calls: []
   _metronomeClip: {fileID: 8300000, guid: 3a7210f0d7da2934f9b0a0e4f001f3ed, type: 3}
   _musicAudioSource: {fileID: 6498305241353887962}
   _metronomeAudioSource: {fileID: 2093579550531786158}

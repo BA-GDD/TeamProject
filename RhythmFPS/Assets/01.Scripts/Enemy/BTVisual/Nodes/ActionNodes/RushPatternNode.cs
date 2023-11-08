@@ -10,7 +10,8 @@ public class RushPatternNode : ActionNode
 
     protected override void OnStart()
     {
-        _targetPos = brain.transform.position;
+        _targetPos = (GameManager.instance.playerTransform.position - brain.transform.position).normalized * 10f;
+        
     }
 
     protected override void OnStop()
@@ -20,20 +21,32 @@ public class RushPatternNode : ActionNode
 
     protected override State OnUpdate()
     {
-        RaycastHit hit;
-        bool isHit = Physics.SphereCast(brain.transform.position, 10f, Vector3.forward, out hit, 0f, _layerMask);
-
-        if (isHit)
+        if (brain.isMove)
         {
-            //brain.movePos = hit.point;
-            //return State.SUCCESS;
+            return State.RUNNING;
+        }
+        else
+        {
+            RaycastHit hit;
+            bool isHit = Physics.SphereCast(brain.transform.position, 10f, Vector3.forward, out hit, 0f, _layerMask);
 
-            //플레이어 피격 실행
-            hit.collider.GetComponent<AgentHealth>().TakeDamage(1);
+            if (isHit)
+            {
+                //brain.movePos = hit.point;
+                //return State.SUCCESS;
+
+                //플레이어 피격 실행
+                hit.collider.GetComponent<AgentHealth>().TakeDamage(30);
+                return State.SUCCESS;
+            }
+            if (brain.transform.position != _targetPos)
+            {
+                brain.movePos = _targetPos;
+                brain.Move();
+                return State.RUNNING;
+            }
+            //0.375 sec
             return State.SUCCESS;
         }
-        brain.movePos = _targetPos;
-        //0.375 sec
-        return State.SUCCESS;
     }
 }
