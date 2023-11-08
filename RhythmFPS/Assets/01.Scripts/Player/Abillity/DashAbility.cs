@@ -1,3 +1,4 @@
+using MoreMountains.Feedbacks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,31 +9,34 @@ public class DashAbility : Ability
     public float dashSpeed = 50f;
     public float dashTime = 0.1f;
 
-    AgentMovement movement;
+    private AgentMovement _movement;
+    private MMF_Player _feedbackPlayer;
     public override void Active(GameObject player)
     {
-        if (movement == null)
+        if (_movement == null)
         {
-            movement = player.GetComponent<AgentMovement>();
+            _movement = player.GetComponent<AgentMovement>();
+            _feedbackPlayer = player.transform.Find("Feel").GetComponent<MMF_Player>();
         }
-        movement.StartCoroutine(Dash());
+        _movement.StartCoroutine(Dash());
     }
     IEnumerator Dash()
     {
-        Vector3 dir = movement.InputforVec;
-        movement.canMove = false;
-        movement.StopImmediately();
-        movement.YVelocity = 0;
+        Vector3 dir = _movement.InputforVec;
+        _movement.canMove = false;
+        _movement.StopImmediately();
+        _movement.YVelocity = 0;
 
         float percent = 0;
         float timer= 0;
+        _feedbackPlayer.PlayFeedbacks();
         while (percent < 1)
         {
             timer += Time.deltaTime;
             percent = timer / dashTime;
-            movement.ManualMove(dir * Time.deltaTime * dashSpeed);
+            _movement.ManualMove(dir * Time.deltaTime * dashSpeed);
             yield return null;
         }
-        movement.canMove = true;
+        _movement.canMove = true;
     }
 }

@@ -55,7 +55,7 @@ public class AgentMovement : MonoBehaviour
         _isGround = Physics.Raycast(transform.position, Vector3.down, 0.08f, _whatIsGround);
         if(_dirVec.sqrMagnitude > 0)
         {
-            _feedbackPlayer.PlayFeedbacks();
+            //_feedbackPlayer.PlayFeedbacks();
         }
     }
     private void FixedUpdate()
