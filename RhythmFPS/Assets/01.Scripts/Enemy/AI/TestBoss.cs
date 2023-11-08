@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +12,7 @@ public class TestBoss : EnemyBrain
 
     public override void Move()
     {
-        if (Vector3.Distance(transform.position, movePos) <= .1f) isMove = false;
+        if (Vector3.Distance(transform.position, movePos) <= 1f) isMove = false;
         else isMove = true;
         
         transform.position = Vector3.Lerp(transform.position, movePos, Time.deltaTime * 10.0f);

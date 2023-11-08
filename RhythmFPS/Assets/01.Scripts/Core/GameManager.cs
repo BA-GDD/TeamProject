@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
+    public Transform playerTransform;
 
     private void Awake()
     {
@@ -16,6 +17,8 @@ public class GameManager : MonoBehaviour
         instance = this;
 
         DontDestroyOnLoad(gameObject);
+        //Debug
+        GameStart();
     }
 
     /// <summary>
@@ -23,7 +26,12 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void GameStart()
     {
+        playerTransform = FindAnyObjectByType<AgentController>().transform;
 
+        if (!playerTransform)
+        {
+            Debug.LogError("Any player is not exist in game!");
+        }
     }
 
     /// <summary>
