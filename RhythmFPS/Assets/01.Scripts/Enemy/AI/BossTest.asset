@@ -51,6 +51,34 @@ MonoBehaviour:
   brain: {fileID: 0}
   description: 
   curPatternIndex: 2
+--- !u!114 &-3771246362806447358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 022c29cd3395f3a4b892036fc1f666ed, type: 3}
+  m_Name: RushPatternNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 1fadfa41a9015ee48ac7e63984ca64b8
+  position: {x: 0, y: 0}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+    enemySpotPosition: {x: 0, y: 0, z: 0}
+    whatIsEnemy:
+      serializedVersion: 2
+      m_Bits: 0
+    curPattern: 0
+  brain: {fileID: 0}
+  description: 
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &-1890663484601747464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,6 +190,7 @@ MonoBehaviour:
   - {fileID: -4875502753892635991}
   - {fileID: -1890663484601747464}
   - {fileID: 1206109308696497144}
+  - {fileID: -3771246362806447358}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     enemySpotPosition: {x: 0, y: 0, z: 0}
@@ -238,7 +267,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: a83fa1d0a1f0b634daeb7bb8f7112127
-  position: {x: 1005.04083, y: 509.59998}
+  position: {x: 1004.8, y: 509.6}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     enemySpotPosition: {x: 0, y: 0, z: 0}
@@ -248,7 +277,8 @@ MonoBehaviour:
     curPattern: 0
   brain: {fileID: 0}
   description: 
-  mobEnemyPrefab: {fileID: 0}
+  mobEnemyPrefab: {fileID: 3891923349452443982, guid: 2d5a947419184af682d54f59792bb566,
+    type: 3}
   _spawnPointList:
   - {x: 0, y: 0, z: 2.5}
   - {x: 2.5, y: 0, z: 1.5}

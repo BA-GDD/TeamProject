@@ -10,6 +10,9 @@ public abstract class EnemyBrain : MonoBehaviour
     public bool isRot;
     public EnemyHealth enemyHealth;
 
+    // 박부성이 추가함
+    public GameObject weapon;
+
     public abstract void Attack();
     public abstract void Move();
 
