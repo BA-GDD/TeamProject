@@ -4,10 +4,12 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.Events;
 
 public class ComboCountUI : MonoBehaviour
 {
     private int combo;
+    [Header("콤보 텍스트")]
     [SerializeField] private TextMeshProUGUI[] _comboText;
 
     [SerializeField] private RectTransform[] _comboCountTextTrm;
@@ -15,6 +17,13 @@ public class ComboCountUI : MonoBehaviour
 
     [SerializeField] private float _easingTime = 0.2f;
     private bool isEasing;
+
+    [Header("콤보 리미트")]
+    private bool _isBurnning;
+    [SerializeField] private int _burnningLimit;
+    [SerializeField] private UnityEvent _comboBurnningEvent;
+    [SerializeField] private UnityEvent _comboResetEvent;
+
 
     private void Update()
     {
@@ -27,6 +36,29 @@ public class ComboCountUI : MonoBehaviour
     public void ComboPlus()
     {
         combo++;
+        if(combo >= _burnningLimit && !_isBurnning)
+        {
+            _comboBurnningEvent?.Invoke();
+            _isBurnning = true;
+        }
+        ApplyText();
+    }
+
+    [ContextMenu("리셋")]
+    public void ResetCombo()
+    {
+        combo = 0;
+
+        if(_isBurnning)
+        {
+            _comboResetEvent?.Invoke();
+            _isBurnning = false;
+        }
+        ApplyText();
+    }
+
+    private void ApplyText()
+    {
         _comboText[0].text = combo.ToString();
         _comboText[1].text = combo.ToString();
 
@@ -43,7 +75,7 @@ public class ComboCountUI : MonoBehaviour
         Sequence seq = DOTween.Sequence();
         seq.Append(_comboCountTextTrm[0].DOScale(Vector3.one, _easingTime));
         seq.Join(_comboCountTextTrm[1].DOScale(Vector3.one, _easingTime));
-        for(int i = 0; i < 2; i++)
+        for (int i = 0; i < 2; i++)
         {
             seq.Join(_comboCountTextTrm[i].DOShakePosition(0.6f, 5f));
             seq.Join(_comboTextTrm[i].DOShakePosition(0.6f, 5f));
@@ -52,10 +84,5 @@ public class ComboCountUI : MonoBehaviour
         {
             isEasing = false;
         });
-    }
-
-    public void ResetCombo()
-    {
-
     }
 }
