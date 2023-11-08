@@ -15,6 +15,12 @@ public class UIManager : MonoBehaviour
     [Header("옵션 패널")]
     [SerializeField] private OptionPanel _optionPanel;
 
+    [Header("게임 스타트 패널")]
+    [SerializeField] private Transform _startScene;
+
+    [Header("로비 UI")]
+    [SerializeField] private Transform _lobbyUI;
+
     [Header("스펙트럼 조정")]
     [SerializeField] private float _spectrumNormalValue;
     public float bgm_SpectrumSizeValue;
@@ -56,7 +62,6 @@ public class UIManager : MonoBehaviour
         ru.ActiveResultPanel(1, 1, 1, 1 /*매개변수 설정*/);
     }
 
-    // 옵션 나오는거 만드셈
     [ContextMenu("옵션 패널 활성화")]
     public void ActiveOptionPanel()
     {
@@ -64,5 +69,17 @@ public class UIManager : MonoBehaviour
         op.transform.localPosition = Vector3.zero;
         op.gameObject.name = "OptionPanel";
         op.OpenPanel();
+    }
+
+    [ContextMenu("스타트 패널 활성화")]
+    public void ActiveStartScene()
+    {
+        Instantiate(_startScene, _canvasTrm);
+    }
+
+    [ContextMenu("로비 UI 활성화")]
+    public void ActiveLobbyUI()
+    {
+        Instantiate(_lobbyUI, _canvasTrm);
     }
 }

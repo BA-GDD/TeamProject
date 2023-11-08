@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class AgentWeapon : MonoBehaviour
 {
-    [SerializeField]private Weapon _curWeapon;
+    [SerializeField] private Weapon _curWeapon;
+    public Weapon CurWeapon => _curWeapon;
     private PlayerAnimator _animator;
+
 
     private void Awake()
     {

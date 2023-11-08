@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SimpleWeapon : Weapon
 {
-    public BulletTrail _trailPrefab;
     public Transform _firePos;
 
     private void Awake()
@@ -15,6 +14,11 @@ public class SimpleWeapon : Weapon
     public override void Fire()
     {
 
+        if (_currentBullet <= 0)
+        {
+            lackOfAmmoEvent?.Invoke();
+            return;
+        }
         if (_isReadyReload == true)
         {
             _animator.SetRigBoolIsReload(false);
@@ -22,26 +26,16 @@ public class SimpleWeapon : Weapon
             _animator.SetRigTriggerReloadCancel(true);
             _isReadyReload = false;
         }
-        if (_currentBullet <= 0)
-        {
-            lackOfAmmoEvent?.Invoke();
-            return;
-        }
+        fireFeedback?.Invoke();
         print("¸ÂÀ½!");
         _currentBullet--;
         _animator.SetRigTriggerFIre(true);
-        BulletTrail trail = Instantiate(_trailPrefab);
         if (Physics.Raycast(_cam.transform.position, _cam.transform.forward, out RaycastHit hit, 50f, _whatIsEnemy))
         {
             if (hit.transform.TryGetComponent<IDamageable>(out IDamageable damageable))
             {
                 damageable.TakeDamage(5);
             }
-            trail.DrawTrail(_firePos.position, hit.point, 0.1f);
-        }
-        else
-        {
-            trail.DrawTrail(_firePos.position, _cam.transform.forward * 500f, 0.1f);
         }
         return;
     }
@@ -53,13 +47,8 @@ public class SimpleWeapon : Weapon
         if (_isReadyReload == true)
         {
 
-            _currentBullet++;
             _animator.SetRigTriggerReload(true);
-            if (_currentBullet == _maxBullet)
-            {
-                _isReadyReload = false;
-                _animator.SetRigBoolIsReload(false);
-            }
+            
         }
         else
         {

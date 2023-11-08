@@ -1,3 +1,4 @@
+using MoreMountains.Feedbacks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,12 +18,14 @@ public class AgentMovement : MonoBehaviour
     private int _curJumpCnt;
 
     [SerializeField] private LayerMask _whatIsGround;
+    [SerializeField] private MMF_Player _feedbackPlayer;
 
     public float speed;
     public bool canMove = true;
 
     #region 프로퍼티
     public Vector3 InputforVec => _inputVec.x * transform.right + _inputVec.y * transform.forward;
+    public float YVelocity { get => _yVelocity; set { _yVelocity = value; } }
     #endregion
     private void Awake()
     {
@@ -37,13 +40,23 @@ public class AgentMovement : MonoBehaviour
     {
         if (_curJumpCnt > 0)
         {
-            _curJumpCnt--;
-            _yVelocity = _curJumpCnt == 0 ? 8f : 5f;
+            if (_isAir == true) _curJumpCnt = 0;
+            else _curJumpCnt--;
+            if (_curJumpCnt == 0)
+            {
+                _yVelocity = 8f;
+            }
+            else
+                _yVelocity = 5f;
         }
     }
     private void Update()
     {
         _isGround = Physics.Raycast(transform.position, Vector3.down, 0.08f, _whatIsGround);
+        if(_dirVec.sqrMagnitude > 0)
+        {
+            //_feedbackPlayer.PlayFeedbacks();
+        }
     }
     private void FixedUpdate()
     {
