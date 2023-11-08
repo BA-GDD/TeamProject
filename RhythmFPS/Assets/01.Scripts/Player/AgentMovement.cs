@@ -1,3 +1,4 @@
+using MoreMountains.Feedbacks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +18,7 @@ public class AgentMovement : MonoBehaviour
     private int _curJumpCnt;
 
     [SerializeField] private LayerMask _whatIsGround;
+    [SerializeField] private MMF_Player _feedbackPlayer;
 
     public float speed;
     public bool canMove = true;
@@ -51,6 +53,10 @@ public class AgentMovement : MonoBehaviour
     private void Update()
     {
         _isGround = Physics.Raycast(transform.position, Vector3.down, 0.08f, _whatIsGround);
+        if(_dirVec.sqrMagnitude > 0)
+        {
+            //_feedbackPlayer.PlayFeedbacks();
+        }
     }
     private void FixedUpdate()
     {
