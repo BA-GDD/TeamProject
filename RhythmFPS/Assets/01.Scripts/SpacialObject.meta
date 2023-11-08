@@ -1,7 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:RhythmFPS/Assets/01.Scripts/SpacialObject.meta
 guid: 7025ad46c0a1a014dad3799059a40b37
 folderAsset: yes
 DefaultImporter:
+========
+guid: 1e2ce42929fb4544c8bc75dbacc6cd45
+PrefabImporter:
+>>>>>>>> main:RhythmFPS/Assets/02.Prefab/UI/LobbyMapStar.prefab.meta
   externalObjects: {}
   userData: 
   assetBundleName: 
