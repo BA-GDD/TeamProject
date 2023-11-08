@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
         instance = this;
 
         DontDestroyOnLoad(gameObject);
+        //Debug
+        GameStart();
     }
 
     /// <summary>
