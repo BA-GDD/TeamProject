@@ -18,6 +18,9 @@ public class UIManager : MonoBehaviour
     [Header("게임 스타트 패널")]
     [SerializeField] private Transform _startScene;
 
+    [Header("로비 UI")]
+    [SerializeField] private Transform _lobbyUI;
+
     [Header("스펙트럼 조정")]
     [SerializeField] private float _spectrumNormalValue;
     public float bgm_SpectrumSizeValue;
@@ -72,5 +75,11 @@ public class UIManager : MonoBehaviour
     public void ActiveStartScene()
     {
         Instantiate(_startScene, _canvasTrm);
+    }
+
+    [ContextMenu("로비 UI 활성화")]
+    public void ActiveLobbyUI()
+    {
+        Instantiate(_lobbyUI, _canvasTrm);
     }
 }
