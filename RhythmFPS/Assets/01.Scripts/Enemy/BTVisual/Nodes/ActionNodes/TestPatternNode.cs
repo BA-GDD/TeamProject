@@ -19,7 +19,7 @@ public class TestPatternNode : ActionNode
     {
 
 
-        if (brain.isMove)
+        if (!brain.agent.isStopped)
         {
             return State.RUNNING;
         }

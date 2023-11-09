@@ -6,13 +6,17 @@ using UnityEngine.AI;
 
 public abstract class EnemyBrain : MonoBehaviour
 {
+    [HideInInspector]
     public GameObject weapon;
+    [HideInInspector]
     public NavMeshAgent agent;
+    [HideInInspector]
     public EnemyHealth enemyHealth;
-    public EnemyStatusSO status;
-    public bool isMove;
+    [HideInInspector]
     public bool canRotate;
+    [HideInInspector]
     public bool isDead;
+    public EnemyStatusSO status;
 
     public abstract void Attack();
 
@@ -21,10 +25,30 @@ public abstract class EnemyBrain : MonoBehaviour
         canRotate = true;
         enemyHealth = GetComponent<EnemyHealth>();
         agent = GetComponent<NavMeshAgent>();
+        agent.speed = status.moveSpeed;
+    }
+
+    protected virtual void Start()
+    {
+        StartChase();
     }
 
     public virtual void SetDead()
     {
         isDead = true;
+    }
+
+    public virtual void StartChase()
+    {
+        agent.isStopped = false;
+
+        agent.SetDestination(GameManager.instance.playerTransform.position);
+    }
+
+    public virtual void StopChase()
+    {
+        agent.ResetPath();
+
+        agent.isStopped = true;
     }
 }

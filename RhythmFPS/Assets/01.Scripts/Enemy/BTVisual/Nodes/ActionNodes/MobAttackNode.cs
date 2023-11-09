@@ -7,7 +7,7 @@ public class MobAttackNode : ActionNode
 {
     protected override void OnStart()
     {
-
+        brain.StopChase();
     }
 
     protected override void OnStop()
