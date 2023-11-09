@@ -11,12 +11,12 @@ public class RushPatternNode : ActionNode
     protected override void OnStart()
     {
         _targetPos = (GameManager.instance.playerTransform.position - brain.transform.position).normalized * 10f;
-        
+        brain.BossAnimator.OnAnimationTrigger += OnDamageCastHandle;
     }
 
     protected override void OnStop()
     {
-
+        brain.BossAnimator.OnAnimationTrigger -= OnDamageCastHandle;
     }
 
     protected override State OnUpdate()
@@ -47,6 +47,18 @@ public class RushPatternNode : ActionNode
             }
             //0.375 sec
             return State.SUCCESS;
+        }
+    }
+
+    private void OnDamageCastHandle()
+    {
+        RaycastHit hit;
+        if (Physics.SphereCast(brain.transform.position, 5f, Vector3.forward, out hit, 0f, _layerMask))
+        {
+            if (hit.collider.TryGetComponent<AgentHealth>(out AgentHealth health))
+            {
+                health.TakeDamage(20);
+            }
         }
     }
 }

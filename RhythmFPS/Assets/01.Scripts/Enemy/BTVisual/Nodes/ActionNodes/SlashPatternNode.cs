@@ -13,19 +13,19 @@ public class SlashPatternNode : ActionNode
 
     protected override void OnStart()
     {
-        //brain.
+        brain.BossAnimator.OnAnimationTrigger += OnDamageCastHandle;
     }
 
     protected override void OnStop()
     {
-
+        brain.BossAnimator.OnAnimationTrigger -= OnDamageCastHandle;
+        brain.BossAnimator.SetAttackTrigger(false);
     }
 
     protected override State OnUpdate()
     {
         if (brain.isMove)
         {
-
             return State.RUNNING;
         }
         else
@@ -40,7 +40,7 @@ public class SlashPatternNode : ActionNode
     {
         RaycastHit hit;
 
-        if (Physics.SphereCast(brain.transform.position, 5f, Vector3.forward, out hit, 0f, _playerLayerMask))
+        if (Physics.SphereCast(brain.transform.position, 5f, Vector3.forward, out hit, 3f, _playerLayerMask))
         {
             if (hit.collider.TryGetComponent<AgentHealth>(out AgentHealth health))
             {
