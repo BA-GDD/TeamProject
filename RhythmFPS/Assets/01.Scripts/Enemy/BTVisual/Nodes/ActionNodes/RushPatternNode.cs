@@ -21,7 +21,7 @@ public class RushPatternNode : ActionNode
 
     protected override State OnUpdate()
     {
-        if (brain.isMove)
+        /*if (brain.isMove)
         {
             return State.RUNNING;
         }
@@ -45,8 +45,8 @@ public class RushPatternNode : ActionNode
                 brain.Move();
                 return State.RUNNING;
             }
-            //0.375 sec
+            //0.375 sec*/
             return State.SUCCESS;
-        }
+        //}
     }
 }

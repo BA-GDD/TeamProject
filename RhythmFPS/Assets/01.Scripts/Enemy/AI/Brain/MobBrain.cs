@@ -10,13 +10,13 @@ public class MobBrain : EnemyBrain
     {
         base.Awake();
 
+        agent.SetDestination(GameManager.instance.playerTransform.position);
+
         _attackTimer = status.attackDelay;
     }
 
-    protected override void Update()
+    private void Update()
     {
-        base.Update();
-
         _attackTimer += Time.deltaTime;
     }
 
@@ -27,23 +27,6 @@ public class MobBrain : EnemyBrain
             Debug.Log("Mob Attack");
 
             _attackTimer = 0f;
-        }
-    }
-
-    public override void Move()
-    {
-        moveDestination.y = transform.position.y;
-
-        if (Vector3.Distance(transform.position, moveDestination) > status.attackRange)
-        {
-            transform.position = Vector3.Lerp(transform.position, moveDestination, Time.deltaTime * status.moveSpeed);
-        }
-
-        if (canRotate)
-        {
-            Vector3 direction = targetTransform.position - transform.position;
-            direction.y = 0f;
-            transform.rotation = Quaternion.LookRotation(direction);
         }
     }
 }

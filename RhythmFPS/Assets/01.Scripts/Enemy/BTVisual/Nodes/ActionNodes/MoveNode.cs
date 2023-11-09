@@ -18,7 +18,7 @@ public class MoveNode : ActionNode
 
     protected override State OnUpdate()
     {
-        Debug.Log("Moved");
+        /*Debug.Log("Moved");
         Vector3 pos = Random.onUnitSphere * 10.0f;
         Vector3 finalPos = brain.targetTransform.position + pos;
         finalPos.y = Mathf.Abs(finalPos.y);
@@ -37,7 +37,7 @@ public class MoveNode : ActionNode
        
         brain.moveDestination = finalPos;
 
-        blackboard.curPattern = Random.Range(0, 3);
+        blackboard.curPattern = Random.Range(0, 3);*/
         return State.SUCCESS;
     }
 }
