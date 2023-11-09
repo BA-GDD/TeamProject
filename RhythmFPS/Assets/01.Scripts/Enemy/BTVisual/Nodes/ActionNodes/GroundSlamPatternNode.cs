@@ -24,9 +24,9 @@ public class GroundSlamPatternNode : ActionNode
         if (isHit)
         {
             Debug.Log("asd");
-            brain.movePos = hit.point;
-            brain.isRot = false;
-            Vector3 pos = brain.targetTrm.position - brain.transform.position;
+            brain.moveDestination = hit.point;
+            brain.canRotate = false;
+            Vector3 pos = brain.targetTransform.position - brain.transform.position;
             pos.x = 0;
             pos.z = 0;
             brain.transform.rotation = Quaternion.LookRotation(pos);

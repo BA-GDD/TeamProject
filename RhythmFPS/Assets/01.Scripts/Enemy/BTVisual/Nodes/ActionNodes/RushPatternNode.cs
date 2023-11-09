@@ -41,7 +41,7 @@ public class RushPatternNode : ActionNode
             }
             if (brain.transform.position != _targetPos)
             {
-                brain.movePos = _targetPos;
+                brain.moveDestination = _targetPos;
                 brain.Move();
                 return State.RUNNING;
             }
