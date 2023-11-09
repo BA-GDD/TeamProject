@@ -9,6 +9,8 @@ public class PressAnyBtn : MonoBehaviour
 {
     [SerializeField] private RectTransform _startScene;
     [SerializeField] private Image _volume;
+    [SerializeField] private Color[] _colors = new Color[3];
+    [SerializeField] private Transform _mainPanel;
     [SerializeField] private List<Image> _bitLineList = new List<Image>();
     private TextMeshProUGUI _pressABtn;
     private bool isGameStart;
@@ -55,7 +57,7 @@ public class PressAnyBtn : MonoBehaviour
     {
         for (int j = 0; j < 3; j++)
         {
-            Color co = Random.ColorHSV();
+            Color co = _colors[j];
 
             _volume.DOColor(co, _turm);
             _pressABtn.DOColor(co, _turm);

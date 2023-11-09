@@ -13,22 +13,13 @@ public class BulletCountUI : MonoBehaviour
 
     private int _bulletIdx = 6;
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.A))
-        {
-            FireBullet();
-        }
-        if(Input.GetKeyDown(KeyCode.Z))
-        {
-            ReChargingBullet();
-        }
-    }
-
     public void FireBullet()
     {
-        _bullets[_bulletIdx-1].enabled = false;
-        _bulletIdx--;
+        Debug.Log(_bulletIdx);
+        if (_bulletIdx - 1 < 0) return;
+        
+        _bullets[_bulletIdx - 1].enabled = false;
+        _bulletIdx = Mathf.Clamp(_bulletIdx - 1, 0, 6);
         _bulletCount.text = $"{_bulletIdx} / 6";
 
         Quaternion currRot = _maganize.localRotation;
@@ -42,20 +33,14 @@ public class BulletCountUI : MonoBehaviour
 
     public void ReChargingBullet()
     {
-        _maganize.DOLocalRotateQuaternion(_maganize.localRotation * Quaternion.Euler(0, 0, -180), 0.6f);
-        StartCoroutine(ReChargingBulletCo());
+        Debug.Log(_bulletIdx);
+        if (_bulletIdx + 1 > 6) return;
+        Quaternion currRot = _maganize.localRotation;
+        _maganize.DOLocalRotateQuaternion(currRot * Quaternion.Euler(0, 0, 60), 0.3f);
+
+        _bullets[_bulletIdx].enabled = true;
+        _bulletIdx = Mathf.Clamp(_bulletIdx + 1, 0, 6);
+        _bulletCount.text = $"{_bulletIdx} / 6";
     }
 
-    private IEnumerator ReChargingBulletCo()
-    {
-        for(int i = 0; i < _bullets.Length; i++)
-        {
-            _bulletIdx = Mathf.Clamp(_bulletIdx + 1, 0, 6);
-            _bulletCount.text = $"{_bulletIdx} / 6";
-            _bullets[5-i].enabled = true;
-            yield return new WaitForSeconds(0.1f);
-        }
-        yield return null;
-        _maganize.localRotation = Quaternion.identity;
-    }
 }

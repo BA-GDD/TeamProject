@@ -7,6 +7,9 @@ using System;
 
 public class ComboFire : MonoBehaviour
 {
+    [SerializeField] private Vector2 _normalPos;
+    [SerializeField] private Vector2 _normalSize;
+
     [SerializeField] private Color[] _gradationColor;
     [SerializeField] private float _easingTime;
     private Sequence fireSequence;
@@ -57,6 +60,8 @@ public class ComboFire : MonoBehaviour
         {
             _fireImg.fillAmount = 0;
         });
+        transform.localPosition = _normalPos;
+        transform.localScale = _normalSize;
     }
 
     IEnumerator BurnningLoop()

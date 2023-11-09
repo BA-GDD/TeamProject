@@ -41,6 +41,7 @@ public class ComboCountUI : MonoBehaviour
     public void ComboPlus()
     {
         combo++;
+
         if(combo >= _burnningLimit && !_isBurnning)
         {
             _comboBurnningEvent?.Invoke();
@@ -48,6 +49,7 @@ public class ComboCountUI : MonoBehaviour
         }
         if(combo >= _secondBurnningLimit && !_isSecBurnning)
         {
+            Debug.Log(combo);
             _secondComboBurnningEvent?.Invoke();
             _isSecBurnning = true;
         }
@@ -82,10 +84,14 @@ public class ComboCountUI : MonoBehaviour
             _comboCountTextTrm[1].localScale = Vector3.one;
         }
 
-        isEasing = true;
+        
         Sequence seq = DOTween.Sequence();
         seq.Append(_comboCountTextTrm[0].DOScale(Vector3.one, _easingTime));
         seq.Join(_comboCountTextTrm[1].DOScale(Vector3.one, _easingTime));
+
+        if (isEasing) return;
+        isEasing = true;
+
         for (int i = 0; i < 2; i++)
         {
             seq.Join(_comboCountTextTrm[i].DOShakePosition(0.6f, 5f));
