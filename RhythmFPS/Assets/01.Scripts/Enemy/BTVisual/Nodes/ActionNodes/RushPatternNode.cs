@@ -11,12 +11,12 @@ public class RushPatternNode : ActionNode
     protected override void OnStart()
     {
         _targetPos = (GameManager.instance.playerTransform.position - brain.transform.position).normalized * 10f;
-        brain.BossAnimator.OnAnimationTrigger += OnDamageCastHandle;
+        (brain as BossBrain).BossAnimator.OnAnimationTrigger += OnDamageCastHandle;
     }
 
     protected override void OnStop()
     {
-        brain.BossAnimator.OnAnimationTrigger -= OnDamageCastHandle;
+        (brain as BossBrain).BossAnimator.OnAnimationTrigger -= OnDamageCastHandle;
     }
 
     protected override State OnUpdate()

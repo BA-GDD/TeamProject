@@ -10,13 +10,13 @@ public class MobEnemySpawnNode : ActionNode
 
     protected override void OnStart()
     {
-        brain.BossAnimator.OnAnimationTrigger += OnMobEnemySpawnHandle;
+        (brain as BossBrain).BossAnimator.OnAnimationTrigger += OnMobEnemySpawnHandle;
     }
 
     protected override void OnStop()
     {
-        brain.BossAnimator.OnAnimationTrigger -= OnMobEnemySpawnHandle;
-        brain.BossAnimator.SetAttackTrigger(false);
+        (brain as BossBrain).BossAnimator.OnAnimationTrigger -= OnMobEnemySpawnHandle;
+        (brain as BossBrain).BossAnimator.SetAttackTrigger(false);
     }
 
     protected override State OnUpdate()
@@ -27,8 +27,8 @@ public class MobEnemySpawnNode : ActionNode
         }
         else
         {
-            brain.BossAnimator.SetAttackPattern(3);
-            brain.BossAnimator.SetAttackTrigger(true);
+            (brain as BossBrain).BossAnimator.SetAttackPattern(3);
+            (brain as BossBrain).BossAnimator.SetAttackTrigger(true);
             blackboard.curPattern = Random.Range(0, 2);
             return State.SUCCESS;
         }

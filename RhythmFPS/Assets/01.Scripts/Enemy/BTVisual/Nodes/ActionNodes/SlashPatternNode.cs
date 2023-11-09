@@ -13,13 +13,13 @@ public class SlashPatternNode : ActionNode
 
     protected override void OnStart()
     {
-        brain.BossAnimator.OnAnimationTrigger += OnDamageCastHandle;
+        (brain as BossBrain).BossAnimator.OnAnimationTrigger += OnDamageCastHandle;
     }
 
     protected override void OnStop()
     {
-        brain.BossAnimator.OnAnimationTrigger -= OnDamageCastHandle;
-        brain.BossAnimator.SetAttackTrigger(false);
+        (brain as BossBrain).BossAnimator.OnAnimationTrigger -= OnDamageCastHandle;
+        (brain as BossBrain).BossAnimator.SetAttackTrigger(false);
     }
 
     protected override State OnUpdate()
@@ -30,8 +30,8 @@ public class SlashPatternNode : ActionNode
         }
         else
         {
-            brain.BossAnimator.SetAttackPattern(1);
-            brain.BossAnimator.SetAttackTrigger(true);
+            (brain as BossBrain).BossAnimator.SetAttackPattern(1);
+            (brain as BossBrain).BossAnimator.SetAttackTrigger(true);
             return State.SUCCESS;
         }
     }
