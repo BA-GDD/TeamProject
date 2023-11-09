@@ -17,7 +17,6 @@ public abstract class EnemyBrain : MonoBehaviour
     private BossAnimator _bossAnimator;
     public BossAnimator BossAnimator => _bossAnimator;
 
-
     public abstract void Attack();
     public abstract void Move();
 
