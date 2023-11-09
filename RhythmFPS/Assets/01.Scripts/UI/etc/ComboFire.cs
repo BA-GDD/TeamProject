@@ -39,6 +39,16 @@ public class ComboFire : MonoBehaviour
         _fireImg.fillAmount = 0;
     }
 
+    public void SecondBurnning()
+    {
+        _fireImg.transform.DOScale(1.2f, _easingTime);
+    }
+
+    public void SceondBurnningPosition()
+    {
+        _fireImg.transform.DOLocalMoveY(40, _easingTime);
+    }
+
     private void KillBurnningLoop()
     {
         Sequence seq = DOTween.Sequence();

@@ -20,8 +20,11 @@ public class ComboCountUI : MonoBehaviour
 
     [Header("ÄÞº¸ ¸®¹ÌÆ®")]
     private bool _isBurnning;
+    private bool _isSecBurnning;
     [SerializeField] private int _burnningLimit;
+    [SerializeField] private int _secondBurnningLimit;
     [SerializeField] private UnityEvent _comboBurnningEvent;
+    [SerializeField] private UnityEvent _secondComboBurnningEvent;
     [SerializeField] private UnityEvent _comboResetEvent;
 
 
@@ -29,6 +32,8 @@ public class ComboCountUI : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
             ComboPlus();
+        if (Input.GetKeyDown(KeyCode.K))
+            ResetCombo();
     }
 
 
@@ -40,6 +45,11 @@ public class ComboCountUI : MonoBehaviour
         {
             _comboBurnningEvent?.Invoke();
             _isBurnning = true;
+        }
+        if(combo >= _secondBurnningLimit && !_isSecBurnning)
+        {
+            _secondComboBurnningEvent?.Invoke();
+            _isSecBurnning = true;
         }
         ApplyText();
     }
@@ -53,6 +63,7 @@ public class ComboCountUI : MonoBehaviour
         {
             _comboResetEvent?.Invoke();
             _isBurnning = false;
+            _isSecBurnning = false;
         }
         ApplyText();
     }
