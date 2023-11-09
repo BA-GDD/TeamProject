@@ -12,11 +12,11 @@ public class TestBoss : EnemyBrain
 
     public override void Move()
     {
-        if (Vector3.Distance(transform.position, movePos) <= 1f) isMove = false;
+        if (Vector3.Distance(transform.position, moveDestination) <= 1f) isMove = false;
         else isMove = true;
         
-        transform.position = Vector3.Lerp(transform.position, movePos, Time.deltaTime * 10.0f);
+        transform.position = Vector3.Lerp(transform.position, moveDestination, Time.deltaTime * 10.0f);
 
-        if (isRot) transform.rotation = Quaternion.LookRotation(targetTrm.position - transform.position);
+        if (canRotate) transform.rotation = Quaternion.LookRotation(targetTransform.position - transform.position);
     }
 }

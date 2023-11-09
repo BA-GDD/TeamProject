@@ -19,7 +19,7 @@ public class MoveToPlayerNode : ActionNode
 
     protected override State OnUpdate()
     {
-        brain.movePos = brain.targetTrm.position;
+        brain.moveDestination = brain.targetTransform.position;
 
         return State.SUCCESS;
     }

@@ -5,15 +5,16 @@ using UnityEngine;
 
 public abstract class EnemyBrain : MonoBehaviour
 {
-    public Transform targetTrm;
-    public Vector3 movePos;
+    public Transform targetTransform;
+    public Vector3 moveDestination;
     public bool isMove;
-    public bool isRot;
+    public bool canRotate;
     public bool isDead;
     public EnemyHealth enemyHealth;
 
     // 새로 추가한 것
     public GameObject weapon;
+    public EnemyStatusSO status;
     private BossAnimator _bossAnimator;
     public BossAnimator BossAnimator => _bossAnimator;
 
@@ -22,10 +23,10 @@ public abstract class EnemyBrain : MonoBehaviour
 
     protected virtual void Awake()
     {
-        isRot = true;
-        movePos = transform.position;
+        canRotate = true;
+        moveDestination = transform.position;
         enemyHealth = GetComponent<EnemyHealth>();
-        targetTrm = GameManager.instance.playerTransform;
+        targetTransform = GameManager.instance.playerTransform;
         _bossAnimator = GetComponent<BossAnimator>();
     }
 

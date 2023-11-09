@@ -17,7 +17,11 @@ public class InRangeNode : ActionNode
 
     protected override State OnUpdate()
     {
-        if (Vector2.Distance(new Vector2(brain.transform.position.x, brain.transform.position.z), new Vector2(brain.targetTrm.position.x, brain.targetTrm.position.z)) > (brain as MobBrainSample).attackRange)
+        Vector2 myCoord = brain.transform.position;
+        Vector2 targetCoord = brain.targetTransform.position;
+        myCoord.y = targetCoord.y = 0f;
+
+        if (Vector2.Distance(myCoord, targetCoord) > (brain as MobBrain).status.attackRange)
         {
             return State.FAILURE;
         }
