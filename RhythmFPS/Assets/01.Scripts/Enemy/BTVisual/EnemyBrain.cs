@@ -11,11 +11,12 @@ public abstract class EnemyBrain : MonoBehaviour
     public bool isRot;
     public bool isDead;
     public EnemyHealth enemyHealth;
-    private EnemyAnimator _enemyAnimator;
-    public EnemyAnimator EnemyAnimator => _enemyAnimator;
 
     // 새로 추가한 것
     public GameObject weapon;
+    private BossAnimator _bossAnimator;
+    public BossAnimator BossAnimator => _bossAnimator;
+
 
     public abstract void Attack();
     public abstract void Move();
@@ -26,7 +27,7 @@ public abstract class EnemyBrain : MonoBehaviour
         movePos = transform.position;
         enemyHealth = GetComponent<EnemyHealth>();
         targetTrm = GameManager.instance.playerTransform;
-        _enemyAnimator = GetComponent<EnemyAnimator>();
+        _bossAnimator = GetComponent<BossAnimator>();
     }
 
     protected virtual void Update()
@@ -37,6 +38,7 @@ public abstract class EnemyBrain : MonoBehaviour
     public void SetDead()
     {
         isDead = true;
-        _enemyAnimator.StopAnimation(true);
+        _bossAnimator.StopAnimation(true);
+        _bossAnimator.SetDead();
     }
 }
