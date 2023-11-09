@@ -128,8 +128,8 @@ Material:
     - _dot_max: 4.57
     - _dot_min: -2.55
     - _dot_off: 0.04
-    - _fresnel_pow: 325.6
-    - _fresnel_step: 5.07
+    - _fresnel_pow: 2.75
+    - _fresnel_step: 0.15
     - _metalic: 0
     - _outline_step: -0
     - _resolution: 28.1
@@ -145,6 +145,7 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _OutlineColor: {r: 1.3041188, g: 1.3041188, b: 1.3041188, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _fresnel_color: {r: 5.6676407, g: 12.996038, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &706285524160958708
 MonoBehaviour:
