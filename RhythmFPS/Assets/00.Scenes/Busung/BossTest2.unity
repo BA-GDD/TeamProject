@@ -241,6 +241,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stage1Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 1035948519069391948, guid: 1bb1bdbcd27953546bdf2a770663933b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 3459591793323917656, guid: 1bb1bdbcd27953546bdf2a770663933b,
+        type: 3}
+      propertyPath: status
+      value: 
+      objectReference: {fileID: 11400000, guid: 68f05269c0b49944fa1dbb08a27e9a62,
+        type: 2}
+    - target: {fileID: 3459591793323917656, guid: 1bb1bdbcd27953546bdf2a770663933b,
+        type: 3}
+      propertyPath: navAgent
+      value: 
+      objectReference: {fileID: 20501092}
     - target: {fileID: 6218048080005171093, guid: 1bb1bdbcd27953546bdf2a770663933b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -296,6 +312,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bb1bdbcd27953546bdf2a770663933b, type: 3}
+--- !u!195 &20501092 stripped
+NavMeshAgent:
+  m_CorrespondingSourceObject: {fileID: 8932839101370841661, guid: 1bb1bdbcd27953546bdf2a770663933b,
+    type: 3}
+  m_PrefabInstance: {fileID: 20501091}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &63733653
 GameObject:
   m_ObjectHideFlags: 0

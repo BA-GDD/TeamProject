@@ -41,7 +41,7 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 6
     m_ConditionEvent: attack_cnt
-    m_EventTreshold: 1
+    m_EventTreshold: 2
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 8339950093790799141}
   m_Solo: 0
@@ -189,7 +189,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Attack01
+  m_Name: SlashAttack
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -217,7 +217,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Attack03
+  m_Name: RushAttack
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -245,7 +245,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Taunting
+  m_Name: MobEnemySpawn
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -286,10 +286,10 @@ AnimatorStateMachine:
     m_Position: {x: 340, y: 500, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8339950093790799141}
-    m_Position: {x: 560, y: 500, z: 0}
+    m_Position: {x: 780, y: 500, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5685243026844264620}
-    m_Position: {x: 780, y: 500, z: 0}
+    m_Position: {x: 560, y: 500, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5562463048648854395}
     m_Position: {x: 1000, y: 500, z: 0}
@@ -319,7 +319,7 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 6
     m_ConditionEvent: attack_cnt
-    m_EventTreshold: 2
+    m_EventTreshold: 1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -5685243026844264620}
   m_Solo: 0
@@ -473,25 +473,25 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: attack_cnt
     m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: is_dead
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: attack
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -624,7 +624,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Attack02
+  m_Name: ThrowAxeAttack
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:

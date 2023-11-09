@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InRangeNode : ActionNode
+public class MobRangeNode : ActionNode
 {
     protected override void OnStart()
     {

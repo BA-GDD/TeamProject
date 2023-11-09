@@ -13,6 +13,7 @@ public class SlashPatternNode : ActionNode
 
     protected override void OnStart()
     {
+        brain.StopChase();
         (brain as BossBrain).BossAnimator.OnAnimationTrigger += OnDamageCastHandle;
     }
 

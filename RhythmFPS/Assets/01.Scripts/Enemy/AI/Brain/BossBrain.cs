@@ -16,7 +16,6 @@ public class BossBrain : EnemyBrain
         base.Awake();
         navAgent = GetComponent<NavMeshAgent>();
         _bossAnimator = GetComponent<BossAnimator>();
-        navAgent.SetDestination(GameManager.instance.playerTransform.position);
     }
 
     public override void Attack()
