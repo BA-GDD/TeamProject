@@ -18,7 +18,7 @@ public class GroundSlamPatternNode : ActionNode
 
     protected override State OnUpdate()
     {
-        RaycastHit hit;
+        /*RaycastHit hit;
         bool isHit = Physics.Raycast(brain.transform.position, Vector3.down * 100.0f, out hit, 1000.0f, ground);
         Debug.DrawRay(brain.transform.position, Vector3.down * 100.0f, Color.white);
         if (isHit)
@@ -45,7 +45,7 @@ public class GroundSlamPatternNode : ActionNode
                 }
             }
         }
-        blackboard.curPattern = Random.Range(0, 3);
+        blackboard.curPattern = Random.Range(0, 3);*/
         return State.SUCCESS;
     }
 }
