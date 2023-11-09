@@ -21,7 +21,7 @@ public class BossBrain : EnemyBrain
 
     public override void Attack()
     {
-        
+
     }
 
     public override void SetDead()

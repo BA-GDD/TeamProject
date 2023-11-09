@@ -10,8 +10,6 @@ public class MobBrain : EnemyBrain
     {
         base.Awake();
 
-        agent.SetDestination(GameManager.instance.playerTransform.position);
-
         _attackTimer = status.attackDelay;
     }
 

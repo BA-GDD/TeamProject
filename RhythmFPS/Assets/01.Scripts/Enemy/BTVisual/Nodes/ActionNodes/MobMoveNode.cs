@@ -3,13 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveToPlayerNode : ActionNode
+public class MobMoveNode : ActionNode
 {
-    public LayerMask ground;
-
     protected override void OnStart()
     {
-
+        brain.StartChase();
     }
 
     protected override void OnStop()

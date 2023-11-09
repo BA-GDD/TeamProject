@@ -131,6 +131,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1280966956}
     m_Modifications:
+    - target: {fileID: 2958174608498288160, guid: c1db7bd0b82243d594a5d2119b0e5155,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2958174608505178536, guid: c1db7bd0b82243d594a5d2119b0e5155,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -189,7 +194,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2958174608505672778, guid: c1db7bd0b82243d594a5d2119b0e5155,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 114962117}
   m_SourcePrefab: {fileID: 100100000, guid: c1db7bd0b82243d594a5d2119b0e5155, type: 3}
 --- !u!4 &114962115 stripped
 Transform:
@@ -197,6 +206,35 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 114962114}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &114962116 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2958174608505672778, guid: c1db7bd0b82243d594a5d2119b0e5155,
+    type: 3}
+  m_PrefabInstance: {fileID: 114962114}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &114962117
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114962116}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!1 &134392762
 GameObject:
   m_ObjectHideFlags: 0
@@ -340,6 +378,7 @@ GameObject:
   - component: {fileID: 216625289}
   - component: {fileID: 216625288}
   - component: {fileID: 216625287}
+  - component: {fileID: 216625291}
   m_Layer: 11
   m_Name: Ground
   m_TagString: Untagged
@@ -434,6 +473,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &216625291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216625286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 1
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: 92ceb9e1a702ed446ab67525e762b50b, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!1 &342826561
 GameObject:
   m_ObjectHideFlags: 0
@@ -2879,6 +2949,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1280966957}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1280966955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2891,13 +2973,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d365996856610ef468e67209fb27b926, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetTransform: {fileID: 0}
-  moveDestination: {x: 0, y: 0, z: 0}
-  isMove: 0
+  weapon: {fileID: 0}
+  agent: {fileID: 0}
+  enemyHealth: {fileID: 0}
   canRotate: 0
   isDead: 0
-  enemyHealth: {fileID: 0}
-  weapon: {fileID: 0}
   status: {fileID: 11400000, guid: 4f55a053c8980d44cb68e1e537e1e908, type: 2}
 --- !u!4 &1280966956
 Transform:
@@ -3786,7 +3866,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7348e55a0b4521b4ca4b73010060a5c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTransform: {fileID: 0}
+  playerTransform: {fileID: 1089495219}
 --- !u!4 &1992126590
 Transform:
   m_ObjectHideFlags: 0

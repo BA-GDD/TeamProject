@@ -21,7 +21,7 @@ public class MobEnemySpawnNode : ActionNode
 
     protected override State OnUpdate()
     {
-        if (brain.isMove)
+        if (!brain.agent.isStopped)
         {
             return State.RUNNING;
         }
