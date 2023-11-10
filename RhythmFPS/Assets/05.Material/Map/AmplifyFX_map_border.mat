@@ -28,7 +28,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _main_tex:
-        m_Texture: {fileID: 2800000, guid: 81a1a653d3de98f478c3350bcfad34c8, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9a1f2298cc2b36b47ad8bef108515e0a, type: 3}
         m_Scale: {x: 5.7, y: 1}
         m_Offset: {x: 0, y: 0}
     - _mask_tex:
@@ -60,16 +60,17 @@ Material:
     - _AlphaCutoff: 0.5
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _diss_amount: 1
-    - _main_intencity: 4.07
-    - _main_pow: 3.12
-    - _mask_pow: 0.33
+    - _alpha_step_amount: 0.17
+    - _diss_amount: -1
+    - _main_intencity: 2.88
+    - _main_pow: 1.19
+    - _mask_pow: 1.43
     - _noise_str: 0.041
-    - _threshold: 0.455
+    - _threshold: 0
     - use_custom: 0
     m_Colors:
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _main_color: {r: 1, g: 1, b: 1, a: 0}
+    - _main_color: {r: 1, g: 0.39016822, b: 0.3160377, a: 0}
     - _main_panner_speed: {r: 0, g: -0.29, b: 0, a: 0}
     - _noise_panner_speed: {r: 0, g: -0.16, b: 0, a: 0}
   m_BuildTextureStacks: []
