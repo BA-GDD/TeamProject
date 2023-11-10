@@ -20,7 +20,7 @@ public class TitleSpectrum : SpectrumBase
     {
         if (Time.frameCount % 3 != 0) return;
 
-        _spectrumValue = UIManager.Instance.bgm_SpectrumSizeValue;
+        _spectrumValue = UIManager.Instnace.bgm_SpectrumSizeValue;
         for (int i = 1; i < _visualGroup.Length-1; i++)
         {
             if (i % 2 == 0) continue;

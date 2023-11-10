@@ -10,7 +10,7 @@ public class MapPanelSpectrum : SpectrumBase
     {
         if (!isRhythming) return;
 
-        _spectrumValue = UIManager.Instance.bgm_SpectrumSizeValue;
+        _spectrumValue = UIManager.Instnace.bgm_SpectrumSizeValue;
         for (int i = 0; i < _visualGroup.Length; i++)
         {
             _visualGroup[i].sizeDelta =
