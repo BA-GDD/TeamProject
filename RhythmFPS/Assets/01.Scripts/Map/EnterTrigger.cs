@@ -9,10 +9,11 @@ public class EnterTrigger : MonoBehaviour
     //디버그 용임, 나중에 매니져 만들어야함
     [SerializeField]
     private PlayableDirector _director;
+    private bool _isStarted = false;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !_isStarted)
         {
             StageStart();
         }
@@ -23,6 +24,7 @@ public class EnterTrigger : MonoBehaviour
     /// </summary>
     private void StageStart()
     {
+        _isStarted = true;
         _director.Play();
     }
 }
