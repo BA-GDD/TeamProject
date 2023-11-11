@@ -12,12 +12,20 @@ public class BossAnimator : MonoBehaviour
 
     public event Action OnAnimationTrigger = null;
 
+    [SerializeField]
     private Animator _animator;
     public Animator Animator => _animator;
 
     public void OnAnimationEvent()
     {
         OnAnimationTrigger?.Invoke();
+    }
+
+    public void OnAnimationEndEvent()
+    {
+        Debug.Log("animation end");
+        SetAttackTrigger(false);
+        SetMove(true);
     }
 
     public void StopAnimation(bool value)

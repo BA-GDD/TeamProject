@@ -11,6 +11,10 @@ public class BossBrain : EnemyBrain
     private BossAnimator _bossAnimator;
     public BossAnimator BossAnimator => _bossAnimator;
 
+    public float timer;
+    public float coolTime = 3f;
+    public bool isCanAttack = false;
+
     protected override void Awake()
     {
         base.Awake();
@@ -21,6 +25,30 @@ public class BossBrain : EnemyBrain
     public override void Attack()
     {
 
+    }
+
+    private void Update()
+    {
+        if(timer < coolTime)
+        {
+            timer += Time.deltaTime;
+        }
+        else
+        {
+            isCanAttack = true;
+        }
+
+        //Debug.Log(Vector3.Distance(transform.position, GameManager.instance.playerTransform.position) <= 4f);
+        if(!(Vector3.Distance(transform.position, GameManager.instance.playerTransform.position) <= 3f))
+        {
+            _bossAnimator.SetMove(true);
+            StartChase();
+        }
+        else
+        {
+            _bossAnimator.SetMove(false);
+            StopChase();
+        }
     }
 
     public override void SetDead()

@@ -11,6 +11,8 @@ public class SlashPatternNode : ActionNode
     private LayerMask _playerLayerMask;
     private int slashCnt = 0;
 
+    private State _curState = State.RUNNING;
+
     protected override void OnStart()
     {
         brain.StopChase();
@@ -20,21 +22,18 @@ public class SlashPatternNode : ActionNode
     protected override void OnStop()
     {
         (brain as BossBrain).BossAnimator.OnAnimationTrigger -= OnDamageCastHandle;
-        (brain as BossBrain).BossAnimator.SetAttackTrigger(false);
+        //(brain as BossBrain).BossAnimator.SetAttackTrigger(false);
+        brain.StartChase();
     }
 
     protected override State OnUpdate()
     {
-        if (!brain.agent.isStopped)
-        {
-            return State.RUNNING;
-        }
-        else
-        {
-            (brain as BossBrain).BossAnimator.SetAttackPattern(1);
-            (brain as BossBrain).BossAnimator.SetAttackTrigger(true);
-            return State.SUCCESS;
-        }
+
+        (brain as BossBrain).BossAnimator.SetAttackPattern(1);
+        (brain as BossBrain).BossAnimator.SetAttackTrigger(true);
+        (brain as BossBrain).isCanAttack = false;
+        (brain as BossBrain).timer = 0;
+        return _curState;
     }
 
     private void OnDamageCastHandle()
@@ -46,6 +45,11 @@ public class SlashPatternNode : ActionNode
             if (hit.collider.TryGetComponent<AgentHealth>(out AgentHealth health))
             {
                 health.TakeDamage(10);
+                Debug.Log("Slash Pattern is hit");
+            }
+            else
+            {
+                Debug.Log("Slash Pattern is not hit");
             }
         }
     }

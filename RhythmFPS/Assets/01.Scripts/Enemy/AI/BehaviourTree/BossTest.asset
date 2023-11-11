@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7732520956999546568
+--- !u!114 &-8370832542272162434
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   started: 0
-  guid: 4ab24c5a6ce0ac84b89faf240892f2d4
-  position: {x: 737.6, y: 508.80008}
+  guid: 3960718d02e022543997f75a7524c20e
+  position: {x: -348, y: 508.80002}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     enemySpotPosition: {x: 0, y: 0, z: 0}
@@ -25,7 +25,7 @@ MonoBehaviour:
     curPattern: 0
   brain: {fileID: 0}
   description: 
-  _distance: 10
+  _distance: 4
 --- !u!114 &-6925679051190071155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77,6 +77,85 @@ MonoBehaviour:
   brain: {fileID: 0}
   description: 
   curPatternIndex: 3
+--- !u!114 &-4823861666839727452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 058e6ca764a22e643b8e3cbc39e1d727, type: 3}
+  m_Name: BossPatternSelectNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: c407d4bb66314b24da42c60cb4105d8a
+  position: {x: -767.8243, y: 508.8}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+    enemySpotPosition: {x: 0, y: 0, z: 0}
+    whatIsEnemy:
+      serializedVersion: 2
+      m_Bits: 0
+    curPattern: 0
+  brain: {fileID: 0}
+  description: 
+--- !u!114 &-4685779539414754439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59ff18e011eb4e1ba59c08354a7ff280, type: 3}
+  m_Name: SequenceNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: f6e8af8a1b3e18945a47116ac5ef84f4
+  position: {x: -837.82, y: 372.80002}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+    enemySpotPosition: {x: 0, y: 0, z: 0}
+    whatIsEnemy:
+      serializedVersion: 2
+      m_Bits: 0
+    curPattern: 0
+  brain: {fileID: 0}
+  description: 
+  children:
+  - {fileID: -982814486017014114}
+  - {fileID: -4823861666839727452}
+--- !u!114 &-2562624707855067721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef5e47769e26bd949a360fc8254b4a75, type: 3}
+  m_Name: Inverter
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 76a221dccbcb3a3438001c9ec373c032
+  position: {x: 737.6, y: 508.80002}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+    enemySpotPosition: {x: 0, y: 0, z: 0}
+    whatIsEnemy:
+      serializedVersion: 2
+      m_Bits: 0
+    curPattern: 0
+  brain: {fileID: 0}
+  description: 
+  child: {fileID: 2278445832419124891}
 --- !u!114 &-1890663484601747464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,7 +182,7 @@ MonoBehaviour:
   brain: {fileID: 0}
   description: 
   curPatternIndex: 1
---- !u!114 &-1521084715229316765
+--- !u!114 &-982814486017014114
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -112,13 +191,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41f3ebc7a4af152438124db41436949d, type: 3}
-  m_Name: BossRangeNode
+  m_Script: {fileID: 11500000, guid: 59df54da25196ff45874123fac9e9d17, type: 3}
+  m_Name: AttackCooltimeCheckNode
   m_EditorClassIdentifier: 
   state: 0
   started: 0
-  guid: 27276c874ec856640996312bd3edf824
-  position: {x: -348.8, y: 508.80002}
+  guid: 5252625a11ba768449d06bb3dc2df826
+  position: {x: -1003.99994, y: 508.8}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     enemySpotPosition: {x: 0, y: 0, z: 0}
@@ -128,7 +207,6 @@ MonoBehaviour:
     curPattern: 0
   brain: {fileID: 0}
   description: 
-  _distance: 2
 --- !u!114 &-671665441755930183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,7 +262,7 @@ MonoBehaviour:
   description: 
   children:
   - {fileID: 6566841837266111392}
-  - {fileID: -1521084715229316765}
+  - {fileID: -8370832542272162434}
   - {fileID: 4345381654316785243}
 --- !u!114 &11400000
 MonoBehaviour:
@@ -219,9 +297,14 @@ MonoBehaviour:
   - {fileID: -395565096435410862}
   - {fileID: 6566841837266111392}
   - {fileID: 4345381654316785243}
-  - {fileID: -1521084715229316765}
-  - {fileID: 3179291098082930524}
-  - {fileID: -7732520956999546568}
+  - {fileID: -4685779539414754439}
+  - {fileID: -4823861666839727452}
+  - {fileID: -982814486017014114}
+  - {fileID: -8370832542272162434}
+  - {fileID: 7812312831347621098}
+  - {fileID: 2278445832419124891}
+  - {fileID: -2562624707855067721}
+  - {fileID: 6921304794536902802}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     enemySpotPosition: {x: 0, y: 0, z: 0}
@@ -282,7 +365,7 @@ MonoBehaviour:
   description: 
   children:
   - {fileID: 6145720873686004618}
-  - {fileID: -7732520956999546568}
+  - {fileID: -2562624707855067721}
   - {fileID: 5798060088522783948}
 --- !u!114 &1206109308696497144
 MonoBehaviour:
@@ -342,8 +425,34 @@ MonoBehaviour:
   description: 
   children:
   - {fileID: -1890663484601747464}
-  - {fileID: 3179291098082930524}
+  - {fileID: 6921304794536902802}
   - {fileID: 4848709414978667375}
+--- !u!114 &2278445832419124891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f3ebc7a4af152438124db41436949d, type: 3}
+  m_Name: BossRangeNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 1be7817cc1836b542beaaf429d9a7893
+  position: {x: 736.80005, y: 634.39996}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+    enemySpotPosition: {x: 0, y: 0, z: 0}
+    whatIsEnemy:
+      serializedVersion: 2
+      m_Bits: 0
+    curPattern: 0
+  brain: {fileID: 0}
+  description: 
+  _distance: 15
 --- !u!114 &3005345671885831184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -372,32 +481,6 @@ MonoBehaviour:
   children:
   - {fileID: -4875502753892635991}
   - {fileID: 1206109308696497144}
---- !u!114 &3179291098082930524
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41f3ebc7a4af152438124db41436949d, type: 3}
-  m_Name: BossRangeNode
-  m_EditorClassIdentifier: 
-  state: 0
-  started: 0
-  guid: 20d6830163df9444ba1523aa7c6469f8
-  position: {x: 199.99998, y: 508.80002}
-  blackboard:
-    moveToPosition: {x: 0, y: 0, z: 0}
-    enemySpotPosition: {x: 0, y: 0, z: 0}
-    whatIsEnemy:
-      serializedVersion: 2
-      m_Bits: 0
-    curPattern: 0
-  brain: {fileID: 0}
-  description: 
-  _distance: 5
 --- !u!114 &4345381654316785243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -464,7 +547,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 24e6eaa7236a9bd4eaf09ec607694dae
-  position: {x: 350.4001, y: 508.80002}
+  position: {x: 350.40005, y: 508.8}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     enemySpotPosition: {x: 0, y: 0, z: 0}
@@ -556,6 +639,32 @@ MonoBehaviour:
   brain: {fileID: 0}
   description: 
   curPatternIndex: 0
+--- !u!114 &6921304794536902802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef5e47769e26bd949a360fc8254b4a75, type: 3}
+  m_Name: Inverter
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 7e1fe5436ca194241a1cf04b436a4bbd
+  position: {x: 200, y: 508.80002}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+    enemySpotPosition: {x: 0, y: 0, z: 0}
+    whatIsEnemy:
+      serializedVersion: 2
+      m_Bits: 0
+    curPattern: 0
+  brain: {fileID: 0}
+  description: 
+  child: {fileID: 7812312831347621098}
 --- !u!114 &7542476606258170861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -581,6 +690,32 @@ MonoBehaviour:
     curPattern: 0
   brain: {fileID: 0}
   description: 
+--- !u!114 &7812312831347621098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f3ebc7a4af152438124db41436949d, type: 3}
+  m_Name: BossRangeNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 74e8a2d7f8b39c74081721a5a3535d25
+  position: {x: 200, y: 612}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+    enemySpotPosition: {x: 0, y: 0, z: 0}
+    whatIsEnemy:
+      serializedVersion: 2
+      m_Bits: 0
+    curPattern: 0
+  brain: {fileID: 0}
+  description: 
+  _distance: 7
 --- !u!114 &7951694143972507303
 MonoBehaviour:
   m_ObjectHideFlags: 0

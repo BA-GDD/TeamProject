@@ -16,7 +16,7 @@ public class MobEnemySpawnNode : ActionNode
     protected override void OnStop()
     {
         (brain as BossBrain).BossAnimator.OnAnimationTrigger -= OnMobEnemySpawnHandle;
-        (brain as BossBrain).BossAnimator.SetAttackTrigger(false);
+        //(brain as BossBrain).BossAnimator.SetAttackTrigger(false);
     }
 
     protected override State OnUpdate()
@@ -29,7 +29,8 @@ public class MobEnemySpawnNode : ActionNode
         {
             (brain as BossBrain).BossAnimator.SetAttackPattern(3);
             (brain as BossBrain).BossAnimator.SetAttackTrigger(true);
-            blackboard.curPattern = Random.Range(0, 2);
+            (brain as BossBrain).isCanAttack = false;
+            (brain as BossBrain).timer = 0;
             return State.SUCCESS;
         }
     }
@@ -40,5 +41,6 @@ public class MobEnemySpawnNode : ActionNode
         {
             GameObject newMob = Instantiate(_mobEnemyPrefab, brain.transform.position + _spawnPointList[i], Quaternion.identity);
         }
+        Debug.Log("Mob Enemy Spawn");
     }
 }
