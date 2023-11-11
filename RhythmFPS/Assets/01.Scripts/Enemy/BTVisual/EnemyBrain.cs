@@ -6,8 +6,8 @@ using UnityEngine.AI;
 
 public abstract class EnemyBrain : MonoBehaviour
 {
-    [HideInInspector]
-    public GameObject weapon;
+    //[HideInInspector]
+    //public GameObject weapon;
     [HideInInspector]
     public NavMeshAgent agent;
     [HideInInspector]
@@ -17,6 +17,8 @@ public abstract class EnemyBrain : MonoBehaviour
     [HideInInspector]
     public bool isDead;
     public EnemyStatusSO status;
+
+    public bool isOnTheRoof = false;
 
     public abstract void Attack();
 

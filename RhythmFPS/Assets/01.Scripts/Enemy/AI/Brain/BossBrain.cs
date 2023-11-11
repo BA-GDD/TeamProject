@@ -15,6 +15,14 @@ public class BossBrain : EnemyBrain
     public float coolTime = 3f;
     public bool isCanAttack = false;
 
+    public bool isMove = true;
+
+    public GameObject weapon;
+    public GameObject shield;
+
+    public Transform jumpUpCheckPos;
+    public Transform jumpDownCheckPos;
+
     protected override void Awake()
     {
         base.Awake();
@@ -36,17 +44,17 @@ public class BossBrain : EnemyBrain
         else
         {
             isCanAttack = true;
+            isMove = false;
         }
 
         //Debug.Log(Vector3.Distance(transform.position, GameManager.instance.playerTransform.position) <= 4f);
-        if(!(Vector3.Distance(transform.position, GameManager.instance.playerTransform.position) <= 3f))
+        if(isMove)
         {
             _bossAnimator.SetMove(true);
             StartChase();
         }
         else
         {
-            _bossAnimator.SetMove(false);
             StopChase();
         }
     }
@@ -56,5 +64,11 @@ public class BossBrain : EnemyBrain
         base.SetDead();
         _bossAnimator.StopAnimation(true);
         _bossAnimator.SetDead();
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(jumpUpCheckPos.position, 1f);
     }
 }

@@ -12,6 +12,8 @@ public class BossAnimator : MonoBehaviour
 
     public event Action OnAnimationTrigger = null;
 
+    public bool isAnimationClipEnd = false;
+
     [SerializeField]
     private Animator _animator;
     public Animator Animator => _animator;
@@ -23,7 +25,7 @@ public class BossAnimator : MonoBehaviour
 
     public void OnAnimationEndEvent()
     {
-        Debug.Log("animation end");
+        isAnimationClipEnd = true;
         SetAttackTrigger(false);
         SetMove(true);
     }
@@ -55,5 +57,10 @@ public class BossAnimator : MonoBehaviour
     public void SetMove(bool value)
     {
         _animator.SetBool(_isMoveHash, value);
+    }
+
+    public void SetAnimationClipEndState(bool value)
+    {
+        isAnimationClipEnd = value;
     }
 }
