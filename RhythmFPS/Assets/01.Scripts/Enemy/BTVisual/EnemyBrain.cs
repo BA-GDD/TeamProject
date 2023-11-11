@@ -2,41 +2,55 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public abstract class EnemyBrain : MonoBehaviour
 {
-    public Transform targetTrm;
-    public Vector3 movePos;
-    public bool isMove;
-    public bool isRot;
-    public bool isDead;
+    //[HideInInspector]
+    //public GameObject weapon;
+    [HideInInspector]
+    public NavMeshAgent agent;
+    [HideInInspector]
     public EnemyHealth enemyHealth;
-    private EnemyAnimator _enemyAnimator;
-    public EnemyAnimator EnemyAnimator => _enemyAnimator;
+    [HideInInspector]
+    public bool canRotate;
+    [HideInInspector]
+    public bool isDead;
+    public EnemyStatusSO status;
 
-    // 새로 추가한 것
-    public GameObject weapon;
+    public bool isOnTheRoof = false;
 
     public abstract void Attack();
-    public abstract void Move();
 
     protected virtual void Awake()
     {
-        isRot = true;
-        movePos = transform.position;
+        canRotate = true;
         enemyHealth = GetComponent<EnemyHealth>();
-        targetTrm = GameManager.instance.playerTransform;
-        _enemyAnimator = GetComponent<EnemyAnimator>();
+        agent = GetComponent<NavMeshAgent>();
+        agent.speed = status.moveSpeed;
     }
 
-    protected virtual void Update()
+    protected virtual void Start()
     {
-        Move();
+        StartChase();
     }
 
-    public void SetDead()
+    public virtual void SetDead()
     {
         isDead = true;
-        _enemyAnimator.StopAnimation(true);
+    }
+
+    public virtual void StartChase()
+    {
+        agent.isStopped = false;
+
+        agent.SetDestination(GameManager.instance.playerTransform.position);
+    }
+
+    public virtual void StopChase()
+    {
+        agent.ResetPath();
+
+        agent.isStopped = true;
     }
 }

@@ -5,48 +5,44 @@ using UnityEngine;
 
 public class RushPatternNode : ActionNode
 {
-    [SerializeField] private LayerMask _layerMask;
+    [SerializeField] private LayerMask _playerLayerMask;
     private Vector3 _targetPos;
 
     protected override void OnStart()
     {
-        _targetPos = (GameManager.instance.playerTransform.position - brain.transform.position).normalized * 10f;
-        
+        (brain as BossBrain).isMove = false;
+        (brain as BossBrain).BossAnimator.OnAnimationTrigger += OnDamageCastHandle;
+        (brain as BossBrain).BossAnimator.SetMove(false);
+        (brain as BossBrain).BossAnimator.SetAttackTrigger(true);
+        (brain as BossBrain).isCanAttack = false;
     }
 
     protected override void OnStop()
     {
-
+        (brain as BossBrain).BossAnimator.OnAnimationTrigger -= OnDamageCastHandle;
+        //(brain as BossBrain).BossAnimator.SetAttackTrigger(false);
+        (brain as BossBrain).BossAnimator.SetAnimationClipEndState(false);
+        (brain as BossBrain).isMove = true;
     }
 
     protected override State OnUpdate()
     {
-        if (brain.isMove)
+        if((brain as BossBrain).BossAnimator.isAnimationClipEnd)
         {
-            return State.RUNNING;
-        }
-        else
-        {
-            RaycastHit hit;
-            bool isHit = Physics.SphereCast(brain.transform.position, 10f, Vector3.forward, out hit, 0f, _layerMask);
-
-            if (isHit)
-            {
-                //brain.movePos = hit.point;
-                //return State.SUCCESS;
-
-                //플레이어 피격 실행
-                hit.collider.GetComponent<AgentHealth>().TakeDamage(30);
-                return State.SUCCESS;
-            }
-            if (brain.transform.position != _targetPos)
-            {
-                brain.movePos = _targetPos;
-                brain.Move();
-                return State.RUNNING;
-            }
-            //0.375 sec
             return State.SUCCESS;
+        }
+        
+        (brain as BossBrain).timer = 0;
+        return State.RUNNING;
+    }
+
+    private void OnDamageCastHandle()
+    {
+        Collider[] colliders = Physics.OverlapSphere((brain as BossBrain).shield.transform.position, 3f, _playerLayerMask);
+        if (colliders.Length > 0)
+        {
+            colliders[0].GetComponent<IDamageable>().TakeDamage(18);
+            Debug.Log($"돌진에 맞았고 남은 체력: {colliders[0].GetComponent<AgentHealth>().CurHP}");
         }
     }
 }

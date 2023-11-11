@@ -43,7 +43,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: dc200f2bdc460b24e8329ecd768f9d0b
-  position: {x: -324.80005, y: 432.80002}
+  position: {x: -324.8, y: 412.80002}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     enemySpotPosition: {x: 0, y: 0, z: 0}
@@ -90,14 +90,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a310246ca011401097a098354ca424fb, type: 3}
-  m_Name: MobTest
+  m_Name: SpecterAI
   m_EditorClassIdentifier: 
   treeRoot: {fileID: -2364675870811655765}
   treeState: 0
   nodes:
   - {fileID: -2364675870811655765}
   - {fileID: 4813232724644844125}
-  - {fileID: 2644556793737039969}
   - {fileID: -7563823292518134191}
   - {fileID: 2448277369108495999}
   - {fileID: 5626638324646911469}
@@ -105,6 +104,7 @@ MonoBehaviour:
   - {fileID: 5289802034734346886}
   - {fileID: 4035425452436280912}
   - {fileID: -6727429823372432832}
+  - {fileID: 8705306893580928353}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     enemySpotPosition: {x: 0, y: 0, z: 0}
@@ -127,7 +127,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 3a77d4682e1e5be4f8d6094067a452fb
-  position: {x: 300.80002, y: 432.8}
+  position: {x: 300.8001, y: 412.80002}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     enemySpotPosition: {x: 0, y: 0, z: 0}
@@ -137,34 +137,6 @@ MonoBehaviour:
     curPattern: 0
   brain: {fileID: 0}
   description: 
---- !u!114 &2644556793737039969
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84e303c7705be3744b744887ee19513d, type: 3}
-  m_Name: MoveToPlayerNode
-  m_EditorClassIdentifier: 
-  state: 0
-  started: 0
-  guid: fb8e13dd00dc09945b4292a47dc9cfdb
-  position: {x: -186.40007, y: 432.80005}
-  blackboard:
-    moveToPosition: {x: 0, y: 0, z: 0}
-    enemySpotPosition: {x: 0, y: 0, z: 0}
-    whatIsEnemy:
-      serializedVersion: 2
-      m_Bits: 0
-    curPattern: 0
-  brain: {fileID: 0}
-  description: 
-  ground:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &4035425452436280912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,7 +152,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: ca726c765723ea643b87674c0c58981b
-  position: {x: 225.6, y: 329.59998}
+  position: {x: 226.0001, y: 309.6}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     enemySpotPosition: {x: 0, y: 0, z: 0}
@@ -234,7 +206,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 433c66e53420ffa4daf8049531bdf5ec
-  position: {x: -249.20003, y: 329.59995}
+  position: {x: -249.20001, y: 309.6}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     enemySpotPosition: {x: 0, y: 0, z: 0}
@@ -246,7 +218,7 @@ MonoBehaviour:
   description: 
   children:
   - {fileID: -6727429823372432832}
-  - {fileID: 2644556793737039969}
+  - {fileID: 8705306893580928353}
 --- !u!114 &5626638324646911469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,7 +234,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: bb0f350bda731e54b804e9ae33f453e7
-  position: {x: -324.8, y: 536}
+  position: {x: -324.80002, y: 516}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     enemySpotPosition: {x: 0, y: 0, z: 0}
@@ -287,7 +259,32 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 26e796e683d442c44b248ab27dc58742
-  position: {x: 150.4, y: 432.8}
+  position: {x: 150.40002, y: 412.80002}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+    enemySpotPosition: {x: 0, y: 0, z: 0}
+    whatIsEnemy:
+      serializedVersion: 2
+      m_Bits: 0
+    curPattern: 0
+  brain: {fileID: 0}
+  description: 
+--- !u!114 &8705306893580928353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84e303c7705be3744b744887ee19513d, type: 3}
+  m_Name: MobMoveNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 77e66dd51d0d8d84786a84320bd73d71
+  position: {x: -174.00003, y: 412.8}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     enemySpotPosition: {x: 0, y: 0, z: 0}

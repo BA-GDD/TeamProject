@@ -3,10 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveToPlayerNode : ActionNode
+public class MobRangeNode : ActionNode
 {
-    public LayerMask ground;
-
     protected override void OnStart()
     {
 
@@ -19,8 +17,6 @@ public class MoveToPlayerNode : ActionNode
 
     protected override State OnUpdate()
     {
-        brain.movePos = brain.targetTrm.position;
-
-        return State.SUCCESS;
+        return Vector3.Distance(brain.transform.position, GameManager.instance.playerTransform.position) > brain.status.attackRange ? State.FAILURE : State.SUCCESS;
     }
 }

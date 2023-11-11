@@ -10,28 +10,37 @@ public class MobEnemySpawnNode : ActionNode
 
     protected override void OnStart()
     {
-
+        (brain as BossBrain).BossAnimator.OnAnimationTrigger += OnMobEnemySpawnHandle;
     }
 
     protected override void OnStop()
     {
-
+        (brain as BossBrain).BossAnimator.OnAnimationTrigger -= OnMobEnemySpawnHandle;
+        //(brain as BossBrain).BossAnimator.SetAttackTrigger(false);
     }
 
     protected override State OnUpdate()
     {
-        if (brain.isMove)
+        if (!brain.agent.isStopped)
         {
             return State.RUNNING;
         }
         else
         {
-            for (int i = 0; i < 3; ++i)
-            {
-                GameObject newMob = Instantiate(_mobEnemyPrefab, brain.transform.position + _spawnPointList[i], Quaternion.identity);
-            }
-            blackboard.curPattern = Random.Range(0, 2);
+            (brain as BossBrain).BossAnimator.SetAttackPattern(3);
+            (brain as BossBrain).BossAnimator.SetAttackTrigger(true);
+            (brain as BossBrain).isCanAttack = false;
+            (brain as BossBrain).timer = 0;
             return State.SUCCESS;
         }
+    }
+
+    private void OnMobEnemySpawnHandle()
+    {
+        for (int i = 0; i < 3; ++i)
+        {
+            GameObject newMob = Instantiate(_mobEnemyPrefab, brain.transform.position + _spawnPointList[i], Quaternion.identity);
+        }
+        Debug.Log("Mob Enemy Spawn");
     }
 }
