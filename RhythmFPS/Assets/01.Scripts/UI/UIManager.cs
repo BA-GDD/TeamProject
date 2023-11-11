@@ -47,6 +47,8 @@ public class UIManager : MonoBehaviour
     public Action HandleShootGun; // UI 탄창 소모
     public Action HandleReload; // UI 탄창 장전
     public Action<int, float, float> HandleGameClear; // 달성 콤보, 클리어 시간, 넣은 데미지
+    public Action HandleGameOver; // 게임 오버 패널 활성화
+    public Action HandleRetryGame; // 게임 재시작
     #endregion
 
     [Header("스펙트럼 조정")]
@@ -65,8 +67,10 @@ public class UIManager : MonoBehaviour
         HandleUIChange += UIHud.UIChange;
         HandleActiveOptionPanel += UIHud.ActiveOptionPanel;
         HandleGameExit += UIHud.ActiveGameExitPanel;
+        HandleGameOver += UIHud.ActiveGameOverPanel;
+        //HandleRetryGame += GameManager.instance.GameRestart;
 
-        HandleUIChange?.Invoke(currentSceneType);
+        //HandleUIChange?.Invoke(currentSceneType);
     }
 
     public void SetSpectrumValue(SoundType st, float value)
