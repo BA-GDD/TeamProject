@@ -10,43 +10,40 @@ public class RushPatternNode : ActionNode
 
     protected override void OnStart()
     {
-        _targetPos = (GameManager.instance.playerTransform.position - brain.transform.position).normalized * 10f;
-        
+        brain.StopChase();
+        (brain as BossBrain).BossAnimator.OnAnimationTrigger += OnDamageCastHandle;
     }
 
     protected override void OnStop()
     {
-
+        (brain as BossBrain).BossAnimator.OnAnimationTrigger -= OnDamageCastHandle;
+        //(brain as BossBrain).BossAnimator.SetAttackTrigger(false);
+        brain.StartChase();
     }
 
     protected override State OnUpdate()
     {
-        /*if (brain.isMove)
+        (brain as BossBrain).BossAnimator.SetAttackPattern(1);
+        (brain as BossBrain).BossAnimator.SetAttackTrigger(true);
+        (brain as BossBrain).isCanAttack = false;
+        (brain as BossBrain).timer = 0;
+        return State.SUCCESS;
+    }
+
+    private void OnDamageCastHandle()
+    {
+        RaycastHit hit;
+        if (Physics.SphereCast(brain.transform.position, 5f, Vector3.forward, out hit, 0f, _layerMask))
         {
-            return State.RUNNING;
+            if (hit.collider.TryGetComponent<AgentHealth>(out AgentHealth health))
+            {
+                health.TakeDamage(20);
+                Debug.Log("Rush Pattern is hit");
+            }
+            else
+            {
+                Debug.Log("Rush Pattern is not hit");
+            }
         }
-        else
-        {
-            RaycastHit hit;
-            bool isHit = Physics.SphereCast(brain.transform.position, 10f, Vector3.forward, out hit, 0f, _layerMask);
-
-            if (isHit)
-            {
-                //brain.movePos = hit.point;
-                //return State.SUCCESS;
-
-                //플레이어 피격 실행
-                hit.collider.GetComponent<AgentHealth>().TakeDamage(30);
-                return State.SUCCESS;
-            }
-            if (brain.transform.position != _targetPos)
-            {
-                brain.moveDestination = _targetPos;
-                brain.Move();
-                return State.RUNNING;
-            }
-            //0.375 sec*/
-            return State.SUCCESS;
-        //}
     }
 }

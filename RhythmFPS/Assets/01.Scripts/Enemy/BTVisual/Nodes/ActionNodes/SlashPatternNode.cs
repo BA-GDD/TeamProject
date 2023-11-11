@@ -11,58 +11,46 @@ public class SlashPatternNode : ActionNode
     private LayerMask _playerLayerMask;
     private int slashCnt = 0;
 
+    private State _curState = State.RUNNING;
+
     protected override void OnStart()
     {
-
+        brain.StopChase();
+        (brain as BossBrain).BossAnimator.OnAnimationTrigger += OnDamageCastHandle;
     }
 
     protected override void OnStop()
     {
-
+        (brain as BossBrain).BossAnimator.OnAnimationTrigger -= OnDamageCastHandle;
+        //(brain as BossBrain).BossAnimator.SetAttackTrigger(false);
+        brain.StartChase();
     }
 
     protected override State OnUpdate()
     {
-        if (!brain.agent.isStopped)
+
+        (brain as BossBrain).BossAnimator.SetAttackPattern(1);
+        (brain as BossBrain).BossAnimator.SetAttackTrigger(true);
+        (brain as BossBrain).isCanAttack = false;
+        (brain as BossBrain).timer = 0;
+        return _curState;
+    }
+
+    private void OnDamageCastHandle()
+    {
+        RaycastHit hit;
+
+        if (Physics.SphereCast(brain.transform.position, 5f, Vector3.forward, out hit, 3f, _playerLayerMask))
         {
-            return State.RUNNING;
-        }
-        else
-        {
-            // 애니메이션 추가해야함
-            RaycastHit hit;
-
-            // 1타
-            // 사선 베기
-            if (Physics.SphereCast(brain.transform.position, 5f, Vector3.forward, out hit, 0f, _playerLayerMask))
+            if (hit.collider.TryGetComponent<AgentHealth>(out AgentHealth health))
             {
-                if (hit.collider.TryGetComponent<AgentHealth>(out AgentHealth health))
-                {
-                    health.TakeDamage(10);
-                }
+                health.TakeDamage(10);
+                Debug.Log("Slash Pattern is hit");
             }
-
-            // 2타
-            // 종 베기
-            if (Physics.SphereCast(brain.transform.position, 5f, Vector3.forward, out hit, 0f, _playerLayerMask))
+            else
             {
-                if (hit.collider.TryGetComponent<AgentHealth>(out AgentHealth health))
-                {
-                    health.TakeDamage(10);
-                }
+                Debug.Log("Slash Pattern is not hit");
             }
-
-            // 3타
-            // 사선 베기
-            if (Physics.SphereCast(brain.transform.position, 5f, Vector3.forward, out hit, 0f, _playerLayerMask))
-            {
-                if (hit.collider.TryGetComponent<AgentHealth>(out AgentHealth health))
-                {
-                    health.TakeDamage(10);
-                }
-            }
-
-            return State.SUCCESS;
         }
     }
 }

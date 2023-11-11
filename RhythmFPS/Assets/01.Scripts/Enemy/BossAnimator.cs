@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,8 +10,23 @@ public class BossAnimator : MonoBehaviour
     private readonly int _isMoveHash = Animator.StringToHash("is_move");
     private readonly int _attackCnt = Animator.StringToHash("attack_cnt");
 
+    public event Action OnAnimationTrigger = null;
+
+    [SerializeField]
     private Animator _animator;
     public Animator Animator => _animator;
+
+    public void OnAnimationEvent()
+    {
+        OnAnimationTrigger?.Invoke();
+    }
+
+    public void OnAnimationEndEvent()
+    {
+        Debug.Log("animation end");
+        SetAttackTrigger(false);
+        SetMove(true);
+    }
 
     public void StopAnimation(bool value)
     {
