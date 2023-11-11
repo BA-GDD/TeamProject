@@ -51,7 +51,7 @@ public class AgentAbility : MonoBehaviour
 
     public void ActiveAbility(string key)
     {
-        if (RhythmManager.instance.Judgement(RhythmAction.Ability) == false) return;
+        if (RhythmManager.instance.Judgement() == false) return;
 
         if (_keyAction.ContainsKey(key))
         {

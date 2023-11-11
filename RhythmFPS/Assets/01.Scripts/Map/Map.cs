@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Map : MonoBehaviour
 {
-    const float modifyTime = 1.5f;
+    const float modifyTime = 5f;
 
     private float originYPos;
     private float modifyYPos;

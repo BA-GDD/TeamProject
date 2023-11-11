@@ -15,7 +15,7 @@ public class PlayerHealth : AgentHealth
     {
         hitEvent?.Invoke();
         base.TakeDamage(damage);
-        UIManager.Instanace.HandlePlayerGetDamage(_curHP);
+        UIManager.Instanace.HandlePlayerGetDamage(damage);
     }
     public override void Die()
     {

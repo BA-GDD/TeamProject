@@ -59,7 +59,7 @@ public class MapRaise : MonoBehaviour
 
     public IEnumerator WaitUpdateNavMesh()
     {
-        yield return new WaitForSeconds(1.7f);
+        yield return new WaitForSeconds(5.1f);
         _surface.UpdateNavMesh(_surface.navMeshData);
     }
     /// <summary>

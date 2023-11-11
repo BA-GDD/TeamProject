@@ -17,12 +17,12 @@ public class AgentWeapon : MonoBehaviour
     }
     public void Active()
     {
-        if (RhythmManager.instance.Judgement(RhythmAction.Shoot) == false) return;
+        if (RhythmManager.instance.Judgement() == false) return;
         _curWeapon?.Fire();
     }
     public void Reload()
     {
-        if (RhythmManager.instance.Judgement(RhythmAction.Reload) == false) return;
+        if (RhythmManager.instance.Judgement() == false) return;
 
         _curWeapon?.Reload();
     }
