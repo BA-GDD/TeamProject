@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class MobBrain : EnemyBrain
 {
+    [SerializeField]
+    private MobAnimator _animator;
+    public MobAnimator Animator => _animator;
     private float _attackTimer;
 
     protected override void Awake()
@@ -18,13 +21,29 @@ public class MobBrain : EnemyBrain
         _attackTimer += Time.deltaTime;
     }
 
+    public override void Init()
+    {
+        isDead = false;
+    }
+
     public override void Attack()
     {
         if (_attackTimer >= status.attackDelay)
         {
-            Debug.Log("Mob Attack");
+            _animator.SetAttackTrigger(true);
 
             _attackTimer = 0f;
         }
+    }
+
+    public override void SetDead()
+    {
+        base.SetDead();
+        _animator.SetDieTrigger(true);
+    }
+
+    public void OnDieEvent()
+    {
+        PoolManager.Instance.Push(this);
     }
 }

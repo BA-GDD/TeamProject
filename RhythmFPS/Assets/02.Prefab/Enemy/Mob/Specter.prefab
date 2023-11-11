@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5333041824993032384}
   - component: {fileID: 1126196651656127744}
+  - component: {fileID: -8424433955217994409}
   - component: {fileID: 1532914835202277179}
   - component: {fileID: 4098754121944210321}
   - component: {fileID: 4704862652737157394}
@@ -54,6 +55,20 @@ MonoBehaviour:
   canRotate: 0
   isDead: 0
   status: {fileID: 11400000, guid: 4f55a053c8980d44cb68e1e537e1e908, type: 2}
+  _animator: {fileID: -8424433955217994409}
+--- !u!114 &-8424433955217994409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8149300303397004395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b184dae9e394bda459a3e8abd6e7657a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 6674490725967562787}
 --- !u!114 &1532914835202277179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,8 +158,13 @@ PrefabInstance:
     - target: {fileID: 2958174608498288160, guid: c1db7bd0b82243d594a5d2119b0e5155,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2958174608498288160, guid: c1db7bd0b82243d594a5d2119b0e5155,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 8206704b4b9a8ae4db3ebb33a341124f, type: 2}
     - target: {fileID: 2958174608505178536, guid: c1db7bd0b82243d594a5d2119b0e5155,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -243,3 +263,9 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300002, guid: 844ca6dbbefa4d51b05d25a612850415, type: 3}
+--- !u!95 &6674490725967562787 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2958174608498288160, guid: c1db7bd0b82243d594a5d2119b0e5155,
+    type: 3}
+  m_PrefabInstance: {fileID: 8479435674509995523}
+  m_PrefabAsset: {fileID: 0}

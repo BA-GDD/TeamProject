@@ -22,6 +22,11 @@ public class BossBrain : EnemyBrain
         _bossAnimator = GetComponent<BossAnimator>();
     }
 
+    public override void Init()
+    {
+
+    }
+
     public override void Attack()
     {
 
