@@ -8,7 +8,7 @@ public class SceneChangeUI : MonoBehaviour
     [SerializeField] private float _eaingTime;
 
     [ContextMenu("StartChange")]
-    public void StartChange(SceneType changeScene)
+    public void StartChange(UISceneType changeScene)
     {
         RectTransform rt = (RectTransform)transform;
         rt.SetAsFirstSibling();

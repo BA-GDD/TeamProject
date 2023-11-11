@@ -17,7 +17,7 @@ public class LineSpectrum : SpectrumBase
 
     protected override void RhythmVisuallizing()
     {
-        _spectrumValue = UIManager.Instnace.bgm_SpectrumSizeValue;
+        _spectrumValue = UIManager.Instanace.bgm_SpectrumSizeValue;
         for (int i = 1; i < _visualGroup.Length; i++)
         {
             int random = Random.Range(-1, 1);

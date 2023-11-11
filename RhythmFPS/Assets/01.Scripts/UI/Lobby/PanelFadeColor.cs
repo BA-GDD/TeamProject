@@ -23,6 +23,6 @@ public class PanelFadeColor : MonoBehaviour
 
     public void ActiveOptionPanel()
     {
-        UIManager.Instnace.HandleActiveOptionPanel?.Invoke();
+        UIManager.Instanace.HandleActiveOptionPanel?.Invoke();
     }
 }

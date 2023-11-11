@@ -69,6 +69,5 @@ public class PressAnyBtn : MonoBehaviour
         }
 
         Debug.Log("게임 스타트 로직 구현 해주새요 >.<"); // 할 수 있지?
-        Destroy(_startScene.gameObject);
     }
 }

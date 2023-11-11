@@ -11,21 +11,15 @@ public class SkillUI : MonoBehaviour
     [SerializeField] private Image _darkPanelUI;
     [SerializeField] private Image _coolPanelUI;
     [SerializeField] private TextMeshProUGUI _coolText;
-    [SerializeField] private float _coolTime;
 
-    private void Update()
+    public void UseSkill(float coolTime)
     {
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            CalculateCoolPanel();
-            StartCoroutine(CalculateCoolTime());
-        }
-            
+        CalculateCoolPanel(coolTime);
+        StartCoroutine(CalculateCoolTime(coolTime));
     }
 
-    IEnumerator CalculateCoolTime()
+    IEnumerator CalculateCoolTime(float coolIdx)
     {
-        float coolIdx = _coolTime;
         _coolText.enabled = true;
         while(coolIdx > 0)
         {
@@ -36,7 +30,7 @@ public class SkillUI : MonoBehaviour
         _coolText.enabled = false;
     }
 
-    public void CalculateCoolPanel()
+    public void CalculateCoolPanel(float coolTime)
     {
         _darkPanelUI.enabled = true;
         Sequence seq = DOTween.Sequence();
@@ -50,7 +44,7 @@ public class SkillUI : MonoBehaviour
             (
                 DOTween.To(() => _coolPanelUI.fillAmount,
                     f => _coolPanelUI.fillAmount = f,
-                    0, _coolTime)
+                    0, coolTime)
             );
         seq.AppendCallback(() => _darkPanelUI.enabled = false);
         seq.Append(_skillPanel.DOLocalRotateQuaternion(_skillPanel.localRotation * Quaternion.Euler(0, 0, 5), 0.1f));

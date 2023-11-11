@@ -32,6 +32,6 @@ public class SoundSlider : MonoBehaviour
     public void SoundChange(float value)
     {
         _audioSource.volume = value;
-        UIManager.Instnace.SetSpectrumValue(_soundType, value);
+        UIManager.Instanace.SetSpectrumValue(_soundType, value);
     }
 }

@@ -4,9 +4,16 @@ public enum SoundType
     sfx
 }
 
-public enum SceneType
+public enum UISceneType
 {
     title,
     lobby,
     inGame
+}
+
+public enum DifficultyType
+{
+    easy,
+    normal,
+    hard
 }

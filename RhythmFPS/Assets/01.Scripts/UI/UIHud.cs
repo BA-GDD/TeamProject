@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class UIHud : MonoBehaviour
 {
@@ -14,21 +15,37 @@ public class UIHud : MonoBehaviour
     [Header("옵션 패널")]
     [SerializeField] private OptionPanel _optionPanel;
 
-    [Header("게임 스타트 패널")]
-    [SerializeField] private Transform _startScene;
+    [Header("나가기 UI")]
+    [SerializeField] private ExitPanel _exitPanel;
 
-    [Header("로비 UI")]
-    [SerializeField] private Transform _lobbyUI;
+    [Header("씬 UI")]
+    [SerializeField] private List<GameObject> _sceneUIList = new List<GameObject>();
 
-    [ContextMenu("리절트 패널 활성화")]
-    public void ActiveResultPanel(/* 매개변수 받기 */)
+    public void UIChange(UISceneType toChangeScene)
     {
+        if(UIManager.Instanace.currentSceneObject != null)
+            Destroy(UIManager.Instanace.currentSceneObject);
+
+        UIManager.Instanace.currentSceneObject = Instantiate(_sceneUIList[(int)toChangeScene], _canvasTrm);
+        UIManager.Instanace.currentSceneType = toChangeScene;
+    }
+
+    #region 패널 활성화
+    [ContextMenu("나가기 패널 활성화")]
+    public void ActiveGameExitPanel()
+    {
+        Instantiate(_exitPanel, _canvasTrm).SetupPanel(UIManager.Instanace.currentSceneType);
+    }
+    [ContextMenu("리절트 패널 활성화")]
+    public void ActiveResultPanel(int combo, float clearTime, float dealDamage)
+    {
+        float score = clearTime * combo + dealDamage;
+
         ResultUI ru = Instantiate(_resultPanel, _canvasTrm);
         ru.transform.localPosition = _resultPanelCreatePos;
         ru.gameObject.name = "Result";
-        ru.ActiveResultPanel(1, 1, 1, 1 /*매개변수 설정*/);
+        ru.ActiveResultPanel(score, combo, clearTime, dealDamage);
     }
-
     [ContextMenu("옵션 패널 활성화")]
     public void ActiveOptionPanel()
     {
@@ -37,16 +54,7 @@ public class UIHud : MonoBehaviour
         op.gameObject.name = "OptionPanel";
         op.OpenPanel();
     }
-
-    [ContextMenu("스타트 패널 활성화")]
-    public void ActiveStartScene()
-    {
-        Instantiate(_startScene, _canvasTrm);
-    }
-
-    [ContextMenu("로비 UI 활성화")]
-    public void ActiveLobbyUI()
-    {
-        Instantiate(_lobbyUI, _canvasTrm);
-    }
+    #endregion
 }
+
+
