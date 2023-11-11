@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Map : MonoBehaviour
 {
+    const float modifyTime = 1.5f;
+
     private float originYPos;
     private float modifyYPos;
 
@@ -38,15 +40,15 @@ public class Map : MonoBehaviour
     /// <returns></returns>
     private IEnumerator OnCo()
     {
-        while (true)
+        float percent = 0;
+        float timer = 0;
+        while (percent <= 1)
         {
-            yPos = Mathf.Lerp(yPos, modifyYPos, Time.deltaTime * modifySpeed);
+            timer += Time.deltaTime;
+            percent = timer / modifyTime;
+            yPos = Mathf.Lerp(yPos, modifyYPos, percent);
             transform.position = new Vector3(transform.position.x, yPos, transform.position.z);
-            if(Mathf.Abs(modifyYPos - yPos) <= .1f)
-            {
-                break;
-            }
-            yield return new WaitForSeconds(0.01f);
+            yield return null;
         }
     }
 }

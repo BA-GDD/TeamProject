@@ -27,6 +27,7 @@ public class SimpleWeapon : Weapon
             isReadyReload = false;
         }
         fireFeedback?.Invoke();
+        UIManager.Instanace.HandleShootGun?.Invoke();
         print("¸ÂÀ½!");
         _currentBullet--;
         _animator.SetRigTriggerFIre(true);

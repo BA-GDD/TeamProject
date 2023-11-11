@@ -16,6 +16,7 @@ public class WeaponEvent : MonoBehaviour
     public void PushBulletInWeapon()
     {
         _weapon.CurWeapon.AddBullet();
+        UIManager.Instanace.HandleReload?.Invoke();
     }
     public void ShotGrenade()
     {
