@@ -11,10 +11,10 @@ public abstract class Weapon : MonoBehaviour
 
     protected int _currentBullet;
     protected Camera _cam;
-    protected bool _isReadyReload;
 
     protected PlayerAnimator _animator;
 
+    public bool isReadyReload;
     public AnimationClip relaodStartClip;
     public AnimationClip relaodClip;
     public AnimationClip reloadEndClip;
@@ -41,7 +41,7 @@ public abstract class Weapon : MonoBehaviour
         _currentBullet++;
         if (_currentBullet == _maxBullet)
         {
-            _isReadyReload = false;
+            isReadyReload = false;
             _animator.SetRigBoolIsReload(false);
             _animator.SetRigTriggerReload(false);
         }

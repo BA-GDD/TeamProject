@@ -20,6 +20,8 @@ public class CheckPathNode : ActionNode
     {
         NavMeshPath path = new NavMeshPath();
 
-        return NavMesh.CalculatePath(brain.transform.position, GameManager.instance.playerTransform.position, NavMesh.AllAreas, path) ? State.SUCCESS : State.FAILURE;
+        brain.agent.CalculatePath(GameManager.instance.playerTransform.position, path);
+
+        return path.status == NavMeshPathStatus.PathComplete ? State.SUCCESS : State.FAILURE;
     }
 }
