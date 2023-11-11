@@ -11,14 +11,41 @@ public class MapEnterPanel : MonoBehaviour
     public Vector2 mapPanelLobbyPos;
     public float mapPanelEasingTime;
 
+    private MapPanelMoveNoise _moveNoise;
+    private MapPanelSpectrum _mapPanelSpectrum;
+
+    private bool _isSelect;
+    public bool IsSelect
+    {
+        get
+        {
+            return _isSelect;
+        }
+        set
+        {
+            _isSelect = value;
+            _moveNoise.canNoiseBG = _isSelect;
+            _mapPanelSpectrum.isRhythming = _isSelect;
+            // 스펙트럼 계산도
+        }
+    }
+
+    private void Awake()
+    {
+        _moveNoise = transform.Find("Image").GetComponent<MapPanelMoveNoise>();
+        _mapPanelSpectrum = transform.Find("Spectrum").GetComponent<MapPanelSpectrum>();
+    }
+
     public void ActivePanel()
     {
+        IsSelect = true;
         transform.DOLocalMove(mapPanelLobbyPos, mapPanelEasingTime).SetEase(_ease);
         transform.SetAsFirstSibling();
     }
 
     public void HidePanel()
     {
+        IsSelect = false;
         transform.DOLocalMove(mapPanelHidePos, mapPanelEasingTime).SetEase(_ease);
     }
 }

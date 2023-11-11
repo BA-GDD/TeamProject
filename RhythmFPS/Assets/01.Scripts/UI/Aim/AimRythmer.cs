@@ -17,6 +17,6 @@ public class AimRythmer : MonoBehaviour
 
     public void SpawnRythmTaker()
     {
-        Instantiate(_rythmTaker, _canvasTrm);
+        Instantiate(_rythmTaker, _canvasTrm); //풀매니저 연결
     }
 }
