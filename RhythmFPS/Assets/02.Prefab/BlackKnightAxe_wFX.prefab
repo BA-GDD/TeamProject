@@ -4856,7 +4856,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 10.701811}
+  m_LocalScale: {x: 1, y: 1, z: 6.5471535}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3773472156045531202}
@@ -14559,7 +14559,7 @@ GameObject:
   - component: {fileID: 6551242455699854584}
   - component: {fileID: 7804258700635412323}
   m_Layer: 0
-  m_Name: BlackKnightAxe 1
+  m_Name: BlackKnightAxe_wFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
