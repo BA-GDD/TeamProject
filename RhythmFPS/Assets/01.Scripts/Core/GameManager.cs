@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
+    public PoolingListSO poolingList;
 
     private void Awake()
     {
@@ -15,6 +16,11 @@ public class GameManager : MonoBehaviour
 
         instance = this;
 
+        PoolManager.Instance = new PoolManager(transform);
+        foreach(PoolingItem item in poolingList.PoolList)
+        {
+            PoolManager.Instance.CreatePool(item.Prefab, item.Count);
+        }
         DontDestroyOnLoad(gameObject);
     }
 

@@ -26,6 +26,10 @@ public class AgentWeapon : MonoBehaviour
 
         _curWeapon?.Reload();
     }
+    public bool GetCurWeaponReloading()
+    {
+        return _curWeapon.isReadyReload;
+    }
     public void ChangeWeapon(Weapon newWeapon)
     {
         _curWeapon = newWeapon;

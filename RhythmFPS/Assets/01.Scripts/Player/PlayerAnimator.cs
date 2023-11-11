@@ -11,6 +11,7 @@ public class PlayerAnimator : MonoBehaviour
     private readonly int _isReloadHash = Animator.StringToHash("is-reload");
     private readonly int _reloadHash = Animator.StringToHash("reload");
     private readonly int _reloadCancleHash = Animator.StringToHash("reloadCancel");
+    private readonly int _abilityHash = Animator.StringToHash("ability");
     #endregion
 
     private Animator _animator;
@@ -57,6 +58,14 @@ public class PlayerAnimator : MonoBehaviour
         else
             _rigAnimator.ResetTrigger(_reloadCancleHash);
     }
+    public void SetRigTriggerAbility(bool value)
+    {
+        if (value)
+            _rigAnimator.SetTrigger(_abilityHash);
+        else
+            _rigAnimator.ResetTrigger(_abilityHash);
+    }
+
     public void ChangeWeaponAnimation(AnimationClip newClip)
     {
         for(int i = 0; i < _clips.Length; i++)

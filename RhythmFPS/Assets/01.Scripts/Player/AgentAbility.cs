@@ -12,8 +12,17 @@ public enum AbillityKey
 public class AgentAbility : MonoBehaviour
 {
     private Dictionary<string, Ability> _keyAction = new();
+    private Dictionary<AbilityWeaponType, AbilityWeapon> _abilityWeaponsDIctionary = new();
     [SerializeField]private List<Ability> _defaultAbility;
+    [SerializeField]private List<AbilityWeapon> _abilityWeapons;
 
+    public void OffAbilityWeapon()
+    {
+        foreach (var item in _abilityWeaponsDIctionary)
+        {
+            item.Value.gameObject.SetActive(false);
+        }
+    }
 
     private void Awake()
     {
@@ -21,6 +30,10 @@ public class AgentAbility : MonoBehaviour
         //{
         //_keyAction?.Add((AbillityKey)key,null);
         //}
+        foreach (AbilityWeapon weapon in _abilityWeapons)
+        {
+            _abilityWeaponsDIctionary.Add(weapon.type, weapon);
+        }
         foreach (Ability ability in _defaultAbility)
         {
             _keyAction.Add(ability.key.ToString(), ability);
@@ -44,5 +57,14 @@ public class AgentAbility : MonoBehaviour
         {
             _keyAction[key]?.Active(gameObject);
         }
+    }
+
+    public AbilityWeapon GetAbilityWeapon(AbilityWeaponType type)
+    {
+        if(_abilityWeaponsDIctionary.ContainsKey(type))
+        {
+            return _abilityWeaponsDIctionary[type];
+        }
+        return null;
     }
 }

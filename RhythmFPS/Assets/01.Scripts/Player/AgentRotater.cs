@@ -19,7 +19,7 @@ public class AgentRotater : MonoBehaviour
     {
         if (StopRotate == true) return;
         _rotateX += value.y * HorizontalRespons;
-        _rotateX = Mathf.Clamp(_rotateX, -70, 70);
+        _rotateX = Mathf.Clamp(_rotateX, -70, 80);
         _rotateY += value.x * VerizontalRespons;
         transform.rotation = Quaternion.Euler(0, _rotateY, 0);
         _eye.localRotation = Quaternion.Euler(-_rotateX, 0, 0);
