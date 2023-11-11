@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
     public PoolingListSO poolingList;
+    [HideInInspector]
+    public Transform playerTransform;
 
     private void Awake()
     {
@@ -22,18 +24,25 @@ public class GameManager : MonoBehaviour
             PoolManager.Instance.CreatePool(item.Prefab, item.Count);
         }
         DontDestroyOnLoad(gameObject);
+        //Debug
+        GameStart();
     }
 
     /// <summary>
-    /// °ÔÀÓ ½ÃÀÛ ÀÛ¾÷
+    /// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Û¾ï¿½
     /// </summary>
     public void GameStart()
     {
+        playerTransform = FindAnyObjectByType<AgentController>().transform;
 
+        if (!playerTransform)
+        {
+            Debug.LogError("Any player is not exist in game!");
+        }
     }
 
     /// <summary>
-    /// °ÔÀÓ Á¾·á ÀÛ¾÷
+    /// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Û¾ï¿½
     /// </summary>
     public void GameEnd()
     {
@@ -41,11 +50,11 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// °ÔÀÓ Àç½ÃÀÛ ÀÛ¾÷
+    /// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Û¾ï¿½
     /// </summary>
     public void GameRestart()
     {
-        //Àç½ÃÀÛ ½Ã ÇÊ¿äÇÑ °Í ÃÊ±âÈ­
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ê±ï¿½È­
         GameStart();
     }
 }

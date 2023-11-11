@@ -1,28 +1,54 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public abstract class EnemyBrain : MonoBehaviour
 {
-    public Transform targetTrm;
-    public Vector3 movePos;
-    public bool isMove;
-    public bool isRot;
+    [HideInInspector]
+    public GameObject weapon;
+    [HideInInspector]
+    public NavMeshAgent agent;
+    [HideInInspector]
     public EnemyHealth enemyHealth;
+    [HideInInspector]
+    public bool canRotate;
+    [HideInInspector]
+    public bool isDead;
+    public EnemyStatusSO status;
 
     public abstract void Attack();
-    public abstract void Move();
 
     protected virtual void Awake()
     {
-        isRot = true;
-        movePos = transform.position;
+        canRotate = true;
         enemyHealth = GetComponent<EnemyHealth>();
-        targetTrm = SubManager.Instance.playerTrm;
+        agent = GetComponent<NavMeshAgent>();
+        agent.speed = status.moveSpeed;
     }
 
-    protected virtual void Update()
+    protected virtual void Start()
     {
-        Move();
+        StartChase();
+    }
+
+    public virtual void SetDead()
+    {
+        isDead = true;
+    }
+
+    public virtual void StartChase()
+    {
+        agent.isStopped = false;
+
+        agent.SetDestination(GameManager.instance.playerTransform.position);
+    }
+
+    public virtual void StopChase()
+    {
+        agent.ResetPath();
+
+        agent.isStopped = true;
     }
 }
