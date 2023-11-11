@@ -72,21 +72,10 @@ public class AgentMovement : MonoBehaviour
         Vector3 vec;
         if (_virtualVec.sqrMagnitude > 0)
         {
-            //Vector3 vDir = _virtualVec.normalized * -1;
-            //vDir.y = 0;
-            //Vector3 dDir = _dirVec.normalized;
-            //dDir.y = 0;
-            //Debug.Log(Vector3.Dot(vDir, dDir) * Mathf.Rad2Deg);
-            //if (Vector3.Dot(vDir, dDir) * Mathf.Rad2Deg > 0)
-            //{
-            //    _virtualVec += vDir * Time.fixedDeltaTime;
-            //}
-            //else
-            //{
-            //    _dirVec.x = 0;
-            //    _dirVec.z = 0;
-            //}
-            _virtualVec += _dirVec * Time.fixedDeltaTime;
+            Vector3 saveVector = _dirVec;
+            saveVector.y = 0;
+            _virtualVec += saveVector * Time.fixedDeltaTime;
+            _virtualVec.y -= 9.8f * Time.fixedDeltaTime;
             vec = _virtualVec * Time.fixedDeltaTime;
         }
         else
