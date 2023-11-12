@@ -34,11 +34,12 @@ public class UIManager : MonoBehaviour
                                                             // bool = true, 아니면 bool = false;
 
     public Action<MapInfo> HandleClickPlayPanel; // 플레이 패널을 눌렀을 때 발행되는 이벤트.
-                                                       // 해당하는 MapInfo 클래스를 넘겨준다.
-                                                      // MapInfo 클래스는 플레이 기록이 저장된다.
+                                                 // 해당하는 MapInfo 클래스를 넘겨준다.
+                                                 // MapInfo 클래스는 플레이 기록이 저장된다.
     #endregion
 
     #region 인게임에서 일어나는 UI 이벤트
+    public Action<float> HandleInGameStartEvent;
     public Action<float> HandleUseSkill; // 스킬 사용 float = cooltime
     public Action<float> HandlePlayerGetDamage; // 플레이어 데미지 입음
     public Action<float> HandleBossGetDamage; // 보스 데미지 입음
@@ -47,6 +48,8 @@ public class UIManager : MonoBehaviour
     public Action HandleShootGun; // UI 탄창 소모
     public Action HandleReload; // UI 탄창 장전
     public Action<int, float, float> HandleGameClear; // 달성 콤보, 클리어 시간, 넣은 데미지
+    public Action HandleGameOver; // 게임 오버 패널 활성화
+    public Action HandleRetryGame; // 게임 재시작
     #endregion
 
     [Header("스펙트럼 조정")]
@@ -65,8 +68,10 @@ public class UIManager : MonoBehaviour
         HandleUIChange += UIHud.UIChange;
         HandleActiveOptionPanel += UIHud.ActiveOptionPanel;
         HandleGameExit += UIHud.ActiveGameExitPanel;
+        HandleGameOver += UIHud.ActiveGameOverPanel;
+        //HandleRetryGame += GameManager.instance.GameRestart;
 
-        HandleUIChange?.Invoke(currentSceneType);
+        //HandleUIChange?.Invoke(currentSceneType);
     }
 
     public void SetSpectrumValue(SoundType st, float value)

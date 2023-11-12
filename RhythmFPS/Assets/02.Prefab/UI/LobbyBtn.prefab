@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7900786855067512621}
+  - component: {fileID: 3635504518993428363}
   m_Layer: 5
   m_Name: LobbyBtn
   m_TagString: Untagged
@@ -35,9 +36,25 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 12, y: 0}
+  m_AnchoredPosition: {x: 251, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &3635504518993428363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 265559871118309113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82489373696d1fa4890b9131fbfd7a48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameOverUI: {fileID: 0}
+  _upperImage: {fileID: 0}
+  _loopColor: []
+  _easingTime: 0
 --- !u!1 &1601923702805035240
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,7 +403,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4890013391706038955}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3635504518993428363}
+        m_TargetAssemblyTypeName: LobbyBtn, Assembly-CSharp
+        m_MethodName: ClickLogic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &4211484750445970936
 MonoBehaviour:
   m_ObjectHideFlags: 0
