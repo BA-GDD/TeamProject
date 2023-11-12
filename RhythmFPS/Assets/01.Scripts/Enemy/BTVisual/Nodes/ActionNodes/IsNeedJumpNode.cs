@@ -20,6 +20,10 @@ public class IsNeedJumpNode : ActionNode
 
     protected override State OnUpdate()
     {
+        if (GameManager.instance.playerTransform.position != brain.transform.position)
+        {
+
+        }
         
         if(!(brain as BossBrain).isOnTheRoof)
         {
@@ -28,7 +32,7 @@ public class IsNeedJumpNode : ActionNode
             && Vector3.Distance(brain.transform.position, GameManager.instance.playerTransform.position) >= 6f
             && Mathf.Abs((GameManager.instance.playerTransform.position.y - brain.transform.position.y)) >= 6f)
             {
-                Debug.Log("위로 점프해야함");
+                //Debug.Log("위로 점프해야함");
                 (brain as BossBrain).isOnTheRoof = true;
                 return State.SUCCESS;
             }
@@ -40,7 +44,7 @@ public class IsNeedJumpNode : ActionNode
             && Vector3.Distance(brain.transform.position, GameManager.instance.playerTransform.position) >= 6f
             && Mathf.Abs((GameManager.instance.playerTransform.position.y - brain.transform.position.y)) >= 6f)
             {
-                Debug.Log("아래로 점프해야함");
+                //Debug.Log("아래로 점프해야함");
                 (brain as BossBrain).isOnTheRoof = false;
                 return State.SUCCESS;
             }

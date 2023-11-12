@@ -37,25 +37,28 @@ public class BossBrain : EnemyBrain
 
     private void Update()
     {
-        if(timer < coolTime)
+        if(isDead != true)
         {
-            timer += Time.deltaTime;
-        }
-        else
-        {
-            isCanAttack = true;
-            isMove = false;
-        }
+            if (timer < coolTime)
+            {
+                timer += Time.deltaTime;
+            }
+            else
+            {
+                isCanAttack = true;
+                isMove = false;
+            }
 
-        //Debug.Log(Vector3.Distance(transform.position, GameManager.instance.playerTransform.position) <= 4f);
-        if(isMove)
-        {
-            _bossAnimator.SetMove(true);
-            StartChase();
-        }
-        else
-        {
-            StopChase();
+            //Debug.Log(Vector3.Distance(transform.position, GameManager.instance.playerTransform.position) <= 4f);
+            if (isMove)
+            {
+                _bossAnimator.SetMove(true);
+                StartChase();
+            }
+            else
+            {
+                StopChase();
+            }
         }
     }
 
