@@ -3,8 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class RythmTaker : MonoBehaviour
+public class RythmTaker : PoolableMono
 {
+    public override void Init()
+    {
+
+    }
+
     private void Start()
     {
         Sequence seq = DOTween.Sequence();
@@ -12,7 +17,7 @@ public class RythmTaker : MonoBehaviour
         seq.Join(transform.DOLocalRotate(new Vector3(0, 0, 90), 0.375f));
         seq.AppendCallback(() =>
         {
-            Destroy(gameObject); // 풀매니저 연결
+            PoolManager.Instance.Push(this); // 풀매니저 연결
         });
     }
 }
