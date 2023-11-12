@@ -51,6 +51,7 @@ public class SkillUI : MonoBehaviour
         seq.Append(_skillPanel.DOLocalRotateQuaternion(_skillPanel.localRotation * Quaternion.Euler(0, 0, -5), 0.1f));
         seq.Append(_skillPanel.DOLocalRotateQuaternion(_skillPanel.localRotation * Quaternion.Euler(0, 0, 5), 0.1f));
         seq.Append(_skillPanel.DOLocalRotateQuaternion(_skillPanel.localRotation * Quaternion.Euler(0, 0, 0), 0.1f));
+        _skillPanel.localRotation = Quaternion.identity;
     }
 
 }

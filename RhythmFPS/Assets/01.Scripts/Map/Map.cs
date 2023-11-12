@@ -9,8 +9,8 @@ public class Map : MonoBehaviour
     private float originYPos;
     private float modifyYPos;
 
-    [SerializeField]
-    private float modifySpeed = 15.0f;
+    private float modifySpeed = 0.1f;
+
     float yPos;
 
     /// <summary>
@@ -44,7 +44,7 @@ public class Map : MonoBehaviour
         float timer = 0;
         while (percent <= 1)
         {
-            timer += Time.deltaTime;
+            timer += Time.deltaTime * modifySpeed;
             percent = timer / modifyTime;
             yPos = Mathf.Lerp(yPos, modifyYPos, percent);
             transform.position = new Vector3(transform.position.x, yPos, transform.position.z);

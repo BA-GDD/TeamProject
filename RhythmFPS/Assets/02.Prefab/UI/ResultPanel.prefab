@@ -1711,6 +1711,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59b0509a476ddf045ab123d6655f5acc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _resultPanel: {fileID: 3584565039572043967}
   _resultTexts:
   - {fileID: 4921764956604587073}
   - {fileID: 6773917298981104071}
@@ -1719,9 +1720,7 @@ MonoBehaviour:
   - TURN UP THE V.O.L.U.M.E.
   - CRAZY!!!!
   _textTurm: 0.02
-  _btnTrm:
-  - {fileID: 7900786855067512621, guid: b77afb9b96bae244eb0337d731fa78e8, type: 3}
-  - {fileID: 3997066760479812103, guid: fa151208c73e712428c72ccd805cdf64, type: 3}
+  _btnTrm: {fileID: 3635504518993428363, guid: b77afb9b96bae244eb0337d731fa78e8, type: 3}
   _btnGroup: {fileID: 3441026893254308253}
 --- !u!1 &5977721266893746984
 GameObject:
