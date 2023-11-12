@@ -12,8 +12,18 @@ public class AimRythmer : MonoBehaviour
         _canvasTrm = GameObject.Find("UICanvas").transform;
     }
 
-    public void SpawnRythmTaker()
+    public void SpawnRhythm(float turm)
     {
-        Instantiate(_rythmTaker, _canvasTrm); //풀매니저 연결
+        StartCoroutine(SpawnRythmCo(turm));
     }
+
+    public IEnumerator SpawnRythmCo(float turm)
+    {
+        while (true)
+        {
+            Instantiate(_rythmTaker, _canvasTrm);
+            yield return new WaitForSeconds(turm);
+        }
+    }
+
 }
