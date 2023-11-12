@@ -12,17 +12,8 @@ public class AimRythmer : MonoBehaviour
         _canvasTrm = GameObject.Find("UICanvas").transform;
     }
 
-    public void SpawnRhythm(float turm)
+    public void SpawnRhythm()
     {
-        StartCoroutine(SpawnRythmCo(turm));
-    }
-
-    public IEnumerator SpawnRythmCo(float turm)
-    {
-        while (true)
-        {
-            PoolManager.Instance.Pop("RhythmTaker");
-            yield return new WaitForSeconds(turm);
-        }
+        PoolManager.Instance.Pop("RhythmTaker").transform.SetParent(_canvasTrm);
     }
 }
