@@ -1,6 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:RhythmFPS/Assets/15.Asset/ETC/Teleportation Pad/Model/Teleporter Pad .blend.zip.meta
+guid: bef635ef897cc1e4584b49178559409e
+========
 guid: 8f917cd29f25a5d4c9eddbe8909d8e98
 folderAsset: yes
+>>>>>>>> main:RhythmFPS/Assets/00.Scenes/Hawon/Hawon_Profiles.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

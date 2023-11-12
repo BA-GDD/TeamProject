@@ -23,7 +23,7 @@ public class ValueBarBase : MonoBehaviour
 
     public virtual void DiminishValue(float value) // value 만큼 까기
     {
-        _curenValue -= Mathf.Clamp(_curenValue - value, 0, _maxValue);
+        _curenValue = Mathf.Clamp(_curenValue - value, 0, _maxValue);
         isLerping = true;
 
         if(_hpValueText != null)

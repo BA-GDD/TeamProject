@@ -7,7 +7,15 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 {
     public UnityEvent onHitTrigger;
     public UnityEvent onDieTrigger;
-    public float curHp = 100;
+    private EnemyBrain _brain;
+    private float _currentHitPoint;
+    public float CurrentHitPoint => _currentHitPoint;
+
+    private void Awake()
+    {
+        _brain = GetComponent<EnemyBrain>();
+        _currentHitPoint = _brain.status.maxHitPoint;
+    }
 
     public void Die()
     {
@@ -16,9 +24,12 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 
     public void TakeDamage(int damage)
     {
-        curHp -= damage;
+        Debug.Log($"보스 남은 체력: {_currentHitPoint}");
+        
+        _currentHitPoint = Mathf.Clamp(_currentHitPoint - damage, 0, _brain.status.maxHitPoint);
+        UIManager.Instanace.HandleBossGetDamage(damage);
         onHitTrigger?.Invoke();
-        if(curHp <= 0)
+        if(_currentHitPoint <= 0)
         {
             Die();
         }

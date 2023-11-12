@@ -11,13 +11,15 @@ public abstract class Weapon : MonoBehaviour
 
     protected int _currentBullet;
     protected Camera _cam;
-    protected bool _isReadyReload;
 
     protected PlayerAnimator _animator;
 
+    public bool isReadyReload;
     public AnimationClip relaodStartClip;
     public AnimationClip relaodClip;
     public AnimationClip reloadEndClip;
+
+    public UnityEvent fireFeedback;
     public UnityEvent lackOfAmmoEvent;
 
 
@@ -34,4 +36,14 @@ public abstract class Weapon : MonoBehaviour
     ///  실제 총이 발사하는 장전
     /// </summary>
     public abstract void Reload();
+    public virtual void AddBullet()
+    {
+        _currentBullet++;
+        if (_currentBullet == _maxBullet)
+        {
+            isReadyReload = false;
+            _animator.SetRigBoolIsReload(false);
+            _animator.SetRigTriggerReload(false);
+        }
+    }
 }

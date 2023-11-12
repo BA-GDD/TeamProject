@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class AgentWeapon : MonoBehaviour
 {
-    [SerializeField]private Weapon _curWeapon;
+    [SerializeField] private Weapon _curWeapon;
+    public Weapon CurWeapon => _curWeapon;
     private PlayerAnimator _animator;
+
 
     private void Awake()
     {
@@ -14,14 +17,18 @@ public class AgentWeapon : MonoBehaviour
     }
     public void Active()
     {
-        if (RhythmManager.instance.Judgement(RhythmAction.Shoot) == false) return;
+        if (RhythmManager.instance.Judgement() == false) return;
         _curWeapon?.Fire();
     }
     public void Reload()
     {
-        if (RhythmManager.instance.Judgement(RhythmAction.Reload) == false) return;
+        if (RhythmManager.instance.Judgement() == false) return;
 
         _curWeapon?.Reload();
+    }
+    public bool GetCurWeaponReloading()
+    {
+        return _curWeapon.isReadyReload;
     }
     public void ChangeWeapon(Weapon newWeapon)
     {

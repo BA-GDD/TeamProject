@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:RhythmFPS/Assets/02.Prefab/TestMobEnemyPrefab.prefab.meta
+guid: bb5059d22e5817f4bb99180cec22275a
+PrefabImporter:
+========
+guid: 632e26e6a387578439953b8714c69890
+NativeFormatImporter:
+>>>>>>>> taegon:RhythmFPS/Assets/01.Scripts/Enemy/AI/EnemyTest.asset.meta
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -18,9 +18,9 @@ public class MoveNode : ActionNode
 
     protected override State OnUpdate()
     {
-        Debug.Log("Moved");
+        /*Debug.Log("Moved");
         Vector3 pos = Random.onUnitSphere * 10.0f;
-        Vector3 finalPos = brain.targetTrm.position + pos;
+        Vector3 finalPos = brain.targetTransform.position + pos;
         finalPos.y = Mathf.Abs(finalPos.y);
 
         RaycastHit hit;
@@ -35,9 +35,9 @@ public class MoveNode : ActionNode
         Mathf.Clamp(finalPos.x, minimumBoundOfMap.x, maximumBoundOfMap.x);
         Mathf.Clamp(finalPos.z, minimumBoundOfMap.y, maximumBoundOfMap.y);
        
-        brain.movePos = finalPos;
+        brain.moveDestination = finalPos;
 
-        blackboard.curPattern = Random.Range(0, 3);
+        blackboard.curPattern = Random.Range(0, 3);*/
         return State.SUCCESS;
     }
 }

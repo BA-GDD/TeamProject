@@ -18,15 +18,15 @@ public class GroundSlamPatternNode : ActionNode
 
     protected override State OnUpdate()
     {
-        RaycastHit hit;
+        /*RaycastHit hit;
         bool isHit = Physics.Raycast(brain.transform.position, Vector3.down * 100.0f, out hit, 1000.0f, ground);
         Debug.DrawRay(brain.transform.position, Vector3.down * 100.0f, Color.white);
         if (isHit)
         {
             Debug.Log("asd");
-            brain.movePos = hit.point;
-            brain.isRot = false;
-            Vector3 pos = brain.targetTrm.position - brain.transform.position;
+            brain.moveDestination = hit.point;
+            brain.canRotate = false;
+            Vector3 pos = brain.targetTransform.position - brain.transform.position;
             pos.x = 0;
             pos.z = 0;
             brain.transform.rotation = Quaternion.LookRotation(pos);
@@ -45,7 +45,7 @@ public class GroundSlamPatternNode : ActionNode
                 }
             }
         }
-        blackboard.curPattern = Random.Range(0, 3);
+        blackboard.curPattern = Random.Range(0, 3);*/
         return State.SUCCESS;
     }
 }

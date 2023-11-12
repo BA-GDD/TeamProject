@@ -759,7 +759,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.582
+  m_Value: 0.63
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -777,7 +777,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hpBar: {fileID: 7262995240755779228}
   _hpValueText: {fileID: 0}
-  _maxValue: 0
+  _maxValue: 100
   _lerpTime: 10
 --- !u!1 &1175605751775464138
 GameObject:

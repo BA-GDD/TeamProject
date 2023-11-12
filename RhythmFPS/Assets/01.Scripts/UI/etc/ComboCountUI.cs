@@ -27,16 +27,6 @@ public class ComboCountUI : MonoBehaviour
     [SerializeField] private UnityEvent _secondComboBurnningEvent;
     [SerializeField] private UnityEvent _comboResetEvent;
 
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-            ComboPlus();
-        if (Input.GetKeyDown(KeyCode.K))
-            ResetCombo();
-    }
-
-
     [ContextMenu("ÄÞº¸+1")]
     public void ComboPlus()
     {
