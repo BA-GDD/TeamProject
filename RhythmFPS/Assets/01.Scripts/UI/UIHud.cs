@@ -33,14 +33,6 @@ public class UIHud : MonoBehaviour
         UIManager.Instanace.currentSceneType = toChangeScene;
     }
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            ActiveResultPanel(1, 1, 1);
-        }
-    }
-
     #region 패널 활성화
     [ContextMenu("나가기 패널 활성화")]
     public void ActiveGameExitPanel()

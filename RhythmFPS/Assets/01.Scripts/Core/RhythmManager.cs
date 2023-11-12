@@ -19,6 +19,7 @@ public class RhythmManager : MonoBehaviour
     private AudioClip _metronomeClip;
     [SerializeField]
     private AudioSource _musicAudioSource;
+    public AudioSource musicAudioSource => _musicAudioSource;
     [SerializeField]
     private AudioSource _metronomeAudioSource;
     [SerializeField]
