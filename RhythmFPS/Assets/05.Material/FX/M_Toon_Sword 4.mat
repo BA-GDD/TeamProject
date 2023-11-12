@@ -1,0 +1,107 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: M_Toon_Sword 4
+  m_Shader: {fileID: 4800000, guid: 0d8f3114968627d4c96dba9fe052fe04, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords:
+  - USE_CUSTOM_ON
+  - _USE_MASKTEX_ON
+  m_InvalidKeywords: []
+  m_LightmapFlags: 0
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _Dissolve_Texture:
+        m_Texture: {fileID: 2800000, guid: 145143eb93006454baed654b5669d0c3, type: 3}
+        m_Scale: {x: 1.14, y: 0.24}
+        m_Offset: {x: 0, y: 0}
+    - _Main_Texture:
+        m_Texture: {fileID: 2800000, guid: 145143eb93006454baed654b5669d0c3, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Noise_Texture:
+        m_Texture: {fileID: 2800000, guid: 04018d4e5ecda6049b39579f207e2114, type: 3}
+        m_Scale: {x: 1.86, y: 0.06}
+        m_Offset: {x: 0, y: 0}
+    - _Sword_Texture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TextureSample0:
+        m_Texture: {fileID: 2800000, guid: 1988b9371459b0a4f85b7ac8f0bf3b74, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _tex4coord2:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - Use_Custom: 1
+    - _AlphaCutoff: 0.5
+    - _CULL: 0
+    - _Ceil_Count: 20
+    - _DissTex_UPanner: 0
+    - _DissTex_VPanner: 0.36
+    - _Dissolve_Step: 0.55
+    - _Dissolve_Value: 1
+    - _Edge_Width: 0.29
+    - _Edge_Width1: 0.29
+    - _Emi_Offset: -0.24
+    - _Eni_Inten: 1
+    - _Head_Ins: 2.52
+    - _Head_power: 1
+    - _Main_UPanner: 0.2
+    - _Main_VPanner: 0.97
+    - _Main_intencity: 1
+    - _Main_power: -2.47
+    - _Masked_Power: -11.12
+    - _Noise_Strength: 0
+    - _Noise_UPanner: 0
+    - _Noise_VPanner: 0
+    - _Power: 0.51
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _Sec_Inten: 42.8
+    - _Sword_UOffset: 0.39
+    - _Sword_VOffset: -0.1
+    - _Use_Edged: 0
+    - _Use_MaskTex: 1
+    - __dirty: 0
+    - _mask_pow: 1.5
+    - _threshold: 0
+    m_Colors:
+    - _Emi_Color: {r: 0, g: 0, b: 0, a: 0}
+    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Main_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
