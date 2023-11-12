@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -18,6 +19,14 @@ public class MapRaise : MonoBehaviour
     [Header("얼만큼 높이 옮길것인가를 적어주면 된다.")]
     public float modifyPos;
     private int curIdx = 0;
+
+    [Space(10)]
+    [Header("내브를 다시 설정 해주시위한 거.")]
+    [SerializeField] private NavMeshSurface _surface;
+    private void Awake()
+    {
+        _surface.UpdateNavMesh(_surface.navMeshData);
+    }
 
     private void Update()
     {
@@ -45,8 +54,14 @@ public class MapRaise : MonoBehaviour
             float randYPos = Random.Range(-1.0f, 1.0f);
             mapList[randIdx].list[i].On(modifyPos + randYPos);
         }
+        StartCoroutine(WaitUpdateNavMesh());
     }
 
+    public IEnumerator WaitUpdateNavMesh()
+    {
+        yield return new WaitForSeconds(5.1f);
+        _surface.UpdateNavMesh(_surface.navMeshData);
+    }
     /// <summary>
     /// 리스트에 있는 맵의 Off함수를 호출해준다.
     /// </summary>

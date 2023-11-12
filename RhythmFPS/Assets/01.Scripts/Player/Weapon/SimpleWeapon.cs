@@ -27,13 +27,15 @@ public class SimpleWeapon : Weapon
             isReadyReload = false;
         }
         fireFeedback?.Invoke();
+        UIManager.Instanace.HandleShootGun?.Invoke();
         print("¸ÂÀ½!");
         _currentBullet--;
         _animator.SetRigTriggerFIre(true);
-        if (Physics.Raycast(_cam.transform.position, _cam.transform.forward, out RaycastHit hit, 50f, _whatIsEnemy))
+        if (Physics.Raycast(_cam.transform.position, _cam.transform.forward, out RaycastHit hit, 1000f, _whatIsEnemy))
         {
             if (hit.transform.TryGetComponent<IDamageable>(out IDamageable damageable))
             {
+                ComboManager.Instance.AddCombo();
                 damageable.TakeDamage(5);
             }
         }

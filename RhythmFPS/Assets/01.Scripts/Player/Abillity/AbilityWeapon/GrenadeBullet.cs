@@ -44,6 +44,7 @@ public class GrenadeBullet : PoolableMono
                         movement.isAddDir = true;
                         movement.AddForce((movement.transform.position+Vector3.up*0.5f - transform.position).normalized * (Vector3.Distance(movement.transform.position, transform.position) + 5));
                         Debug.Log(damageable);
+                        continue;
                     }
                     damageable.TakeDamage(5);
                 }

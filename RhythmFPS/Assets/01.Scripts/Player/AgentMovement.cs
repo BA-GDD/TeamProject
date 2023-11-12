@@ -20,7 +20,6 @@ public class AgentMovement : MonoBehaviour
 
     [SerializeField] private LayerMask _whatIsGround;
     [SerializeField] private MMF_Player _feedbackPlayer;
-    [SerializeField] public CapsuleCollider _col = new();
 
     public float speed;
     public bool canMove = true;
