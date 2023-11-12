@@ -18,6 +18,9 @@ public class UIHud : MonoBehaviour
     [Header("나가기 UI")]
     [SerializeField] private ExitPanel _exitPanel;
 
+    [Header("게임 오버 패널")]
+    [SerializeField] private GameObject _gameOverPanel;
+
     [Header("씬 UI")]
     [SerializeField] private List<GameObject> _sceneUIList = new List<GameObject>();
 
@@ -53,6 +56,11 @@ public class UIHud : MonoBehaviour
         op.transform.localPosition = Vector3.zero;
         op.gameObject.name = "OptionPanel";
         op.OpenPanel();
+    }
+    [ContextMenu("게임 오버 패널 활성화")]
+    public void ActiveGameOverPanel()
+    {
+        Instantiate(_gameOverPanel, _canvasTrm);
     }
     #endregion
 }

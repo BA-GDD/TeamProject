@@ -6,10 +6,11 @@ using DG.Tweening;
 
 public class ResultSyntex : MonoBehaviour
 {
+    [SerializeField] private GameObject _resultPanel;
     [SerializeField] private TextMeshProUGUI[] _resultTexts;
     [SerializeField] private string[] _syntextexts;
     [SerializeField] private float _textTurm;
-    [SerializeField] private Transform[] _btnTrm = new Transform[2];
+    [SerializeField] private LobbyBtn _btnTrm;
     [SerializeField] private Transform _btnGroup;
 
     public void SetSyntex(int num)
@@ -31,12 +32,10 @@ public class ResultSyntex : MonoBehaviour
         }
 
         Sequence seq = DOTween.Sequence();
-        string[] st = { "Lobby", "Next" };
-        for(int i = 0; i < _btnTrm.Length; i++)
-        {
-            Transform t = Instantiate(_btnTrm[i], _btnGroup);
-            seq.Append(t.Find($"To{st[i]}Btn").DOScale(new Vector3(1, 1, 1), 0.3f));
-            yield return new WaitForSeconds(0.4f);
-        }
+        Transform t = Instantiate(_btnTrm, _btnGroup).transform;
+        t.GetComponent<LobbyBtn>().gameOverUI = _resultPanel;
+        seq.Append(t.DOScale(new Vector3(1, 1, 1), 0.3f));
+        yield return new WaitForSeconds(0.4f);
+        
     }
 }
