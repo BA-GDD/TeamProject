@@ -35,6 +35,9 @@ public class RhythmManager : MonoBehaviour
     private float _judgementOffsetSample;
     private float _judgementPointSample;
     private float _nextSample;
+    private float _judgementNextSample;
+
+    private bool _isCanActive;
 
     private void Awake()
     {
@@ -45,6 +48,7 @@ public class RhythmManager : MonoBehaviour
 
         instance = this;
         _musicAudioSource.clip = _musicDataSO.music;
+        _isCanActive = true;
     }
 
     private void Start()
@@ -54,6 +58,7 @@ public class RhythmManager : MonoBehaviour
         _judgementRangeSample = _musicAudioSource.clip.frequency * (_judgementRangeFrame / 60f);
         _judgementOffsetSample = _musicAudioSource.clip.frequency * (_judgementOffsetFrame / 60f);
         _nextSample = _musicAudioSource.clip.frequency * _musicDataSO.offset;
+        _judgementNextSample = _nextSample + _judgementRangeSample;
 
         StartCoroutine(PlayMusic());
     }
@@ -65,6 +70,12 @@ public class RhythmManager : MonoBehaviour
             onNotedTimeEvent?.Invoke();
             StartCoroutine(PlayMetronome());
         }
+
+        if (_musicAudioSource.timeSamples >= _judgementNextSample)
+        {
+            _judgementNextSample = _nextSample + _judgementRangeSample;
+            _isCanActive = true;
+        }
     }
 
     /// <summary>
@@ -72,11 +83,12 @@ public class RhythmManager : MonoBehaviour
     /// </summary>
     public bool Judgement()
     {
+        if (_isCanActive == false) return false;
         _judgementPointSample = _musicAudioSource.timeSamples - _judgementOffsetSample;
         bool isOnTiming = Mathf.Min(-(_nextSample - _samplePerTime - _judgementPointSample), -(_judgementPointSample - _nextSample)) <= _judgementRangeSample;
 
         if (isOnTiming == false) ComboManager.Instance.ResetCombo();
-
+        if (isOnTiming == true) _isCanActive = false;
         return isOnTiming;
     }
 
