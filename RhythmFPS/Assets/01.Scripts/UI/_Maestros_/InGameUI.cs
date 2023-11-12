@@ -23,6 +23,8 @@ public class InGameUI : MonoBehaviour
         UIManager.Instanace.HandleShootGun += _bulletCount.FireBullet;
         UIManager.Instanace.HandleReload += _bulletCount.ReChargingBullet;
         UIManager.Instanace.HandleGameClear += UIManager.Instanace.UIHud.ActiveResultPanel;
+
+        UIManager.Instanace.HandleInGameStartEvent?.Invoke(0.375f);
     }
 
     private void OnDestroy()

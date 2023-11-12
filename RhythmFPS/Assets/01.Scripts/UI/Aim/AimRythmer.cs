@@ -25,5 +25,4 @@ public class AimRythmer : MonoBehaviour
             yield return new WaitForSeconds(turm);
         }
     }
-
 }
