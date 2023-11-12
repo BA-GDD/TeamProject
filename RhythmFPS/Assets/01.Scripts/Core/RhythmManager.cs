@@ -29,8 +29,6 @@ public class RhythmManager : MonoBehaviour
     private float _judgementRangeFrame;
     [SerializeField, Tooltip("만약 판정 함수를 호출하면, 오프셋 프레임만큼 빠르게 계산해서 판정됩니다.")]
     private float _judgementOffsetFrame;
-    private int _comboCount;
-    public int ComboCount => _comboCount;
     private float _durationPerTime;
     private float _samplePerTime;
     private float _judgementRangeSample;
@@ -72,19 +70,12 @@ public class RhythmManager : MonoBehaviour
     /// <summary>
     /// 판정 여부 리턴: 정해진 박자에서 설정된 프레임 오차 내 호출 시 true, 아니면 false
     /// </summary>
-    public bool Judgement(RhythmAction action, bool canPlusCombo = false)
+    public bool Judgement()
     {
         _judgementPointSample = _musicAudioSource.timeSamples - _judgementOffsetSample;
         bool isOnTiming = Mathf.Min(-(_nextSample - _samplePerTime - _judgementPointSample), -(_judgementPointSample - _nextSample)) <= _judgementRangeSample;
 
-        if (action == RhythmAction.Shoot && isOnTiming && canPlusCombo)
-        {
-            _comboCount++;
-        }
-        else
-        {
-            _comboCount = 0;
-        }
+        if (isOnTiming == false) ComboManager.Instance.ResetCombo();
 
         return isOnTiming;
     }
