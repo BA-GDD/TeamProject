@@ -5,23 +5,23 @@ using System;
 
 public class UIHud : MonoBehaviour
 {
-    [Header("Äµ¹ö½º Æ®·£½ºÆû")]
+    [Header("Äµï¿½ï¿½ï¿½ï¿½ Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
     [SerializeField] private Transform _canvasTrm;
 
-    [Header("°á°ú ÆÐ³Î")]
+    [Header("ï¿½ï¿½ï¿½ ï¿½Ð³ï¿½")]
     [SerializeField] private Vector3 _resultPanelCreatePos;
     [SerializeField] private ResultUI _resultPanel;
 
-    [Header("¿É¼Ç ÆÐ³Î")]
+    [Header("ï¿½É¼ï¿½ ï¿½Ð³ï¿½")]
     [SerializeField] private OptionPanel _optionPanel;
 
-    [Header("³ª°¡±â UI")]
+    [Header("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ UI")]
     [SerializeField] private ExitPanel _exitPanel;
 
-    [Header("°ÔÀÓ ¿À¹ö ÆÐ³Î")]
+    [Header("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ð³ï¿½")]
     [SerializeField] private GameObject _gameOverPanel;
 
-    [Header("¾À UI")]
+    [Header("ï¿½ï¿½ UI")]
     [SerializeField] private List<GameObject> _sceneUIList = new List<GameObject>();
 
     public void UIChange(UISceneType toChangeScene)
@@ -33,13 +33,20 @@ public class UIHud : MonoBehaviour
         UIManager.Instanace.currentSceneType = toChangeScene;
     }
 
-    #region ÆÐ³Î È°¼ºÈ­
-    [ContextMenu("³ª°¡±â ÆÐ³Î È°¼ºÈ­")]
+    private void Update()
+    {
+        /*if(Input.GetKeyDown(KeyCode.Space))
+        {
+            ActiveResultPanel(1, 1, 1);
+        }*/
+    }
+    #region ï¿½Ð³ï¿½ È°ï¿½ï¿½È­
+    [ContextMenu("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ð³ï¿½ È°ï¿½ï¿½È­")]
     public void ActiveGameExitPanel()
     {
         Instantiate(_exitPanel, _canvasTrm).SetupPanel(UIManager.Instanace.currentSceneType);
     }
-    [ContextMenu("¸®ÀýÆ® ÆÐ³Î È°¼ºÈ­")]
+    [ContextMenu("ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ð³ï¿½ È°ï¿½ï¿½È­")]
     public void ActiveResultPanel(int combo, float clearTime, float dealDamage)
     {
         float score = clearTime * combo + dealDamage;
@@ -49,7 +56,7 @@ public class UIHud : MonoBehaviour
         ru.gameObject.name = "Result";
         ru.ActiveResultPanel(score, combo, clearTime, dealDamage);
     }
-    [ContextMenu("¿É¼Ç ÆÐ³Î È°¼ºÈ­")]
+    [ContextMenu("ï¿½É¼ï¿½ ï¿½Ð³ï¿½ È°ï¿½ï¿½È­")]
     public void ActiveOptionPanel()
     {
         OptionPanel op = Instantiate(_optionPanel, _canvasTrm);
@@ -57,7 +64,7 @@ public class UIHud : MonoBehaviour
         op.gameObject.name = "OptionPanel";
         op.OpenPanel();
     }
-    [ContextMenu("°ÔÀÓ ¿À¹ö ÆÐ³Î È°¼ºÈ­")]
+    [ContextMenu("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ð³ï¿½ È°ï¿½ï¿½È­")]
     public void ActiveGameOverPanel()
     {
         Instantiate(_gameOverPanel, _canvasTrm);

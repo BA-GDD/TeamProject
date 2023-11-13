@@ -63,6 +63,7 @@ Material:
     m_Floats:
     - Use_Custom: 0
     - _AlphaCutoff: 0.5
+    - _CULL: 0
     - _Ceil_Count: 2.81
     - _DissTex_UPanner: 0.19
     - _DissTex_VPanner: 0.44
