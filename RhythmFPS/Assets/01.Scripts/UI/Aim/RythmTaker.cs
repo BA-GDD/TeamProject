@@ -5,6 +5,10 @@ using DG.Tweening;
 
 public class RythmTaker : PoolableMono
 {
+    public float matchTime;
+    [SerializeField] private Transform _markLeftTrm;
+    [SerializeField] private Transform _markRighttTrm;
+
     public override void Init()
     {
 
@@ -12,12 +16,15 @@ public class RythmTaker : PoolableMono
 
     private void Start()
     {
+        float time = UIManager.Instanace.rhythmTurm;
         Sequence seq = DOTween.Sequence();
-        seq.Append(transform.DOScale(new Vector3(0.8f, 0.8f, 1), 0.375f));
-        seq.Join(transform.DOLocalRotate(new Vector3(0, 0, 90), 0.375f));
+        seq.Join(_markLeftTrm.DOLocalMoveX(50, matchTime));
+        seq.Join(_markRighttTrm.DOLocalMoveX(-50, matchTime));
+        seq.Join(transform.DOScale(0.7f, time));
         seq.AppendCallback(() =>
         {
-            PoolManager.Instance.Push(this); // 풀매니저 연결
+            Destroy(this.gameObject);
+            //PoolManager.Instance.Push(this); // 풀매니저 연결
         });
     }
 }
