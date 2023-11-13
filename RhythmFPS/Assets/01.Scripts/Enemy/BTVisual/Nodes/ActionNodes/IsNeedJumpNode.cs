@@ -25,8 +25,8 @@ public class IsNeedJumpNode : ActionNode
         {
             Collider[] colliders = Physics.OverlapSphere((brain as BossBrain).jumpUpCheckPos.position, 1.5f, _groundLayerMask);
             if (colliders.Length > 0
-            && Vector3.Distance(brain.transform.position, GameManager.instance.playerTransform.position) >= 6f
-            && Mathf.Abs((GameManager.instance.playerTransform.position.y - brain.transform.position.y)) >= 6f)
+            && Vector3.Distance(brain.transform.position, GameManager.instance.PlayerTransform.position) >= 6f
+            && Mathf.Abs((GameManager.instance.PlayerTransform.position.y - brain.transform.position.y)) >= 6f)
             {
                 Debug.Log("위로 점프해야함");
                 (brain as BossBrain).isOnTheRoof = true;
@@ -37,8 +37,8 @@ public class IsNeedJumpNode : ActionNode
         {
             Collider[] colliders = Physics.OverlapSphere((brain as BossBrain).jumpUpCheckPos.position, 1f, _groundLayerMask);
             if (colliders.Length <= 0
-            && Vector3.Distance(brain.transform.position, GameManager.instance.playerTransform.position) >= 6f
-            && Mathf.Abs((GameManager.instance.playerTransform.position.y - brain.transform.position.y)) >= 6f)
+            && Vector3.Distance(brain.transform.position, GameManager.instance.PlayerTransform.position) >= 6f
+            && Mathf.Abs((GameManager.instance.PlayerTransform.position.y - brain.transform.position.y)) >= 6f)
             {
                 Debug.Log("아래로 점프해야함");
                 (brain as BossBrain).isOnTheRoof = false;

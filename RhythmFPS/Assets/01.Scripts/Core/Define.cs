@@ -1,8 +1,13 @@
 using UnityEngine;
 
 namespace Core{
-    public enum StateType{
+    public enum PlayerType{
         Normal = 0,
+    }
+    public enum SceneNames
+    {
+        intro,
+        main
     }
     public class Define{
         private static Camera mainCam = null;

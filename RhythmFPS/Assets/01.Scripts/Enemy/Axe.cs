@@ -17,7 +17,7 @@ public class Axe : MonoBehaviour
 
     private void Update()
     {
-        transform.LookAt(GameManager.instance.playerTransform);
+        transform.LookAt(GameManager.instance.PlayerTransform);
         _rb.velocity = transform.forward * _speed;
 
         Collider[] colliders = Physics.OverlapSphere(transform.position, 2f, _playerLayerMask);

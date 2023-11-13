@@ -18,7 +18,7 @@ public class JumpNode : ActionNode
         //(brain as BossBrain).isMove = false;
         brain.gameObject.GetComponent<NavMeshAgent>().enabled = false;
         Debug.Log($"온 스타트에서: {brain.gameObject.GetComponent<NavMeshAgent>().enabled}");
-        _targetPos = GameManager.instance.playerTransform.position;
+        _targetPos = GameManager.instance.PlayerTransform.position;
     }
 
     protected override void OnStop()
@@ -34,7 +34,7 @@ public class JumpNode : ActionNode
         if (!_alreadyJump)
         {
             Debug.Log($"업데이트: {brain.gameObject.GetComponent<NavMeshAgent>().enabled}");
-            (brain as BossBrain).transform.LookAt(GameManager.instance.playerTransform);
+            (brain as BossBrain).transform.LookAt(GameManager.instance.PlayerTransform);
             (brain as BossBrain).transform.DOJump(_targetPos, _jumpPower + 20, 1, 1.7f);
             _alreadyJump = true;
         }

@@ -20,5 +20,6 @@ public class PlayerHealth : AgentHealth
     public override void Die()
     {
         dieEvent?.Invoke();
+        UIManager.Instanace.HandleGameOver?.Invoke();
     }
 }

@@ -44,7 +44,7 @@ public abstract class EnemyBrain : MonoBehaviour
     {
         agent.isStopped = false;
 
-        agent.SetDestination(GameManager.instance.playerTransform.position);
+        agent.SetDestination(GameManager.instance.PlayerTransform.position);
     }
 
     public virtual void StopChase()

@@ -408,7 +408,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolingList: {fileID: 11400000, guid: 1979df523f28da94da39ec06ff016f2a, type: 2}
-  playerTransform: {fileID: 0}
+  difficult: 0
 --- !u!4 &453906674
 Transform:
   m_ObjectHideFlags: 0
@@ -459,6 +459,7 @@ MonoBehaviour:
   UIHud: {fileID: 1586702370}
   currentSceneType: 1
   currentSceneObject: {fileID: 0}
+  rhythmTurm: 0
   _spectrumNormalValue: 0
   bgm_SpectrumSizeValue: 0
   sfx_SpectrumSizeValue: 0

@@ -1,13 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using Core;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
     public PoolingListSO poolingList;
-    [HideInInspector]
-    public Transform playerTransform;
+
+    private Transform _playerTransform;
+    public Transform PlayerTransform 
+    { get
+        {
+            if(_playerTransform == null)
+                _playerTransform = FindAnyObjectByType<AgentController>().transform;
+            if (_playerTransform == null)
+                Debug.LogError("player Is Not have this Scene");//영어 알빠노
+            return _playerTransform;
+        }
+    }
+
+    public DifficultyType difficult;
 
     private void Awake()
     {
@@ -25,14 +40,23 @@ public class GameManager : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
         //Debug
-        GameStart();
+        
     }
 
+    private void Update()
+    {
+        if (Keyboard.current.kKey.wasPressedThisFrame)
+        {
+            GameStart(DifficultyType.normal);
+        }
+    }
     /// <summary>
     /// ���� ���� �۾�
     /// </summary>
-    public void GameStart()
+    public void GameStart(DifficultyType stageDifficult)
     {
+        difficult = stageDifficult;
+        SceneManager.LoadScene(SceneNames.main.ToString());
         //playerTransform = FindAnyObjectByType<AgentController>().transform;
 
         //if (!playerTransform)
@@ -55,6 +79,5 @@ public class GameManager : MonoBehaviour
     public void GameRestart()
     {
         //����� �� �ʿ��� �� �ʱ�ȭ
-        GameStart();
     }
 }

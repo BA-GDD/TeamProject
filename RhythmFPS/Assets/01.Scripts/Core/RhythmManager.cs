@@ -105,7 +105,7 @@ public class RhythmManager : MonoBehaviour
     private IEnumerator PlayMusic()
     {
         yield return null;
-        UIManager.Instanace.HandleInGameStartEvent?.Invoke(0.375f);
+        UIManager.Instanace.HandleInGameStartEvent?.Invoke();
         _musicAudioSource.Play();
     }
 }
