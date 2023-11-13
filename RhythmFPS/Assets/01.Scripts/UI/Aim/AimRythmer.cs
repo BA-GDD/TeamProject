@@ -21,7 +21,9 @@ public class AimRythmer : MonoBehaviour
     {
         while (true)
         {
-            PoolManager.Instance.Pop("RhythmTaker");
+            RythmTaker taker = PoolManager.Instance.Pop("RhythmTaker") as RythmTaker;
+            taker.transform.SetParent(transform.parent);
+            taker.transform.position = transform.position;
             yield return new WaitForSeconds(turm);
         }
     }

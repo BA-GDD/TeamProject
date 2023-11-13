@@ -7,7 +7,7 @@ public class RythmTaker : PoolableMono
 {
     public override void Init()
     {
-
+        transform.localScale = Vector3.one;
     }
 
     private void Start()
@@ -17,7 +17,7 @@ public class RythmTaker : PoolableMono
         seq.Join(transform.DOLocalRotate(new Vector3(0, 0, 90), 0.375f));
         seq.AppendCallback(() =>
         {
-            PoolManager.Instance.Push(this); // 풀매니저 연결
+            PoolManager.Instance.Push(this);
         });
     }
 }

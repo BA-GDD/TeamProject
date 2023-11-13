@@ -33,12 +33,12 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void GameStart()
     {
-        playerTransform = FindAnyObjectByType<AgentController>().transform;
+        //playerTransform = FindAnyObjectByType<AgentController>().transform;
 
-        if (!playerTransform)
-        {
-            Debug.LogError("Any player is not exist in game!");
-        }
+        //if (!playerTransform)
+        //{
+        //    Debug.LogError("Any player is not exist in game!");
+        //}
     }
 
     /// <summary>

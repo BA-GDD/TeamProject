@@ -11,13 +11,12 @@ public class SimpleWeapon : Weapon
         _currentBullet = _maxBullet;
     }
 
-    public override void Fire()
+    public override bool Fire()
     {
 
         if (_currentBullet <= 0)
         {
-            lackOfAmmoEvent?.Invoke();
-            return;
+            return false;
         }
         if (isReadyReload == true)
         {
@@ -39,7 +38,7 @@ public class SimpleWeapon : Weapon
                 damageable.TakeDamage(5);
             }
         }
-        return;
+        return true;
     }
 
     public override void Reload()

@@ -19,8 +19,10 @@ public abstract class Weapon : MonoBehaviour
     public AnimationClip relaodClip;
     public AnimationClip reloadEndClip;
 
+    public AudioClip fireAudio;
+    public AudioClip reloadAudio;
+
     public UnityEvent fireFeedback;
-    public UnityEvent lackOfAmmoEvent;
 
 
     public virtual void Init(PlayerAnimator animator)
@@ -31,7 +33,7 @@ public abstract class Weapon : MonoBehaviour
     /// <summary>
     ///  실제 총이 발사하는 함수
     /// </summary>
-    public abstract void Fire();
+    public abstract bool Fire();
     /// <summary>
     ///  실제 총이 발사하는 장전
     /// </summary>
