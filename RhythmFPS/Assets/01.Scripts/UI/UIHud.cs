@@ -35,10 +35,10 @@ public class UIHud : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        /*if(Input.GetKeyDown(KeyCode.Space))
         {
             ActiveResultPanel(1, 1, 1);
-        }
+        }*/
     }
 
     #region 패널 활성화
