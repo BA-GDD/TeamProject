@@ -49,7 +49,7 @@ public abstract class EnemyBrain : MonoBehaviour
 
     public virtual void StopChase()
     {
-        agent.ResetPath();
+        //agent.ResetPath();
 
         agent.isStopped = true;
     }

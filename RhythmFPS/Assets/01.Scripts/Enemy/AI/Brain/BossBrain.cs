@@ -52,6 +52,7 @@ public class BossBrain : EnemyBrain
             //Debug.Log(Vector3.Distance(transform.position, GameManager.instance.playerTransform.position) <= 4f);
             if (isMove)
             {
+                Debug.Log("¿òÁ÷ÀÓ");
                 _bossAnimator.SetMove(true);
                 StartChase();
             }
