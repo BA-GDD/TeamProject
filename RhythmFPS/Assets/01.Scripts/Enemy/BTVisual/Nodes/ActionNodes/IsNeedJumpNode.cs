@@ -20,7 +20,7 @@ public class IsNeedJumpNode : ActionNode
 
     protected override State OnUpdate()
     {
-        if (GameManager.instance.playerTransform.position != brain.transform.position)
+        if (GameManager.instance.playerTransform.position.y != brain.transform.position.y)
         {
 
         }

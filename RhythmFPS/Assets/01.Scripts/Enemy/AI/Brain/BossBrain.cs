@@ -42,7 +42,7 @@ public class BossBrain : EnemyBrain
             if (timer < coolTime)
             {
                 timer += Time.deltaTime;
-            }
+            } 
             else
             {
                 isCanAttack = true;
