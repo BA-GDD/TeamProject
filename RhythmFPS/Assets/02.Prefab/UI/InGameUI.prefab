@@ -1873,6 +1873,7 @@ MonoBehaviour:
   _canvasTrm: {fileID: 0}
   _rythmTaker: {fileID: 2868550175024510421, guid: fd9c617221e8af5418c61513785ece27,
     type: 3}
+  _matChTime: 0.2
 --- !u!1 &2835882864425235297
 GameObject:
   m_ObjectHideFlags: 0
