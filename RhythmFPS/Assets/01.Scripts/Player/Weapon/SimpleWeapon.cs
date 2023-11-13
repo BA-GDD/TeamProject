@@ -19,21 +19,23 @@ public class SimpleWeapon : Weapon
             lackOfAmmoEvent?.Invoke();
             return;
         }
-        if (_isReadyReload == true)
+        if (isReadyReload == true)
         {
             _animator.SetRigBoolIsReload(false);
             _animator.SetRigTriggerReload(false);
             _animator.SetRigTriggerReloadCancel(true);
-            _isReadyReload = false;
+            isReadyReload = false;
         }
         fireFeedback?.Invoke();
+        UIManager.Instanace.HandleShootGun?.Invoke();
         print("맞음!");
         _currentBullet--;
         _animator.SetRigTriggerFIre(true);
-        if (Physics.Raycast(_cam.transform.position, _cam.transform.forward, out RaycastHit hit, 50f, _whatIsEnemy))
+        if (Physics.Raycast(_cam.transform.position, _cam.transform.forward, out RaycastHit hit, 1000f, _whatIsEnemy))
         {
             if (hit.transform.TryGetComponent<IDamageable>(out IDamageable damageable))
             {
+                ComboManager.Instance.AddCombo();
                 damageable.TakeDamage(5);
             }
         }
@@ -44,7 +46,7 @@ public class SimpleWeapon : Weapon
     {
         print("리로드");
         if (_currentBullet == _maxBullet) return;
-        if (_isReadyReload == true)
+        if (isReadyReload == true)
         {
 
             _animator.SetRigTriggerReload(true);
@@ -53,7 +55,7 @@ public class SimpleWeapon : Weapon
         else
         {
             _animator.SetRigBoolIsReload(true);
-            _isReadyReload = true;
+            isReadyReload = true;
         }
 
     }

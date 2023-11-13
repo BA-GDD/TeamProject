@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: AmplifyFX_map_border
+  m_Shader: {fileID: 4800000, guid: debd3638b311bed4891671b641fe7b52, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _diss_tex:
+        m_Texture: {fileID: 2800000, guid: ba4a12fbd6ba5694ab5a6103fb816cc8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _main_tex:
+        m_Texture: {fileID: 2800000, guid: 9a1f2298cc2b36b47ad8bef108515e0a, type: 3}
+        m_Scale: {x: 5.7, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _mask_tex:
+        m_Texture: {fileID: 2800000, guid: 713aa8b93d5882747ab7febb88f5bdb7, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _noise_tex:
+        m_Texture: {fileID: 2800000, guid: 25c46e75b94d01843bca5914a73b4a66, type: 3}
+        m_Scale: {x: 5, y: 0.25}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlphaCutoff: 0.5
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _alpha_step_amount: 0.17
+    - _diss_amount: -1
+    - _main_intencity: 2.88
+    - _main_pow: 1.19
+    - _mask_pow: 1.43
+    - _noise_str: 0.041
+    - _threshold: 0
+    - use_custom: 0
+    m_Colors:
+    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _main_color: {r: 1, g: 0.39016822, b: 0.3160377, a: 0}
+    - _main_panner_speed: {r: 0, g: -0.29, b: 0, a: 0}
+    - _noise_panner_speed: {r: 0, g: -0.16, b: 0, a: 0}
+  m_BuildTextureStacks: []

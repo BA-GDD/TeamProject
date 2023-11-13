@@ -7,16 +7,22 @@ public class AimRythmer : MonoBehaviour
     [SerializeField] private Transform _canvasTrm;
     [SerializeField] private RythmTaker _rythmTaker;
 
-    private void Update()
+    private void Awake()
     {
-        if(Input.GetKeyDown(KeyCode.Q))
-        {
-            SpawnRythmTaker();
-        }
+        _canvasTrm = GameObject.Find("UICanvas").transform;
     }
 
-    public void SpawnRythmTaker()
+    public void SpawnRhythm(float turm)
     {
-        Instantiate(_rythmTaker, _canvasTrm);
+        StartCoroutine(SpawnRythmCo(turm));
+    }
+
+    public IEnumerator SpawnRythmCo(float turm)
+    {
+        while (true)
+        {
+            PoolManager.Instance.Pop("RhythmTaker");
+            yield return new WaitForSeconds(turm);
+        }
     }
 }

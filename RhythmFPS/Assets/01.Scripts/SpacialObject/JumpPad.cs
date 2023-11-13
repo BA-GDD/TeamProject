@@ -24,7 +24,7 @@ public class JumpPad : MonoBehaviour, ISpacialObject
 
     public bool CheckRequirements()
     {
-        return Physics.BoxCast(transform.position, transform.localScale * 0.5f, Vector3.up, out hitInfo, transform.rotation, 0.2f, _playerLayer);
+        return Physics.BoxCast(transform.position, transform.localScale * 0.5f, Vector3.up, out hitInfo, transform.rotation, 0.3f, _playerLayer);
     }
 #if UNITY_EDITOR
     private void OnDrawGizmosSelected()
