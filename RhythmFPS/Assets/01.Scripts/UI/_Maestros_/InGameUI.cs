@@ -10,7 +10,7 @@ public class InGameUI : MonoBehaviour
     [SerializeField] private ComboCountUI _comboCount;
     [SerializeField] private BulletCountUI _bulletCount;
     [SerializeField] private AimRythmer _aimRhyther;
-    // ¸®ÀýÆ® ÆÐ³Î ¶ç¿ì´Â ±â´É ±¸Çö ÇØ¾ßÇÔ.
+    // ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ð³ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ø¾ï¿½ï¿½ï¿½.
 
     private void Start()
     {
@@ -24,7 +24,7 @@ public class InGameUI : MonoBehaviour
         UIManager.Instanace.HandleReload += _bulletCount.ReChargingBullet;
         UIManager.Instanace.HandleGameClear += UIManager.Instanace.UIHud.ActiveResultPanel;
 
-        
+        UIManager.Instanace.HandleInGameStartEvent?.Invoke();
     }
 
     private void OnDestroy()

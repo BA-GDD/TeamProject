@@ -22,6 +22,7 @@ public class UIManager : MonoBehaviour
     public UIHud UIHud;
     public UISceneType currentSceneType;
     public GameObject currentSceneObject;
+    public float rhythmTurm;
 
     #region 어디서든 일어날 수 있는 UI 이벤트
     public Action<UISceneType> HandleUIChange; // 씬 바뀔 때 발행 할 이벤트
@@ -39,7 +40,7 @@ public class UIManager : MonoBehaviour
     #endregion
 
     #region 인게임에서 일어나는 UI 이벤트
-    public Action<float> HandleInGameStartEvent;
+    public Action HandleInGameStartEvent;
     public Action<float> HandleUseSkill; // 스킬 사용 float = cooltime
     public Action<float> HandlePlayerGetDamage; // 플레이어 데미지 입음
     public Action<float> HandleBossGetDamage; // 보스 데미지 입음
