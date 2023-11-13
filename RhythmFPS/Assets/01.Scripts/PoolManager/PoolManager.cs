@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading.Tasks;
 
 public class PoolManager
 {
@@ -33,8 +34,9 @@ public class PoolManager
         return item;
     }
 
-    public void Push(PoolableMono obj)
+    public async void Push(PoolableMono obj, int milisec)
     {
+        await Task.Delay(milisec);
         _pools[obj.name].Push(obj);
     }
 }
