@@ -22,6 +22,7 @@ public class BossBrain : EnemyBrain
 
     public Transform jumpUpCheckPos;
     public Transform jumpDownCheckPos;
+    public Transform collisionCheckPos;
 
     protected override void Awake()
     {
@@ -52,7 +53,7 @@ public class BossBrain : EnemyBrain
             //Debug.Log(Vector3.Distance(transform.position, GameManager.instance.playerTransform.position) <= 4f);
             if (isMove)
             {
-                Debug.Log("움직임");
+                //Debug.Log("움직임");
                 _bossAnimator.SetMove(true);
                 StartChase();
             }

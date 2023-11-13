@@ -623,6 +623,10 @@ MonoBehaviour:
   _playerLayerMask:
     serializedVersion: 2
     m_Bits: 2097152
+  _groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 2048
+  _rushSpeed: 5
 --- !u!114 &5798060088522783948
 MonoBehaviour:
   m_ObjectHideFlags: 0
