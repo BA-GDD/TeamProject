@@ -39,9 +39,10 @@ public class PoolManager
         _pools[obj.name].Push(obj);
     }
 
-    public async void Push(PoolableMono obj, int milisec)
+    public async void Push(PoolableMono obj, int time)
     {
-        await Task.Delay(milisec);
+        int delay = time * 1000;
+        await Task.Delay(delay);
         _pools[obj.name].Push(obj);
     }
 }
