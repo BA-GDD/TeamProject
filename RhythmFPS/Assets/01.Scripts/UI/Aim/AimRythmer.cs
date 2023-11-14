@@ -23,6 +23,7 @@ public class AimRythmer : MonoBehaviour
         //yield return new WaitForSeconds(spawnTime - _matChTime);
         while(true)
         {
+
             RythmTaker rt = PoolManager.Instance.Pop("RhythmTaker") as RythmTaker;
             Debug.Log(rt);
             rt.transform.SetParent(_canvasTrm);
