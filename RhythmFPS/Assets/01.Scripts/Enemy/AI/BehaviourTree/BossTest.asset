@@ -349,9 +349,10 @@ MonoBehaviour:
     curPattern: 0
   brain: {fileID: 0}
   description: 
-  _groundLayerMask:
+  _playerLayerMask:
     serializedVersion: 2
-    m_Bits: 2048
+    m_Bits: 2097152
+  _damage: 15
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0

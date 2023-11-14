@@ -15,7 +15,6 @@ public class SlashPatternNode : ActionNode
     {
         (brain as BossBrain).isMove = false;
         (brain as BossBrain).BossAnimator.OnAnimationTrigger += OnDamageCastHandle;
-        (brain as BossBrain).BossAnimator.SetMove(false);
         (brain as BossBrain).BossAnimator.SetAttackTrigger(true);
         (brain as BossBrain).isCanAttack = false;
     }

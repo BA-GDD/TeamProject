@@ -13,16 +13,10 @@ public class Axe : MonoBehaviour
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
-        //Destroy(gameObject, 10f);
     }
 
     private void Update()
     {
-        //Vector3 dir = GameManager.instance.playerTransform.position - transform.position;
-        //Quaternion rot = Quaternion.Euler(dir);
-        //Quaternion newRot = Quaternion.Lerp(transform.rotation, rot, 0.5f);
-        //transform.rotation.SetLookRotation(newRot.eulerAngles);
-        //transform.LookAt(GameManager.instance.playerTransform);
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(GameManager.instance.playerTransform.position - transform.position),  _rotateSpeed * Time.deltaTime);
 
         _rb.velocity = transform.forward * _speed;
@@ -31,7 +25,6 @@ public class Axe : MonoBehaviour
         if(colliders.Length > 0)
         {
             colliders[0].GetComponent<IDamageable>().TakeDamage(10);
-            Debug.Log($"던진 도끼에 맞았고 남은 체력: {colliders[0].GetComponent<AgentHealth>().CurHP}");
             Destroy(gameObject);
         }
     }

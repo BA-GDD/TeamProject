@@ -59,6 +59,8 @@ public class BossBrain : EnemyBrain
             }
             else
             {
+
+                _bossAnimator.SetMove(false);
                 StopChase();
             }
         }
@@ -74,6 +76,6 @@ public class BossBrain : EnemyBrain
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(jumpUpCheckPos.position, 1f);
+        Gizmos.DrawWireSphere(transform.position, 3f);
     }
 }
