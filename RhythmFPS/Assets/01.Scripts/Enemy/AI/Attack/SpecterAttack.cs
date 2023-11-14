@@ -17,7 +17,7 @@ public class SpecterAttack : EnemyAttack
 
             if (colliders.Length > 0 && colliders[0].TryGetComponent(out PlayerHealth playerHealth))
             {
-                playerHealth.TakeDamage(_brain.status.attackPower);
+                playerHealth.TakeDamage((int)_brain.status.attackPower);
             }
 
             _animator.SetAttackTrigger(true);

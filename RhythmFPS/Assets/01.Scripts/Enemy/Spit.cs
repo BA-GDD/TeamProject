@@ -41,7 +41,7 @@ public class Spit : MonoBehaviour
     {
         if (other.TryGetComponent(out PlayerHealth playerHealth))
         {
-            playerHealth.TakeDamage(_brain.status.attackPower);
+            playerHealth.TakeDamage((int)_brain.status.attackPower);
             _health.Die();
         }
         else if (other.gameObject.layer == _groundLayerMask)
