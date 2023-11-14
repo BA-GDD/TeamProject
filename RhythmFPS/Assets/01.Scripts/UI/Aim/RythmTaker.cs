@@ -11,10 +11,12 @@ public class RythmTaker : PoolableMono
 
     public override void Init()
     {
-
+        _markLeftTrm.localPosition = Vector3.zero;
+        _markRighttTrm.localPosition = Vector3.zero;
+        transform.localScale = Vector3.one;
     }
 
-    private void Start()
+    public void SetRhythm()
     {
         float time = UIManager.Instanace.rhythmTurm;
         Sequence seq = DOTween.Sequence();
@@ -23,8 +25,8 @@ public class RythmTaker : PoolableMono
         seq.Join(transform.DOScale(0.7f, time));
         seq.AppendCallback(() =>
         {
-            Destroy(this.gameObject);
-            //PoolManager.Instance.Push(this); // 풀매니저 연결
+            //Destroy(this.gameObject);
+            PoolManager.Instance.Push(this); // 풀매니저 연결
         });
     }
 }
