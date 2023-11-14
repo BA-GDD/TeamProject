@@ -8,6 +8,8 @@ public class MobIdleNode : ActionNode
     protected override void OnStart()
     {
         brain.StopChase();
+        (brain as MobBrain).Animator.SetIsMove(false);
+        (brain as MobBrain).Animator.SetIsAttack(false);
     }
 
     protected override void OnStop()

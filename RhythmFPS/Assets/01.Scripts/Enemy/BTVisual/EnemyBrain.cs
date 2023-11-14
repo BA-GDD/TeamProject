@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public abstract class EnemyBrain : MonoBehaviour
+public abstract class EnemyBrain : PoolableMono
 {
     //[HideInInspector]
     //public GameObject weapon;
