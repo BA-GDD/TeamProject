@@ -20,6 +20,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     public void Die()
     {
         onDieTrigger?.Invoke();
+        _brain.SetDead();
     }
 
     public void TakeDamage(int damage)

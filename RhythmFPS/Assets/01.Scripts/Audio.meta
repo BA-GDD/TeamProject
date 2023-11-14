@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:RhythmFPS/Assets/01.Scripts/Audio.meta
 guid: 92fbb33ce8b721242a587de157681e07
+========
+guid: bdb952be30d8e1243bcf87908e72f316
+>>>>>>>> origin/busung:RhythmFPS/Assets/00.Scenes/Busung/BossTestReVIve.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
