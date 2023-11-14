@@ -45,12 +45,12 @@ public abstract class EnemyBrain : PoolableMono
     {
         agent.isStopped = false;
 
-        agent.SetDestination(GameManager.instance.playerTransform.position);
+        agent.SetDestination(GameManager.instance.PlayerTransform.position);
     }
 
     public virtual void StopChase()
     {
-        agent.ResetPath();
+        //agent.ResetPath();
 
         agent.isStopped = true;
     }

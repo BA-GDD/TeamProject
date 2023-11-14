@@ -22,6 +22,7 @@ public class BossBrain : EnemyBrain
 
     public Transform jumpUpCheckPos;
     public Transform jumpDownCheckPos;
+    public Transform collisionCheckPos;
 
     protected override void Awake()
     {
@@ -52,6 +53,7 @@ public class BossBrain : EnemyBrain
             //Debug.Log(Vector3.Distance(transform.position, GameManager.instance.playerTransform.position) <= 4f);
             if (isMove)
             {
+                //Debug.Log("¿òÁ÷ÀÓ");
                 _bossAnimator.SetMove(true);
                 StartChase();
             }
@@ -67,6 +69,7 @@ public class BossBrain : EnemyBrain
         base.SetDead();
         _bossAnimator.StopAnimation(true);
         _bossAnimator.SetDead();
+        UIManager.Instanace.HandleGameClear(10,10,10);
     }
 
     private void OnDrawGizmos()

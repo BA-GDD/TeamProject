@@ -8,6 +8,8 @@ public class WeaponEvent : MonoBehaviour
     private AgentWeapon _weapon;
     [SerializeField]
     private AgentAbility _agentAbility;
+    [SerializeField]
+    private GunSound _gunSound;
 
     public void Init(Transform rootTrm)
     {
@@ -16,6 +18,8 @@ public class WeaponEvent : MonoBehaviour
     public void PushBulletInWeapon()
     {
         _weapon.CurWeapon.AddBullet();
+        _gunSound?.PlayReloadSound();
+
         UIManager.Instanace.HandleReload?.Invoke();
     }
     public void ShotGrenade()

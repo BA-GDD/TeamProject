@@ -8,22 +8,34 @@ public class AgentWeapon : MonoBehaviour
     [SerializeField] private Weapon _curWeapon;
     public Weapon CurWeapon => _curWeapon;
     private PlayerAnimator _animator;
-
+    private GunSound _gunSound;
 
     private void Awake()
     {
         _animator = transform.Find("Visual").GetComponent<PlayerAnimator>();
+        _gunSound = transform.Find("GunSound").GetComponent<GunSound>();
         _curWeapon?.Init(_animator);
+    }
+    private void Start()
+    {
+        
     }
     public void Active()
     {
         if (RhythmManager.instance.Judgement() == false) return;
-        _curWeapon?.Fire();
+        bool? isAttack = _curWeapon?.Fire();
+        if (isAttack.Value == true)
+        {
+            _gunSound?.PlayFireSound();
+        }
+        else
+        {
+            _gunSound?.PlayLackOfAmmoSound();
+        }
     }
     public void Reload()
     {
         if (RhythmManager.instance.Judgement() == false) return;
-
         _curWeapon?.Reload();
     }
     public bool GetCurWeaponReloading()

@@ -12,11 +12,11 @@ public class ExitPanel : MonoBehaviour
     [SerializeField] private float _easingTime = 0.4f;
     [SerializeField] private Button _acceptBtn;
 
-    public void SetupPanel(UISceneType sceneT)
+    public void SetupPanel(SceneType sceneT)
     {
         _panel.DOLocalMoveY(0, _easingTime);
 
-        if(sceneT == UISceneType.inGame)
+        if(sceneT == SceneType.inGame)
         {
             _synteText.text = "로비로 퇴장하시겠습니까?\n현재 진행 상황이 저장되지 않습니다.";
             _acceptBtn.onClick.AddListener(ToLobby);
@@ -30,7 +30,7 @@ public class ExitPanel : MonoBehaviour
 
     private void ToLobby()
     {
-        UIManager.Instanace.HandleUIChange?.Invoke(UISceneType.lobby);
+        UIManager.Instanace.HandleUIChange?.Invoke(SceneType.lobby);
         Destroy(_panel.parent.gameObject);
     }
 

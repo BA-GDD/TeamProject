@@ -148,7 +148,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: e721ac6d10c13d94c9844fdde4d26341
-  position: {x: -369.37064, y: 657.5999}
+  position: {x: -369.59988, y: 657.60004}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     enemySpotPosition: {x: 0, y: 0, z: 0}
@@ -623,6 +623,10 @@ MonoBehaviour:
   _playerLayerMask:
     serializedVersion: 2
     m_Bits: 2097152
+  _groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 2048
+  _rushSpeed: 5
 --- !u!114 &5798060088522783948
 MonoBehaviour:
   m_ObjectHideFlags: 0

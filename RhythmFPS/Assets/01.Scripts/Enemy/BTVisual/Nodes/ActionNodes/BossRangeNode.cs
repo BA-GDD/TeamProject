@@ -19,6 +19,6 @@ public class BossRangeNode : ActionNode
 
     protected override State OnUpdate()
     {
-        return Vector3.Distance(brain.transform.position, GameManager.instance.playerTransform.position) > _distance ? State.FAILURE : State.SUCCESS;
+        return Vector3.Distance(brain.transform.position, GameManager.instance.PlayerTransform.position) > _distance ? State.FAILURE : State.SUCCESS;
     }
 }

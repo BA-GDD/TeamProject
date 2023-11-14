@@ -12,13 +12,11 @@ public abstract class SpectrumBase : MonoBehaviour
 
     private void OnEnable()
     {
+        _audioSur = RhythmManager.instance.musicAudioSource;
         for (int i = 0; i < _visualGroup.Length; i++)
         {
             _visualGroup[i].sizeDelta = _startSizeDelta;
         }
-
-        _audioSur = GameObject.Find("AudioAmple").GetComponent<AudioSource>();
-        Debug.Log(_audioSur);
     }
 
     private void Update()

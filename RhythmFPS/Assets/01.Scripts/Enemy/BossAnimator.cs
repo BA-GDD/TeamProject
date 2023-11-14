@@ -18,6 +18,16 @@ public class BossAnimator : MonoBehaviour
     private Animator _animator;
     public Animator Animator => _animator;
 
+    public void OnAnimationStop()
+    {
+        _animator.speed = 0;
+    }
+
+    public void OnAnimationPlay()
+    {
+        _animator.speed = 1;
+    }
+
     public void OnAnimationEvent()
     {
         OnAnimationTrigger?.Invoke();

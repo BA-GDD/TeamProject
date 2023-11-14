@@ -288,9 +288,9 @@ GameObject:
   - component: {fileID: 6218048080005171093}
   - component: {fileID: 3459591793323917656}
   - component: {fileID: 5596668995512827724}
-  - component: {fileID: 407774486498850099}
-  - component: {fileID: 4981482719388153668}
   - component: {fileID: 7279824098773928275}
+  - component: {fileID: 4981482719388153668}
+  - component: {fileID: 407774486498850099}
   - component: {fileID: 8932839101370841661}
   m_Layer: 0
   m_Name: Stage1Boss
@@ -359,38 +359,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brain: {fileID: 3459591793323917656}
   tree: {fileID: 11400000, guid: 3b9503a82ce187f4d8dde016dd1e4f7a, type: 2}
---- !u!114 &407774486498850099
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1035948519069391948}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1455cf3e3f789a4b89e61da052de567, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onHitTrigger:
-    m_PersistentCalls:
-      m_Calls: []
-  onDieTrigger:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &4981482719388153668
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1035948519069391948}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2ef9702762dcc24283e3c1bb671744f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isAnimationClipEnd: 0
-  _animator: {fileID: 7279824098773928275}
 --- !u!95 &7279824098773928275
 Animator:
   serializedVersion: 5
@@ -412,6 +380,38 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4981482719388153668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1035948519069391948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2ef9702762dcc24283e3c1bb671744f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAnimationClipEnd: 0
+  _animator: {fileID: 7279824098773928275}
+--- !u!114 &407774486498850099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1035948519069391948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1455cf3e3f789a4b89e61da052de567, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onHitTrigger:
+    m_PersistentCalls:
+      m_Calls: []
+  onDieTrigger:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!195 &8932839101370841661
 NavMeshAgent:
   m_ObjectHideFlags: 0
