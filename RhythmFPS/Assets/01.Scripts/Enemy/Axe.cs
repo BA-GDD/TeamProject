@@ -23,7 +23,7 @@ public class Axe : MonoBehaviour
         //Quaternion newRot = Quaternion.Lerp(transform.rotation, rot, 0.5f);
         //transform.rotation.SetLookRotation(newRot.eulerAngles);
         //transform.LookAt(GameManager.instance.playerTransform);
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(GameManager.instance.playerTransform.position - transform.position),  _rotateSpeed * Time.deltaTime);
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(GameManager.instance.PlayerTransform.position - transform.position),  _rotateSpeed * Time.deltaTime);
 
         _rb.velocity = transform.forward * _speed;
 

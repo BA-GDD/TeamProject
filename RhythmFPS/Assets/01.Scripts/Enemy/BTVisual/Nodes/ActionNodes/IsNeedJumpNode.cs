@@ -22,7 +22,7 @@ public class IsNeedJumpNode : ActionNode
     protected override State OnUpdate()
     {
         NavMeshPath path = new NavMeshPath();
-        brain.agent.CalculatePath(GameManager.instance.playerTransform.position, path);
+        brain.agent.CalculatePath(GameManager.instance.PlayerTransform.position, path);
         if(path.status == NavMeshPathStatus.PathPartial)
         {
             Debug.Log("점프해야함");

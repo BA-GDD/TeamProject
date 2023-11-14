@@ -19,7 +19,7 @@ public class RushPatternNode : ActionNode
         (brain as BossBrain).BossAnimator.SetMove(false);
         (brain as BossBrain).BossAnimator.SetAttackTrigger(true);
         (brain as BossBrain).isCanAttack = false;
-        _targetDir = (GameManager.instance.playerTransform.position - brain.transform.position).normalized;
+        _targetDir = (GameManager.instance.PlayerTransform.position - brain.transform.position).normalized;
         //(brain as BossBrain).agent.enabled = false;
 
     }
