@@ -68,6 +68,6 @@ public class PressAnyBtn : MonoBehaviour
             yield return new WaitForSeconds(_turm);
         }
 
-        Debug.Log("게임 스타트 로직 구현 해주새요 >.<"); // 할 수 있지?
+        UIManager.Instanace.HandleUIChange(UISceneType.lobby);
     }
 }
