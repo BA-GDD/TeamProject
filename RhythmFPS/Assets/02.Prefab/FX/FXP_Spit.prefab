@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -8841246215361629718}
   - component: {fileID: 8328147438514330037}
   - component: {fileID: 8709417335242054488}
-  m_Layer: 0
+  m_Layer: 22
   m_Name: FXP_Spit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4929,7 +4929,7 @@ GameObject:
   - component: {fileID: 2317031548536083682}
   - component: {fileID: 2238714965148359572}
   - component: {fileID: 6251530583023440143}
-  m_Layer: 0
+  m_Layer: 22
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9757,7 +9757,7 @@ GameObject:
   - component: {fileID: 3112586696803008294}
   - component: {fileID: 939343928788634690}
   - component: {fileID: 3989386853345577590}
-  m_Layer: 0
+  m_Layer: 22
   m_Name: Projectile_8
   m_TagString: Untagged
   m_Icon: {fileID: 0}

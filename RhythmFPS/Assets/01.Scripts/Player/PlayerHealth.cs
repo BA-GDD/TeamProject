@@ -11,7 +11,7 @@ public class PlayerHealth : AgentHealth
     {
         _curHP = _maxHP;
     }
-    public override void TakeDamage(int damage)
+    public override void TakeDamage(float damage)
     {
         hitEvent?.Invoke();
         base.TakeDamage(damage);
@@ -20,5 +20,6 @@ public class PlayerHealth : AgentHealth
     public override void Die()
     {
         dieEvent?.Invoke();
+        UIManager.Instanace.HandleGameOver?.Invoke();
     }
 }

@@ -15,7 +15,7 @@ public class DieNode : ActionNode
 
     protected override State OnUpdate()
     {
-        brain.enemyHealth.Die();
+        brain.health.Die();
         return State.SUCCESS;
     }
 }

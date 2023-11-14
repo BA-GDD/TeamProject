@@ -1,7 +1,7 @@
 using UnityEngine;
 
 namespace Core{
-    public enum StateType{
+    public enum PlayerType{
         Normal = 0,
     }
     public class Define{

@@ -6,7 +6,8 @@ public class LobbyBtn : GameOverBtn
 {
     public override void ClickLogic()
     {
-        UIManager.Instanace.HandleUIChange?.Invoke(UISceneType.lobby);
+        GameManager.instance.SceneChange(SceneType.lobby);
+        //UIManager.Instanace.HandleUIChange?.Invoke(SceneType.lobby);
         Destroy(gameOverUI);
     }
 }

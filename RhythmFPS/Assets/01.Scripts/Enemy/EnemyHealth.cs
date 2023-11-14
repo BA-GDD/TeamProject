@@ -23,12 +23,10 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         _brain.SetDead();
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
-        Debug.Log($"보스 남은 체력: {_currentHitPoint}");
-        
-        _currentHitPoint = Mathf.Clamp(_currentHitPoint - damage, 0, _brain.status.maxHitPoint);
-        UIManager.Instanace.HandleBossGetDamage(damage);
+        _currentHitPoint -= damage;
+        Debug.Log($"남은 체력: {_currentHitPoint}");
         onHitTrigger?.Invoke();
         if(_currentHitPoint <= 0)
         {

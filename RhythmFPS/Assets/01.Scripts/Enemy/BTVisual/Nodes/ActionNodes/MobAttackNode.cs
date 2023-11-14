@@ -8,6 +8,8 @@ public class MobAttackNode : ActionNode
     protected override void OnStart()
     {
         brain.StopChase();
+        (brain as MobBrain).Animator.SetIsMove(false);
+        (brain as MobBrain).Animator.SetIsAttack(true);
     }
 
     protected override void OnStop()
@@ -17,7 +19,9 @@ public class MobAttackNode : ActionNode
 
     protected override State OnUpdate()
     {
-        brain.Attack();
+        brain.transform.rotation = Quaternion.LookRotation(GameManager.instance.PlayerTransform.position - brain.transform.position);
+
+        brain.attack.Attack();
 
         return State.SUCCESS;
     }

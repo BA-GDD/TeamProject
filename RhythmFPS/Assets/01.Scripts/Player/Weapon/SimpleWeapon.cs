@@ -11,13 +11,12 @@ public class SimpleWeapon : Weapon
         _currentBullet = _maxBullet;
     }
 
-    public override void Fire()
+    public override bool Fire()
     {
 
         if (_currentBullet <= 0)
         {
-            lackOfAmmoEvent?.Invoke();
-            return;
+            return false;
         }
         if (isReadyReload == true)
         {
@@ -35,11 +34,12 @@ public class SimpleWeapon : Weapon
         {
             if (hit.transform.TryGetComponent<IDamageable>(out IDamageable damageable))
             {
+                print("Àû °¨Áö");
                 ComboManager.Instance.AddCombo();
-                damageable.TakeDamage(5);
+                damageable.TakeDamage(5f);
             }
         }
-        return;
+        return true;
     }
 
     public override void Reload()

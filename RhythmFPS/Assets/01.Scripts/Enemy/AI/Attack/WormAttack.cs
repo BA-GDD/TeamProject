@@ -24,6 +24,6 @@ public class WormAttack : EnemyAttack
         PoolableMono spit = PoolManager.Instance.Pop("FXP_Spit");
         spit.GetComponent<Spit>().Brain = _brain;
         spit.transform.position = _spitPosition.position;
-        spit.transform.rotation = Quaternion.LookRotation(GameManager.instance.playerTransform.position - transform.position);
+        spit.transform.rotation = Quaternion.LookRotation(GameManager.instance.PlayerTransform.position - transform.position);
     }
 }
