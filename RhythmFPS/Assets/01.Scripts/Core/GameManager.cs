@@ -56,7 +56,9 @@ public class GameManager : MonoBehaviour
     public void GameStart(DifficultyType stageDifficult)
     {
         difficult = stageDifficult;
-        SceneManager.LoadScene(SceneNames.main.ToString());
+
+        SceneChange(SceneType.inGame);
+
         //playerTransform = FindAnyObjectByType<AgentController>().transform;
 
         //if (!playerTransform)
@@ -65,6 +67,21 @@ public class GameManager : MonoBehaviour
         //}
     }
 
+    /// <summary>
+    /// 이새끼가 씬 바꾸는 녀석임 코루틴 실행 실킬겨
+    /// </summary>
+    /// <param name="sceneType"></param>
+    public void SceneChange(SceneType sceneType)
+    {
+        StartCoroutine(SceneChangeCor(sceneType));
+    }
+
+    private IEnumerator SceneChangeCor(SceneType sceneType)
+    {
+        AsyncOperation async =  SceneManager.LoadSceneAsync(sceneType.ToString());
+        yield return new WaitUntil(() => async.isDone);
+        UIManager.Instanace.HandleUIChange(sceneType);
+    }
     /// <summary>
     /// ���� ���� �۾�
     /// </summary>

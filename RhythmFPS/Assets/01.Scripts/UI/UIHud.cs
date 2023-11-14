@@ -24,7 +24,7 @@ public class UIHud : MonoBehaviour
     [Header("�� UI")]
     [SerializeField] private List<GameObject> _sceneUIList = new List<GameObject>();
 
-    public void UIChange(UISceneType toChangeScene)
+    public void UIChange(SceneType toChangeScene)
     {
         if(UIManager.Instanace.currentSceneObject != null)
             Destroy(UIManager.Instanace.currentSceneObject);

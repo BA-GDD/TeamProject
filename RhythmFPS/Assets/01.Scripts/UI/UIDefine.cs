@@ -4,7 +4,7 @@ public enum SoundType
     sfx
 }
 
-public enum UISceneType
+public enum SceneType
 {
     title,
     lobby,
