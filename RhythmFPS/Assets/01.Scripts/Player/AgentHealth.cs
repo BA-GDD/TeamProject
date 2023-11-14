@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class AgentHealth : MonoBehaviour,IDamageable
 {
-    protected int _curHP;
-    [SerializeField]protected int _maxHP;
+    protected float _curHP;
+    [SerializeField]protected float _maxHP;
 
-    public int CurHP => _curHP;
-    public int MaxHP => _maxHP;
+    public float CurHP => _curHP;
+    public float MaxHP => _maxHP;
 
     public virtual void Die()
     {
         Destroy(gameObject);
     }
 
-    public virtual void TakeDamage(int damage)
+    public virtual void TakeDamage(float damage)
     {
         _curHP -= damage;
         if(_curHP <= 0)

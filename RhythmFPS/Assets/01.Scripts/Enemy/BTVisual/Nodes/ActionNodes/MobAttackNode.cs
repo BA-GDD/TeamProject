@@ -19,11 +19,9 @@ public class MobAttackNode : ActionNode
 
     protected override State OnUpdate()
     {
-        Vector3 lookRotation = GameManager.instance.playerTransform.position - brain.transform.position;
-        lookRotation.y = 0f;
-        brain.transform.rotation = Quaternion.Slerp(brain.transform.rotation, Quaternion.LookRotation(lookRotation), Time.deltaTime * 10f);
+        brain.transform.rotation = Quaternion.LookRotation(GameManager.instance.playerTransform.position - brain.transform.position);
 
-        brain.Attack();
+        brain.attack.Attack();
 
         return State.SUCCESS;
     }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -375,12 +375,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AgentTypeID: 0
-  m_CollectObjects: 0
+  m_CollectObjects: 2
   m_Size: {x: 10, y: 10, z: 10}
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2048
   m_UseGeometry: 1
   m_DefaultArea: 0
   m_GenerateLinks: 0
@@ -2444,6 +2444,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _defaultAbility:
   - {fileID: 11400000, guid: 3d9e2634562c7fd42bd308ca23e0eb59, type: 2}
+  _abilityWeapons: []
 --- !u!114 &1089495213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2536,6 +2537,7 @@ MonoBehaviour:
   _feedbackPlayer: {fileID: 0}
   speed: 5
   canMove: 1
+  isAddDir: 0
 --- !u!114 &1089495218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2951,6 +2953,7 @@ MonoBehaviour:
   _whatIsEnemy:
     serializedVersion: 2
     m_Bits: 1
+  isReadyReload: 0
   relaodStartClip: {fileID: 7400000, guid: 030c0db644a44654093af1e3e87a16b5, type: 2}
   relaodClip: {fileID: 7400000, guid: 17b8da00b9f149f4f8aedee8dbaea1e1, type: 2}
   reloadEndClip: {fileID: 7400000, guid: ea7a03a54502f0f4fb543550aad3a276, type: 2}
@@ -3241,7 +3244,6 @@ GameObject:
   - component: {fileID: 1610362621}
   - component: {fileID: 1610362620}
   - component: {fileID: 1610362619}
-  - component: {fileID: 1610362618}
   m_Layer: 11
   m_Name: Cube
   m_TagString: Untagged
@@ -3264,37 +3266,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 216625290}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1610362618
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1610362616}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_AgentTypeID: 0
-  m_CollectObjects: 0
-  m_Size: {x: 10, y: 10, z: 10}
-  m_Center: {x: 0, y: 2, z: 0}
-  m_LayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_UseGeometry: 0
-  m_DefaultArea: 0
-  m_GenerateLinks: 0
-  m_IgnoreNavMeshAgent: 1
-  m_IgnoreNavMeshObstacle: 1
-  m_OverrideTileSize: 0
-  m_TileSize: 256
-  m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
-  m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 69facb0ec7a0cca4388d927b7fb55e04, type: 2}
-  m_BuildHeightMesh: 0
 --- !u!65 &1610362619
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3828,6 +3799,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7348e55a0b4521b4ca4b73010060a5c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  poolingList: {fileID: 11400000, guid: 1979df523f28da94da39ec06ff016f2a, type: 2}
   playerTransform: {fileID: 1089495219}
 --- !u!4 &1992126590
 Transform:

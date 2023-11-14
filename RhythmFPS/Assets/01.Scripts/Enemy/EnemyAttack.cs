@@ -4,7 +4,19 @@ using UnityEngine;
 
 public abstract class EnemyAttack : MonoBehaviour
 {
-    public abstract void Attack(int damage, Vector3 targetVector);
+    protected EnemyBrain _brain;
+    protected float _attackTimer;
 
-    public abstract void CancelAttack();
+    protected virtual void Awake()
+    {
+        _brain = transform.parent.GetComponent<EnemyBrain>();
+        _attackTimer = _brain.status.attackDelay;
+    }
+
+    protected virtual void Update()
+    {
+        _attackTimer += Time.deltaTime;
+    }
+
+    public abstract void Attack();
 }
