@@ -20,17 +20,19 @@ public class AimRythmer : MonoBehaviour
 
     IEnumerator SpawnRhythmCo(float spawnTime)
     {
-        yield return new WaitForSeconds(spawnTime - _matChTime);
+        //yield return new WaitForSeconds(spawnTime - _matChTime);
         while(true)
         {
 
-
+            RythmTaker rt = PoolManager.Instance.Pop("RhythmTaker") as RythmTaker;
+            Debug.Log(rt);
+            rt.transform.SetParent(_canvasTrm);
+            rt.transform.localPosition = Vector3.zero;
+            rt.matchTime = _matChTime;
             yield return new WaitForSeconds(spawnTime - _matChTime);
-            Instantiate(_rythmTaker, _canvasTrm).matchTime = _matChTime;
+            rt.SetRhythm();
             yield return new WaitForSeconds(_matChTime);
 
         }
-        
-        //PoolManager.Instance.Pop("RhythmTaker").transform.SetParent(_canvasTrm);
     }
 }
