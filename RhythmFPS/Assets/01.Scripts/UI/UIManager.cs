@@ -20,12 +20,12 @@ public class UIManager : MonoBehaviour
         }
     }
     public UIHud UIHud;
-    public UISceneType currentSceneType;
+    public SceneType currentSceneType;
     public GameObject currentSceneObject;
     public float rhythmTurm;
 
     #region 어디서든 일어날 수 있는 UI 이벤트
-    public Action<UISceneType> HandleUIChange; // 씬 바뀔 때 발행 할 이벤트
+    public Action<SceneType> HandleUIChange; // 씬 바뀔 때 발행 할 이벤트
     public Action HandleActiveOptionPanel; // 설정 찰 활성화 이벤트
     public Action HandleGameExit; // 게임 종료 이벤트
     #endregion
