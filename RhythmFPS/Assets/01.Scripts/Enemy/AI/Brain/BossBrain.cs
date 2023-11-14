@@ -55,13 +55,19 @@ public class BossBrain : EnemyBrain
             {
                 //Debug.Log("¿òÁ÷ÀÓ");
                 _bossAnimator.SetMove(true);
-                StartChase();
+                if (agent.enabled)
+                {
+                    StartChase();
+                }
             }
             else
             {
 
                 _bossAnimator.SetMove(false);
-                StopChase();
+                if (agent.enabled)
+                {
+                    StopChase();
+                }
             }
         }
     }

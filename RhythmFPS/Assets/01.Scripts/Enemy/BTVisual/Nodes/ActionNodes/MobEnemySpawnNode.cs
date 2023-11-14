@@ -41,8 +41,9 @@ public class MobEnemySpawnNode : ActionNode
     {
         for (int i = 0; i < 3; ++i)
         {
-            GameObject newMob = Instantiate(_mobEnemyPrefab, brain.transform.position + _spawnPointList[i], Quaternion.identity);
+            Debug.Log("test");
+            PoolableMono mobEnemy = PoolManager.Instance.Pop("Worm");
+            mobEnemy.transform.position = brain.transform.position + _spawnPointList[i];
         }
-        Debug.Log("Mob Enemy Spawn");
     }
 }
