@@ -1,3 +1,4 @@
+using Lofelt.NiceVibrations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,8 @@ using UnityEngine.Events;
 
 public class ProjectileHealth : PoolableMono, IDamageable
 {
+    [SerializeField]
+    private int _lifeTime;
     [SerializeField]
     private float _maxHitPoint;
     public UnityEvent onHitTrigger;
@@ -19,16 +22,19 @@ public class ProjectileHealth : PoolableMono, IDamageable
 
     public override void Init()
     {
-
+        Invoke("Die", _lifeTime);
     }
 
     public void Die()
     {
-        onDieTrigger?.Invoke();
-        PoolManager.Instance.Push(this);
+        if (gameObject.activeSelf)
+        {
+            onDieTrigger?.Invoke();
+            PoolManager.Instance.Push(this);
+        }
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         _currentHitPoint -= damage;
         onHitTrigger?.Invoke();
