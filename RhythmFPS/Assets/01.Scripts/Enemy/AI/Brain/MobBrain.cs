@@ -18,9 +18,4 @@ public class MobBrain : EnemyBrain
         base.SetDead();
         _animator.SetDieTrigger(true);
     }
-
-    public void OnDieEvent()
-    {
-        PoolManager.Instance.Push(this);
-    }
 }
