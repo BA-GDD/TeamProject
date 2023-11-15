@@ -9,15 +9,16 @@ public class JumpNode : ActionNode
 {
     private Vector3 _targetPos;
     [SerializeField]
-    private LayerMask _groundLayerMask;
+    private LayerMask _playerLayerMask;
     private float _jumpPower = 5f;
     private bool _alreadyJump = false;
+    [SerializeField]
+    private int _damage;
 
     protected override void OnStart()
     {
         //(brain as BossBrain).isMove = false;
         brain.gameObject.GetComponent<NavMeshAgent>().enabled = false;
-        Debug.Log($"온 스타트에서: {brain.gameObject.GetComponent<NavMeshAgent>().enabled}");
         _targetPos = GameManager.instance.PlayerTransform.position;
     }
 
@@ -25,7 +26,6 @@ public class JumpNode : ActionNode
     {
         _alreadyJump = false;
         brain.gameObject.GetComponent<NavMeshAgent>().enabled = true;
-        Debug.Log($"온 스탑에서: {brain.gameObject.GetComponent<NavMeshAgent>().enabled}");
         //(brain as BossBrain).isMove = true;
     }
 
@@ -43,6 +43,11 @@ public class JumpNode : ActionNode
             return State.RUNNING;
         }
 
+        Collider[] colliders = Physics.OverlapSphere((brain as BossBrain).transform.position, 3f, _playerLayerMask);
+        if (colliders.Length > 0)
+        {
+            colliders[0].GetComponent<IDamageable>().TakeDamage(_damage);
+        }
         return State.SUCCESS;
     }
 }

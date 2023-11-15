@@ -15,7 +15,7 @@ public class SpecterAttack : EnemyAttack
         {
             Collider[] colliders = Physics.OverlapSphere(transform.position, _brain.status.attackRange, _playerLayerMask);
 
-            if (colliders[0].TryGetComponent(out IDamageable playerHealth))
+            if (colliders.Length > 0 && colliders[0].TryGetComponent(out PlayerHealth playerHealth))
             {
                 playerHealth.TakeDamage(_brain.status.attackPower);
             }

@@ -34,8 +34,9 @@ public class SimpleWeapon : Weapon
         {
             if (hit.transform.TryGetComponent<IDamageable>(out IDamageable damageable))
             {
+                print("Àû °¨Áö");
                 ComboManager.Instance.AddCombo();
-                damageable.TakeDamage(5);
+                damageable.TakeDamage(5f);
             }
         }
         return true;

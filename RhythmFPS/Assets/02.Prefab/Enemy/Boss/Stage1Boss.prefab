@@ -292,7 +292,8 @@ GameObject:
   - component: {fileID: 4981482719388153668}
   - component: {fileID: 407774486498850099}
   - component: {fileID: 8932839101370841661}
-  m_Layer: 0
+  - component: {fileID: 5683856224252399259}
+  m_Layer: 22
   m_Name: Stage1Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -316,6 +317,7 @@ Transform:
   - {fileID: 7560840013609253703}
   - {fileID: 7387991647953611073}
   - {fileID: 2073018089950260672}
+  - {fileID: 4849714878908529368}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3459591793323917656
@@ -345,6 +347,7 @@ MonoBehaviour:
   shield: {fileID: 7160185935064784896}
   jumpUpCheckPos: {fileID: 7387991647953611073}
   jumpDownCheckPos: {fileID: 2073018089950260672}
+  collisionCheckPos: {fileID: 4849714878908529368}
 --- !u!114 &5596668995512827724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -434,6 +437,29 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!136 &5683856224252399259
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1035948519069391948}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Height: 4
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &1089028801868920406
 GameObject:
   m_ObjectHideFlags: 0
@@ -1043,6 +1069,37 @@ Transform:
   m_Children:
   - {fileID: 2488824575414258853}
   m_Father: {fileID: 7881772461341870571}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4256623451562985894
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4849714878908529368}
+  m_Layer: 22
+  m_Name: RushCollisionCheckTrm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4849714878908529368
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4256623451562985894}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.5, z: 2.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6218048080005171093}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4353004427690660867
 GameObject:

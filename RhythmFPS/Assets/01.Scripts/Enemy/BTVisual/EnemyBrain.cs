@@ -50,7 +50,7 @@ public abstract class EnemyBrain : PoolableMono
 
     public virtual void StopChase()
     {
-        //agent.ResetPath();
+        agent.ResetPath();
 
         agent.isStopped = true;
     }

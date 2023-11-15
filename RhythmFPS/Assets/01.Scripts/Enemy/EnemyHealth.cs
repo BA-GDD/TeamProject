@@ -25,8 +25,8 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 
     public void TakeDamage(float damage)
     {
-        Debug.Log($"보스 남은 체력: {_currentHitPoint}");
         _currentHitPoint -= damage;
+        Debug.Log($"남은 체력: {_currentHitPoint}");
         onHitTrigger?.Invoke();
         if(_currentHitPoint <= 0)
         {

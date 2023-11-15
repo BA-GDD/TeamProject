@@ -39,11 +39,9 @@ public class Spit : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Ãæµ¹");
-
         if (other.TryGetComponent(out PlayerHealth playerHealth))
         {
-            //playerHealth.TakeDamage(_brain.status.attackPower);
+            playerHealth.TakeDamage(_brain.status.attackPower);
             _health.Die();
         }
         else if (other.gameObject.layer == _groundLayerMask)
