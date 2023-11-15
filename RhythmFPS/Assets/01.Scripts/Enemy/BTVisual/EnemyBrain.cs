@@ -11,7 +11,9 @@ public abstract class EnemyBrain : PoolableMono
     [HideInInspector]
     public NavMeshAgent agent;
     [HideInInspector]
-    public EnemyHealth enemyHealth;
+    public EnemyAttack attack;
+    [HideInInspector]
+    public EnemyHealth health;
     [HideInInspector]
     public bool canRotate;
     [HideInInspector]
@@ -20,12 +22,11 @@ public abstract class EnemyBrain : PoolableMono
 
     public bool isOnTheRoof = false;
 
-    public abstract void Attack();
-
     protected virtual void Awake()
     {
         canRotate = true;
-        enemyHealth = GetComponent<EnemyHealth>();
+        attack = GetComponentInChildren<EnemyAttack>();
+        health = GetComponent<EnemyHealth>();
         agent = GetComponent<NavMeshAgent>();
         agent.speed = status.moveSpeed;
     }

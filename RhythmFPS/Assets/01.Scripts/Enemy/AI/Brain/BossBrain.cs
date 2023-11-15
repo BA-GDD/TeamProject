@@ -36,11 +36,6 @@ public class BossBrain : EnemyBrain
 
     }
 
-    public override void Attack()
-    {
-
-    }
-
     private void Update()
     {
         if(isDead != true)
