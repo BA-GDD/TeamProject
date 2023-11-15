@@ -287,6 +287,10 @@ MonoBehaviour:
   - {fileID: 3506586931814440037}
   - {fileID: 3021292165514364675}
   _eaingTime: 0.6
+  _sceneUIList:
+  - {fileID: 1550541348223073682, guid: fbb5b552f058bce46ab8bb76635b723a, type: 3}
+  - {fileID: 9130465291494275565, guid: 0ec06f2e4aa45c1429d51a497eb72657, type: 3}
+  - {fileID: 1175605751775464138, guid: 50f9a88efee41d944811ae462930bc81, type: 3}
 --- !u!1 &5730128150332373539
 GameObject:
   m_ObjectHideFlags: 0
