@@ -1706,6 +1706,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _soundType: 1
+  _audioMixer: {fileID: 24100000, guid: 04b49fed5a8573d498739605e4c7b72f, type: 2}
 --- !u!1 &3519761697793699785
 GameObject:
   m_ObjectHideFlags: 0
@@ -4404,6 +4405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _soundType: 0
+  _audioMixer: {fileID: 24100000, guid: 04b49fed5a8573d498739605e4c7b72f, type: 2}
 --- !u!1 &8081405528118805045
 GameObject:
   m_ObjectHideFlags: 0

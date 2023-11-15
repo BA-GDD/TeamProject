@@ -3432,6 +3432,7 @@ MonoBehaviour:
   _panelSizeDelta: {x: 500, y: 160}
   _panelSelectMark: {fileID: 2615431502855673492}
   _mapEnterPanel: {fileID: 9164033437239781162}
+  difficulty: 1
 --- !u!114 &8442866487694409218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3616,6 +3617,9 @@ MonoBehaviour:
   mapPanelHidePos: {x: 1600, y: -90}
   mapPanelLobbyPos: {x: 300, y: -90}
   mapPanelEasingTime: 0.5
+  bestScore: {fileID: 6702958888717396821}
+  maxCombo: {fileID: 6205832021557353720}
+  startButton: {fileID: 5746248500779664496}
 --- !u!114 &1105204158231308752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4218,6 +4222,9 @@ MonoBehaviour:
   mapPanelHidePos: {x: 1600, y: -90}
   mapPanelLobbyPos: {x: 300, y: -90}
   mapPanelEasingTime: 0.5
+  bestScore: {fileID: 5829030891245062380}
+  maxCombo: {fileID: 1126931737482261576}
+  startButton: {fileID: 0}
 --- !u!114 &2036597079581450250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6940,6 +6947,9 @@ MonoBehaviour:
   mapPanelHidePos: {x: 1600, y: -90}
   mapPanelLobbyPos: {x: 300, y: -90}
   mapPanelEasingTime: 0.5
+  bestScore: {fileID: 3915091351301433984}
+  maxCombo: {fileID: 2728653171202458385}
+  startButton: {fileID: 0}
 --- !u!114 &3855801171387001440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8141,7 +8151,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1116960878339247171}
-  - component: {fileID: 2393268678178373144}
   m_Layer: 5
   m_Name: MapPanel
   m_TagString: Untagged
@@ -8171,18 +8180,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2393268678178373144
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6424859580214689457}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c9c9cd58d1a3ad43a8e711680a7c61a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6497279252596925363
 GameObject:
   m_ObjectHideFlags: 0
@@ -8358,6 +8355,7 @@ MonoBehaviour:
   _panelSizeDelta: {x: 0, y: 0}
   _panelSelectMark: {fileID: 0}
   _mapEnterPanel: {fileID: 0}
+  difficulty: 0
 --- !u!114 &4526796317389436439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8654,6 +8652,7 @@ MonoBehaviour:
   _panelSizeDelta: {x: 0, y: 0}
   _panelSelectMark: {fileID: 0}
   _mapEnterPanel: {fileID: 0}
+  difficulty: 0
 --- !u!114 &8941295725243075335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9948,6 +9947,7 @@ MonoBehaviour:
   _panelSizeDelta: {x: 500, y: 160}
   _panelSelectMark: {fileID: 2615431502855673492}
   _mapEnterPanel: {fileID: 7923408836487490709}
+  difficulty: 2
 --- !u!114 &5927161086236433480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10499,6 +10499,7 @@ MonoBehaviour:
   _panelSizeDelta: {x: 500, y: 160}
   _panelSelectMark: {fileID: 2615431502855673492}
   _mapEnterPanel: {fileID: 3470656325138152979}
+  difficulty: 0
 --- !u!114 &4905289030547091354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11822,7 +11823,6 @@ MonoBehaviour:
   - {fileID: 6719678127348830231}
   - {fileID: 5418303925140296892}
   - {fileID: 6061387926138189196}
-  _mapInfoLoader: {fileID: 2393268678178373144}
 --- !u!1 &9207261370548371742
 GameObject:
   m_ObjectHideFlags: 0

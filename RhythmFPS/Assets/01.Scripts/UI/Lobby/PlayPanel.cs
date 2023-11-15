@@ -21,13 +21,17 @@ public class PlayPanel : MonoBehaviour
     [SerializeField] private Vector2 _panelSizeDelta;
     [SerializeField] private RectTransform _panelSelectMark;
     [SerializeField] private MapEnterPanel _mapEnterPanel;
+    public DifficultyType difficulty;
 
     private void Awake()
     {
         _panelManaging = transform.parent.GetComponent<PanelManaging>();
         _myTransform = (RectTransform)transform;
     }
-
+    private void Start()
+    {
+        _mapEnterPanel?.startButton?.onClick.AddListener(() => GameManager.instance.SceneChange(SceneType.inGame));
+    }
     public void PanelMove(float moveValue)
     {
         float ypos = _position.y + moveValue;
@@ -91,8 +95,18 @@ public class PlayPanel : MonoBehaviour
 
     public void OnClickPointerInThisPanel()
     {
+        MapInfo map = SaveManager.Instance.LoadMapInfoOrDefault(difficulty);
+        if (map.Equals(default(MapInfo)))
+        {
+            string text = "---";
+            _mapEnterPanel.SetText(text, text);
+        }
+        else
+        {
+            _mapEnterPanel.SetText(map.bestScore.ToString(),map.maxCombo.ToString());
+        }
         PlayPanel pp = _panelManaging.FindSelectPanel();
-        if(pp != null)
+        if (pp != null)
         {
             pp.isSelect = false;
             if (pp != this)
@@ -100,7 +114,7 @@ public class PlayPanel : MonoBehaviour
                 pp.OnExitPointerInThisPanel();
                 //PanelMove(0);
                 OnPointerInThisPanel();
-                
+
                 _panelManaging.ExitPointPnanel(pp);
                 _panelManaging.EnterPointPnanel(this);
             }
@@ -115,13 +129,13 @@ public class PlayPanel : MonoBehaviour
         }
 
         isSelect = !isSelect;
-        
-        if(_panelManaging.selectPlayPanel != null)
+
+        if (_panelManaging.selectPlayPanel != null)
         {
             _panelManaging.selectPlayPanel.OnExitPointerInThisPanel();
         }
 
-        if(_panelManaging.selectMapEnterPanel != null)
+        if (_panelManaging.selectMapEnterPanel != null)
         {
             _panelManaging.selectMapEnterPanel.HidePanel();
         }

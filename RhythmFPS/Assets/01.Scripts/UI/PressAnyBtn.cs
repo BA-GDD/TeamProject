@@ -68,6 +68,6 @@ public class PressAnyBtn : MonoBehaviour
             yield return new WaitForSeconds(_turm);
         }
 
-        UIManager.Instanace.HandleUIChange(UISceneType.lobby);
+        UIManager.Instanace.HandleUIChange(SceneType.lobby);
     }
 }
