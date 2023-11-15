@@ -3131,7 +3131,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 6843262160703515976}
           m_TargetAssemblyTypeName: OptionPanel, Assembly-CSharp
-          m_MethodName: ClosePanel
+          m_MethodName: Close
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -3680,7 +3680,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -900}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1200, y: 700}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2847293693688580152

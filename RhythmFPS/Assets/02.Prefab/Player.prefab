@@ -1031,7 +1031,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _eye: {fileID: 7202598713846123141}
   HorizontalRespons: 0.3
-  VerizontalRespons: 0.5
+  VerizontalRespons: 0.3
   StopRotate: 0
 --- !u!143 &7685185966981744549
 CharacterController:

@@ -15,12 +15,14 @@ public class AgentRotater : MonoBehaviour
 #if UNITY_EDITOR
     public bool StopRotate;
 #endif
+
     public void Rotate(Vector2 value)
     {
-        if (StopRotate == true) return;
-        _rotateX += value.y * HorizontalRespons;
+        //if (StopRotate == true) return;
+        float settingValue = Mathf.Lerp(0.1f, 3f, SaveManager.Instance.data.senseValue);
+        _rotateX += value.y * HorizontalRespons * settingValue;
         _rotateX = Mathf.Clamp(_rotateX, -70, 80);
-        _rotateY += value.x * VerizontalRespons;
+        _rotateY += value.x * VerizontalRespons * settingValue;
         transform.rotation = Quaternion.Euler(0, _rotateY, 0);
         _eye.localRotation = Quaternion.Euler(-_rotateX, 0, 0);
     }

@@ -77,7 +77,7 @@ public class BossBrain : EnemyBrain
         base.SetDead();
         _bossAnimator.StopAnimation(true);
         _bossAnimator.SetDead();
-        UIManager.Instanace.HandleGameClear(10,10,10);
+        GameManager.instance.GameClear(0);
     }
 
     private void OnDrawGizmos()

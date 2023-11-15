@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 using static Controls;
 
 [CreateAssetMenu(menuName = "SO/Input/Reader", fileName = " New Input reader")]
-public class InputReader : ScriptableObject, IPlayerActions
+public class InputReader : ScriptableObject, IPlayerActions,IUIActions
 {
     public event Action fireEvnet;
     public event Action jumpEvent;
@@ -18,6 +18,8 @@ public class InputReader : ScriptableObject, IPlayerActions
 
     private Controls _controlAction;
 
+    private bool _openSetting;
+
 
     private void OnEnable()
     {
@@ -25,8 +27,27 @@ public class InputReader : ScriptableObject, IPlayerActions
         {
             _controlAction = new Controls();
             _controlAction.Player.SetCallbacks(this);
+            _controlAction.UI.SetCallbacks(this);
         }
         _controlAction.Player.Enable();
+        _controlAction.UI.Enable();
+    }
+    
+    public void OpenSetting(bool isOpen)
+    {
+        if (isOpen == false)
+        {
+            _controlAction.Player.Disable();
+            Time.timeScale = 0;
+        }
+        else
+        {
+            _controlAction.Player.Enable();
+            Time.timeScale = 1;
+        }
+
+
+        _openSetting = !_openSetting;
     }
 
     public void OnMovement(InputAction.CallbackContext context)
@@ -71,6 +92,14 @@ public class InputReader : ScriptableObject, IPlayerActions
         {
             Debug.Log(context.control.displayName);
             OnAbillityEvent?.Invoke(context.control.displayName);
+        }
+    }
+
+    public void OnPause(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+        {
+            UIManager.Instanace.HandleActiveOptionPanel?.Invoke();
         }
     }
 }

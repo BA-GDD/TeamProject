@@ -58,21 +58,37 @@ public class UIManager : MonoBehaviour
     public float bgm_SpectrumSizeValue;
     public float sfx_SpectrumSizeValue;
 
+    private bool _optionPanelOpen = false;
+
+    [SerializeField] private InputReader _inputReader;
+
     private void Awake()
     {
         UIHud = (UIHud)transform.Find("UIHud").GetComponent("UIHud");
         bgm_SpectrumSizeValue = sfx_SpectrumSizeValue = _spectrumNormalValue;
+        _optionPanelOpen = false;
     }
 
     private void Start()
     {
         HandleUIChange += UIHud.UIChange;
-        HandleActiveOptionPanel += UIHud.ActiveOptionPanel;
+        HandleActiveOptionPanel += SetOptionPanel;
         HandleGameExit += UIHud.ActiveGameExitPanel;
         HandleGameOver += UIHud.ActiveGameOverPanel;
         //HandleRetryGame += GameManager.instance.GameRestart;
 
         HandleUIChange?.Invoke(currentSceneType);
+    }
+
+    private void SetOptionPanel()
+    {
+        UIHud.ActiveOptionPanel(_optionPanelOpen);
+        if(currentSceneType != SceneType.lobby)
+        {
+            _inputReader.OpenSetting(_optionPanelOpen);
+            RhythmManager.instance.GameStop(_optionPanelOpen);
+        }
+        _optionPanelOpen = !_optionPanelOpen;
     }
 
     public void SetSpectrumValue(SoundType st, float value)

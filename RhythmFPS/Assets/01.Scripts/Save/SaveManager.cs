@@ -39,7 +39,7 @@ public class SaveManager : MonoBehaviour
             };
         }
     }
-    [ContextMenu("sex")]
+    [ContextMenu("reset")]
     public void ResetSave()
     {
         PlayerPrefs.SetString("data", string.Empty);

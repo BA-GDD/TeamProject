@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -408,7 +408,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolingList: {fileID: 11400000, guid: 1979df523f28da94da39ec06ff016f2a, type: 2}
-  difficult: 0
+  difficult: 1
 --- !u!4 &453906674
 Transform:
   m_ObjectHideFlags: 0
@@ -463,6 +463,7 @@ MonoBehaviour:
   _spectrumNormalValue: 0
   bgm_SpectrumSizeValue: 0
   sfx_SpectrumSizeValue: 0
+  _inputReader: {fileID: 11400000, guid: 9a899013db74e3240b13be1dbe4579e5, type: 2}
 --- !u!114 &579405792
 MonoBehaviour:
   m_ObjectHideFlags: 0

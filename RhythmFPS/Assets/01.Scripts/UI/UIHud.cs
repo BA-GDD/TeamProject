@@ -24,6 +24,8 @@ public class UIHud : MonoBehaviour
     [Header("�� UI")]
     [SerializeField] private List<GameObject> _sceneUIList = new List<GameObject>();
 
+    private OptionPanel _op;
+
     public void UIChange(SceneType toChangeScene)
     {
         if(UIManager.Instanace.currentSceneObject != null)
@@ -31,6 +33,9 @@ public class UIHud : MonoBehaviour
 
         UIManager.Instanace.currentSceneObject = Instantiate(_sceneUIList[(int)toChangeScene], _canvasTrm);
         UIManager.Instanace.currentSceneType = toChangeScene;
+        _op = Instantiate(_optionPanel, _canvasTrm);
+        _op.gameObject.name = "OptionPanel";
+        _op.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -57,12 +62,17 @@ public class UIHud : MonoBehaviour
         ru.ActiveResultPanel(score, combo, clearTime, dealDamage);
     }
     [ContextMenu("�ɼ� �г� Ȱ��ȭ")]
-    public void ActiveOptionPanel()
+    public void ActiveOptionPanel(bool isOpen)
     {
-        OptionPanel op = Instantiate(_optionPanel, _canvasTrm);
-        op.transform.localPosition = Vector3.zero;
-        op.gameObject.name = "OptionPanel";
-        op.OpenPanel();
+        if(isOpen == false)
+        {
+            _op.OpenPanel();
+        }
+        else
+        {
+            _op.ClosePanel();
+        }
+        
     }
     [ContextMenu("���� ���� �г� Ȱ��ȭ")]
     public void ActiveGameOverPanel()

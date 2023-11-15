@@ -30,7 +30,7 @@ public class PlayPanel : MonoBehaviour
     }
     private void Start()
     {
-        _mapEnterPanel?.startButton?.onClick.AddListener(() => GameManager.instance.SceneChange(SceneType.inGame));
+        _mapEnterPanel?.startButton?.onClick.AddListener(() => GameManager.instance.GameStart(difficulty));
     }
     public void PanelMove(float moveValue)
     {

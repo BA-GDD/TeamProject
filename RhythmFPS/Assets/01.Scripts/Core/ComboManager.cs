@@ -22,15 +22,20 @@ public class ComboManager : MonoBehaviour
             return _instance;
         }
     }
-    private int _combo;
+    public int maxCombo;
+    public int Combo { get; private set; }
     public void AddCombo()
     {
-        _combo++;
+        Combo++;
+        if(Combo > maxCombo)
+        {
+            maxCombo = Combo;
+        }
         UIManager.Instanace.HandlePlusCombo?.Invoke();
     }
     public void ResetCombo()
     {
-        _combo = 0;
+        Combo = 0;
         UIManager.Instanace.HandleResetCombo?.Invoke();
     }
 }
