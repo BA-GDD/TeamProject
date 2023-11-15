@@ -32,7 +32,6 @@ public class AimRythmer : MonoBehaviour
             yield return new WaitForSeconds(spawnTime - _matChTime);
             rt.SetRhythm();
             yield return new WaitForSeconds(_matChTime);
-
         }
     }
 }
