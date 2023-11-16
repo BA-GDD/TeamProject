@@ -21,17 +21,14 @@ public class TitleSpectrum : SpectrumBase
         if (Time.frameCount % 3 != 0) return;
 
         _spectrumValue = UIManager.Instanace.bgm_SpectrumSizeValue;
+        
         for (int i = 1; i < _visualGroup.Length-1; i++)
         {
             if (i % 2 == 0) continue;
 
-            int random = Random.Range(-1, 1);
-            if (random == 0) random = 1;
-
-
             _visualGroup[i].localPosition =
             new Vector3(_visualGroup[i].localPosition.x, 
-                        _visualY[i] + _samples[i % 5] * random * _spectrumValue * _addValue);
+                        _visualY[i] + _samples[i % 5] * _spectrumValue * _addValue);
         }
 
         for (int i = 0; i < _rects.Length; i++)
@@ -39,7 +36,7 @@ public class TitleSpectrum : SpectrumBase
             Vector2 first = _visualGroup[i].localPosition;
             Vector2 second = _visualGroup[i + 1].localPosition;
 
-            _rects[i].sizeDelta = new Vector2(7,
+            _rects[i].sizeDelta = new Vector2(4,
                                   Mathf.Sqrt(Mathf.Pow(second.x - first.x, 2)
                                 + Mathf.Pow(second.y - first.y, 2)));
 
