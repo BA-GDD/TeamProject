@@ -353,6 +353,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2097152
   _damage: 15
+  _explosion: {fileID: 8585256237522646166, guid: 99dabb11f57ed8040a9941eee15df038,
+    type: 3}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
