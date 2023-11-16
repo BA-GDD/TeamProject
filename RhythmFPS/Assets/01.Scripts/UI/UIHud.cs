@@ -21,12 +21,15 @@ public class UIHud : MonoBehaviour
     [Header("���� ���� �г�")]
     [SerializeField] private GameObject _gameOverPanel;
 
-    [Header("씬 체인지 UI")]
-    [SerializeField] private SceneChangeUI _sceneChangeUI;
+    [SerializeField] private List<GameObject> _sceneUIList = new List<GameObject>();
 
     public void UIChange(SceneType toChangeScene)
     {
-        Instantiate(_sceneChangeUI, _canvasTrm).StartChange(toChangeScene);
+        if (UIManager.Instanace.currentSceneObject != null)
+            Destroy(UIManager.Instanace.currentSceneObject);
+
+        UIManager.Instanace.currentSceneObject = Instantiate(_sceneUIList[(int)toChangeScene], _canvasTrm);
+        UIManager.Instanace.currentSceneType = toChangeScene;
     }
 
     private void Update()

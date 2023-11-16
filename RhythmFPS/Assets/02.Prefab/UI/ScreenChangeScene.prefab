@@ -235,6 +235,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5903051031496803974}
   - component: {fileID: 1894409298472020132}
+  - component: {fileID: 5076979167762990035}
   m_Layer: 5
   m_Name: ScreenChangeScene
   m_TagString: Untagged
@@ -291,6 +292,18 @@ MonoBehaviour:
   - {fileID: 1550541348223073682, guid: fbb5b552f058bce46ab8bb76635b723a, type: 3}
   - {fileID: 9130465291494275565, guid: 0ec06f2e4aa45c1429d51a497eb72657, type: 3}
   - {fileID: 1175605751775464138, guid: 50f9a88efee41d944811ae462930bc81, type: 3}
+--- !u!114 &5076979167762990035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5147132771189670196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37c139c1d38fee94aa290fa471a42666, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5730128150332373539
 GameObject:
   m_ObjectHideFlags: 0
