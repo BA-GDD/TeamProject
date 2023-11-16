@@ -54,12 +54,10 @@ public class UIHud : MonoBehaviour
     [ContextMenu("����Ʈ �г� Ȱ��ȭ")]
     public void ActiveResultPanel(int combo, float clearTime, float dealDamage)
     {
-        float score = clearTime * combo + dealDamage;
-
         ResultUI ru = Instantiate(_resultPanel, _canvasTrm);
         ru.transform.localPosition = _resultPanelCreatePos;
         ru.gameObject.name = "Result";
-        ru.ActiveResultPanel(score, combo, clearTime, dealDamage);
+        ru.ActiveResultPanel(ScoreManager.Instance.Score, combo, clearTime, dealDamage);
     }
     [ContextMenu("�ɼ� �г� Ȱ��ȭ")]
     public void ActiveOptionPanel(bool isOpen)
