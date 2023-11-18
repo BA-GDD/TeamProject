@@ -19,7 +19,12 @@ public class AgentRotater : MonoBehaviour
     public void Rotate(Vector2 value)
     {
         //if (StopRotate == true) return;
-        float settingValue = Mathf.Lerp(0.1f, 3f, SaveManager.Instance.data.senseValue);
+        float settingValue = 1;
+        if (SaveManager.Instance != null)
+        {
+
+            settingValue = Mathf.Lerp(0.1f, 3f, SaveManager.Instance.data.senseValue);
+        }
         _rotateX += value.y * HorizontalRespons * settingValue;
         _rotateX = Mathf.Clamp(_rotateX, -70, 80);
         _rotateY += value.x * VerizontalRespons * settingValue;
