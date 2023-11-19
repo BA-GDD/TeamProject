@@ -32,7 +32,7 @@ public class RhythmTaker : PoolableMono
         {
             _aimRythmer.MatChRhythm();
             _isStart = false;
-            Destroy(gameObject);
+            PoolManager.Instance.Push(this);
         });
     }
 
