@@ -99,7 +99,6 @@ public class RhythmManager : MonoBehaviour
 
         _metronomeAudioSource.PlayOneShot(_metronomeClip);
 
-        Debug.Log("ø÷ ∏ÿ√„?");
 
         yield return null;
     }

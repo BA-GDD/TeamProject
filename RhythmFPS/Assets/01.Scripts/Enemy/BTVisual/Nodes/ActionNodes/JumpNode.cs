@@ -15,7 +15,7 @@ public class JumpNode : ActionNode
     [SerializeField]
     private int _damage;
     [SerializeField]
-    private GameObject _explosion;
+    private DropEffect _explosion;
 
     protected override void OnStart()
     {
@@ -45,8 +45,9 @@ public class JumpNode : ActionNode
             return State.RUNNING;
         }
 
-        ParticleSystem particle = Instantiate(_explosion, brain.transform.position, Quaternion.identity).GetComponent<ParticleSystem>();
-        particle.Play();
+        DropEffect particle = PoolManager.Instance.Pop(_explosion.name) as DropEffect;
+        particle.transform.position = brain.transform.position;
+
 
         Collider[] colliders = Physics.OverlapSphere((brain as BossBrain).transform.position, 3f, _playerLayerMask);
         if (colliders.Length > 0)
