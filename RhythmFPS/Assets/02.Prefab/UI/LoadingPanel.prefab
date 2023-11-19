@@ -992,8 +992,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98774e74f6a74814c82a47a5a86ce951, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _loadingBar: {fileID: 8886881237221981626}
   _infoText: {fileID: 1970849395882087368}
-  _prtcentage: {fileID: 8383759673931323920}
   _loadingImg: {fileID: 2993185929102920945}
   _elementList:
   - loadingImg: {fileID: 21300000, guid: 818e40df5d41b5641bb1e76fa32e4f90, type: 3}
