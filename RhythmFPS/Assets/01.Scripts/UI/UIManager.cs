@@ -79,15 +79,17 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         HandleActiveOptionPanel += SetOptionPanel;
-        HandleUIChange += UIHud.SceneChange;
-        HandleActiveOptionPanel += UIHud.ActiveOptionPanel;
+        HandleUIChange += UIHud.UIChange;
         HandleGameExit += UIHud.ActiveGameExitPanel;
         HandleGameOver += UIHud.ActiveGameOverPanel;
         //HandleRetryGame += GameManager.instance.GameRestart;
 
         HandleUIChange?.Invoke(currentSceneType);
     }
-
+    public void SceneChange()
+    {
+        UIHud.SceneChange();
+    }
     private void SetOptionPanel()
     {
         UIHud.ActiveOptionPanel(_optionPanelOpen);

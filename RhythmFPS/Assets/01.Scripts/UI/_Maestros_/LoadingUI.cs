@@ -21,29 +21,16 @@ public class LoadingUI : MonoBehaviour
 
     [SerializeField] private List<LoadingUIElement> _elementList = new List<LoadingUIElement>();
 
-    private SceneType _saveSceneType;
-
-    public void LoadingStart(SceneType st)
+    public void LoadingStart()
     {
-        _saveSceneType = st;
-
         int idx = Random.Range(0, _elementList.Count);
         LoadingUIElement luie = _elementList[idx];
         _infoText.text = luie.loadingInfoTxt;
         _loadingImg.sprite = luie.loadingImg;
-
-        StartCoroutine(LoadingCo());
     }
 
-    IEnumerator LoadingCo()
+    public void SetProgress(float progress)
     {
-        yield return null;
-        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(_saveSceneType.ToString());
-        asyncOperation.allowSceneActivation = false;
-        while (!asyncOperation.isDone)
-        {
-            _loadingBar.SetPercent(asyncOperation.progress);
-            yield return null;
-        }
+        _loadingBar.SetPercent(progress);
     }
 }

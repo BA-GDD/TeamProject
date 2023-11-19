@@ -23,24 +23,30 @@ public class UIHud : MonoBehaviour
 
     [Header("로딩 패널")]
     [SerializeField] private LoadingUI _loadingPanel;
+    private LoadingUI _loadingUI;
 
     [SerializeField] private List<GameObject> _sceneUIList = new List<GameObject>();
 
     private OptionPanel _op;
 
-    public void SceneChange(SceneType toChangeScene)
+    public void SceneChange()
     {
         if (UIManager.Instanace.currentSceneObject != null)
             Destroy(UIManager.Instanace.currentSceneObject);
 
-        if (_canvasTrm == null)
-            _canvasTrm = GameObject.Find("UICanvas").transform;
-
-        Instantiate(_loadingPanel, _canvasTrm).LoadingStart(toChangeScene);
+        _loadingUI = Instantiate(_loadingPanel, _canvasTrm);
+        _loadingUI.LoadingStart();
+    }
+    public void SetProgress(float progress)
+    {
+        _loadingUI.SetProgress(progress);
     }
 
     public void UIChange(SceneType toChangeScene)
     {
+        if (_canvasTrm == null)
+            _canvasTrm = GameObject.Find("UICanvas").transform;
+
         UIManager.Instanace.currentSceneObject = Instantiate(_sceneUIList[(int)toChangeScene], _canvasTrm);
         UIManager.Instanace.currentSceneType = toChangeScene;
         _op = Instantiate(_optionPanel, _canvasTrm);

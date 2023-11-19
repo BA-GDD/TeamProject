@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     }
 
     public DifficultyType difficult;
-    private float _startTime; 
+    private float _startTime;
 
     private void Awake()
     {
@@ -84,7 +84,13 @@ public class GameManager : MonoBehaviour
     private IEnumerator SceneChangeCor(SceneType sceneType)
     {
         AsyncOperation async = SceneManager.LoadSceneAsync(sceneType.ToString());
-        yield return new WaitUntil(() => async.isDone);
+        UIManager.Instanace.SceneChange();
+        while (async.progress < 1)
+        {
+            print(async.progress);
+            UIManager.Instanace.UIHud.SetProgress(async.progress);
+            yield return null;
+        }
         UIManager.Instanace.HandleUIChange(sceneType);
     }
     /// <summary>
