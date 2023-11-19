@@ -666,7 +666,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UIHud: {fileID: 2115330177}
-  currentSceneType: 1
+  currentSceneType: 0
   currentSceneObject: {fileID: 0}
   rhythmTurm: 0.375
   _spectrumNormalValue: 100
@@ -807,7 +807,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ab2cfbd35bc3164faae57e8296115c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _canvasTrm: {fileID: 0}
+  _canvasTrm: {fileID: 579405795}
   _resultPanelCreatePos: {x: 0, y: -1000, z: 0}
   _resultPanel: {fileID: 2375128453384351279, guid: b1c2faddd9e6adb49be7f455a22d8780,
     type: 3}

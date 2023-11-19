@@ -30,6 +30,9 @@ public class UIHud : MonoBehaviour
         if (UIManager.Instanace.currentSceneObject != null)
             Destroy(UIManager.Instanace.currentSceneObject);
 
+        if (_canvasTrm == null)
+            _canvasTrm = GameObject.Find("UICanvas").transform;
+
         UIManager.Instanace.currentSceneObject = Instantiate(_sceneUIList[(int)toChangeScene], _canvasTrm);
         UIManager.Instanace.currentSceneType = toChangeScene;
         _op = Instantiate(_optionPanel, _canvasTrm);

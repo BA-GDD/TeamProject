@@ -64,6 +64,13 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
+        if (_instance != null)
+        {
+            Debug.LogError($"{typeof(UIManager)} instance is already exist!");
+            Destroy(gameObject);
+            return;
+        }
+
         UIHud = (UIHud)transform.Find("UIHud").GetComponent("UIHud");
         bgm_SpectrumSizeValue = sfx_SpectrumSizeValue = _spectrumNormalValue;
         _optionPanelOpen = false;
@@ -77,7 +84,7 @@ public class UIManager : MonoBehaviour
         HandleGameOver += UIHud.ActiveGameOverPanel;
         //HandleRetryGame += GameManager.instance.GameRestart;
 
-        //HandleUIChange?.Invoke(currentSceneType);
+        HandleUIChange?.Invoke(currentSceneType);
     }
 
     private void SetOptionPanel()

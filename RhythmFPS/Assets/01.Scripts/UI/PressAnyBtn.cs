@@ -25,7 +25,7 @@ public class PressAnyBtn : MonoBehaviour
         {
             isGameStart = true;
             _pressABtn.enabled = false;
-            UIManager.Instanace.HandleUIChange(SceneType.lobby);
+            GameManager.instance.SceneChange(SceneType.lobby);
         }
     }
 }
