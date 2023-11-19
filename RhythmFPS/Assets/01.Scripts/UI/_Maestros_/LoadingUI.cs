@@ -18,7 +18,7 @@ public class LoadingUI : MonoBehaviour
 
     [SerializeField] private Image _loadingImg;
 
-    private List<LoadingUIElement> _elementList = new List<LoadingUIElement>();
+    [SerializeField] private List<LoadingUIElement> _elementList = new List<LoadingUIElement>();
 
     private void Start()
     {

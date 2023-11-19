@@ -18,7 +18,7 @@ public class AimRythmer : MonoBehaviour
 
     IEnumerator WaitRhythm()
     {
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < 12; i++)
             yield return new WaitForEndOfFrame();
 
         Debug.Log("Reset");
