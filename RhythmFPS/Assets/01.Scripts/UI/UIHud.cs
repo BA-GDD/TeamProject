@@ -21,13 +21,21 @@ public class UIHud : MonoBehaviour
     [Header("���� ���� �г�")]
     [SerializeField] private GameObject _gameOverPanel;
 
+    [Header("로딩 패널")]
+    [SerializeField] private LoadingUI _loadingPanel;
+
     [SerializeField] private List<GameObject> _sceneUIList = new List<GameObject>();
 
-    public void UIChange(SceneType toChangeScene)
+    public void SceneChange(SceneType toChangeScene)
     {
         if (UIManager.Instanace.currentSceneObject != null)
             Destroy(UIManager.Instanace.currentSceneObject);
 
+        Instantiate(_loadingPanel, _canvasTrm).LoadingStart(toChangeScene);
+    }
+
+    public void UIChange(SceneType toChangeScene)
+    {
         UIManager.Instanace.currentSceneObject = Instantiate(_sceneUIList[(int)toChangeScene], _canvasTrm);
         UIManager.Instanace.currentSceneType = toChangeScene;
     }

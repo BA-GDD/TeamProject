@@ -66,7 +66,7 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        HandleUIChange += UIHud.UIChange;
+        HandleUIChange += UIHud.SceneChange;
         HandleActiveOptionPanel += UIHud.ActiveOptionPanel;
         HandleGameExit += UIHud.ActiveGameExitPanel;
         HandleGameOver += UIHud.ActiveGameOverPanel;
