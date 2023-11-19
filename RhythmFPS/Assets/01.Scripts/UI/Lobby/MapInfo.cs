@@ -1,18 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Timers;
 using UnityEngine;
 
-public class MapInfo : MonoBehaviour
+[System.Serializable]
+public struct MapInfo
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public DifficultyType difficultyType;
+    public int starCount;
+    public int maxCombo;
+    public int bestScore;
 }

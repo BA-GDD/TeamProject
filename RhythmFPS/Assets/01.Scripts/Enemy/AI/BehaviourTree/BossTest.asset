@@ -148,7 +148,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: e721ac6d10c13d94c9844fdde4d26341
-  position: {x: -369.37064, y: 657.5999}
+  position: {x: -369.59988, y: 657.60004}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     enemySpotPosition: {x: 0, y: 0, z: 0}
@@ -349,9 +349,12 @@ MonoBehaviour:
     curPattern: 0
   brain: {fileID: 0}
   description: 
-  _groundLayerMask:
+  _playerLayerMask:
     serializedVersion: 2
-    m_Bits: 2048
+    m_Bits: 2097152
+  _damage: 15
+  _explosion: {fileID: 8585256237522646166, guid: 99dabb11f57ed8040a9941eee15df038,
+    type: 3}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -479,7 +482,7 @@ MonoBehaviour:
     curPattern: 0
   brain: {fileID: 0}
   description: 
-  _mobEnemyPrefab: {fileID: 4530003306004163418, guid: 26001ef584b04a61b807a2920160f2b2,
+  _mobEnemyPrefab: {fileID: 8149300303397004395, guid: e8dbdcc92fb9e724cb10dcbc2306e88c,
     type: 3}
   _spawnPointList:
   - {x: 0, y: 0, z: 2.5}
@@ -623,6 +626,10 @@ MonoBehaviour:
   _playerLayerMask:
     serializedVersion: 2
     m_Bits: 2097152
+  _groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 2048
+  _rushSpeed: 5
 --- !u!114 &5798060088522783948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -638,7 +645,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 7617290901ef01d42aaee1978014c6fb
-  position: {x: 1340.7203, y: 1117.0201}
+  position: {x: 1363.1998, y: 1116.7998}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     enemySpotPosition: {x: 0, y: 0, z: 0}

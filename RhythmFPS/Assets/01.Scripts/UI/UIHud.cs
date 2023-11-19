@@ -5,32 +5,39 @@ using System;
 
 public class UIHud : MonoBehaviour
 {
-    [Header("Äµ¹ö½º Æ®·£½ºÆû")]
+    [Header("Äµï¿½ï¿½ï¿½ï¿½ Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
     [SerializeField] private Transform _canvasTrm;
 
-    [Header("°á°ú ÆÐ³Î")]
+    [Header("ï¿½ï¿½ï¿½ ï¿½Ð³ï¿½")]
     [SerializeField] private Vector3 _resultPanelCreatePos;
     [SerializeField] private ResultUI _resultPanel;
 
-    [Header("¿É¼Ç ÆÐ³Î")]
+    [Header("ï¿½É¼ï¿½ ï¿½Ð³ï¿½")]
     [SerializeField] private OptionPanel _optionPanel;
 
-    [Header("³ª°¡±â UI")]
+    [Header("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ UI")]
     [SerializeField] private ExitPanel _exitPanel;
 
-    [Header("°ÔÀÓ ¿À¹ö ÆÐ³Î")]
+    [Header("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ð³ï¿½")]
     [SerializeField] private GameObject _gameOverPanel;
 
-    [Header("¾À UI")]
     [SerializeField] private List<GameObject> _sceneUIList = new List<GameObject>();
 
-    public void UIChange(UISceneType toChangeScene)
+    private OptionPanel _op;
+
+    public void UIChange(SceneType toChangeScene)
     {
-        if(UIManager.Instanace.currentSceneObject != null)
+        if (UIManager.Instanace.currentSceneObject != null)
             Destroy(UIManager.Instanace.currentSceneObject);
+
+        if (_canvasTrm == null)
+            _canvasTrm = GameObject.Find("UICanvas").transform;
 
         UIManager.Instanace.currentSceneObject = Instantiate(_sceneUIList[(int)toChangeScene], _canvasTrm);
         UIManager.Instanace.currentSceneType = toChangeScene;
+        _op = Instantiate(_optionPanel, _canvasTrm);
+        _op.gameObject.name = "OptionPanel";
+        _op.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -40,32 +47,34 @@ public class UIHud : MonoBehaviour
             ActiveResultPanel(1, 1, 1);
         }*/
     }
-
-    #region ÆÐ³Î È°¼ºÈ­
-    [ContextMenu("³ª°¡±â ÆÐ³Î È°¼ºÈ­")]
+    #region ï¿½Ð³ï¿½ È°ï¿½ï¿½È­
+    [ContextMenu("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ð³ï¿½ È°ï¿½ï¿½È­")]
     public void ActiveGameExitPanel()
     {
         Instantiate(_exitPanel, _canvasTrm).SetupPanel(UIManager.Instanace.currentSceneType);
     }
-    [ContextMenu("¸®ÀýÆ® ÆÐ³Î È°¼ºÈ­")]
+    [ContextMenu("ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ð³ï¿½ È°ï¿½ï¿½È­")]
     public void ActiveResultPanel(int combo, float clearTime, float dealDamage)
     {
-        float score = clearTime * combo + dealDamage;
-
         ResultUI ru = Instantiate(_resultPanel, _canvasTrm);
         ru.transform.localPosition = _resultPanelCreatePos;
         ru.gameObject.name = "Result";
-        ru.ActiveResultPanel(score, combo, clearTime, dealDamage);
+        ru.ActiveResultPanel(ScoreManager.Instance.Score, combo, clearTime, dealDamage);
     }
-    [ContextMenu("¿É¼Ç ÆÐ³Î È°¼ºÈ­")]
-    public void ActiveOptionPanel()
+    [ContextMenu("ï¿½É¼ï¿½ ï¿½Ð³ï¿½ È°ï¿½ï¿½È­")]
+    public void ActiveOptionPanel(bool isOpen)
     {
-        OptionPanel op = Instantiate(_optionPanel, _canvasTrm);
-        op.transform.localPosition = Vector3.zero;
-        op.gameObject.name = "OptionPanel";
-        op.OpenPanel();
+        if(isOpen == false)
+        {
+            _op.OpenPanel();
+        }
+        else
+        {
+            _op.ClosePanel();
+        }
+        
     }
-    [ContextMenu("°ÔÀÓ ¿À¹ö ÆÐ³Î È°¼ºÈ­")]
+    [ContextMenu("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ð³ï¿½ È°ï¿½ï¿½È­")]
     public void ActiveGameOverPanel()
     {
         Instantiate(_gameOverPanel, _canvasTrm);

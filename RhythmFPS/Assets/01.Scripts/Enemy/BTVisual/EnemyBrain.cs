@@ -4,14 +4,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public abstract class EnemyBrain : MonoBehaviour
+public abstract class EnemyBrain : PoolableMono
 {
     //[HideInInspector]
     //public GameObject weapon;
     [HideInInspector]
     public NavMeshAgent agent;
     [HideInInspector]
-    public EnemyHealth enemyHealth;
+    public EnemyAttack attack;
+    [HideInInspector]
+    public EnemyHealth health;
     [HideInInspector]
     public bool canRotate;
     [HideInInspector]
@@ -20,12 +22,11 @@ public abstract class EnemyBrain : MonoBehaviour
 
     public bool isOnTheRoof = false;
 
-    public abstract void Attack();
-
     protected virtual void Awake()
     {
         canRotate = true;
-        enemyHealth = GetComponent<EnemyHealth>();
+        attack = GetComponentInChildren<EnemyAttack>();
+        health = GetComponent<EnemyHealth>();
         agent = GetComponent<NavMeshAgent>();
         agent.speed = status.moveSpeed;
     }
@@ -44,7 +45,7 @@ public abstract class EnemyBrain : MonoBehaviour
     {
         agent.isStopped = false;
 
-        agent.SetDestination(GameManager.instance.playerTransform.position);
+        agent.SetDestination(GameManager.instance.PlayerTransform.position);
     }
 
     public virtual void StopChase()

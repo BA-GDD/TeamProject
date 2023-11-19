@@ -1,10 +1,10 @@
 public enum SoundType
 {
-    bgm,
-    sfx
+    BGM,
+    SFX
 }
 
-public enum UISceneType
+public enum SceneType
 {
     title,
     lobby,

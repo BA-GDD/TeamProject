@@ -10,15 +10,14 @@ public abstract class SpectrumBase : MonoBehaviour
     [SerializeField] protected Vector2 _startSizeDelta;
     protected float _spectrumValue;
 
-    private void OnEnable()
+    private void Start()
     {
+        _audioSur = RhythmManager.instance.musicAudioSource;
+        
         for (int i = 0; i < _visualGroup.Length; i++)
         {
             _visualGroup[i].sizeDelta = _startSizeDelta;
         }
-
-        _audioSur = GameObject.Find("AudioAmple").GetComponent<AudioSource>();
-        Debug.Log(_audioSur);
     }
 
     private void Update()

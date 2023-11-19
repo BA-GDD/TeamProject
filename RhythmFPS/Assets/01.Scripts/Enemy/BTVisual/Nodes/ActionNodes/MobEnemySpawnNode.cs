@@ -10,28 +10,30 @@ public class MobEnemySpawnNode : ActionNode
 
     protected override void OnStart()
     {
+        (brain as BossBrain).isMove = false;
         (brain as BossBrain).BossAnimator.OnAnimationTrigger += OnMobEnemySpawnHandle;
+        (brain as BossBrain).BossAnimator.SetAttackTrigger(true);
+        (brain as BossBrain).isCanAttack = false;
     }
 
     protected override void OnStop()
     {
         (brain as BossBrain).BossAnimator.OnAnimationTrigger -= OnMobEnemySpawnHandle;
-        //(brain as BossBrain).BossAnimator.SetAttackTrigger(false);
+        (brain as BossBrain).BossAnimator.SetAttackTrigger(false);
+        (brain as BossBrain).BossAnimator.SetAnimationClipEndState(false);
+        (brain as BossBrain).isMove = true;
     }
 
     protected override State OnUpdate()
     {
-        if (!brain.agent.isStopped)
+        if ((brain as BossBrain).BossAnimator.isAnimationClipEnd)
         {
-            return State.RUNNING;
+            return State.SUCCESS;
         }
         else
         {
-            (brain as BossBrain).BossAnimator.SetAttackPattern(3);
-            (brain as BossBrain).BossAnimator.SetAttackTrigger(true);
-            (brain as BossBrain).isCanAttack = false;
             (brain as BossBrain).timer = 0;
-            return State.SUCCESS;
+            return State.RUNNING;
         }
     }
 
@@ -39,8 +41,9 @@ public class MobEnemySpawnNode : ActionNode
     {
         for (int i = 0; i < 3; ++i)
         {
-            GameObject newMob = Instantiate(_mobEnemyPrefab, brain.transform.position + _spawnPointList[i], Quaternion.identity);
+            Debug.Log("test");
+            PoolableMono mobEnemy = PoolManager.Instance.Pop("Worm");
+            mobEnemy.transform.position = brain.transform.position + _spawnPointList[i];
         }
-        Debug.Log("Mob Enemy Spawn");
     }
 }

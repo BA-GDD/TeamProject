@@ -9,12 +9,11 @@ public class InGameUI : MonoBehaviour
     [SerializeField] private BossEnemyHpBar _bossHpBar;
     [SerializeField] private ComboCountUI _comboCount;
     [SerializeField] private BulletCountUI _bulletCount;
-    [SerializeField] private AimRythmer _aimRhyther;
-    // ¸®ÀýÆ® ÆÐ³Î ¶ç¿ì´Â ±â´É ±¸Çö ÇØ¾ßÇÔ.
+    // ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ð³ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ø¾ï¿½ï¿½ï¿½.
 
     private void Start()
     {
-        UIManager.Instanace.HandleInGameStartEvent += _aimRhyther.SpawnRhythm;
+        //UIManager.Instanace.HandleInGameStartEvent += _aimRhyther.SpawnRhythm;
         UIManager.Instanace.HandleUseSkill += _skillcoolFunc.UseSkill;
         UIManager.Instanace.HandlePlayerGetDamage += _playerHpBar.DiminishValue;
         UIManager.Instanace.HandleBossGetDamage += _bossHpBar.DiminishValue;
@@ -24,12 +23,12 @@ public class InGameUI : MonoBehaviour
         UIManager.Instanace.HandleReload += _bulletCount.ReChargingBullet;
         UIManager.Instanace.HandleGameClear += UIManager.Instanace.UIHud.ActiveResultPanel;
 
-        UIManager.Instanace.HandleInGameStartEvent?.Invoke(0.375f);
+        UIManager.Instanace.HandleInGameStartEvent?.Invoke();
     }
 
     private void OnDestroy()
     {
-        UIManager.Instanace.HandleInGameStartEvent -= _aimRhyther.SpawnRhythm;
+        //UIManager.Instanace.HandleInGameStartEvent -= _aimRhyther.SpawnRhythm;
         UIManager.Instanace.HandleUseSkill -= _skillcoolFunc.UseSkill;
         UIManager.Instanace.HandlePlayerGetDamage -= _playerHpBar.DiminishValue;
         UIManager.Instanace.HandleBossGetDamage -= _bossHpBar.DiminishValue;

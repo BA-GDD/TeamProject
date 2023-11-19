@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using TMPro;
+using UnityEngine.UI;
 
 public class MapEnterPanel : MonoBehaviour
 {
@@ -10,6 +12,13 @@ public class MapEnterPanel : MonoBehaviour
     public Vector2 mapPanelHidePos;
     public Vector2 mapPanelLobbyPos;
     public float mapPanelEasingTime;
+
+    [Space(10)]
+    public TextMeshProUGUI bestScore;
+    public TextMeshProUGUI maxCombo;
+
+    [Space(10)]
+    public Button startButton;
 
     private MapPanelMoveNoise _moveNoise;
     private MapPanelSpectrum _mapPanelSpectrum;
@@ -47,5 +56,10 @@ public class MapEnterPanel : MonoBehaviour
     {
         IsSelect = false;
         transform.DOLocalMove(mapPanelHidePos, mapPanelEasingTime).SetEase(_ease);
+    }
+    public void SetText(string socre, string combo)
+    {
+        bestScore.text = $"<color=grey>BestScore</color> {socre}";
+        maxCombo.text = $"<color=grey>Max Combo</color> {combo}";
     }
 }

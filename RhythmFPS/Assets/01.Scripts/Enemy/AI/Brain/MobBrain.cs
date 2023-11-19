@@ -4,27 +4,18 @@ using UnityEngine;
 
 public class MobBrain : EnemyBrain
 {
-    private float _attackTimer;
+    [SerializeField]
+    private MobAnimator _animator;
+    public MobAnimator Animator => _animator;
 
-    protected override void Awake()
+    public override void Init()
     {
-        base.Awake();
-
-        _attackTimer = status.attackDelay;
+        isDead = false;
     }
 
-    private void Update()
+    public override void SetDead()
     {
-        _attackTimer += Time.deltaTime;
-    }
-
-    public override void Attack()
-    {
-        if (_attackTimer >= status.attackDelay)
-        {
-            Debug.Log("Mob Attack");
-
-            _attackTimer = 0f;
-        }
+        base.SetDead();
+        _animator.SetDieTrigger(true);
     }
 }

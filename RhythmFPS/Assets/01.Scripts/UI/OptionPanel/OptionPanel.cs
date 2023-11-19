@@ -11,8 +11,15 @@ public class OptionPanel : MonoBehaviour
 
     public void OpenPanel()
     {
-        _backPanel.enabled = true;
+        transform.localPosition = Vector3.zero;
         _panel.localPosition = Vector3.zero;
+        gameObject.SetActive(true);
+        _backPanel.enabled = true;
+    }
+
+    public void Close()
+    {
+        UIManager.Instanace.HandleActiveOptionPanel?.Invoke();
     }
 
     public void ClosePanel()
@@ -22,7 +29,7 @@ public class OptionPanel : MonoBehaviour
         seq.Append(_panel.DOLocalMoveY(-900, 0.5f).SetEase(Ease.InOutBack));
         seq.AppendCallback(() =>
         {
-            Destroy(this.gameObject); //풀매니저 써야하나
+            gameObject.SetActive(false);
         });
     }
 }

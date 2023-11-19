@@ -20,11 +20,12 @@ public class UIManager : MonoBehaviour
         }
     }
     public UIHud UIHud;
-    public UISceneType currentSceneType;
+    public SceneType currentSceneType;
     public GameObject currentSceneObject;
+    public float rhythmTurm;
 
     #region 어디서든 일어날 수 있는 UI 이벤트
-    public Action<UISceneType> HandleUIChange; // 씬 바뀔 때 발행 할 이벤트
+    public Action<SceneType> HandleUIChange; // 씬 바뀔 때 발행 할 이벤트
     public Action HandleActiveOptionPanel; // 설정 찰 활성화 이벤트
     public Action HandleGameExit; // 게임 종료 이벤트
     #endregion
@@ -39,7 +40,7 @@ public class UIManager : MonoBehaviour
     #endregion
 
     #region 인게임에서 일어나는 UI 이벤트
-    public Action<float> HandleInGameStartEvent;
+    public Action HandleInGameStartEvent;
     public Action<float> HandleUseSkill; // 스킬 사용 float = cooltime
     public Action<float> HandlePlayerGetDamage; // 플레이어 데미지 입음
     public Action<float> HandleBossGetDamage; // 보스 데미지 입음
@@ -57,31 +58,54 @@ public class UIManager : MonoBehaviour
     public float bgm_SpectrumSizeValue;
     public float sfx_SpectrumSizeValue;
 
+    private bool _optionPanelOpen = false;
+
+    [SerializeField] private InputReader _inputReader;
+
     private void Awake()
     {
+        if (_instance != null)
+        {
+            Debug.LogError($"{typeof(UIManager)} instance is already exist!");
+            Destroy(gameObject);
+            return;
+        }
+
         UIHud = (UIHud)transform.Find("UIHud").GetComponent("UIHud");
         bgm_SpectrumSizeValue = sfx_SpectrumSizeValue = _spectrumNormalValue;
+        _optionPanelOpen = false;
     }
 
     private void Start()
     {
-        HandleUIChange += UIHud.UIChange;
-        HandleActiveOptionPanel += UIHud.ActiveOptionPanel;
+        HandleUIChange = UIHud.UIChange;
+        HandleActiveOptionPanel += SetOptionPanel;
         HandleGameExit += UIHud.ActiveGameExitPanel;
         HandleGameOver += UIHud.ActiveGameOverPanel;
         //HandleRetryGame += GameManager.instance.GameRestart;
 
-        //HandleUIChange?.Invoke(currentSceneType);
+        HandleUIChange?.Invoke(currentSceneType);
+    }
+
+    private void SetOptionPanel()
+    {
+        UIHud.ActiveOptionPanel(_optionPanelOpen);
+        if(currentSceneType != SceneType.lobby)
+        {
+            _inputReader.OpenSetting(_optionPanelOpen);
+            RhythmManager.instance.GameStop(_optionPanelOpen);
+        }
+        _optionPanelOpen = !_optionPanelOpen;
     }
 
     public void SetSpectrumValue(SoundType st, float value)
     {
         switch (st)
         {
-            case SoundType.bgm:
+            case SoundType.BGM:
                 bgm_SpectrumSizeValue = _spectrumNormalValue * value;
                 break;
-            case SoundType.sfx:
+            case SoundType.SFX:
                 sfx_SpectrumSizeValue = _spectrumNormalValue * value;
                 break;
             default:

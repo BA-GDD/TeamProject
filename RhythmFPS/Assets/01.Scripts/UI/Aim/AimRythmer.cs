@@ -1,28 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
+using UnityEngine.UI;
 
 public class AimRythmer : MonoBehaviour
 {
-    [SerializeField] private Transform _canvasTrm;
-    [SerializeField] private RythmTaker _rythmTaker;
+    [SerializeField] private Image _aimMaster;
+    [SerializeField] private Color _normalColor;
+    [SerializeField] private Color _matchColor;
 
-    private void Awake()
+    public void MatChRhythm()
     {
-        _canvasTrm = GameObject.Find("UICanvas").transform;
+        _aimMaster.color = _matchColor;
+        StartCoroutine(WaitRhythm());
     }
 
-    public void SpawnRhythm(float turm)
+    IEnumerator WaitRhythm()
     {
-        StartCoroutine(SpawnRythmCo(turm));
-    }
+        for (int i = 0; i < 12; i++)
+            yield return new WaitForEndOfFrame();
 
-    public IEnumerator SpawnRythmCo(float turm)
-    {
-        while (true)
-        {
-            PoolManager.Instance.Pop("RhythmTaker");
-            yield return new WaitForSeconds(turm);
-        }
+        Debug.Log("Reset");
+        _aimMaster.color = _normalColor;
     }
 }

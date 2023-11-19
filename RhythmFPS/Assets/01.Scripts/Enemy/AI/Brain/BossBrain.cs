@@ -22,6 +22,7 @@ public class BossBrain : EnemyBrain
 
     public Transform jumpUpCheckPos;
     public Transform jumpDownCheckPos;
+    public Transform collisionCheckPos;
 
     protected override void Awake()
     {
@@ -30,32 +31,44 @@ public class BossBrain : EnemyBrain
         _bossAnimator = GetComponent<BossAnimator>();
     }
 
-    public override void Attack()
+    public override void Init()
     {
 
     }
 
     private void Update()
     {
-        if(timer < coolTime)
+        if(isDead != true)
         {
-            timer += Time.deltaTime;
-        }
-        else
-        {
-            isCanAttack = true;
-            isMove = false;
-        }
+            if (timer < coolTime)
+            {
+                timer += Time.deltaTime;
+            } 
+            else
+            {
+                isCanAttack = true;
+                isMove = false;
+            }
 
-        //Debug.Log(Vector3.Distance(transform.position, GameManager.instance.playerTransform.position) <= 4f);
-        if(isMove)
-        {
-            _bossAnimator.SetMove(true);
-            StartChase();
-        }
-        else
-        {
-            StopChase();
+            //Debug.Log(Vector3.Distance(transform.position, GameManager.instance.playerTransform.position) <= 4f);
+            if (isMove)
+            {
+                //Debug.Log("¿òÁ÷ÀÓ");
+                _bossAnimator.SetMove(true);
+                if (agent.enabled)
+                {
+                    StartChase();
+                }
+            }
+            else
+            {
+
+                _bossAnimator.SetMove(false);
+                if (agent.enabled)
+                {
+                    StopChase();
+                }
+            }
         }
     }
 
@@ -64,11 +77,12 @@ public class BossBrain : EnemyBrain
         base.SetDead();
         _bossAnimator.StopAnimation(true);
         _bossAnimator.SetDead();
+        GameManager.instance.GameClear(0);
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(jumpUpCheckPos.position, 1f);
+        Gizmos.DrawWireSphere(transform.position, 3f);
     }
 }
