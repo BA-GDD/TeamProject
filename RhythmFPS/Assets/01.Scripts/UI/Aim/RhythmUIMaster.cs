@@ -23,7 +23,9 @@ public class RhythmUIMaster : MonoBehaviour
             if (_orderCount == 2) _orderCount = 0;
             for(int i = 0; i < 2; i++)
             {
-                RhythmTaker rt = Instantiate(_takerPrefab[_orderCount], _takerParent);
+                //RhythmTaker rt = Instantiate(_takerPrefab[_orderCount], _takerParent);
+                RhythmTaker rt = PoolManager.Instance.Pop(_takerPrefab[_orderCount].name) as RhythmTaker;
+                rt.transform.SetParent(_takerParent);
                 rt.transform.localPosition = _spawnPos[i].localPosition;
                 rt.MoveStart(new Vector3(Mathf.Pow(-1, i) * 97, 0, 0), _aimRythmer);
             }
