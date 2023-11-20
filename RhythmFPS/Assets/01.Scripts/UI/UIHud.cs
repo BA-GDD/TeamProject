@@ -54,11 +54,6 @@ public class UIHud : MonoBehaviour
         _op.gameObject.SetActive(false);
     }
 
-    public void QuitUI()
-    {
-        Destroy(UIManager.Instanace.currentSceneObject);
-    }
-
     private void Update()
     {
         /*if(Input.GetKeyDown(KeyCode.Space))
@@ -83,7 +78,7 @@ public class UIHud : MonoBehaviour
     [ContextMenu("�ɼ� �г� Ȱ��ȭ")]
     public void ActiveOptionPanel(bool isOpen)
     {
-        if(isOpen == false)
+        if (isOpen == false)
         {
             _op.OpenPanel();
         }
@@ -91,7 +86,7 @@ public class UIHud : MonoBehaviour
         {
             _op.ClosePanel();
         }
-        
+
     }
     [ContextMenu("���� ���� �г� Ȱ��ȭ")]
     public void ActiveGameOverPanel()
@@ -100,5 +95,3 @@ public class UIHud : MonoBehaviour
     }
     #endregion
 }
-
-
