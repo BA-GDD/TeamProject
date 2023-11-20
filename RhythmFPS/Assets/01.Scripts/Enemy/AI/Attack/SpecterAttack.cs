@@ -10,6 +10,15 @@ public class SpecterAttack : EnemyAttack
     private MobAnimator _animator;
     [SerializeField]
     private AudioClip _attackSound;
+    [SerializeField]
+    private float rotateSpeed = 10f;
+
+    protected override void Update()
+    {
+        base.Update();
+
+        transform.parent.rotation = Quaternion.Slerp(transform.parent.rotation, Quaternion.LookRotation(GameManager.instance.PlayerTransform.position - transform.parent.position), Time.deltaTime * rotateSpeed);
+    }
 
     public override void Attack()
     {

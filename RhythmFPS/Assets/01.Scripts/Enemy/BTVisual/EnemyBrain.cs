@@ -40,6 +40,9 @@ public abstract class EnemyBrain : PoolableMono
 
     protected virtual void Start()
     {
+        agent.updateUpAxis = false;
+        agent.updateRotation = false;
+
         StartChase();
     }
 
@@ -51,15 +54,13 @@ public abstract class EnemyBrain : PoolableMono
 
     public virtual void StartChase()
     {
-        agent.isStopped = false;
+        agent.enabled = true;
 
         agent.SetDestination(GameManager.instance.PlayerTransform.position);
     }
 
     public virtual void StopChase()
     {
-        agent.ResetPath();
-
-        agent.isStopped = true;
+        agent.enabled = false;
     }
 }
