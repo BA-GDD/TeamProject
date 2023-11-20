@@ -24,91 +24,67 @@ public class UIManager : MonoBehaviour
     public GameObject currentSceneObject;
     public float rhythmTurm;
 
-    #region ï¿½ï¿½ð¼­µï¿½ ï¿½Ï¾î³¯ ï¿½ï¿½ ï¿½Ö´ï¿½ UI ï¿½Ìºï¿½Æ®
-    public Action<SceneType> HandleUIChange; // ï¿½ï¿½ ï¿½Ù²ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ìºï¿½Æ®
-    public Action HandleActiveOptionPanel; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ È°ï¿½ï¿½È­ ï¿½Ìºï¿½Æ®
-    public Action HandleGameExit; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ìºï¿½Æ®
+    #region ¾îµð¼­µç ÀÏ¾î³¯ ¼ö ÀÖ´Â UI ÀÌº¥Æ®
+    public Action<SceneType> HandleUIChange; // ¾À ¹Ù²ð ¶§ ¹ßÇà ÇÒ ÀÌº¥Æ®
+    public Action HandleActiveOptionPanel; // ¼³Á¤ Âû È°¼ºÈ­ ÀÌº¥Æ®
+    public Action HandleGameExit; // °ÔÀÓ Á¾·á ÀÌº¥Æ®
+    public Action HandleUIQuit; // ÇöÀç UI»èÁ¦
     #endregion
 
-    #region ï¿½Îºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï¾î³ªï¿½ï¿½ UI ï¿½Ìºï¿½Æ®
-    public Action<DifficultyType, int, bool> HandleStarPut; // ï¿½Ñ¹ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Çµï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½Ï°ï¿½ ï¿½Îºï¿½ï¿½ ï¿½ï¿½ï¿½Æ¿ï¿½ï¿½ï¿½ ï¿½ï¿½
-                                                            // bool = true, ï¿½Æ´Ï¸ï¿½ bool = false;
+    #region ·Îºñ ¾À¿¡¼­ ÀÏ¾î³ª´Â UI ÀÌº¥Æ®
+    public Action<DifficultyType, int, bool> HandleStarPut; // ÇÑ¹øµµ Å¬¸®¾î ÇÑ Àû ¾ø´Â ³­ÀÇµµ¸¦ Å¬¸®¾î ÇÏ°í ·Îºñ·Î µ¹¾Æ¿ÔÀ» ¶§
+                                                            // bool = true, ¾Æ´Ï¸é bool = false;
 
-    public Action<MapInfo> HandleClickPlayPanel; // ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½Ð³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç´ï¿½ ï¿½Ìºï¿½Æ®.
-                                                 // ï¿½Ø´ï¿½ï¿½Ï´ï¿½ MapInfo Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ°ï¿½ï¿½Ø´ï¿½.
-                                                 // MapInfo Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½È´ï¿½.
+    public Action<MapInfo> HandleClickPlayPanel; // ÇÃ·¹ÀÌ ÆÐ³ÎÀ» ´­·¶À» ¶§ ¹ßÇàµÇ´Â ÀÌº¥Æ®.
+                                                 // ÇØ´çÇÏ´Â MapInfo Å¬·¡½º¸¦ ³Ñ°ÜÁØ´Ù.
+                                                 // MapInfo Å¬·¡½º´Â ÇÃ·¹ÀÌ ±â·ÏÀÌ ÀúÀåµÈ´Ù.
     #endregion
 
-    #region ï¿½Î°ï¿½ï¿½Ó¿ï¿½ï¿½ï¿½ ï¿½Ï¾î³ªï¿½ï¿½ UI ï¿½Ìºï¿½Æ®
+    #region ÀÎ°ÔÀÓ¿¡¼­ ÀÏ¾î³ª´Â UI ÀÌº¥Æ®
     public Action HandleInGameStartEvent;
-    public Action<float> HandleUseSkill; // ï¿½ï¿½Å³ ï¿½ï¿½ï¿½ float = cooltime
-    public Action<float> HandlePlayerGetDamage; // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
-    public Action<float> HandleBossGetDamage; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
-    public Action HandlePlusCombo; // ï¿½Þºï¿½ ï¿½Ã·ï¿½ï¿½ï¿½
-    public Action HandleResetCombo; // ï¿½Þºï¿½ ï¿½ï¿½ï¿½ï¿½
-    public Action HandleShootGun; // UI ÅºÃ¢ ï¿½Ò¸ï¿½
-    public Action HandleReload; // UI ÅºÃ¢ ï¿½ï¿½ï¿½ï¿½
-    public Action<int, float, float> HandleGameClear; // ï¿½Þ¼ï¿½ ï¿½Þºï¿½, Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-    public Action HandleGameOver; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ð³ï¿½ È°ï¿½ï¿½È­
-    public Action HandleRetryGame; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+    public Action<float> HandleUseSkill; // ½ºÅ³ »ç¿ë float = cooltime
+    public Action<float> HandlePlayerGetDamage; // ÇÃ·¹ÀÌ¾î µ¥¹ÌÁö ÀÔÀ½
+    public Action<float> HandleBossGetDamage; // º¸½º µ¥¹ÌÁö ÀÔÀ½
+    public Action HandlePlusCombo; // ÄÞº¸ ÇÃ·¯½º
+    public Action HandleResetCombo; // ÄÞº¸ ¸®¼Â
+    public Action HandleShootGun; // UI ÅºÃ¢ ¼Ò¸ð
+    public Action HandleReload; // UI ÅºÃ¢ ÀåÀü
+    public Action<int, float, float> HandleGameClear; // ´Þ¼º ÄÞº¸, Å¬¸®¾î ½Ã°£, ³ÖÀº µ¥¹ÌÁö
+    public Action HandleGameOver; // °ÔÀÓ ¿À¹ö ÆÐ³Î È°¼ºÈ­
+    public Action HandleRetryGame; // °ÔÀÓ Àç½ÃÀÛ
     #endregion
 
-    [Header("ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½")]
+    [Header("½ºÆåÆ®·³ Á¶Á¤")]
     [SerializeField] private float _spectrumNormalValue;
     public float bgm_SpectrumSizeValue;
     public float sfx_SpectrumSizeValue;
 
-    private bool _optionPanelOpen = false;
-
-    [SerializeField] private InputReader _inputReader;
-
     private void Awake()
     {
-        if (_instance != null)
-        {
-            Debug.LogError($"{typeof(UIManager)} instance is already exist!");
-            Destroy(gameObject);
-            return;
-        }
-
         UIHud = (UIHud)transform.Find("UIHud").GetComponent("UIHud");
         bgm_SpectrumSizeValue = sfx_SpectrumSizeValue = _spectrumNormalValue;
-        _optionPanelOpen = false;
     }
 
     private void Start()
     {
-        HandleActiveOptionPanel += SetOptionPanel;
-        HandleUIChange += UIHud.UIChange;
+        HandleUIChange += UIHud.SceneChange;
+        HandleActiveOptionPanel += UIHud.ActiveOptionPanel;
         HandleGameExit += UIHud.ActiveGameExitPanel;
         HandleGameOver += UIHud.ActiveGameOverPanel;
+        HandleUIQuit += UIHud.QuitUI;
         //HandleRetryGame += GameManager.instance.GameRestart;
 
-        HandleUIChange?.Invoke(currentSceneType);
-    }
-    public void SceneChange()
-    {
-        UIHud.SceneChange();
-    }
-    private void SetOptionPanel()
-    {
-        UIHud.ActiveOptionPanel(_optionPanelOpen);
-        if(currentSceneType != SceneType.lobby)
-        {
-            _inputReader.OpenSetting(_optionPanelOpen);
-            RhythmManager.instance.GameStop(_optionPanelOpen);
-        }
-        _optionPanelOpen = !_optionPanelOpen;
+        //HandleUIChange?.Invoke(currentSceneType);
     }
 
     public void SetSpectrumValue(SoundType st, float value)
     {
         switch (st)
         {
-            case SoundType.BGM:
+            case SoundType.bgm:
                 bgm_SpectrumSizeValue = _spectrumNormalValue * value;
                 break;
-            case SoundType.SFX:
+            case SoundType.sfx:
                 sfx_SpectrumSizeValue = _spectrumNormalValue * value;
                 break;
             default:

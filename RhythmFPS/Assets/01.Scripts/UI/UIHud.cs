@@ -54,6 +54,11 @@ public class UIHud : MonoBehaviour
         _op.gameObject.SetActive(false);
     }
 
+    public void QuitUI()
+    {
+        Destroy(UIManager.Instanace.currentSceneObject);
+    }
+
     private void Update()
     {
         /*if(Input.GetKeyDown(KeyCode.Space))
