@@ -42,6 +42,16 @@ public class UIHud : MonoBehaviour
         _loadingUI.SetProgress(progress);
     }
 
+    public void TurnOff()
+    {
+        _canvasTrm.gameObject.SetActive(false);
+    }
+
+    public void TurnOn()
+    {
+        _canvasTrm.gameObject.SetActive(true);
+    }
+
     public void UIChange(SceneType toChangeScene)
     {
         if (_canvasTrm == null)
