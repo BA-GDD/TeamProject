@@ -29,8 +29,8 @@ public class GrenadeBullet : PoolableMono
         Vector3 point = other.ClosestPoint(transform.position);
         Transform vfxEFfect =  PoolManager.Instance.Pop(_exprosionVfx.name).transform;
 
-        vfxEFfect.position = transform.position+point;
-        vfxEFfect.forward = transform.position;
+        vfxEFfect.position = point;
+        vfxEFfect.rotation = Quaternion.LookRotation(transform.position - point);
 
         _rigid.velocity = Vector3.zero;
         PoolManager.Instance.Push(this);

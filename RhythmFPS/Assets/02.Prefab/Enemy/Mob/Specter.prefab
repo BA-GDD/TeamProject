@@ -59,7 +59,7 @@ MonoBehaviour:
   status: {fileID: 11400000, guid: 4f55a053c8980d44cb68e1e537e1e908, type: 2}
   isOnTheRoof: 0
   _animator: {fileID: -8424433955217994409}
-  _attackSound: {fileID: 8300000, guid: 4c27ca07dfcaef740961fedfc398d63d, type: 3}
+  _attackSound: {fileID: 8300000, guid: 32fc2ddadde20354abc0cc19b23e263e, type: 3}
 --- !u!114 &-8424433955217994409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,7 +216,8 @@ AudioSource:
   m_GameObject: {fileID: 8848192396316507528}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -3964809560669577467, guid: 04b49fed5a8573d498739605e4c7b72f,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1

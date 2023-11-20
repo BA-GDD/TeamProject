@@ -15,6 +15,8 @@ public class SpecterAttack : EnemyAttack
     {
         if (_attackTimer >= _brain.status.attackDelay)
         {
+            ((MobBrain)_brain).PlayAttackSound();
+
             Collider[] colliders = Physics.OverlapSphere(transform.position, _brain.status.attackRange, _playerLayerMask);
 
             if (colliders.Length > 0 && colliders[0].TryGetComponent(out PlayerHealth playerHealth))
