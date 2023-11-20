@@ -11,7 +11,7 @@ public class WormAttack : EnemyAttack
 
     public override void Attack()
     {
-        if (_attackTimer >= _brain.status.attackDelay)
+        if (_attackTimer >= _brain.status.attackDelay && _isAttack)
         {
             _animator.SetAttackTrigger(true);
 

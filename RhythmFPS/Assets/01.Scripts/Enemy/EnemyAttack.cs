@@ -6,6 +6,19 @@ public abstract class EnemyAttack : MonoBehaviour
 {
     protected EnemyBrain _brain;
     protected float _attackTimer;
+    protected bool _isAttack;
+    public bool IsAttack
+    {
+        get
+        {
+            return _isAttack;
+        }
+
+        set
+        {
+            _isAttack = value;
+        }
+    }
 
     protected virtual void Awake()
     {

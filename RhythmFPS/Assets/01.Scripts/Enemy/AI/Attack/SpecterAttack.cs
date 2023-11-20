@@ -11,7 +11,7 @@ public class SpecterAttack : EnemyAttack
 
     public override void Attack()
     {
-        if (_attackTimer >= _brain.status.attackDelay)
+        if (_attackTimer >= _brain.status.attackDelay && _isAttack)
         {
             Collider[] colliders = Physics.OverlapSphere(transform.position, _brain.status.attackRange, _playerLayerMask);
 
