@@ -38,6 +38,5 @@ public class ThrowAxePatternNode : ActionNode
     private void OnThrowAxeHandle()
     {
         GameObject thrownAxe = Instantiate(axePrefab, (brain as BossBrain).weapon.transform.position, Quaternion.identity);
-        Debug.Log("Axe Throw Pattern");
     }
 }

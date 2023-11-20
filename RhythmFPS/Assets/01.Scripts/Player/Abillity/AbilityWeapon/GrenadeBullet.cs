@@ -6,7 +6,8 @@ using UnityEngine;
 public class GrenadeBullet : PoolableMono
 {
     [SerializeField] private float _explosionRadius = 3f;
-    [SerializeField] LayerMask _canDamageLayer;
+    [SerializeField] private LayerMask _canDamageLayer;
+    [SerializeField] private PoolableMono _exprosionVfx;
 
     private Rigidbody _rigid;
     private Collider[] _overlapBuffer = new Collider[100];
@@ -25,6 +26,12 @@ public class GrenadeBullet : PoolableMono
     private void OnTriggerEnter(Collider other)
     {
         Explosion();
+        Vector3 point = other.ClosestPoint(transform.position);
+        Transform vfxEFfect =  PoolManager.Instance.Pop(_exprosionVfx.name).transform;
+
+        vfxEFfect.position = point;
+        vfxEFfect.rotation = Quaternion.LookRotation(transform.position - point);
+
         _rigid.velocity = Vector3.zero;
         PoolManager.Instance.Push(this);
     }

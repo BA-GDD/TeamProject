@@ -55,11 +55,19 @@ public class BossBrain : EnemyBrain
             {
                 //Debug.Log("¿òÁ÷ÀÓ");
                 _bossAnimator.SetMove(true);
-                StartChase();
+                if (agent.enabled)
+                {
+                    StartChase();
+                }
             }
             else
             {
-                StopChase();
+
+                _bossAnimator.SetMove(false);
+                if (agent.enabled)
+                {
+                    StopChase();
+                }
             }
         }
     }
@@ -69,12 +77,12 @@ public class BossBrain : EnemyBrain
         base.SetDead();
         _bossAnimator.StopAnimation(true);
         _bossAnimator.SetDead();
-        UIManager.Instanace.HandleGameClear(10,10,10);
+        GameManager.instance.GameClear(0);
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(jumpUpCheckPos.position, 1f);
+        Gizmos.DrawWireSphere(transform.position, 3f);
     }
 }

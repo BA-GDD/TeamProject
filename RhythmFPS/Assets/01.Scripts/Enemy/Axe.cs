@@ -6,12 +6,11 @@ public class Axe : MonoBehaviour
 {
     [SerializeField] private float _speed = 3.5f;
     [SerializeField] private float _rotateSpeed = 0.5f;
-    [SerializeField]
-    private float _axeDamage;
+    [SerializeField] private float _axeDamage;
+    [SerializeField] private LayerMask _groundLayerMask;
+
     private Rigidbody _rb;
     private ProjectileHealth _health;
-    [SerializeField]
-    private LayerMask _groundLayerMask;
 
     private void Awake()
     {

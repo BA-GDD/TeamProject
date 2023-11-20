@@ -54,6 +54,7 @@ MonoBehaviour:
   brain: {fileID: 0}
   description: 
   children:
+  - {fileID: 5917493198515475338}
   - {fileID: -671665441755930183}
   - {fileID: -8777531589437384148}
   - {fileID: -3718441279689325939}
@@ -82,6 +83,32 @@ MonoBehaviour:
     curPattern: 0
   brain: {fileID: 0}
   description: 
+--- !u!114 &-5060930991276200938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70046b8d257fd0640abafe9cc8882165, type: 3}
+  m_Name: CheckBeatNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: f8237bba833639c4593f716e78eb9fe2
+  position: {x: -1262, y: 658}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+    enemySpotPosition: {x: 0, y: 0, z: 0}
+    whatIsEnemy:
+      serializedVersion: 2
+      m_Bits: 0
+    curPattern: 0
+  brain: {fileID: 0}
+  description: 
+  beatCnt: 3
 --- !u!114 &-4875502753892635991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,6 +244,32 @@ MonoBehaviour:
   children:
   - {fileID: -4685779539414754439}
   - {fileID: 8293049664315632210}
+--- !u!114 &-2803686097074352975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70046b8d257fd0640abafe9cc8882165, type: 3}
+  m_Name: CheckBeatNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: f0c8dc1f0f905e443b04a051d932ca1f
+  position: {x: 130, y: 1119}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+    enemySpotPosition: {x: 0, y: 0, z: 0}
+    whatIsEnemy:
+      serializedVersion: 2
+      m_Bits: 0
+    curPattern: 0
+  brain: {fileID: 0}
+  description: 
+  beatCnt: 5
 --- !u!114 &-1890663484601747464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -322,6 +375,8 @@ MonoBehaviour:
   brain: {fileID: 0}
   description: 
   children:
+  - {fileID: -2803686097074352975}
+  - {fileID: 2968205872163137974}
   - {fileID: 6566841837266111392}
   - {fileID: 4345381654316785243}
 --- !u!114 &-281029758880413158
@@ -349,9 +404,11 @@ MonoBehaviour:
     curPattern: 0
   brain: {fileID: 0}
   description: 
-  _groundLayerMask:
+  _playerLayerMask:
     serializedVersion: 2
-    m_Bits: 2048
+    m_Bits: 0
+  _damage: 0
+  _explosion: {fileID: 0}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -393,6 +450,11 @@ MonoBehaviour:
   - {fileID: -8777531589437384148}
   - {fileID: -4748830414403286877}
   - {fileID: -281029758880413158}
+  - {fileID: -2803686097074352975}
+  - {fileID: 2968205872163137974}
+  - {fileID: 5917493198515475338}
+  - {fileID: -5060930991276200938}
+  - {fileID: 1438291939677715317}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     enemySpotPosition: {x: 0, y: 0, z: 0}
@@ -485,6 +547,32 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 2.5}
   - {x: 2.5, y: 0, z: 1.5}
   - {x: -2.5, y: 0, z: 1.5}
+--- !u!114 &1438291939677715317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d91b306dc394437b47f70453c7ce0e8, type: 3}
+  m_Name: DebugNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: c596c6748abe83b438f3fcd3fa4058af
+  position: {x: -962, y: 658}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+    enemySpotPosition: {x: 0, y: 0, z: 0}
+    whatIsEnemy:
+      serializedVersion: 2
+      m_Bits: 0
+    curPattern: 0
+  brain: {fileID: 0}
+  description: 
+  message: asdasdasd
 --- !u!114 &1570231025362751907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -513,6 +601,32 @@ MonoBehaviour:
   children:
   - {fileID: -1890663484601747464}
   - {fileID: 4848709414978667375}
+--- !u!114 &2968205872163137974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d91b306dc394437b47f70453c7ce0e8, type: 3}
+  m_Name: DebugNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: e35312ad289046740aa9e07d8182bca7
+  position: {x: 277, y: 1119}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+    enemySpotPosition: {x: 0, y: 0, z: 0}
+    whatIsEnemy:
+      serializedVersion: 2
+      m_Bits: 0
+    curPattern: 0
+  brain: {fileID: 0}
+  description: 
+  message: asdasd
 --- !u!114 &3005345671885831184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -556,7 +670,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: e22ffd5d58744e64a808daf6d61c8d1b
-  position: {x: 578.3203, y: 1119.42}
+  position: {x: 596, y: 1119}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     enemySpotPosition: {x: 0, y: 0, z: 0}
@@ -623,6 +737,10 @@ MonoBehaviour:
   _playerLayerMask:
     serializedVersion: 2
     m_Bits: 2097152
+  _groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  _rushSpeed: 0
 --- !u!114 &5798060088522783948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -650,6 +768,34 @@ MonoBehaviour:
   description: 
   axePrefab: {fileID: 7039645583061297849, guid: 60791360983720d4a9582b1013ae4f9c,
     type: 3}
+--- !u!114 &5917493198515475338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59ff18e011eb4e1ba59c08354a7ff280, type: 3}
+  m_Name: SequenceNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: ec061fb895a031a41afc288991d14a1d
+  position: {x: -1112, y: 521}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+    enemySpotPosition: {x: 0, y: 0, z: 0}
+    whatIsEnemy:
+      serializedVersion: 2
+      m_Bits: 0
+    curPattern: 0
+  brain: {fileID: 0}
+  description: 
+  children:
+  - {fileID: -5060930991276200938}
+  - {fileID: 1438291939677715317}
 --- !u!114 &6145720873686004618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -691,7 +837,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 1960d44219780344cb26e66a3e5b8c92
-  position: {x: 392.72025, y: 1119.42}
+  position: {x: 427, y: 1119}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     enemySpotPosition: {x: 0, y: 0, z: 0}
@@ -717,7 +863,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: ab2946dfb57330648863a5cf9dfce04b
-  position: {x: -731.7706, y: 657.5999}
+  position: {x: -701, y: 658}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     enemySpotPosition: {x: 0, y: 0, z: 0}

@@ -23,36 +23,53 @@ public class MapRaise : MonoBehaviour
     [Space(10)]
     [Header("내브를 다시 설정 해주시위한 거.")]
     [SerializeField] private NavMeshSurface _surface;
+
+    private int _totalBeat;
+    private bool _isUp = false;
     private void Awake()
     {
         _surface.UpdateNavMesh(_surface.navMeshData);
     }
-
-    private void Update()
+    private void Start()
     {
-        if (Keyboard.current.gKey.wasPressedThisFrame)
-        {
-            MapUp();
-        }
-        if (Keyboard.current.hKey.wasPressedThisFrame)
-        {
-            MapDown();
-        }
+        //RhythmManager.instance.
+    }
 
+    private void CheckBeatUpdateMap()
+    {
+        ++_totalBeat;
+        if (_totalBeat >= 15)
+        {
+            if (_isUp)
+            {
+                MapDown();
+            }
+            else
+            {
+                List<MapList> list = mapList.Clone() as List<MapList>;
+
+                int cnt = Random.Range(1, 4);
+                for (int i = 0; i < cnt; i++)
+                {
+                    int index = Random.Range(0, list.Count);
+                    MapUp(index);
+                    list.RemoveAt(index);
+                }
+            }
+            _totalBeat = 0;
+            _isUp = !_isUp;
+        }
     }
 
     /// <summary>
     /// 리스트에 있는 맵의 On함수를 호출해준다.
     /// </summary>
-    public void MapUp()
+    public void MapUp(int idx)
     {
-        int randIdx = Random.Range(0,mapList.Length);
-        curIdx = randIdx;
-
-        for(int i = 0; i < mapList[randIdx].list.Length; i++)
+        for (int i = 0; i < mapList[idx].list.Length; i++)
         {
             float randYPos = Random.Range(-1.0f, 1.0f);
-            mapList[randIdx].list[i].On(modifyPos + randYPos);
+            mapList[idx].list[i].On(modifyPos + randYPos);
         }
         StartCoroutine(WaitUpdateNavMesh());
     }
@@ -67,6 +84,7 @@ public class MapRaise : MonoBehaviour
     /// </summary>
     public void MapDown()
     {
+
         for (int i = 0; i < mapList[curIdx].list.Length; i++)
         {
             mapList[curIdx].list[i].Off();

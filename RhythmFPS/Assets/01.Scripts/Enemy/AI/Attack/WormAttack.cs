@@ -13,6 +13,8 @@ public class WormAttack : EnemyAttack
     {
         if (_attackTimer >= _brain.status.attackDelay && _isAttack)
         {
+            ((MobBrain)_brain).PlayAttackSound();
+
             _animator.SetAttackTrigger(true);
 
             _attackTimer = 0f;

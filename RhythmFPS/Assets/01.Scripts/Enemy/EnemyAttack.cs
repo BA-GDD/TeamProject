@@ -19,6 +19,7 @@ public abstract class EnemyAttack : MonoBehaviour
             _isAttack = value;
         }
     }
+    protected EnemySound _soundPlayer;
 
     protected virtual void Awake()
     {
@@ -32,7 +33,6 @@ public abstract class EnemyAttack : MonoBehaviour
     }
 
     public abstract void Attack();
-
     public virtual void OnDieEvent()
     {
         PoolManager.Instance.Push(_brain);

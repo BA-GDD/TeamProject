@@ -100,6 +100,7 @@ public class RhythmManager : MonoBehaviour
 
         _metronomeAudioSource.PlayOneShot(_metronomeClip);
 
+
         yield return null;
     }
 
@@ -109,4 +110,16 @@ public class RhythmManager : MonoBehaviour
         UIManager.Instanace.HandleInGameStartEvent?.Invoke();
         _musicAudioSource.Play();
     }
+    public void GameStop(bool value)
+    {
+        if(value == false)
+        {
+            _musicAudioSource.Pause();
+        }
+        else
+        {
+            _musicAudioSource.Play();
+        }
+    }    
+    
 }

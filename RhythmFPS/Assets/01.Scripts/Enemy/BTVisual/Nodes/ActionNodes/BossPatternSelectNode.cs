@@ -8,7 +8,7 @@ public class BossPatternSelectNode : ActionNode
     protected override void OnStart()
     {
         float distance = Vector3.Distance(brain.transform.position, GameManager.instance.PlayerTransform.position);
-        if(distance >= 18f)
+        if (distance >= 18f)
         {
             blackboard.curPattern = 2;
             (brain as BossBrain).BossAnimator.SetAttackPattern(blackboard.curPattern);
@@ -23,6 +23,8 @@ public class BossPatternSelectNode : ActionNode
             blackboard.curPattern = 0;
             (brain as BossBrain).BossAnimator.SetAttackPattern(blackboard.curPattern);
         }
+        //blackboard.curPattern = 3;
+        //(brain as BossBrain).BossAnimator.SetAttackPattern(blackboard.curPattern);
     }
 
     protected override void OnStop()
