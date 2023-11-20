@@ -339,7 +339,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 684f5a781101cf44a867688b1a5d56a7
-  position: {x: -190.31308, y: 657.6}
+  position: {x: -189, y: 659}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     enemySpotPosition: {x: 0, y: 0, z: 0}
@@ -353,7 +353,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2097152
   _damage: 15
-  _explosion: {fileID: 8585256237522646166, guid: 99dabb11f57ed8040a9941eee15df038,
+  _explosion: {fileID: 7093364030672061986, guid: 99dabb11f57ed8040a9941eee15df038,
     type: 3}
 --- !u!114 &11400000
 MonoBehaviour:
@@ -724,7 +724,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: ab2946dfb57330648863a5cf9dfce04b
-  position: {x: -731.7706, y: 657.5999}
+  position: {x: -732, y: 658}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     enemySpotPosition: {x: 0, y: 0, z: 0}

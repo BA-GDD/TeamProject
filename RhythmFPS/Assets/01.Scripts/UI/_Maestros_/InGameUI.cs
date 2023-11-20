@@ -9,12 +9,11 @@ public class InGameUI : MonoBehaviour
     [SerializeField] private BossEnemyHpBar _bossHpBar;
     [SerializeField] private ComboCountUI _comboCount;
     [SerializeField] private BulletCountUI _bulletCount;
-    [SerializeField] private AimRythmer _aimRhyther;
     // ����Ʈ �г� ���� ��� ���� �ؾ���.
 
     private void Start()
     {
-        UIManager.Instanace.HandleInGameStartEvent += _aimRhyther.SpawnRhythm;
+        //UIManager.Instanace.HandleInGameStartEvent += _aimRhyther.SpawnRhythm;
         UIManager.Instanace.HandleUseSkill += _skillcoolFunc.UseSkill;
         UIManager.Instanace.HandlePlayerGetDamage += _playerHpBar.DiminishValue;
         UIManager.Instanace.HandleBossGetDamage += _bossHpBar.DiminishValue;
@@ -29,7 +28,7 @@ public class InGameUI : MonoBehaviour
 
     private void OnDestroy()
     {
-        UIManager.Instanace.HandleInGameStartEvent -= _aimRhyther.SpawnRhythm;
+        //UIManager.Instanace.HandleInGameStartEvent -= _aimRhyther.SpawnRhythm;
         UIManager.Instanace.HandleUseSkill -= _skillcoolFunc.UseSkill;
         UIManager.Instanace.HandlePlayerGetDamage -= _playerHpBar.DiminishValue;
         UIManager.Instanace.HandleBossGetDamage -= _bossHpBar.DiminishValue;

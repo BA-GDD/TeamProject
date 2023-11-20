@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -31,6 +32,12 @@ public abstract class EnemyBrain : PoolableMono
         agent.speed = status.moveSpeed;
     }
 
+    protected async virtual void OnEnable()
+    {
+        await Task.Delay(1000);
+        RhythmManager.instance.onNotedTimeAction += attack.Attack;
+    }
+
     protected virtual void Start()
     {
         StartChase();
@@ -39,6 +46,7 @@ public abstract class EnemyBrain : PoolableMono
     public virtual void SetDead()
     {
         isDead = true;
+        RhythmManager.instance.onNotedTimeAction -= attack.Attack;
     }
 
     public virtual void StartChase()

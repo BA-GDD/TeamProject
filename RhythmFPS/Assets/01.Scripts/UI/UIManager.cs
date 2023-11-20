@@ -24,65 +24,91 @@ public class UIManager : MonoBehaviour
     public GameObject currentSceneObject;
     public float rhythmTurm;
 
-    #region 어디서든 일어날 수 있는 UI 이벤트
-    public Action<SceneType> HandleUIChange; // 씬 바뀔 때 발행 할 이벤트
-    public Action HandleActiveOptionPanel; // 설정 찰 활성화 이벤트
-    public Action HandleGameExit; // 게임 종료 이벤트
+    #region ????? ??? ?? ??? UI ????
+    public Action<SceneType> HandleUIChange; // ?? ??? ?? ???? ?? ????
+    public Action HandleActiveOptionPanel; // ???? ?? ???? ????
+    public Action HandleGameExit; // ???? ???? ????
     #endregion
 
-    #region 로비 씬에서 일어나는 UI 이벤트
-    public Action<DifficultyType, int, bool> HandleStarPut; // 한번도 클리어 한 적 없는 난의도를 클리어 하고 로비로 돌아왔을 때
-                                                            // bool = true, 아니면 bool = false;
+    #region ?κ? ?????? ????? UI ????
+    public Action<DifficultyType, int, bool> HandleStarPut; // ????? ????? ?? ?? ???? ??????? ????? ??? ?κ?? ??????? ??
+                                                            // bool = true, ???? bool = false;
 
-    public Action<MapInfo> HandleClickPlayPanel; // 플레이 패널을 눌렀을 때 발행되는 이벤트.
-                                                 // 해당하는 MapInfo 클래스를 넘겨준다.
-                                                 // MapInfo 클래스는 플레이 기록이 저장된다.
+    public Action<MapInfo> HandleClickPlayPanel; // ?÷??? ?г??? ?????? ?? ?????? ????.
+                                                 // ?????? MapInfo ??????? ??????.
+                                                 // MapInfo ??????? ?÷??? ????? ??????.
     #endregion
 
-    #region 인게임에서 일어나는 UI 이벤트
+    #region ???????? ????? UI ????
     public Action HandleInGameStartEvent;
-    public Action<float> HandleUseSkill; // 스킬 사용 float = cooltime
-    public Action<float> HandlePlayerGetDamage; // 플레이어 데미지 입음
-    public Action<float> HandleBossGetDamage; // 보스 데미지 입음
-    public Action HandlePlusCombo; // 콤보 플러스
-    public Action HandleResetCombo; // 콤보 리셋
-    public Action HandleShootGun; // UI 탄창 소모
-    public Action HandleReload; // UI 탄창 장전
-    public Action<int, float, float> HandleGameClear; // 달성 콤보, 클리어 시간, 넣은 데미지
-    public Action HandleGameOver; // 게임 오버 패널 활성화
-    public Action HandleRetryGame; // 게임 재시작
+    public Action<float> HandleUseSkill; // ??? ??? float = cooltime
+    public Action<float> HandlePlayerGetDamage; // ?÷???? ?????? ????
+    public Action<float> HandleBossGetDamage; // ???? ?????? ????
+    public Action HandlePlusCombo; // ??? ?÷???
+    public Action HandleResetCombo; // ??? ????
+    public Action HandleShootGun; // UI ?? ???
+    public Action HandleReload; // UI ?? ????
+    public Action<int, float, float> HandleGameClear; // ??? ???, ????? ?ð?, ???? ??????
+    public Action HandleGameOver; // ???? ???? ?г? ????
+    public Action HandleRetryGame; // ???? ?????
     #endregion
 
-    [Header("스펙트럼 조정")]
+    [Header("??????? ????")]
     [SerializeField] private float _spectrumNormalValue;
     public float bgm_SpectrumSizeValue;
     public float sfx_SpectrumSizeValue;
 
+    private bool _optionPanelOpen = false;
+
+    [SerializeField] private InputReader _inputReader;
+
     private void Awake()
     {
+        if (_instance != null)
+        {
+            Debug.LogError($"{typeof(UIManager)} instance is already exist!");
+            Destroy(gameObject);
+            return;
+        }
+
         UIHud = (UIHud)transform.Find("UIHud").GetComponent("UIHud");
         bgm_SpectrumSizeValue = sfx_SpectrumSizeValue = _spectrumNormalValue;
+        _optionPanelOpen = false;
     }
 
     private void Start()
     {
+        HandleActiveOptionPanel += SetOptionPanel;
         HandleUIChange += UIHud.UIChange;
-        HandleActiveOptionPanel += UIHud.ActiveOptionPanel;
         HandleGameExit += UIHud.ActiveGameExitPanel;
         HandleGameOver += UIHud.ActiveGameOverPanel;
         //HandleRetryGame += GameManager.instance.GameRestart;
 
         HandleUIChange?.Invoke(currentSceneType);
     }
+    public void SceneChange()
+    {
+        UIHud.SceneChange();
+    }
+    private void SetOptionPanel()
+    {
+        UIHud.ActiveOptionPanel(_optionPanelOpen);
+        if (currentSceneType != SceneType.lobby)
+        {
+            _inputReader.OpenSetting(_optionPanelOpen);
+            RhythmManager.instance.GameStop(_optionPanelOpen);
+        }
+        _optionPanelOpen = !_optionPanelOpen;
+    }
 
     public void SetSpectrumValue(SoundType st, float value)
     {
         switch (st)
         {
-            case SoundType.bgm:
+            case SoundType.BGM:
                 bgm_SpectrumSizeValue = _spectrumNormalValue * value;
                 break;
-            case SoundType.sfx:
+            case SoundType.SFX:
                 sfx_SpectrumSizeValue = _spectrumNormalValue * value;
                 break;
             default:

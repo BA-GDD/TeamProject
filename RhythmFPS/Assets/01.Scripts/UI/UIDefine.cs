@@ -1,7 +1,7 @@
 public enum SoundType
 {
-    bgm,
-    sfx
+    BGM,
+    SFX
 }
 
 public enum SceneType

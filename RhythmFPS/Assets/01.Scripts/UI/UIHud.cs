@@ -21,16 +21,37 @@ public class UIHud : MonoBehaviour
     [Header("���� ���� �г�")]
     [SerializeField] private GameObject _gameOverPanel;
 
-    [Header("�� UI")]
+    [Header("로딩 패널")]
+    [SerializeField] private LoadingUI _loadingPanel;
+    private LoadingUI _loadingUI;
+
     [SerializeField] private List<GameObject> _sceneUIList = new List<GameObject>();
+
+    private OptionPanel _op;
+
+    public void SceneChange()
+    {
+        if (UIManager.Instanace.currentSceneObject != null)
+            Destroy(UIManager.Instanace.currentSceneObject);
+
+        _loadingUI = Instantiate(_loadingPanel, _canvasTrm);
+        _loadingUI.LoadingStart();
+    }
+    public void SetProgress(float progress)
+    {
+        _loadingUI.SetProgress(progress);
+    }
 
     public void UIChange(SceneType toChangeScene)
     {
-        if(UIManager.Instanace.currentSceneObject != null)
-            Destroy(UIManager.Instanace.currentSceneObject);
+        if (_canvasTrm == null)
+            _canvasTrm = GameObject.Find("UICanvas").transform;
 
         UIManager.Instanace.currentSceneObject = Instantiate(_sceneUIList[(int)toChangeScene], _canvasTrm);
         UIManager.Instanace.currentSceneType = toChangeScene;
+        _op = Instantiate(_optionPanel, _canvasTrm);
+        _op.gameObject.name = "OptionPanel";
+        _op.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -49,20 +70,23 @@ public class UIHud : MonoBehaviour
     [ContextMenu("����Ʈ �г� Ȱ��ȭ")]
     public void ActiveResultPanel(int combo, float clearTime, float dealDamage)
     {
-        float score = clearTime * combo + dealDamage;
-
         ResultUI ru = Instantiate(_resultPanel, _canvasTrm);
         ru.transform.localPosition = _resultPanelCreatePos;
         ru.gameObject.name = "Result";
-        ru.ActiveResultPanel(score, combo, clearTime, dealDamage);
+        ru.ActiveResultPanel(ScoreManager.Instance.Score, combo, clearTime, dealDamage);
     }
     [ContextMenu("�ɼ� �г� Ȱ��ȭ")]
-    public void ActiveOptionPanel()
+    public void ActiveOptionPanel(bool isOpen)
     {
-        OptionPanel op = Instantiate(_optionPanel, _canvasTrm);
-        op.transform.localPosition = Vector3.zero;
-        op.gameObject.name = "OptionPanel";
-        op.OpenPanel();
+        if (isOpen == false)
+        {
+            _op.OpenPanel();
+        }
+        else
+        {
+            _op.ClosePanel();
+        }
+
     }
     [ContextMenu("���� ���� �г� Ȱ��ȭ")]
     public void ActiveGameOverPanel()
@@ -71,5 +95,3 @@ public class UIHud : MonoBehaviour
     }
     #endregion
 }
-
-

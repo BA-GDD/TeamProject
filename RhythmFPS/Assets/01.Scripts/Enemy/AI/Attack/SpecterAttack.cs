@@ -8,11 +8,15 @@ public class SpecterAttack : EnemyAttack
     private LayerMask _playerLayerMask;
     [SerializeField]
     private MobAnimator _animator;
+    [SerializeField]
+    private AudioClip _attackSound;
 
     public override void Attack()
     {
-        if (_attackTimer >= _brain.status.attackDelay)
+        if (_attackTimer >= _brain.status.attackDelay && _isAttack)
         {
+            ((MobBrain)_brain).PlayAttackSound();
+
             Collider[] colliders = Physics.OverlapSphere(transform.position, _brain.status.attackRange, _playerLayerMask);
 
             if (colliders.Length > 0 && colliders[0].TryGetComponent(out PlayerHealth playerHealth))
