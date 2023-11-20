@@ -31,6 +31,7 @@ public class BossAnimator : MonoBehaviour
 
     public void OnAnimationEvent()
     {
+        print("OnAnimation");
         OnAnimationTrigger?.Invoke();
     }
 

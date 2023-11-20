@@ -6,6 +6,7 @@ using UnityEngine;
 public class ThrowAxePatternNode : ActionNode
 {
     public GameObject axePrefab;
+    private bool _alreadyInit = false;
 
     protected override void OnStart()
     {
@@ -14,11 +15,15 @@ public class ThrowAxePatternNode : ActionNode
 
     void OnPatternInitHandle()
     {
-        (brain as BossBrain).IsMove = false;
-        (brain as BossBrain).BossAnimator.OnAnimationTrigger += OnThrowAxeHandle;
-        (brain as BossBrain).BossAnimator.SetMove(false);
-        (brain as BossBrain).BossAnimator.SetAttackTrigger(true);
-        (brain as BossBrain).IsCanAttack = false;
+        if (!_alreadyInit)
+        {
+            (brain as BossBrain).IsMove = false;
+            (brain as BossBrain).BossAnimator.OnAnimationTrigger += OnThrowAxeHandle;
+            (brain as BossBrain).BossAnimator.SetMove(false);
+            (brain as BossBrain).BossAnimator.SetAttackTrigger(true);
+            (brain as BossBrain).IsCanAttack = false;
+            _alreadyInit = true;
+        }
     }
 
     protected override void OnStop()
@@ -29,6 +34,7 @@ public class ThrowAxePatternNode : ActionNode
         (brain as BossBrain).BossAnimator.SetAnimationClipEndState(false);
         (brain as BossBrain).IsMove = true;
         (brain as BossBrain).IsCanAttack = true;
+        _alreadyInit = false;
     }
 
     protected override State OnUpdate()
