@@ -9,11 +9,11 @@ public class ThrowAxePatternNode : ActionNode
 
     protected override void OnStart()
     {
-        (brain as BossBrain).isMove = false;
+        (brain as BossBrain).IsMove = false;
         (brain as BossBrain).BossAnimator.OnAnimationTrigger += OnThrowAxeHandle;
         (brain as BossBrain).BossAnimator.SetMove(false);
         (brain as BossBrain).BossAnimator.SetAttackTrigger(true);
-        (brain as BossBrain).isCanAttack = false;
+        (brain as BossBrain).IsCanAttack = false;
     }
 
     protected override void OnStop()
@@ -21,7 +21,7 @@ public class ThrowAxePatternNode : ActionNode
         (brain as BossBrain).BossAnimator.OnAnimationTrigger -= OnThrowAxeHandle;
         //(brain as BossBrain).BossAnimator.SetAttackTrigger(false);
         (brain as BossBrain).BossAnimator.SetAnimationClipEndState(false);
-        (brain as BossBrain).isMove = true;
+        (brain as BossBrain).IsMove = true;
     }
 
     protected override State OnUpdate()
@@ -37,6 +37,6 @@ public class ThrowAxePatternNode : ActionNode
 
     private void OnThrowAxeHandle()
     {
-        GameObject thrownAxe = Instantiate(axePrefab, (brain as BossBrain).weapon.transform.position, Quaternion.identity);
+        GameObject thrownAxe = Instantiate(axePrefab, (brain as BossBrain).Weapon.transform.position, Quaternion.identity);
     }
 }

@@ -6,28 +6,39 @@ using UnityEngine.AI;
 
 public class BossBrain : EnemyBrain
 {
-    public NavMeshAgent navAgent;
-
     private BossAnimator _bossAnimator;
     public BossAnimator BossAnimator => _bossAnimator;
 
     public float timer;
-    public float coolTime = 3f;
-    public bool isCanAttack = false;
+    private float _coolTime = 3f;
+    private bool _isCanAttack = false;
+    public bool IsCanAttack
+    {
+        get => _isCanAttack;
+        set => _isCanAttack = value;
+    }
 
-    public bool isMove = true;
+    private bool _isMove = true;
+    public bool IsMove
+    {
+        get => _isMove;
+        set => _isMove = value;
+    }
 
-    public GameObject weapon;
-    public GameObject shield;
+    [SerializeField] private GameObject _weapon;
+    public GameObject Weapon => _weapon;
+    [SerializeField] private GameObject _shield;
+    public GameObject Shield => _shield;
 
-    public Transform jumpUpCheckPos;
-    public Transform jumpDownCheckPos;
     public Transform collisionCheckPos;
+
+    public int wormCnt = 0;
+    public int spectorCnt = 0;
+    public string spawnEnemyName = "";
 
     protected override void Awake()
     {
         base.Awake();
-        navAgent = GetComponent<NavMeshAgent>();
         _bossAnimator = GetComponent<BossAnimator>();
     }
 
@@ -40,20 +51,18 @@ public class BossBrain : EnemyBrain
     {
         if(isDead != true)
         {
-            if (timer < coolTime)
+            if (timer < _coolTime)
             {
                 timer += Time.deltaTime;
             } 
             else
             {
-                isCanAttack = true;
-                isMove = false;
+                _isCanAttack = true;
+                _isMove = false;
             }
 
-            //Debug.Log(Vector3.Distance(transform.position, GameManager.instance.playerTransform.position) <= 4f);
-            if (isMove)
+            if (_isMove)
             {
-                //Debug.Log("¿òÁ÷ÀÓ");
                 _bossAnimator.SetMove(true);
                 if (agent.enabled)
                 {
@@ -62,7 +71,6 @@ public class BossBrain : EnemyBrain
             }
             else
             {
-
                 _bossAnimator.SetMove(false);
                 if (agent.enabled)
                 {
@@ -74,8 +82,10 @@ public class BossBrain : EnemyBrain
 
     public override void SetDead()
     {
+        _bossAnimator.SetMove(false);
+        StopChase();
+        _isCanAttack = false;
         base.SetDead();
-        _bossAnimator.StopAnimation(true);
         _bossAnimator.SetDead();
         GameManager.instance.GameClear(0);
     }

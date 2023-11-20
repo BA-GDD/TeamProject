@@ -35,7 +35,6 @@ public abstract class EnemyBrain : PoolableMono
     protected async virtual void OnEnable()
     {
         await Task.Delay(1000);
-        RhythmManager.instance.onNotedTimeAction += attack.Attack;
     }
 
     protected virtual void Start()
@@ -46,7 +45,6 @@ public abstract class EnemyBrain : PoolableMono
     public virtual void SetDead()
     {
         isDead = true;
-        RhythmManager.instance.onNotedTimeAction -= attack.Attack;
     }
 
     public virtual void StartChase()

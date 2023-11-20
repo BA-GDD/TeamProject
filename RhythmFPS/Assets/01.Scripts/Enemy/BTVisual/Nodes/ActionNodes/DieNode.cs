@@ -7,6 +7,7 @@ public class DieNode : ActionNode
 {
     protected override void OnStart()
     {
+        brain.health.Die();
     }
 
     protected override void OnStop()
@@ -15,7 +16,6 @@ public class DieNode : ActionNode
 
     protected override State OnUpdate()
     {
-        brain.health.Die();
         return State.SUCCESS;
     }
 }
