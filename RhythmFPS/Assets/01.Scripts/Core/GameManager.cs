@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
         get
         {
             if (_playerTransform == null)
-                _playerTransform = FindAnyObjectByType<AgentController>().transform;
+                _playerTransform = FindAnyObjectByType<AgentMovement>().transform;
             if (_playerTransform == null)
                 Debug.LogError("player Is Not have this Scene");//영어 알빠노
             return _playerTransform;

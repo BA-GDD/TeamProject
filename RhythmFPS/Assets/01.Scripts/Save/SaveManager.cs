@@ -28,6 +28,7 @@ public class SaveManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+        _instance = this;
         DontDestroyOnLoad(gameObject);
 
         string json = PlayerPrefs.GetString("data", string.Empty);
