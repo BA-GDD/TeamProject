@@ -13,14 +13,21 @@ public class SlashPatternNode : ActionNode
 
     protected override void OnStart()
     {
+        RhythmManager.instance.onNotedTimeAction += OnPatternInitHandle;
+    }
+
+    void OnPatternInitHandle()
+    {
         (brain as BossBrain).IsMove = false;
         (brain as BossBrain).BossAnimator.OnAnimationTrigger += OnDamageCastHandle;
         (brain as BossBrain).BossAnimator.SetAttackTrigger(true);
+        (brain as BossBrain).IsCanAttack = false;
         (brain as BossBrain).IsCanAttack = false;
     }
 
     protected override void OnStop()
     {
+        RhythmManager.instance.onNotedTimeAction -= OnPatternInitHandle;
         (brain as BossBrain).BossAnimator.OnAnimationTrigger -= OnDamageCastHandle;
         //(brain as BossBrain).BossAnimator.SetAttackTrigger(false);
         (brain as BossBrain).BossAnimator.SetAnimationClipEndState(false);

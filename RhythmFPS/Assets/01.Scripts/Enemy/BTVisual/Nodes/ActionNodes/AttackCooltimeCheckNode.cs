@@ -20,6 +20,8 @@ public class AttackCooltimeCheckNode : ActionNode
             return State.SUCCESS;
         }
         else
+        {
             return State.RUNNING;
+        }
     }
 }

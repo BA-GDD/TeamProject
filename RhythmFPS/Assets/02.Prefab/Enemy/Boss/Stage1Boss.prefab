@@ -347,6 +347,7 @@ MonoBehaviour:
   wormCnt: 0
   spectorCnt: 0
   spawnEnemyName: 
+  checkRhythm: 0
 --- !u!114 &5596668995512827724
 MonoBehaviour:
   m_ObjectHideFlags: 0
