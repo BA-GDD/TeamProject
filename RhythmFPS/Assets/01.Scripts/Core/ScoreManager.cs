@@ -20,7 +20,7 @@ public class ScoreManager : MonoBehaviour
 
     private void Start()
     {
-        RhythmManager.instance.onNotedTimeEvent.AddListener(FailScoreToBeat);
+        RhythmManager.instance.onNotedTimeAction += (FailScoreToBeat);
     }
 
     public void AddScrore(int damage)
