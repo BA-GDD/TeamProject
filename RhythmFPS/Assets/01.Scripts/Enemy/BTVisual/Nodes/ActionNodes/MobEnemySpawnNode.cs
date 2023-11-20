@@ -7,6 +7,7 @@ public class MobEnemySpawnNode : ActionNode
 {
     [SerializeField] private GameObject _mobEnemyPrefab;
     [SerializeField] private List<Vector3> _spawnPointList;
+    private bool _alreadyInit = false;
 
     protected override void OnStart()
     {
@@ -15,10 +16,14 @@ public class MobEnemySpawnNode : ActionNode
 
     void OnPatternInitHandle()
     {
-        (brain as BossBrain).IsMove = false;
-        (brain as BossBrain).BossAnimator.OnAnimationTrigger += OnMobEnemySpawnHandle;
-        (brain as BossBrain).BossAnimator.SetAttackTrigger(true);
-        (brain as BossBrain).IsCanAttack = false;
+        if (!_alreadyInit)
+        {
+            (brain as BossBrain).IsCanAttack = false;
+            (brain as BossBrain).IsMove = false;
+            (brain as BossBrain).BossAnimator.OnAnimationTrigger += OnMobEnemySpawnHandle;
+            (brain as BossBrain).BossAnimator.SetAttackTrigger(true);
+            _alreadyInit = true;
+        }
     }
 
     protected override void OnStop()
@@ -29,6 +34,7 @@ public class MobEnemySpawnNode : ActionNode
         (brain as BossBrain).BossAnimator.SetAnimationClipEndState(false);
         (brain as BossBrain).IsMove = true;
         (brain as BossBrain).IsCanAttack = true;
+        _alreadyInit = false;
     }
 
     protected override State OnUpdate()
@@ -46,6 +52,7 @@ public class MobEnemySpawnNode : ActionNode
 
     private void OnMobEnemySpawnHandle()
     {
+        Debug.Log("mob spawn");
         for (int i = 0; i < 3; ++i)
         {
             PoolableMono mobEnemy = PoolManager.Instance.Pop((brain as BossBrain).spawnEnemyName);
