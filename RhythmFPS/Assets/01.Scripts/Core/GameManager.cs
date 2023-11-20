@@ -134,4 +134,14 @@ public class GameManager : MonoBehaviour
     {
         return Time.time - _startTime;
     }
+
+    public void GamePause()
+    {
+        Time.timeScale = 0;
+    }
+
+    public void GameResume()
+    {
+        Time.timeScale = 1;
+    }
 }

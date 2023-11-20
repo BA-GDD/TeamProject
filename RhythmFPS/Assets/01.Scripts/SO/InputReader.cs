@@ -38,12 +38,12 @@ public class InputReader : ScriptableObject, IPlayerActions,IUIActions
         if (isOpen == false)
         {
             _controlAction.Player.Disable();
-            Time.timeScale = 0;
+            GameManager.instance.GamePause();
         }
         else
         {
             _controlAction.Player.Enable();
-            Time.timeScale = 1;
+            GameManager.instance.GameResume();
         }
 
 

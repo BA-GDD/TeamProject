@@ -33,7 +33,7 @@ public class ResultUI : MonoBehaviour
     {
         string [] txts = { score.ToString(), combo.ToString(), clearTime, damage.ToString() };
         Sequence seq = DOTween.Sequence();
-        seq.Append(_resultPanel.DOLocalMoveY(0, 0.6f));
+        seq.Append(_resultPanel.DOLocalMoveY(0, 0.6f)).SetUpdate(true); ;
 
         for (int i = 0; i < txts.Length; i++)
         {
@@ -46,11 +46,10 @@ public class ResultUI : MonoBehaviour
 
             txt.text = sb.ToString();
 
-            txt.transform.DOLocalMove(_scoreGroupStartPos + (i * _merginValue), 0.6f).SetEase(Ease.InOutQuart);
+            txt.transform.DOLocalMove(_scoreGroupStartPos + (i * _merginValue), 0.6f).SetEase(Ease.InOutQuart).SetUpdate(true);
             yield return new WaitForSeconds(0.2f);
         }
         yield return new WaitForSeconds(0.5f);
         Instantiate(_rank, _resultPanel).SetPos(_rankPos, Convert.ToInt32(score));
-        
     }
 }

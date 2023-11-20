@@ -1,10 +1,11 @@
 using UnityEngine;
 using System.Linq;
 using System.Collections.Generic;
+using UnityEngine.Audio;
 
 public class SaveManager : MonoBehaviour
 {
-    public static SaveManager _instance;
+    private static SaveManager _instance;
     public static SaveManager Instance
     {
         get
@@ -17,6 +18,7 @@ public class SaveManager : MonoBehaviour
         }
     }
 
+    [SerializeField] private AudioMixer _mixer;
     public SaveData data;
 
     private void Awake()
@@ -38,6 +40,8 @@ public class SaveManager : MonoBehaviour
                 SFXValue = 0.5f,
             };
         }
+        _mixer.SetFloat("SFX", data.SFXValue);
+        _mixer.SetFloat("BGM", data.BGMValue);
     }
     [ContextMenu("reset")]
     public void ResetSave()

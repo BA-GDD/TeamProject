@@ -102,6 +102,7 @@ public class UIHud : MonoBehaviour
     public void ActiveGameOverPanel()
     {
         Instantiate(_gameOverPanel, _canvasTrm);
+        GameManager.instance.GamePause();
     }
     #endregion
 }
