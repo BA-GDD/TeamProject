@@ -20,7 +20,9 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     public void Die()
     {
         onDieTrigger?.Invoke();
-        _brain.SetDead();
+        Debug.Log("º¸½º Á×À½");
+        //_brain.SetDead();
+        //(_brain as BossBrain).BossAnimator.SetDead();
     }
 
     public void TakeDamage(float damage)
@@ -31,7 +33,16 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         UIManager.Instanace.HandleBossGetDamage(damage);
         if(_currentHitPoint <= 0)
         {
+            Debug.Log("º¸½º Á×À½");
             Die();
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            _currentHitPoint = 0;
         }
     }
 }

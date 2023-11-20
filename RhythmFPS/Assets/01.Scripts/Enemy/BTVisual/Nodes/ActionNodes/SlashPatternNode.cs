@@ -13,10 +13,10 @@ public class SlashPatternNode : ActionNode
 
     protected override void OnStart()
     {
-        (brain as BossBrain).isMove = false;
+        (brain as BossBrain).IsMove = false;
         (brain as BossBrain).BossAnimator.OnAnimationTrigger += OnDamageCastHandle;
         (brain as BossBrain).BossAnimator.SetAttackTrigger(true);
-        (brain as BossBrain).isCanAttack = false;
+        (brain as BossBrain).IsCanAttack = false;
     }
 
     protected override void OnStop()
@@ -24,7 +24,7 @@ public class SlashPatternNode : ActionNode
         (brain as BossBrain).BossAnimator.OnAnimationTrigger -= OnDamageCastHandle;
         //(brain as BossBrain).BossAnimator.SetAttackTrigger(false);
         (brain as BossBrain).BossAnimator.SetAnimationClipEndState(false);
-        (brain as BossBrain).isMove = true;
+        (brain as BossBrain).IsMove = true;
     }
 
     protected override State OnUpdate()
@@ -39,7 +39,7 @@ public class SlashPatternNode : ActionNode
 
     private void OnDamageCastHandle()
     {
-        Collider[] colliders = Physics.OverlapSphere((brain as BossBrain).weapon.transform.position, 3f, _playerLayerMask);
+        Collider[] colliders = Physics.OverlapSphere((brain as BossBrain).Weapon.transform.position, 3f, _playerLayerMask);
         if (colliders.Length > 0)
         {
             colliders[0].GetComponent<IDamageable>().TakeDamage(14);

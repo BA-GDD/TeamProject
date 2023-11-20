@@ -13,16 +13,16 @@ public class RushPatternNode : ActionNode
 
     protected override void OnStart()
     {
-        (brain as BossBrain).isMove = false;
+        (brain as BossBrain).IsMove = false;
         (brain as BossBrain).BossAnimator.SetAttackTrigger(true);
-        (brain as BossBrain).isCanAttack = false;
+        (brain as BossBrain).IsCanAttack = false;
         _targetDir = (GameManager.instance.PlayerTransform.position - brain.transform.position).normalized;
 
     }
 
     protected override void OnStop()
     {
-        (brain as BossBrain).isMove = true;
+        (brain as BossBrain).IsMove = true;
     }
 
     protected override State OnUpdate()
@@ -40,7 +40,7 @@ public class RushPatternNode : ActionNode
     private State CollisionCheck()
     {
         // 플레이어 충돌 체크
-        Collider[] playerChecks = Physics.OverlapSphere((brain as BossBrain).shield.transform.position, 3f, _playerLayerMask);
+        Collider[] playerChecks = Physics.OverlapSphere((brain as BossBrain).Shield.transform.position, 3f, _playerLayerMask);
         if (playerChecks.Length > 0)
         {
             playerChecks[0].GetComponent<IDamageable>().TakeDamage(18);

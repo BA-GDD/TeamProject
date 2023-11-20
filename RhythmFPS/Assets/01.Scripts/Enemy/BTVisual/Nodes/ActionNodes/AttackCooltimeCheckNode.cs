@@ -15,7 +15,7 @@ public class AttackCooltimeCheckNode : ActionNode
 
     protected override State OnUpdate()
     {
-        if ((brain as BossBrain).isCanAttack)
+        if ((brain as BossBrain).IsCanAttack)
         {
             return State.SUCCESS;
         }

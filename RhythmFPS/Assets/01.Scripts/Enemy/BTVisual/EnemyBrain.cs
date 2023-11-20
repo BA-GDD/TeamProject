@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -29,6 +30,11 @@ public abstract class EnemyBrain : PoolableMono
         health = GetComponent<EnemyHealth>();
         agent = GetComponent<NavMeshAgent>();
         agent.speed = status.moveSpeed;
+    }
+
+    protected async virtual void OnEnable()
+    {
+        await Task.Delay(1000);
     }
 
     protected virtual void Start()
