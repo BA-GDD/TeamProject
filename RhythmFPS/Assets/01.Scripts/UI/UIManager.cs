@@ -75,6 +75,7 @@ public class UIManager : MonoBehaviour
         UIHud = (UIHud)transform.Find("UIHud").GetComponent("UIHud");
         bgm_SpectrumSizeValue = sfx_SpectrumSizeValue = _spectrumNormalValue;
         _optionPanelOpen = false;
+        _isOnUI = true;
     }
 
     public void TurnOffAllUI()
