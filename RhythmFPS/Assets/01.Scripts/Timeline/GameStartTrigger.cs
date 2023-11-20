@@ -26,11 +26,16 @@ public class GameStartTrigger : MonoBehaviour
         {
             _limitMovement = other.transform.GetComponent<LimitPlayerMovement>();
             _limitMovement.enabled = true;
+            _isStarted = true;
+            _director.played += OnStartEvent;
             _director.Play();
             _director.stopped += OnEndEvent;
         }
     }
-
+    private void OnStartEvent(PlayableDirector director)
+    {
+        UIManager.Instanace.TurnOffAllUI();
+    }
 
     private void OnEndEvent(PlayableDirector director)
     {
@@ -54,5 +59,7 @@ public class GameStartTrigger : MonoBehaviour
                 _needInactiveObject[i].SetActive(false);
             }
         }
+        UIManager.Instanace.TurnOnAllUI();
+        RhythmManager.instance.Play();
     }
 }
