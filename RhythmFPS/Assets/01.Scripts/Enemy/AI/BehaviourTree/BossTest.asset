@@ -629,7 +629,7 @@ MonoBehaviour:
   _groundLayerMask:
     serializedVersion: 2
     m_Bits: 2048
-  _rushSpeed: 5
+  _rushSpeed: 18
 --- !u!114 &5798060088522783948
 MonoBehaviour:
   m_ObjectHideFlags: 0
