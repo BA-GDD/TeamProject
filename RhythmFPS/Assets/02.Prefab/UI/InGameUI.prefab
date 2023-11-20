@@ -767,7 +767,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0.63
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -845,6 +845,7 @@ MonoBehaviour:
   _bossHpBar: {fileID: 8830466092225234613}
   _comboCount: {fileID: 2590242187961541039}
   _bulletCount: {fileID: 2202065906596932089}
+  _aimRhythmer: {fileID: 1701264028222873626}
 --- !u!1 &1596353711958996861
 GameObject:
   m_ObjectHideFlags: 0

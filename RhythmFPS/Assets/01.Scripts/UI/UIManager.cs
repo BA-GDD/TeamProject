@@ -96,7 +96,7 @@ public class UIManager : MonoBehaviour
         HandleGameOver += UIHud.ActiveGameOverPanel;
         //HandleRetryGame += GameManager.instance.GameRestart;
 
-        HandleUIChange?.Invoke(currentSceneType);
+        //HandleUIChange?.Invoke(currentSceneType);
     }
     public void SceneChange()
     {
