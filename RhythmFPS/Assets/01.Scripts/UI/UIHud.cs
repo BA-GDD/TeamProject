@@ -40,6 +40,11 @@ public class UIHud : MonoBehaviour
         UIManager.Instanace.currentSceneType = toChangeScene;
     }
 
+    public void QuitUI()
+    {
+        Destroy(UIManager.Instanace.currentSceneObject);
+    }
+
     private void Update()
     {
         /*if(Input.GetKeyDown(KeyCode.Space))
