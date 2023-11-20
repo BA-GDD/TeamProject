@@ -24,4 +24,18 @@ public class AimRythmer : MonoBehaviour
         Debug.Log("Reset");
         _aimMaster.color = _normalColor;
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+            RhythmReaction();
+    }
+
+    public void RhythmReaction()
+    {
+        Sequence seq = DOTween.Sequence();
+
+        seq.Append( transform.DOScaleX(1.85f, 0.1f));
+        seq.Append(transform.DOScaleX(2f, 0.1f));
+    }
 }
