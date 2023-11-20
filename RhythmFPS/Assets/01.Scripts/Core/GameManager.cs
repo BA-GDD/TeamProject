@@ -44,15 +44,12 @@ public class GameManager : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
         //Debug
+        Time.timeScale = 1;
 
     }
 
     private void Update()
     {
-        if (Keyboard.current.kKey.wasPressedThisFrame)
-        {
-            GameStart(DifficultyType.normal);
-        }
     }
     /// <summary>
     /// ���� ���� �۾�
