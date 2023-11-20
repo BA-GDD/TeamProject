@@ -104,7 +104,7 @@ public class UIManager : MonoBehaviour
     }
     private void SetOptionPanel()
     {
-        if (_isOnUI) return;
+        if (_isOnUI == false) return;
         UIHud.ActiveOptionPanel(_optionPanelOpen);
         if (currentSceneType != SceneType.title)
         {

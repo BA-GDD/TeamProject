@@ -89,6 +89,11 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
         UIManager.Instanace.HandleUIChange(sceneType);
+        if(sceneType == SceneType.inGame)
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = false;
+        }
     }
     /// <summary>
     /// ���� ���� �۾�

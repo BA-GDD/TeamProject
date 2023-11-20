@@ -33,6 +33,7 @@ public class Pool<T> where T : PoolableMono
             obj = _pool.Pop();
             obj.gameObject.SetActive(true);
         }
+        obj.transform.SetParent(null);
         return obj;
     }
 

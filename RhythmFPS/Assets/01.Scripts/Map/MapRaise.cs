@@ -38,7 +38,7 @@ public class MapRaise : MonoBehaviour
     private void CheckBeatUpdateMap()
     {
         ++_totalBeat;
-        if (_totalBeat >= 15)
+        if (_totalBeat >= 50)
         {
             if (_isUp)
             {
@@ -77,7 +77,12 @@ public class MapRaise : MonoBehaviour
 
     public IEnumerator WaitUpdateNavMesh()
     {
-        yield return new WaitForSeconds(5.1f);
+        float timer = 0;
+        while (timer <= 3)
+        {
+            timer += Time.deltaTime;
+            yield return null;
+        }
         _surface.UpdateNavMesh(_surface.navMeshData);
     }
     /// <summary>

@@ -16,6 +16,7 @@ public class AgentWeapon : MonoBehaviour
         _animator = transform.Find("Visual").GetComponent<PlayerAnimator>();
         _gunSound = transform.Find("GunSound").GetComponent<GunSound>();
         _curWeapon?.Init(_animator);
+
     }
 
     private void Start()
