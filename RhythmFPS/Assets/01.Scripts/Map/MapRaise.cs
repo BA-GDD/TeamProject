@@ -68,7 +68,6 @@ public class MapRaise : MonoBehaviour
     /// </summary>
     public void MapUp(int idx)
     {
-        curIdx = idx;
         for (int i = 0; i < mapList[idx].list.Length; i++)
         {
             float randYPos = Random.Range(-1.0f, 1.0f);

@@ -33,7 +33,6 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         UIManager.Instanace.HandleBossGetDamage(damage);
         if(_currentHitPoint <= 0)
         {
-            Debug.Log("º¸½º Á×À½");
             Die();
         }
     }

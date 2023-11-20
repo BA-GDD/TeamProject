@@ -23,7 +23,6 @@ public class MobBrain : EnemyBrain
         isDead = false;
         _soundPlayer = transform.Find("EnemySound").GetComponent<EnemySound>();
     }
-
     public override void SetDead()
     {
         base.SetDead();
