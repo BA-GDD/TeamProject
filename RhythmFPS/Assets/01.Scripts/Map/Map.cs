@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Map : MonoBehaviour
 {
-    const float modifyTime = 5f;
+    const float modifyTime = 3f;
 
     private float originYPos;
     private float modifyYPos;
@@ -42,11 +42,12 @@ public class Map : MonoBehaviour
     {
         float percent = 0;
         float timer = 0;
+        float saveYPos = transform.position.y;
         while (percent <= 1)
         {
-            timer += Time.deltaTime * modifySpeed;
+            timer += Time.deltaTime;
             percent = timer / modifyTime;
-            yPos = Mathf.Lerp(yPos, modifyYPos, percent);
+            yPos = Mathf.Lerp(saveYPos, modifyYPos, percent);
             transform.position = new Vector3(transform.position.x, yPos, transform.position.z);
             yield return null;
         }

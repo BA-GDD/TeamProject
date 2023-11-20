@@ -20,6 +20,8 @@ public class AgentMovement : MonoBehaviour
 
     [SerializeField] private LayerMask _whatIsGround;
     [SerializeField] private MMF_Player _feedbackPlayer;
+    [SerializeField] private InputReader _inputReader;
+
 
     public float speed;
     public float gravity = 9.8f;
@@ -39,6 +41,11 @@ public class AgentMovement : MonoBehaviour
     {
         _characterController = GetComponent<CharacterController>();
         _animator = transform.Find("Visual").GetComponent<PlayerAnimator>();
+    }
+    private void Start()
+    {
+        _inputReader.movementEvent += OnMovementHandle;
+        _inputReader.jumpEvent += Jump;
     }
     public void OnMovementHandle(Vector2 dir)
     {
@@ -170,6 +177,11 @@ public class AgentMovement : MonoBehaviour
         }
         _virtualVec = Vector3.zero;
 
+    }
+    private void OnDestroy()
+    {
+        _inputReader.movementEvent -= OnMovementHandle;
+        _inputReader.jumpEvent -= Jump;
     }
 
 }

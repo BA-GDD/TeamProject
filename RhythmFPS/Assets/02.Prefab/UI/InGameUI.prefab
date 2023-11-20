@@ -151,8 +151,8 @@ MonoBehaviour:
   - {fileID: 8740442261307396100}
   - {fileID: 1278054948828666327}
   _easingTime: 0.4
-  _burnningLimit: 20
-  _secondBurnningLimit: 30
+  _burnningLimit: 5
+  _secondBurnningLimit: 10
   _comboBurnningEvent:
     m_PersistentCalls:
       m_Calls:
@@ -845,7 +845,7 @@ MonoBehaviour:
   _bossHpBar: {fileID: 8830466092225234613}
   _comboCount: {fileID: 2590242187961541039}
   _bulletCount: {fileID: 2202065906596932089}
-  _aimRhyther: {fileID: 0}
+  _aimRhythmer: {fileID: 1701264028222873626}
 --- !u!1 &1596353711958996861
 GameObject:
   m_ObjectHideFlags: 0

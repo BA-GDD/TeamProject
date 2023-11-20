@@ -13,12 +13,13 @@ public class GameEndEvent : MonoBehaviour
     {
         //여기 추가하면 된다.
 
-        BroadcastMessage("PushObject");
+        GameManager.instance.gameObject.BroadcastMessage("PushObject");
         GameManager.instance.GameClear(3);
         print("게임 끝");
     }
     public void GameEnd()
     {
+        GameManager.instance.PlayerTransform.GetComponent<PlayerHealth>().isCanHit = false;
         _director.stopped += DirectorEndEvent;
         _director.Play();
     }
