@@ -60,5 +60,6 @@ public class GameStartTrigger : MonoBehaviour
             }
         }
         UIManager.Instanace.TurnOnAllUI();
+        RhythmManager.instance.Play();
     }
 }

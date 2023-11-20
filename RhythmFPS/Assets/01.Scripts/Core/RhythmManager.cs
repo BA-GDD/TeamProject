@@ -39,6 +39,7 @@ public class RhythmManager : MonoBehaviour
     private float _judgementNextSample;
 
     private bool _isCanActive;
+    private bool _isPlaying;
 
     private void Awake()
     {
@@ -50,6 +51,7 @@ public class RhythmManager : MonoBehaviour
         instance = this;
         _musicAudioSource.clip = _musicDataSO.music;
         _isCanActive = true;
+        _isPlaying = false;
     }
 
     private void Start()
@@ -61,11 +63,11 @@ public class RhythmManager : MonoBehaviour
         _nextSample = _musicAudioSource.clip.frequency * _musicDataSO.offset;
         _judgementNextSample = _nextSample + _judgementRangeSample;
 
-        StartCoroutine(PlayMusic());
     }
 
     private void Update()
     {
+
         if (_metronomeMode && _musicAudioSource.timeSamples >= _nextSample)
         {
             onNotedTimeEvent?.Invoke();
@@ -84,6 +86,7 @@ public class RhythmManager : MonoBehaviour
     /// </summary>
     public bool Judgement()
     {
+        if (_isPlaying == false) return false;
         if (_isCanActive == false) return false;
         _judgementPointSample = _musicAudioSource.timeSamples - _judgementOffsetSample;
         bool isOnTiming = Mathf.Min(-(_nextSample - _samplePerTime - _judgementPointSample), -(_judgementPointSample - _nextSample)) <= _judgementRangeSample;
@@ -103,14 +106,21 @@ public class RhythmManager : MonoBehaviour
         yield return null;
     }
 
+    public void Play()
+    {
+        StartCoroutine(PlayMusic());
+    }
+
     private IEnumerator PlayMusic()
     {
         yield return null;
         UIManager.Instanace.HandleInGameStartEvent?.Invoke();
+        _isPlaying = true;
         _musicAudioSource.Play();
     }
     public void GameStop(bool value)
     {
+        if (_isPlaying == false) return;
         if(value == false)
         {
             _musicAudioSource.Pause();
