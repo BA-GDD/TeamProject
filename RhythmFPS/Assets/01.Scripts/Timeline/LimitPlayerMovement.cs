@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class LimitPlayerMovement : MonoBehaviour
 {
-    private AgentMovement _agentMovement;
+    private AgentController _agentMovement;
     private void OnEnable()
     {
-        if(TryGetComponent<AgentMovement>(out _agentMovement))
+        if(TryGetComponent<AgentController>(out _agentMovement))
         {
             _agentMovement.enabled = false;
         }
