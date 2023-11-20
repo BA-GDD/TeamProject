@@ -22,6 +22,7 @@ public class AgentMovement : MonoBehaviour
     [SerializeField] private MMF_Player _feedbackPlayer;
 
     public float speed;
+    public float gravity = 9.8f;
     public bool canMove = true;
     public bool isAddDir;
 
@@ -96,7 +97,7 @@ public class AgentMovement : MonoBehaviour
     {
         if (!_isGround)
         {
-            _yVelocity -= 9.8f * Time.fixedDeltaTime;
+            _yVelocity -= gravity * Time.fixedDeltaTime;
             _isAir = true;
         }
         else
