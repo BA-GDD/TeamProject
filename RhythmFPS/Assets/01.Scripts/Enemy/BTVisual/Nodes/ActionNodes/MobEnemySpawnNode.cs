@@ -41,7 +41,6 @@ public class MobEnemySpawnNode : ActionNode
     {
         for (int i = 0; i < 3; ++i)
         {
-            Debug.Log("test");
             PoolableMono mobEnemy = PoolManager.Instance.Pop("Worm");
             mobEnemy.transform.position = brain.transform.position + _spawnPointList[i];
         }

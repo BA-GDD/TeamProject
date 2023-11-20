@@ -6,6 +6,7 @@ public abstract class EnemyAttack : MonoBehaviour
 {
     protected EnemyBrain _brain;
     protected float _attackTimer;
+    protected EnemySound _soundPlayer;
 
     protected virtual void Awake()
     {

@@ -1,18 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class DropEffect : PoolableMono
 {
+    [SerializeField] AudioClip _explosionSound;
+
     ParticleSystem _boom;
-    ParticleSystem.Particle _boomParticle;
+
     public override void Init()
     {
         //할거 없음 걍 실행만 시킬듯
         _boom = GetComponent<ParticleSystem>();
-        _boomParticle = GetComponent<ParticleSystem.Particle>();
         _boom.Play();
-
         StartCoroutine(GoToPoolCoroutine());
     }
 
@@ -23,7 +24,7 @@ public class DropEffect : PoolableMono
 
     IEnumerator GoToPoolCoroutine()
     {
-        yield return new WaitForSeconds(_boomParticle.startLifetime);
+        yield return new WaitForSeconds(3.0f);
         GoToPool();
     }
 }

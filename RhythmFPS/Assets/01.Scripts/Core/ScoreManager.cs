@@ -18,9 +18,18 @@ public class ScoreManager : MonoBehaviour
     }
     public int Score { get; private set; }
 
+    private void Start()
+    {
+        RhythmManager.instance.onNotedTimeEvent.AddListener(FailScoreToBeat);
+    }
+
     public void AddScrore(int damage)
     {
-        Score += (Mathf.Max(1000 - Mathf.FloorToInt(GameManager.instance.GetCurTime() / 60),100)) + (ComboManager.Instance.Combo * damage);
+        Score += (1000 + (ComboManager.Instance.Combo * damage));
+    }
+    public void FailScoreToBeat()
+    {
+        Score = Mathf.Max(0, Score - 25);
     }
 
 

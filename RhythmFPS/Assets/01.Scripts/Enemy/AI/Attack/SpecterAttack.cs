@@ -8,6 +8,8 @@ public class SpecterAttack : EnemyAttack
     private LayerMask _playerLayerMask;
     [SerializeField]
     private MobAnimator _animator;
+    [SerializeField]
+    private AudioClip _attackSound;
 
     public override void Attack()
     {
