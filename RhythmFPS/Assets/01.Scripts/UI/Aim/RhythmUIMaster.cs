@@ -10,29 +10,28 @@ public class RhythmUIMaster : MonoBehaviour
     [SerializeField] private Transform[] _spawnPos;
 
     [SerializeField] private float _spawnTime;
-    private float _currentTime;
 
     private int _orderCount = 0;
 
     [SerializeField] private AimRythmer _aimRythmer;
-    
-    private void Update()
+
+    private void Start()
     {
-        if(_currentTime >= _spawnTime)
-        {
-            if (_orderCount == 2) _orderCount = 0;
-            for(int i = 0; i < 2; i++)
-            {
-                //RhythmTaker rt = Instantiate(_takerPrefab[_orderCount], _takerParent);
-                RhythmTaker rt = PoolManager.Instance.Pop(_takerPrefab[_orderCount].name) as RhythmTaker;
-                rt.transform.SetParent(_takerParent);
-                rt.transform.localPosition = _spawnPos[i].localPosition;
-                rt.MoveStart(new Vector3(Mathf.Pow(-1, i) * 97, 0, 0), _aimRythmer);
-            }
-            
-            _currentTime = 0;
-            _orderCount++;
-        }
-        _currentTime += Time.deltaTime;
+        RhythmManager.instance.onNotedTimeAction += SpawnRhythmUI;
     }
+
+    public void SpawnRhythmUI()
+    {
+        if (_orderCount == 2) _orderCount = 0;
+        for (int i = 0; i < 2; i++)
+        {
+            RhythmTaker rt = PoolManager.Instance.Pop(_takerPrefab[_orderCount].name) as RhythmTaker;
+            rt.transform.SetParent(_takerParent);
+            rt.transform.localPosition = _spawnPos[i].localPosition;
+            rt.MoveStart(new Vector3(Mathf.Pow(-1, i) * 97, 0, 0), _aimRythmer);
+        }
+
+        _orderCount++;
+    }
+    
 }
