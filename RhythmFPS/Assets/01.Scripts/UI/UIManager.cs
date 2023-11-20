@@ -102,7 +102,7 @@ public class UIManager : MonoBehaviour
     private void SetOptionPanel()
     {
         UIHud.ActiveOptionPanel(_optionPanelOpen);
-        if (currentSceneType != SceneType.lobby)
+        if (currentSceneType != SceneType.title)
         {
             _inputReader.OpenSetting(_optionPanelOpen);
             RhythmManager.instance.GameStop(_optionPanelOpen);

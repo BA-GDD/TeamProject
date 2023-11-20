@@ -554,6 +554,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49563b69135dff44383d497a67896138, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _mixer: {fileID: 24100000, guid: 04b49fed5a8573d498739605e4c7b72f, type: 2}
   data:
     mapDatas: []
     senseValue: 0

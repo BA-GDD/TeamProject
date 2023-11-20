@@ -27,7 +27,7 @@ public class RankImg : MonoBehaviour
             }
         }
         Sequence seq = DOTween.Sequence();
-        seq.Append(transform.DOScale(new Vector3(0.7f, 0.7f), 0.6f).SetEase(Ease.InOutQuart));
+        seq.Append(transform.DOScale(new Vector3(0.7f, 0.7f), 0.6f).SetEase(Ease.InOutQuart)).SetUpdate(true); ;
         seq.AppendCallback(() =>
         {
             _resultSyntex.SetSyntex(num);
