@@ -26,13 +26,14 @@ public class MapRaise : MonoBehaviour
 
     private int _totalBeat;
     private bool _isUp = false;
+    private List<MapList> _upList = new List<MapList>();
     private void Awake()
     {
         _surface.UpdateNavMesh(_surface.navMeshData);
     }
     private void Start()
     {
-        //RhythmManager.instance.
+        RhythmManager.instance.onNotedTimeAction += CheckBeatUpdateMap;
     }
 
     private void CheckBeatUpdateMap()
@@ -46,13 +47,14 @@ public class MapRaise : MonoBehaviour
             }
             else
             {
-                List<MapList> list = mapList.Clone() as List<MapList>;
+                List<MapList> list = new List<MapList>(mapList);
 
-                int cnt = Random.Range(1, 4);
+                int cnt = Random.Range(1, 3);
                 for (int i = 0; i < cnt; i++)
                 {
                     int index = Random.Range(0, list.Count);
                     MapUp(index);
+                    _upList.Add(list[index]);
                     list.RemoveAt(index);
                 }
             }
@@ -85,9 +87,12 @@ public class MapRaise : MonoBehaviour
     public void MapDown()
     {
 
-        for (int i = 0; i < mapList[curIdx].list.Length; i++)
+        for (int i = 0; i < _upList.Count; i++)
         {
-            mapList[curIdx].list[i].Off();
+            for (int j = 0; j < _upList[i].list.Length; j++)
+            {
+                _upList[i].list[j].Off();
+            }
         }
     }
 }
