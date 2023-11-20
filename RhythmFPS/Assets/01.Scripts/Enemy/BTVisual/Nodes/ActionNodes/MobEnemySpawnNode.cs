@@ -10,6 +10,11 @@ public class MobEnemySpawnNode : ActionNode
 
     protected override void OnStart()
     {
+        RhythmManager.instance.onNotedTimeAction += OnPatternInitHandle;
+    }
+
+    void OnPatternInitHandle()
+    {
         (brain as BossBrain).IsMove = false;
         (brain as BossBrain).BossAnimator.OnAnimationTrigger += OnMobEnemySpawnHandle;
         (brain as BossBrain).BossAnimator.SetAttackTrigger(true);
@@ -18,10 +23,12 @@ public class MobEnemySpawnNode : ActionNode
 
     protected override void OnStop()
     {
+        RhythmManager.instance.onNotedTimeAction -= OnPatternInitHandle;
         (brain as BossBrain).BossAnimator.OnAnimationTrigger -= OnMobEnemySpawnHandle;
         (brain as BossBrain).BossAnimator.SetAttackTrigger(false);
         (brain as BossBrain).BossAnimator.SetAnimationClipEndState(false);
         (brain as BossBrain).IsMove = true;
+        (brain as BossBrain).IsCanAttack = true;
     }
 
     protected override State OnUpdate()
