@@ -25,12 +25,6 @@ public class AimRythmer : MonoBehaviour
         _aimMaster.color = _normalColor;
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-            RhythmReaction();
-    }
-
     public void RhythmReaction()
     {
         Sequence seq = DOTween.Sequence();
