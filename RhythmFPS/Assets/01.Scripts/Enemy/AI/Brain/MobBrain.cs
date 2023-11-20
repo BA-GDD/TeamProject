@@ -12,6 +12,12 @@ public class MobBrain : EnemyBrain
     public MobAnimator Animator => _animator;
     private EnemySound _soundPlayer;
 
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        RhythmManager.instance.onNotedTimeAction += attack.Attack;
+    }
+
     public override void Init()
     {
         isDead = false;
@@ -22,6 +28,7 @@ public class MobBrain : EnemyBrain
     {
         base.SetDead();
         _animator.SetDieTrigger(true);
+        RhythmManager.instance.onNotedTimeAction -= attack.Attack;
     }
     public void PlayAttackSound()
     {

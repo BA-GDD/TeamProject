@@ -1,7 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public enum RhythmAction
 {
@@ -14,7 +14,7 @@ public class RhythmManager : MonoBehaviour
 {
     public static RhythmManager instance = null;
     [Tooltip("노트가 있는 박자에 이 이벤트가 호출됩니다.")]
-    public UnityEvent onNotedTimeEvent;
+    public Action onNotedTimeAction;
     [SerializeField]
     private AudioClip _metronomeClip;
     [SerializeField]
@@ -49,6 +49,7 @@ public class RhythmManager : MonoBehaviour
         }
 
         instance = this;
+        Debug.Log(instance);
         _musicAudioSource.clip = _musicDataSO.music;
         _isCanActive = true;
         _isPlaying = false;
@@ -70,7 +71,7 @@ public class RhythmManager : MonoBehaviour
 
         if (_metronomeMode && _musicAudioSource.timeSamples >= _nextSample)
         {
-            onNotedTimeEvent?.Invoke();
+            onNotedTimeAction?.Invoke();
             StartCoroutine(PlayMetronome());
         }
 

@@ -9,7 +9,7 @@ public class MobIdleNode : ActionNode
     {
         brain.StopChase();
         (brain as MobBrain).Animator.SetIsMove(false);
-        (brain as MobBrain).Animator.SetIsAttack(false);
+        (brain as MobBrain).Animator.SetIsAttack(brain.attack.IsAttack = false);
     }
 
     protected override void OnStop()
