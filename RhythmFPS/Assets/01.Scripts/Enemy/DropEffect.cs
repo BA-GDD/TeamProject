@@ -5,8 +5,6 @@ using UnityEngine.InputSystem;
 
 public class DropEffect : PoolableMono
 {
-    [SerializeField] AudioClip _explosionSound;
-
     ParticleSystem _boom;
 
     public override void Init()
