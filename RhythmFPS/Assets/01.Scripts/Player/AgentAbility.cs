@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 
 
@@ -15,6 +16,7 @@ public class AgentAbility : MonoBehaviour
     private Dictionary<AbilityWeaponType, AbilityWeapon> _abilityWeaponsDIctionary = new();
     [SerializeField]private List<Ability> _defaultAbility;
     [SerializeField]private List<AbilityWeapon> _abilityWeapons;
+    [SerializeField] private InputReader _inputReader;
 
     public void OffAbilityWeapon()
     {
@@ -38,6 +40,13 @@ public class AgentAbility : MonoBehaviour
         {
             _keyAction.Add(ability.key.ToString(), ability);
         }
+        _inputReader.OnAbillityEvent += OnAbilityHandle;
+    }
+    private void OnAbilityHandle(string key)
+    {
+        StringBuilder builder = new StringBuilder(key);
+        builder.Replace(" ", "");
+        ActiveAbility(builder.ToString());
     }
     public void ChangeAbility(Ability ability)
     {

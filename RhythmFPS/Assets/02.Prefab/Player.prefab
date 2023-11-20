@@ -1905,7 +1905,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8486368599178795547}
-  - component: {fileID: 1542213492810534365}
   - component: {fileID: 8524765270455600136}
   - component: {fileID: 5045699961137067993}
   - component: {fileID: 2659383920546193540}
@@ -1914,6 +1913,7 @@ GameObject:
   - component: {fileID: 4336711754744570063}
   - component: {fileID: 6569686832320642366}
   - component: {fileID: 153536157192775937}
+  - component: {fileID: 1912547109867154354}
   m_Layer: 21
   m_Name: Player
   m_TagString: Player
@@ -1942,19 +1942,6 @@ Transform:
   - {fileID: 1329128758953449421}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 199.9, z: 0}
---- !u!114 &1542213492810534365
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4504193307766215072}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28a2f4338d50bf74f912dde641e14e0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _inputReader: {fileID: 11400000, guid: 9a899013db74e3240b13be1dbe4579e5, type: 2}
 --- !u!114 &8524765270455600136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1971,9 +1958,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   _feedbackPlayer: {fileID: 8155001566056557303}
+  _inputReader: {fileID: 11400000, guid: 9a899013db74e3240b13be1dbe4579e5, type: 2}
   speed: 5
   canMove: 1
-  isAddDir: 0
+  isAddDir: 1
 --- !u!114 &5045699961137067993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1989,7 +1977,7 @@ MonoBehaviour:
   _eye: {fileID: 5700566338439428558}
   HorizontalRespons: 0.3
   VerizontalRespons: 0.5
-  StopRotate: 0
+  _inputReader: {fileID: 11400000, guid: 9a899013db74e3240b13be1dbe4579e5, type: 2}
 --- !u!143 &2659383920546193540
 CharacterController:
   m_ObjectHideFlags: 0
@@ -2029,6 +2017,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _curWeapon: {fileID: 1662385504927258715}
+  _inputReader: {fileID: 11400000, guid: 9a899013db74e3240b13be1dbe4579e5, type: 2}
 --- !u!114 &7624624203005302894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2065,6 +2054,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7b1d18a4ef72e014799c14867ae7628e, type: 2}
   _abilityWeapons:
   - {fileID: 2344676284185607397}
+  _inputReader: {fileID: 11400000, guid: 9a899013db74e3240b13be1dbe4579e5, type: 2}
 --- !u!136 &6569686832320642366
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2115,6 +2105,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1912547109867154354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4504193307766215072}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20021116e8711af489915ac3d4645d03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4516681127948206622
 GameObject:
   m_ObjectHideFlags: 0

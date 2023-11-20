@@ -18,6 +18,7 @@ public class OptionPanel : MonoBehaviour
         _panel.localPosition = Vector3.zero;
         gameObject.SetActive(true);
         _backPanel.enabled = true;
+
     }
 
     public void Close()
@@ -34,5 +35,6 @@ public class OptionPanel : MonoBehaviour
         {
             gameObject.SetActive(false);
         });
+
     }
 }

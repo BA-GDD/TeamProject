@@ -117,6 +117,8 @@ public class GameManager : MonoBehaviour
             map.maxCombo = Mathf.Max(map.maxCombo, combo);
             SaveManager.Instance.SaveMapInfo(map);
         }
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     //�

@@ -80,6 +80,7 @@ public class UIHud : MonoBehaviour
     [ContextMenu("����Ʈ �г� Ȱ��ȭ")]
     public void ActiveResultPanel(int combo, float clearTime, float dealDamage)
     {
+        print("허드");
         ResultUI ru = Instantiate(_resultPanel, _canvasTrm);
         ru.transform.localPosition = _resultPanelCreatePos;
         ru.gameObject.name = "Result";
