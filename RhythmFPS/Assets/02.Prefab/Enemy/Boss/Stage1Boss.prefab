@@ -340,16 +340,13 @@ MonoBehaviour:
   isDead: 0
   status: {fileID: 11400000, guid: 68f05269c0b49944fa1dbb08a27e9a62, type: 2}
   isOnTheRoof: 0
-  navAgent: {fileID: 8932839101370841661}
   timer: 0
-  coolTime: 3
-  isCanAttack: 0
-  isMove: 1
-  weapon: {fileID: 4844996463787766451}
-  shield: {fileID: 7160185935064784896}
-  jumpUpCheckPos: {fileID: 7387991647953611073}
-  jumpDownCheckPos: {fileID: 2073018089950260672}
+  _weapon: {fileID: 4844996463787766451}
+  _shield: {fileID: 7160185935064784896}
   collisionCheckPos: {fileID: 4849714878908529368}
+  wormCnt: 0
+  spectorCnt: 0
+  spawnEnemyName: 
 --- !u!114 &5596668995512827724
 MonoBehaviour:
   m_ObjectHideFlags: 0

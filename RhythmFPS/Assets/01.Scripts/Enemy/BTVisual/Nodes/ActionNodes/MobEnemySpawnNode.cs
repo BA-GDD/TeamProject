@@ -10,10 +10,10 @@ public class MobEnemySpawnNode : ActionNode
 
     protected override void OnStart()
     {
-        (brain as BossBrain).isMove = false;
+        (brain as BossBrain).IsMove = false;
         (brain as BossBrain).BossAnimator.OnAnimationTrigger += OnMobEnemySpawnHandle;
         (brain as BossBrain).BossAnimator.SetAttackTrigger(true);
-        (brain as BossBrain).isCanAttack = false;
+        (brain as BossBrain).IsCanAttack = false;
     }
 
     protected override void OnStop()
@@ -21,7 +21,7 @@ public class MobEnemySpawnNode : ActionNode
         (brain as BossBrain).BossAnimator.OnAnimationTrigger -= OnMobEnemySpawnHandle;
         (brain as BossBrain).BossAnimator.SetAttackTrigger(false);
         (brain as BossBrain).BossAnimator.SetAnimationClipEndState(false);
-        (brain as BossBrain).isMove = true;
+        (brain as BossBrain).IsMove = true;
     }
 
     protected override State OnUpdate()
@@ -41,8 +41,7 @@ public class MobEnemySpawnNode : ActionNode
     {
         for (int i = 0; i < 3; ++i)
         {
-            Debug.Log("test");
-            PoolableMono mobEnemy = PoolManager.Instance.Pop("Worm");
+            PoolableMono mobEnemy = PoolManager.Instance.Pop((brain as BossBrain).spawnEnemyName);
             mobEnemy.transform.position = brain.transform.position + _spawnPointList[i];
         }
     }

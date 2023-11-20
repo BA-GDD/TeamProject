@@ -9,6 +9,7 @@ public class BossAnimator : MonoBehaviour
     private readonly int _isAttackHash = Animator.StringToHash("attack");
     private readonly int _isMoveHash = Animator.StringToHash("is_move");
     private readonly int _attackCnt = Animator.StringToHash("attack_cnt");
+    private readonly int _deadHash = Animator.StringToHash("dead");
 
     public event Action OnAnimationTrigger = null;
 
@@ -48,7 +49,7 @@ public class BossAnimator : MonoBehaviour
 
     public void SetDead()
     {
-        _animator.SetBool(_isDeadHash, true);
+        _animator.SetTrigger(_deadHash);
     }
 
     public void SetAttackTrigger(bool value)
