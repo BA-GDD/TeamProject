@@ -76,6 +76,15 @@ public class UIManager : MonoBehaviour
         _optionPanelOpen = false;
     }
 
+    public void TurnOffAllUI()
+    {
+        UIHud.TurnOff();
+    }
+    public void TurnOnAllUI()
+    {
+        UIHud.TurnOn();
+    }
+
     private void Start()
     {
         HandleActiveOptionPanel += SetOptionPanel;
