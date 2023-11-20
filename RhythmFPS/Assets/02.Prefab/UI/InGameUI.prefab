@@ -151,8 +151,8 @@ MonoBehaviour:
   - {fileID: 8740442261307396100}
   - {fileID: 1278054948828666327}
   _easingTime: 0.4
-  _burnningLimit: 20
-  _secondBurnningLimit: 30
+  _burnningLimit: 5
+  _secondBurnningLimit: 10
   _comboBurnningEvent:
     m_PersistentCalls:
       m_Calls:
