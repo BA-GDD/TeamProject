@@ -12,6 +12,8 @@ public class GameEndEvent : MonoBehaviour
     public void DirectorEndEvent(PlayableDirector director)
     {
         //여기 추가하면 된다.
+
+        BroadcastMessage("PushObject");
         GameManager.instance.GameClear(3);
         print("게임 끝");
     }
