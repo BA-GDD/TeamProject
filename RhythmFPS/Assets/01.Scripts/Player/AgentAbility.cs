@@ -76,4 +76,8 @@ public class AgentAbility : MonoBehaviour
         }
         return null;
     }
+    private void OnDestroy()
+    {
+        _inputReader.OnAbillityEvent -= OnAbilityHandle;
+    }
 }
