@@ -9,6 +9,7 @@ public class InGameUI : MonoBehaviour
     [SerializeField] private BossEnemyHpBar _bossHpBar;
     [SerializeField] private ComboCountUI _comboCount;
     [SerializeField] private BulletCountUI _bulletCount;
+    [SerializeField] private AimRythmer _aimRhythmer;
     // ����Ʈ �г� ���� ��� ���� �ؾ���.
 
     private void Start()
@@ -20,6 +21,7 @@ public class InGameUI : MonoBehaviour
         UIManager.Instanace.HandlePlusCombo += _comboCount.ComboPlus;
         UIManager.Instanace.HandleResetCombo += _comboCount.ResetCombo;
         UIManager.Instanace.HandleShootGun += _bulletCount.FireBullet;
+        UIManager.Instanace.HandleShootGun += _aimRhythmer.RhythmReaction;
         UIManager.Instanace.HandleReload += _bulletCount.ReChargingBullet;
         UIManager.Instanace.HandleGameClear += UIManager.Instanace.UIHud.ActiveResultPanel;
 
@@ -35,6 +37,7 @@ public class InGameUI : MonoBehaviour
         UIManager.Instanace.HandlePlusCombo -= _comboCount.ComboPlus;
         UIManager.Instanace.HandleResetCombo -= _comboCount.ResetCombo;
         UIManager.Instanace.HandleShootGun -= _bulletCount.FireBullet;
+        UIManager.Instanace.HandleShootGun -= _aimRhythmer.RhythmReaction;
         UIManager.Instanace.HandleReload -= _bulletCount.ReChargingBullet;
         UIManager.Instanace.HandleGameClear -= UIManager.Instanace.UIHud.ActiveResultPanel;
     }
