@@ -23,6 +23,8 @@ public class PlayPanel : MonoBehaviour
     [SerializeField] private MapEnterPanel _mapEnterPanel;
     public DifficultyType difficulty;
 
+    
+
     private void Awake()
     {
         _panelManaging = transform.parent.GetComponent<PanelManaging>();
@@ -30,7 +32,18 @@ public class PlayPanel : MonoBehaviour
     }
     private void Start()
     {
-        _mapEnterPanel?.startButton?.onClick.AddListener(() => GameManager.instance.GameStart(difficulty));
+        if(difficulty == DifficultyType.easy)
+        {
+            _mapEnterPanel?.startButton?.onClick.AddListener(() => GameManager.instance.GameStart(difficulty));
+        }
+        else
+        {
+            string _warnText = $"현재 {difficulty}난의도는 준비 중에 있습니다.\n불편을 끼쳐 드려 죄송합니다.";
+
+            _mapEnterPanel?.startButton?.
+                onClick.AddListener(() => 
+                UIManager.Instanace.HandleActiveWarnningPanel(_warnText));
+        }
     }
     public void PanelMove(float moveValue)
     {

@@ -28,6 +28,7 @@ public class UIManager : MonoBehaviour
     public Action<SceneType> HandleUIChange; // ?? ??? ?? ???? ?? ????
     public Action HandleActiveOptionPanel; // ???? ?? ???? ????
     public Action HandleGameExit; // ???? ???? ????
+    public Action<string> HandleActiveWarnningPanel;
     #endregion
 
     #region ?¥ê? ?????? ????? UI ????
@@ -91,9 +92,10 @@ public class UIManager : MonoBehaviour
         HandleUIChange += UIHud.UIChange;
         HandleGameExit += UIHud.ActiveGameExitPanel;
         HandleGameOver += UIHud.ActiveGameOverPanel;
+        HandleActiveWarnningPanel += UIHud.ActiveWarnningPanel;
         //HandleRetryGame += GameManager.instance.GameRestart;
 
-        HandleUIChange?.Invoke(currentSceneType);
+        //HandleUIChange?.Invoke(currentSceneType);
     }
     public void SceneChange()
     {
