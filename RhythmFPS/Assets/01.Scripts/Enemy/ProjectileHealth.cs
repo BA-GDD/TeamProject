@@ -31,7 +31,7 @@ public class ProjectileHealth : PoolableMono, IDamageable
         {
             Debug.Log($"{gameObject.name} Die");
             onDieTrigger?.Invoke();
-            PoolManager.Instance.Push(this);
+            PushObject();
         }
     }
 

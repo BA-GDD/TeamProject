@@ -40,6 +40,8 @@ public class GrenadeBullet : PoolableMono
         }
 
 
+        _rigid.velocity = Vector3.zero;
+        PushObject();
     }
 
     private void Explosion()

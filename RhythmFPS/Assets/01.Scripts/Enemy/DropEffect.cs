@@ -17,7 +17,7 @@ public class DropEffect : PoolableMono
 
     public void GoToPool()
     {
-        PoolManager.Instance.Push(this);
+        PushObject();
     }
 
     IEnumerator GoToPoolCoroutine()
