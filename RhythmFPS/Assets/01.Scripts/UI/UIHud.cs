@@ -25,6 +25,9 @@ public class UIHud : MonoBehaviour
     [SerializeField] private LoadingUI _loadingPanel;
     private LoadingUI _loadingUI;
 
+    [Header("워닝 패널")]
+    [SerializeField] private WarnningPanel _warnningPanel;
+
     [SerializeField] private List<GameObject> _sceneUIList = new List<GameObject>();
 
     private OptionPanel _op;
@@ -40,6 +43,11 @@ public class UIHud : MonoBehaviour
     public void SetProgress(float progress)
     {
         _loadingUI.SetProgress(progress);
+    }
+
+    public void ActiveWarnningPanel(string syntex)
+    {
+        Instantiate(_warnningPanel, _canvasTrm).SetText(syntex);
     }
 
     public void TurnOff()
