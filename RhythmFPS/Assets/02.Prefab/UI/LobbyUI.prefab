@@ -2241,7 +2241,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Misono Mika - Kyrei Eleison
+  m_text: VOiD1 - Party for your life
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 191c85d053c814242b6d9fab0a91b9f9, type: 2}
   m_sharedMaterial: {fileID: 6383068405828875511, guid: 191c85d053c814242b6d9fab0a91b9f9,
@@ -3261,7 +3261,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000029802322}
+  m_AnchoredPosition: {x: 0, y: 5}
   m_SizeDelta: {x: 500, y: 250}
   m_Pivot: {x: 0.5, y: 0.9999999}
 --- !u!222 &5232615098792414393
@@ -3292,7 +3292,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1060d2751d4085e498da3b888bae783c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6321205c25e8ddf418506e0db3cab8e0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9010,7 +9010,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Mosono Mika - kyrei eleison
+  m_text: VOiD1 - Party for your life
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 51a1aa396f4dea44fbb24fc6076c78b8, type: 2}
   m_sharedMaterial: {fileID: -8700429325407997208, guid: 51a1aa396f4dea44fbb24fc6076c78b8,
@@ -11617,7 +11617,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d73a1248d9dc1c34e9e0fe15e29bdae6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6f2443656f3de524dac5ea970e2c8009, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
