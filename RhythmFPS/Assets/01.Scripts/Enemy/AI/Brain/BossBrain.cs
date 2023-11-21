@@ -43,6 +43,8 @@ public class BossBrain : EnemyBrain
     public UnityEvent slashFeedback;
     public UnityEvent mobSpawnFeedback;
 
+    private float _rotateSpeed = 10f;
+
     protected override void Awake()
     {
         base.Awake();
@@ -58,6 +60,8 @@ public class BossBrain : EnemyBrain
     {
         if(isDead != true)
         {
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(GameManager.instance.PlayerTransform.position - transform.position), Time.deltaTime * _rotateSpeed);
+
             if (timer < _coolTime)
             {
                 timer += Time.deltaTime;

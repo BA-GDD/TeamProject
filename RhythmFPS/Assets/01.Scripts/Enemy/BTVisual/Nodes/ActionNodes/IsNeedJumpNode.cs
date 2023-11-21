@@ -37,9 +37,17 @@ public class IsNeedJumpNode : ActionNode
         if (path.status == NavMeshPathStatus.PathPartial
             || Vector3.Distance(brain.transform.position, GameManager.instance.PlayerTransform.position) > 25f)
         {
-            Debug.Log("Á¡ÇÁÇØ¾ßÇÔ");
+            Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½Ø¾ï¿½ï¿½ï¿½");
             return State.SUCCESS;
         }
+        /* NavMeshPath path = new NavMeshPath();
+        brain.agent.CalculatePath(GameManager.instance.PlayerTransform.position, path);
+        if (path.status == NavMeshPathStatus.PathPartial
+            || Vector3.Distance(brain.transform.position, GameManager.instance.PlayerTransform.position) > 25f)
+        {
+            Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½Ø¾ï¿½ï¿½ï¿½");
+            return State.SUCCESS;
+        } */
 
         return State.FAILURE;
     }
