@@ -21,18 +21,17 @@ public class IsNeedJumpNode : ActionNode
 
     protected override State OnUpdate()
     {
-        if (brain.agent.enabled)
+
+        NavMeshPath path = new NavMeshPath();
+        brain.agent.CalculatePath(GameManager.instance.PlayerTransform.position, path);
+        if (path.status == NavMeshPathStatus.PathPartial
+            || Vector3.Distance(brain.transform.position, GameManager.instance.PlayerTransform.position) > 25f)
         {
-            NavMeshPath path = new NavMeshPath();
-            brain.agent.CalculatePath(GameManager.instance.PlayerTransform.position, path);
-            if (path.status == NavMeshPathStatus.PathPartial
-                || Vector3.Distance(brain.transform.position, GameManager.instance.PlayerTransform.position) > 25f)
-            {
-                Debug.Log("점프해야함");
-                return State.SUCCESS;
-            }
+            Debug.Log("점프해야함");
+            return State.SUCCESS;
         }
-        
+
+
         return State.FAILURE;
     }
 }
