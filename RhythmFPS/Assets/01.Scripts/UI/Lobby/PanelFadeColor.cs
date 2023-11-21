@@ -25,4 +25,8 @@ public class PanelFadeColor : MonoBehaviour
     {
         UIManager.Instanace.HandleActiveOptionPanel?.Invoke();
     }
+    public void ActiveExitPanel()
+    {
+        UIManager.Instanace.HandleGameExit?.Invoke();
+    }
 }
