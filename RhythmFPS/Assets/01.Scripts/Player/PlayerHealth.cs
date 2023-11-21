@@ -7,12 +7,16 @@ public class PlayerHealth : AgentHealth
 {
     public UnityEvent hitEvent;
     public UnityEvent dieEvent;
+
+    public bool isCanHit;
     private void Awake()
     {
         _curHP = _maxHP;
+        isCanHit = true;
     }
     public override void TakeDamage(float damage)
     {
+        if (isCanHit == false) return;
         hitEvent?.Invoke();
         base.TakeDamage(damage);
         UIManager.Instanace.HandlePlayerGetDamage(damage);

@@ -8,6 +8,17 @@ public class WormAttack : EnemyAttack
     private Transform _spitPosition;
     [SerializeField]
     private MobAnimator _animator;
+    [SerializeField]
+    private float rotateSpeed = 10f;
+
+    protected override void Update()
+    {
+        base.Update();
+
+        Vector3 direction = GameManager.instance.PlayerTransform.position - transform.parent.position;
+        direction.y = 0f;
+        transform.parent.rotation = Quaternion.Slerp(transform.parent.rotation, Quaternion.LookRotation(direction), Time.deltaTime * rotateSpeed);
+    }
 
     public override void Attack()
     {

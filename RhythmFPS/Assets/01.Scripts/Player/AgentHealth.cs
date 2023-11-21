@@ -25,6 +25,16 @@ public class AgentHealth : MonoBehaviour,IDamageable
         }
     }
 
+    public void TakeDamage(float damage, Vector3 point, Vector3 normal)
+    {
+        _curHP -= damage;
+        if (_curHP <= 0)
+        {
+            _curHP = 0;
+            Die();
+        }
+    }
+
     protected virtual void Init(int hp)
     {
         _curHP = _maxHP = hp;

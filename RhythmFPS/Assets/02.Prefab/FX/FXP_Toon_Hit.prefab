@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 650562203482321486}
   - component: {fileID: 3888567127647202388}
   - component: {fileID: 796989678255055694}
+  - component: {fileID: -5264880528664556076}
   m_Layer: 0
   m_Name: FXP_Toon_Hit
   m_TagString: Untagged
@@ -4905,6 +4906,18 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &-5264880528664556076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2136753218305462867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3cff241d78183d41a7bb738322d93b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4955819771000115603
 GameObject:
   m_ObjectHideFlags: 0

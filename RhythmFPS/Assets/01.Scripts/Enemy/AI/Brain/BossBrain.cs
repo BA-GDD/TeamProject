@@ -11,7 +11,7 @@ public class BossBrain : EnemyBrain
 
     public float timer;
     private float _coolTime = 3f;
-    private bool _isCanAttack = false;
+    private bool _isCanAttack = true;
     public bool IsCanAttack
     {
         get => _isCanAttack;
@@ -36,6 +36,9 @@ public class BossBrain : EnemyBrain
     public int spectorCnt = 0;
     public string spawnEnemyName = "";
 
+    [SerializeField] private GameEndEvent _geevent;
+    public bool checkRhythm = false;
+
     protected override void Awake()
     {
         base.Awake();
@@ -54,7 +57,7 @@ public class BossBrain : EnemyBrain
             if (timer < _coolTime)
             {
                 timer += Time.deltaTime;
-            } 
+            }
             else
             {
                 _isCanAttack = true;
@@ -87,7 +90,7 @@ public class BossBrain : EnemyBrain
         _isCanAttack = false;
         base.SetDead();
         _bossAnimator.SetDead();
-        GameManager.instance.GameClear(0);
+        _geevent.GameEnd();
     }
 
     private void OnDrawGizmos()

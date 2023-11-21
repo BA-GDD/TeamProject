@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement; //3
-
+#if UNITY_EDITOR
 public class DeleteMissingScript : Editor
 {
     [MenuItem("사용불가능_class삭제/오브잭트_최상위를_선택후_사용")]
@@ -39,3 +39,5 @@ public class DeleteMissingScript : Editor
 
     }
 }
+
+#endif

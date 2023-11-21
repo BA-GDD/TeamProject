@@ -60,6 +60,7 @@ public class UIManager : MonoBehaviour
     public float sfx_SpectrumSizeValue;
 
     private bool _optionPanelOpen = false;
+    private bool _isOnUI = false;
 
     [SerializeField] private InputReader _inputReader;
 
@@ -75,14 +76,17 @@ public class UIManager : MonoBehaviour
         UIHud = (UIHud)transform.Find("UIHud").GetComponent("UIHud");
         bgm_SpectrumSizeValue = sfx_SpectrumSizeValue = _spectrumNormalValue;
         _optionPanelOpen = false;
+        _isOnUI = true;
     }
 
     public void TurnOffAllUI()
     {
+        _isOnUI = false;
         UIHud.TurnOff();
     }
     public void TurnOnAllUI()
     {
+        _isOnUI = true; 
         UIHud.TurnOn();
     }
 
@@ -103,11 +107,23 @@ public class UIManager : MonoBehaviour
     }
     private void SetOptionPanel()
     {
+        if (_isOnUI == false) return;
         UIHud.ActiveOptionPanel(_optionPanelOpen);
         if (currentSceneType != SceneType.title)
         {
             _inputReader.OpenSetting(_optionPanelOpen);
             RhythmManager.instance.GameStop(_optionPanelOpen);
+        }
+        if(_optionPanelOpen)
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+            if(currentSceneType == SceneType.inGame)
+                Cursor.visible = false;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
         _optionPanelOpen = !_optionPanelOpen;
     }
