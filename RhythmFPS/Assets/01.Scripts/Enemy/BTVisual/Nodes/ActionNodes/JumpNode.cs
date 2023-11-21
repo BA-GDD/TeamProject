@@ -16,12 +16,15 @@ public class JumpNode : ActionNode
     private int _damage;
     [SerializeField]
     private DropEffect _explosion;
+    private Sequence _jumpSeq;
+    private bool _isJump;
 
     protected override void OnStart()
     {
         //(brain as BossBrain).isMove = false;
         brain.gameObject.GetComponent<NavMeshAgent>().enabled = false;
         _targetPos = GameManager.instance.PlayerTransform.position;
+        _isJump = true;
     }
 
     protected override void OnStop()
@@ -29,6 +32,7 @@ public class JumpNode : ActionNode
         _alreadyJump = false;
         brain.gameObject.GetComponent<NavMeshAgent>().enabled = true;
         //(brain as BossBrain).isMove = true;
+        _isJump = false;
     }
 
     protected override State OnUpdate()
@@ -37,16 +41,23 @@ public class JumpNode : ActionNode
         {
             Debug.Log($"업데이트: {brain.gameObject.GetComponent<NavMeshAgent>().enabled}");
             (brain as BossBrain).transform.LookAt(GameManager.instance.PlayerTransform);
-            (brain as BossBrain).transform.DOJump(_targetPos, _jumpPower + 20, 1, 1.7f);
+            _jumpSeq = DOTween.Sequence();
+            Transform brainTrm = (brain as BossBrain).transform;
+            Vector3 jumpPos = brainTrm.forward * Vector3.Distance(GameManager.instance.PlayerTransform.position,brainTrm.position) *0.5f + Vector3.up * 50;
+            _jumpSeq.Append(brainTrm.DOMove(brainTrm.position + jumpPos, 0.5f).SetEase(Ease.OutQuart));
+            _jumpSeq.Append(brainTrm.DOMove(_targetPos, 0.8f).SetEase(Ease.InQuart));
+            //(brain as BossBrain).transform.DOJump(_targetPos, _jumpPower + 20, 1, 1.7f);
             _alreadyJump = true;
+            _jumpSeq.onComplete = () => _isJump = false;
         }
-        if(brain.transform.position != _targetPos)
+        if (_isJump == true)
         {
             return State.RUNNING;
         }
 
         DropEffect particle = PoolManager.Instance.Pop(_explosion.name) as DropEffect;
         particle.transform.position = brain.transform.position;
+        particle.transform.rotation = Quaternion.LookRotation(Vector3.up);
 
 
         Collider[] colliders = Physics.OverlapSphere((brain as BossBrain).transform.position, 3f, _playerLayerMask);

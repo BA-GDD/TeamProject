@@ -8929,6 +8929,22 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2132454734894541233}
+          m_TargetAssemblyTypeName: PanelFadeColor, Assembly-CSharp
+          m_MethodName: ActiveExitPanel
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &2132454734894541233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12033,7 +12049,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf1fd509fcefb6042b38982e471eb9ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _star: {fileID: 9105324134201347396, guid: 1e2ce42929fb4544c8bc75dbacc6cd45, type: 3}
+  _star: {fileID: 9105324134201347396, guid: 4f3d7d54b3afd24499adabaeb4bd10f7, type: 3}
   _starSpace:
   - {fileID: 5374592176929785656}
   - {fileID: 4299785492267647995}
