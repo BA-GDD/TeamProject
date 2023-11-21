@@ -11,16 +11,15 @@ public class GameEndEvent : MonoBehaviour
 
     public void DirectorEndEvent(PlayableDirector director)
     {
-        //ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ï¿½Ï¸ï¿½ ï¿½È´ï¿½.
+        //¿©±â Ãß°¡ÇÏ¸é µÈ´Ù.
 
         GameManager.instance.gameObject.BroadcastMessage("PushObject");
-        GameManager.instance.GameClear(3);
-        print("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½");
+        GameManager.instance.GameClear();
+        print("°ÔÀÓ ³¡");
     }
     public void GameEnd()
     {
         GameManager.instance.PlayerTransform.GetComponent<PlayerHealth>().isCanHit = false;
-        //GameManager.instance.PlayerTransform.GetComponent<PlayerHealth>().isCanHit = false;
         _director.stopped += DirectorEndEvent;
         _director.Play();
     }

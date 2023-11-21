@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,12 @@ public class LobbyUI : MonoBehaviour
     private void Start()
     {
         UIManager.Instanace.HandleStarPut += StarCollectorChoose;
+        foreach (DifficultyType dt in Enum.GetValues(typeof(DifficultyType)))
+        {
+            MapInfo info = SaveManager.Instance.LoadMapInfoOrDefault(dt);
+            if (info.Equals(default(MapInfo))) break;
+            StarCollectorChoose(dt, info.starCount, false);
+        }
     }
 
     private void OnDestroy()
