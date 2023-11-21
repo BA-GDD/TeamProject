@@ -941,12 +941,12 @@ PrefabInstance:
     - target: {fileID: 7244565360183333492, guid: bda594d935a162a4ea3a6e3a3aaaadb6,
         type: 3}
       propertyPath: _metronomeMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7244565360183333492, guid: bda594d935a162a4ea3a6e3a3aaaadb6,
         type: 3}
       propertyPath: _judgementRangeFrame
-      value: 0.5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7244565360183333492, guid: bda594d935a162a4ea3a6e3a3aaaadb6,
         type: 3}
