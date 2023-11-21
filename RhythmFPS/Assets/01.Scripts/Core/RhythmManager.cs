@@ -75,6 +75,14 @@ public class RhythmManager : MonoBehaviour
             StartCoroutine(PlayMetronome());
         }
 
+        if (_musicAudioSource.timeSamples >= _musicAudioSource.clip.samples)
+        {
+            StartCoroutine(PlayMusic());
+
+            _nextSample = _musicAudioSource.clip.frequency * _musicDataSO.offset;
+            _judgementNextSample = _nextSample + _judgementRangeSample;
+        }
+
         if (_musicAudioSource.timeSamples >= _judgementNextSample)
         {
             _judgementNextSample = _nextSample + _judgementRangeSample;

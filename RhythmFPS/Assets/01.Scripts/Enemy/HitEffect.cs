@@ -11,6 +11,6 @@ public class HitEffect : PoolableMono
     public IEnumerator GotoPoolCor()
     {
         yield return new WaitForSeconds(3f);
-        PoolManager.Instance.Push(this);
+        PushObject();
     }
 }
