@@ -13,7 +13,7 @@ public class GameEndEvent : MonoBehaviour
     {
         //여기 추가하면 된다.
 
-        //GameManager.instance.gameObject.BroadcastMessage("PushObject");
+        GameManager.instance.gameObject.BroadcastMessage("PushObject");
         GameManager.instance.GameClear(3);
         print("게임 끝");
     }
