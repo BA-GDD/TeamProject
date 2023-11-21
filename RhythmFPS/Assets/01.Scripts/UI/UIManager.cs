@@ -99,7 +99,7 @@ public class UIManager : MonoBehaviour
         HandleActiveWarnningPanel += UIHud.ActiveWarnningPanel;
         //HandleRetryGame += GameManager.instance.GameRestart;
 
-        //HandleUIChange?.Invoke(currentSceneType);
+        HandleUIChange?.Invoke(currentSceneType);
     }
     public void SceneChange()
     {
