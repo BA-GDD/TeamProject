@@ -11,16 +11,20 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     private float _currentHitPoint;
     public float CurrentHitPoint => _currentHitPoint;
 
+    private bool _isDead;
+
     [SerializeField] private HitEffect _hitParticle;
 
     private void Awake()
     {
+        _isDead = false;
         _brain = GetComponent<EnemyBrain>();
         _currentHitPoint = _brain.status.maxHitPoint;
     }
 
     public void Die()
     {
+        _isDead = true;
         onDieTrigger?.Invoke();
         _brain.SetDead();
         (_brain as BossBrain).BossAnimator.SetDead();
@@ -48,6 +52,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 
     public void TakeDamage(float damage, Vector3 point, Vector3 normal)
     {
+        if (_isDead) return;
         _currentHitPoint -= damage;
         HitEffect effect = PoolManager.Instance.Pop(_hitParticle.name) as HitEffect;
         effect.transform.position = point;
