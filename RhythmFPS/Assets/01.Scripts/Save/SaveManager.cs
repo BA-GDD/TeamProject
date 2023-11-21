@@ -49,7 +49,7 @@ public class SaveManager : MonoBehaviour
         _mixer.SetFloat("SFX", data.SFXValue);
         _mixer.SetFloat("BGM", data.BGMValue);
     }
-    [ContextMenu("reset")]
+    [ContextMenu("DataReset")]
     public void ResetSave()
     {
         PlayerPrefs.SetString("data", string.Empty);
