@@ -912,6 +912,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6498305241353887962, guid: bda594d935a162a4ea3a6e3a3aaaadb6,
         type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6498305241353887962, guid: bda594d935a162a4ea3a6e3a3aaaadb6,
+        type: 3}
       propertyPath: OutputAudioMixerGroup
       value: 
       objectReference: {fileID: 1540054392947815798, guid: 04b49fed5a8573d498739605e4c7b72f,
