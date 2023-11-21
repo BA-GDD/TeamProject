@@ -8,6 +8,9 @@ public class GameEndEvent : MonoBehaviour
     [SerializeField]
     private PlayableDirector _director;
 
+    [SerializeField]
+    private AudioSource _audioSource;
+   
 
     public void DirectorEndEvent(PlayableDirector director)
     {
@@ -15,6 +18,7 @@ public class GameEndEvent : MonoBehaviour
 
         GameManager.instance.gameObject.BroadcastMessage("PushObject");
         GameManager.instance.GameClear();
+        _audioSource.Play();
         print("���� ��");
     }
     public void GameEnd()
@@ -22,6 +26,7 @@ public class GameEndEvent : MonoBehaviour
         GameManager.instance.PlayerTransform.GetComponent<PlayerHealth>().isCanHit = false;
         //GameManager.instance.PlayerTransform.GetComponent<PlayerHealth>().isCanHit = false;
         _director.stopped += DirectorEndEvent;
+        _audioSource.Pause();
         _director.Play();
     }
 }
