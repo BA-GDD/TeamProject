@@ -37,7 +37,7 @@ public class SimpleWeapon : Weapon
                 print("Àû °¨Áö");
                 ComboManager.Instance.AddCombo();
                 ScoreManager.Instance.AddScrore(5);
-                damageable.TakeDamage(5f);
+                damageable.TakeDamage(5f,hit.point,hit.normal);
             }
         }
         return true;

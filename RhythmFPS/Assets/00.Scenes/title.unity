@@ -820,6 +820,8 @@ MonoBehaviour:
     type: 3}
   _loadingPanel: {fileID: 951351913979967235, guid: 012e6754903a8d548a417fe5ab179dae,
     type: 3}
+  _warnningPanel: {fileID: 2043754646365768340, guid: b43b77aaa8e89bc47aaf5b40032e4cf0,
+    type: 3}
   _sceneUIList:
   - {fileID: 1550541348223073682, guid: fbb5b552f058bce46ab8bb76635b723a, type: 3}
   - {fileID: 9130465291494275565, guid: 0ec06f2e4aa45c1429d51a497eb72657, type: 3}

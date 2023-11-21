@@ -37,6 +37,7 @@ public class BossBrain : EnemyBrain
     public int spectorCnt = 0;
     public string spawnEnemyName = "";
 
+    [SerializeField] private GameEndEvent _geevent;
     public bool checkRhythm = false;
 
     public UnityEvent slashFeedback;
@@ -93,7 +94,7 @@ public class BossBrain : EnemyBrain
         _isCanAttack = false;
         base.SetDead();
         _bossAnimator.SetDead();
-        GameManager.instance.GameClear(0);
+        _geevent.GameEnd();
     }
 
     private void OnDrawGizmos()

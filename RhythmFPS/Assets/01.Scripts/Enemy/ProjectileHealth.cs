@@ -45,4 +45,14 @@ public class ProjectileHealth : PoolableMono, IDamageable
             Die();
         }
     }
+
+    public void TakeDamage(float damage, Vector3 point, Vector3 normal)
+    {
+        _currentHitPoint -= damage;
+        onHitTrigger?.Invoke();
+        if (_currentHitPoint <= 0)
+        {
+            Die();
+        }
+    }
 }

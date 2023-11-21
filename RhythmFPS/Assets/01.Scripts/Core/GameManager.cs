@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Core;
 using UnityEngine.InputSystem;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class GameManager : MonoBehaviour
         get
         {
             if (_playerTransform == null)
-                _playerTransform = FindAnyObjectByType<AgentController>().transform;
+                _playerTransform = FindAnyObjectByType<AgentMovement>().transform;
             if (_playerTransform == null)
                 Debug.LogError("player Is Not have this Scene");//영어 알빠노
             return _playerTransform;
@@ -89,6 +90,11 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
         UIManager.Instanace.HandleUIChange(sceneType);
+        if(sceneType == SceneType.inGame)
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = false;
+        }
     }
     /// <summary>
     /// ���� ���� �۾�
@@ -117,6 +123,8 @@ public class GameManager : MonoBehaviour
             map.maxCombo = Mathf.Max(map.maxCombo, combo);
             SaveManager.Instance.SaveMapInfo(map);
         }
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     //�

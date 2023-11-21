@@ -12,9 +12,12 @@ public class AgentRotater : MonoBehaviour
     public float HorizontalRespons;
     public float VerizontalRespons;
 
-#if UNITY_EDITOR
-    public bool StopRotate;
-#endif
+    [SerializeField] InputReader _inputReader;
+
+    private void Start()
+    {
+        _inputReader.rotationCameraEvt += Rotate;
+    }
 
     public void Rotate(Vector2 value)
     {
@@ -30,5 +33,10 @@ public class AgentRotater : MonoBehaviour
         _rotateY += value.x * VerizontalRespons * settingValue;
         transform.rotation = Quaternion.Euler(0, _rotateY, 0);
         _eye.localRotation = Quaternion.Euler(-_rotateX, 0, 0);
+    }
+
+    private void OnDestroy()
+    {
+        _inputReader.rotationCameraEvt -= Rotate;
     }
 }

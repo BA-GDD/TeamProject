@@ -23,6 +23,12 @@ public class SaveManager : MonoBehaviour
 
     private void Awake()
     {
+        if(_instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        _instance = this;
         DontDestroyOnLoad(gameObject);
 
         string json = PlayerPrefs.GetString("data", string.Empty);

@@ -11,6 +11,8 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     private float _currentHitPoint;
     public float CurrentHitPoint => _currentHitPoint;
 
+    [SerializeField] private HitEffect _hitParticle;
+
     private void Awake()
     {
         _brain = GetComponent<EnemyBrain>();
@@ -30,9 +32,10 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         _currentHitPoint -= damage;
         Debug.Log($"남은 체력: {_currentHitPoint}");
         onHitTrigger?.Invoke();
+        if(_brain as BossBrain)
+            UIManager.Instanace.HandleBossGetDamage(damage);
         if(_currentHitPoint <= 0)
         {
-            Debug.Log("보스 죽음");
             Die();
         }
     }
@@ -42,6 +45,21 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         if (Input.GetKeyDown(KeyCode.Q))
         {
             _currentHitPoint = 0;
+        }
+    }
+
+    public void TakeDamage(float damage, Vector3 point, Vector3 normal)
+    {
+        _currentHitPoint -= damage;
+        HitEffect effect = PoolManager.Instance.Pop(_hitParticle.name) as HitEffect;
+        effect.transform.position = point;
+        effect.transform.LookAt(normal);
+        onHitTrigger?.Invoke();
+        if (_brain as BossBrain)
+            UIManager.Instanace.HandleBossGetDamage(damage);
+        if (_currentHitPoint <= 0)
+        {
+            Die();
         }
     }
 }
