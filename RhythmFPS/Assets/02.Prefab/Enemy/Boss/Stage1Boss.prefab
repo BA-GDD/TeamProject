@@ -347,6 +347,7 @@ MonoBehaviour:
   wormCnt: 0
   spectorCnt: 0
   spawnEnemyName: 
+  _geevent: {fileID: 0}
   checkRhythm: 0
 --- !u!114 &5596668995512827724
 MonoBehaviour:
@@ -427,6 +428,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _hitParticle: {fileID: -5264880528664556076, guid: 327a646d281026b49bfec628e157b2e5,
+    type: 3}
 --- !u!195 &8932839101370841661
 NavMeshAgent:
   m_ObjectHideFlags: 0
