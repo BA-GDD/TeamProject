@@ -25,7 +25,6 @@ public class GameEndEvent : MonoBehaviour
     public void GameEnd()
     {
         GameManager.instance.PlayerTransform.GetComponent<PlayerHealth>().isCanHit = false;
-        //GameManager.instance.PlayerTransform.GetComponent<PlayerHealth>().isCanHit = false;
         _director.stopped += DirectorEndEvent;
         _audioSource.Pause();
         _director.Play();
