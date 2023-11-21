@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3416250512643269502}
   - component: {fileID: 7579580096939502126}
   - component: {fileID: 8115171621589286438}
-  m_Layer: 0
+  m_Layer: 22
   m_Name: Spark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4839,7 +4839,7 @@ GameObject:
   - component: {fileID: 1289591613888717579}
   - component: {fileID: 3287506710228474698}
   - component: {fileID: 7375898862301016980}
-  m_Layer: 0
+  m_Layer: 22
   m_Name: Sword (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9725,7 +9725,7 @@ GameObject:
   - component: {fileID: 3773472156045531202}
   - component: {fileID: 7646574333557764204}
   - component: {fileID: 1173701624369524971}
-  m_Layer: 0
+  m_Layer: 22
   m_Name: FXP_Axe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14555,7 +14555,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1443762148224100469}
   - component: {fileID: 5619747589541934798}
-  m_Layer: 0
+  m_Layer: 22
   m_Name: AudioPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14689,7 +14689,7 @@ GameObject:
   - component: {fileID: 7804258700635412323}
   - component: {fileID: 3120760806213049238}
   - component: {fileID: 2173806316485067231}
-  m_Layer: 0
+  m_Layer: 22
   m_Name: BlackKnightAxe_wFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14776,11 +14776,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 4
-  _rotateSpeed: 0.5
-  _axeDamage: 0
+  _rotateSpeed: 0.8
+  _axeDamage: 17
   _groundLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
 --- !u!54 &7804258700635412323
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -14860,7 +14860,7 @@ GameObject:
   - component: {fileID: 2412543226497622176}
   - component: {fileID: 9155485802900316838}
   - component: {fileID: 980058747942539342}
-  m_Layer: 0
+  m_Layer: 22
   m_Name: Axe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
