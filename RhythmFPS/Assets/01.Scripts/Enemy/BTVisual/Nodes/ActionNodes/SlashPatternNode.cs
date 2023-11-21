@@ -2,6 +2,7 @@ using BTVisual;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SlashPatternNode : ActionNode
 {
@@ -23,6 +24,7 @@ public class SlashPatternNode : ActionNode
         {
             (brain as BossBrain).IsMove = false;
             (brain as BossBrain).BossAnimator.OnAnimationTrigger += OnDamageCastHandle;
+            (brain as BossBrain).BossAnimator.OnAnimationVFXPlayTrigger += OnVFXPlayHandle;
             (brain as BossBrain).BossAnimator.SetAttackTrigger(true);
             (brain as BossBrain).IsCanAttack = false;
             (brain as BossBrain).IsCanAttack = false;
@@ -34,6 +36,7 @@ public class SlashPatternNode : ActionNode
     {
         RhythmManager.instance.onNotedTimeAction -= OnPatternInitHandle;
         (brain as BossBrain).BossAnimator.OnAnimationTrigger -= OnDamageCastHandle;
+        (brain as BossBrain).BossAnimator.OnAnimationVFXPlayTrigger -= OnVFXPlayHandle;
         //(brain as BossBrain).BossAnimator.SetAttackTrigger(false);
         (brain as BossBrain).BossAnimator.SetAnimationClipEndState(false);
         (brain as BossBrain).IsMove = true;
@@ -60,4 +63,9 @@ public class SlashPatternNode : ActionNode
         }
     }
 
+    private void OnVFXPlayHandle()
+    {
+        (brain as BossBrain).slashFeedback?.Invoke();
+        (brain as BossBrain).BossAnimator.OnAnimationVFXPlayTrigger -= OnVFXPlayHandle;
+    }
 }

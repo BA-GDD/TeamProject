@@ -29,6 +29,7 @@ public class ProjectileHealth : PoolableMono, IDamageable
     {
         if (gameObject.activeSelf)
         {
+            Debug.Log($"{gameObject.name} Die");
             onDieTrigger?.Invoke();
             PoolManager.Instance.Push(this);
         }
@@ -37,6 +38,7 @@ public class ProjectileHealth : PoolableMono, IDamageable
     public void TakeDamage(float damage)
     {
         _currentHitPoint -= damage;
+        Debug.Log($"{gameObject.name} TakeDamage");
         onHitTrigger?.Invoke();
         if (_currentHitPoint <= 0)
         {
