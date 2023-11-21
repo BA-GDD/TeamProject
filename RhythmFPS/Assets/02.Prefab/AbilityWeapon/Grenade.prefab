@@ -122,7 +122,7 @@ MonoBehaviour:
   _explosionRadius: 8
   _canDamageLayer:
     serializedVersion: 2
-    m_Bits: 6291456
+    m_Bits: 4194304
   _exprosionVfx: {fileID: 7093364030672061986, guid: 99dabb11f57ed8040a9941eee15df038,
     type: 3}
 --- !u!54 &-2365040733234145159

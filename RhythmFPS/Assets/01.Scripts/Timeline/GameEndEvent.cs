@@ -17,7 +17,7 @@ public class GameEndEvent : MonoBehaviour
         //���� �߰��ϸ� �ȴ�.
 
         GameManager.instance.gameObject.BroadcastMessage("PushObject");
-        GameManager.instance.GameClear(3);
+        GameManager.instance.GameClear();
         _audioSource.Play();
         print("���� ��");
     }
