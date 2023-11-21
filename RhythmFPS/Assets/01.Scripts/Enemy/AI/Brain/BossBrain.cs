@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 public class BossBrain : EnemyBrain
 {
@@ -38,6 +39,9 @@ public class BossBrain : EnemyBrain
 
     [SerializeField] private GameEndEvent _geevent;
     public bool checkRhythm = false;
+
+    public UnityEvent slashFeedback;
+    public UnityEvent mobSpawnFeedback;
 
     protected override void Awake()
     {

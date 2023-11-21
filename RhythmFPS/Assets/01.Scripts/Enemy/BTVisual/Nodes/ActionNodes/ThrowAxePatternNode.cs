@@ -50,6 +50,8 @@ public class ThrowAxePatternNode : ActionNode
 
     private void OnThrowAxeHandle()
     {
-        GameObject thrownAxe = Instantiate(axePrefab, (brain as BossBrain).Weapon.transform.position, Quaternion.identity);
+        //GameObject thrownAxe = Instantiate(axePrefab, (brain as BossBrain).Weapon.transform.position, Quaternion.identity);
+        PoolableMono axe = PoolManager.Instance.Pop("BlackKnightAxe_wFX");
+        axe.transform.position = brain.transform.position;
     }
 }

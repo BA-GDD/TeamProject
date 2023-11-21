@@ -12,7 +12,8 @@ public class BossAnimator : MonoBehaviour
     private readonly int _deadHash = Animator.StringToHash("dead");
 
     public event Action OnAnimationTrigger = null;
-
+    public event Action OnAnimationVFXPlayTrigger = null;
+    
     public bool isAnimationClipEnd = false;
 
     [SerializeField]
@@ -27,6 +28,11 @@ public class BossAnimator : MonoBehaviour
     public void OnAnimationPlay()
     {
         _animator.speed = 1;
+    }
+
+    public void OnAnimationVFXPlayEvent()
+    {
+        OnAnimationVFXPlayTrigger?.Invoke();
     }
 
     public void OnAnimationEvent()

@@ -21,6 +21,7 @@ public class MobEnemySpawnNode : ActionNode
             (brain as BossBrain).IsCanAttack = false;
             (brain as BossBrain).IsMove = false;
             (brain as BossBrain).BossAnimator.OnAnimationTrigger += OnMobEnemySpawnHandle;
+            (brain as BossBrain).BossAnimator.OnAnimationTrigger += OnVFXPlayHandle;
             (brain as BossBrain).BossAnimator.SetAttackTrigger(true);
             _alreadyInit = true;
         }
@@ -30,6 +31,7 @@ public class MobEnemySpawnNode : ActionNode
     {
         RhythmManager.instance.onNotedTimeAction -= OnPatternInitHandle;
         (brain as BossBrain).BossAnimator.OnAnimationTrigger -= OnMobEnemySpawnHandle;
+        (brain as BossBrain).BossAnimator.OnAnimationTrigger -= OnVFXPlayHandle;
         (brain as BossBrain).BossAnimator.SetAttackTrigger(false);
         (brain as BossBrain).BossAnimator.SetAnimationClipEndState(false);
         (brain as BossBrain).IsMove = true;
@@ -52,11 +54,18 @@ public class MobEnemySpawnNode : ActionNode
 
     private void OnMobEnemySpawnHandle()
     {
+        (brain as BossBrain).mobSpawnFeedback?.Invoke();
         Debug.Log("mob spawn");
         for (int i = 0; i < 3; ++i)
         {
             PoolableMono mobEnemy = PoolManager.Instance.Pop((brain as BossBrain).spawnEnemyName);
             mobEnemy.transform.position = brain.transform.position + _spawnPointList[i];
         }
+    }
+
+    private void OnVFXPlayHandle()
+    {
+        (brain as BossBrain).mobSpawnFeedback?.Invoke();
+        (brain as BossBrain).BossAnimator.OnAnimationVFXPlayTrigger -= OnVFXPlayHandle;
     }
 }
