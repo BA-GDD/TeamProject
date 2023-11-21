@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using TMPro;
 
 public class UIHud : MonoBehaviour
 {
@@ -109,7 +110,9 @@ public class UIHud : MonoBehaviour
     [ContextMenu("���� ���� �г� Ȱ��ȭ")]
     public void ActiveGameOverPanel()
     {
-        Instantiate(_gameOverPanel, _canvasTrm);
+        GameObject panel = Instantiate(_gameOverPanel, _canvasTrm);
+        panel.transform.GetChild(0).GetChild(0).Find("RemainBossHpTxt").GetComponent<TextMeshProUGUI>().text = $"보스 남은 체력 : {(int)(BossSingleton.Instance.Boss.health.CurrentHitPoint / BossSingleton.Instance.Boss.status.maxHitPoint * 100)}%";
+
         GameManager.instance.GamePause();
     }
     #endregion

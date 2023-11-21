@@ -68,7 +68,7 @@ public class UIManager : MonoBehaviour
     {
         if (_instance != null)
         {
-            Debug.LogError($"{typeof(UIManager)} instance is already exist!");
+            Debug.LogWarning($"{typeof(UIManager)} instance is already exist!");
             Destroy(gameObject);
             return;
         }

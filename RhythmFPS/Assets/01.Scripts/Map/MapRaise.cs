@@ -100,9 +100,10 @@ public class MapRaise : MonoBehaviour
         _upList.Clear();
     }
 
-    private void Update()
+    //Debug
+    /*private void Update()
     {
         if (Input.GetKeyDown(KeyCode.B)) MapUp(Random.Range(0, mapList.Length));
         if (Input.GetKeyDown(KeyCode.V)) MapDown();
-    }
+    }*/
 }
