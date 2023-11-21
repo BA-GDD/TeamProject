@@ -30,7 +30,7 @@ public class ExitPanel : MonoBehaviour
 
     private void ToLobby()
     {
-        UIManager.Instanace.HandleUIChange?.Invoke(SceneType.lobby);
+        GameManager.instance.SceneChange(SceneType.lobby);
         Destroy(_panel.parent.gameObject);
     }
 

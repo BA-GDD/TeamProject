@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
     public DifficultyType difficult;
     private float _startTime;
 
+    public int takenDamage = 0;
+
     private void Awake()
     {
         if (instance != null)
@@ -58,7 +60,7 @@ public class GameManager : MonoBehaviour
     public void GameStart(DifficultyType stageDifficult)
     {
         difficult = stageDifficult;
-
+        takenDamage = 0;
         SceneChange(SceneType.inGame);
 
         //playerTransform = FindAnyObjectByType<AgentController>().transform;
@@ -99,13 +101,26 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// ���� ���� �۾�
     /// </summary>
-    public void GameClear(int star)
+    public void GameClear()
     {
 
         MapInfo map = SaveManager.Instance.LoadMapInfoOrDefault(difficult);
         int score = ScoreManager.Instance.Score;
         int combo = ComboManager.Instance.maxCombo;
-        UIManager.Instanace.HandleGameClear(combo, GetCurTime(), 10);
+        UIManager.Instanace.HandleGameClear(combo, GetCurTime(), takenDamage);
+        int star = 0;
+        if(score >= 3000)
+        {
+            star = 1;
+        }
+        if(score >= 7000)
+        {
+            star = 2;
+        }
+        if(score >= 12000)
+        {
+            star = 3;
+        }
         if (map.Equals(default(MapInfo)))
         {
             SaveManager.Instance.data.mapDatas.Add(new MapInfo
