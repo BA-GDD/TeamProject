@@ -93,10 +93,10 @@ public class BossBrain : EnemyBrain
 
     public override void SetDead()
     {
+        base.SetDead();
         _bossAnimator.SetMove(false);
         StopChase();
         _isCanAttack = false;
-        base.SetDead();
         _bossAnimator.SetDead();
         _geevent.GameEnd();
     }
