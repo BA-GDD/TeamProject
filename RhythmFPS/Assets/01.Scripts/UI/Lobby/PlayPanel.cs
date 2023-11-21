@@ -38,7 +38,7 @@ public class PlayPanel : MonoBehaviour
         }
         else
         {
-            string _warnText = $"현재 {difficulty}난의도는 준비 중에 있습니다.\n불편을 끼쳐 드려 죄송합니다.";
+            string _warnText = $"현재 {difficulty}난이도는 준비 중에 있습니다.\n불편을 끼쳐 드려 죄송합니다.";
 
             _mapEnterPanel?.startButton?.
                 onClick.AddListener(() => 
