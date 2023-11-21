@@ -22,15 +22,13 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     public void Die()
     {
         onDieTrigger?.Invoke();
-        Debug.Log("보스 죽음");
-        //_brain.SetDead();
-        //(_brain as BossBrain).BossAnimator.SetDead();
+        _brain.SetDead();
+        (_brain as BossBrain).BossAnimator.SetDead();
     }
 
     public void TakeDamage(float damage)
     {
         _currentHitPoint -= damage;
-        Debug.Log($"남은 체력: {_currentHitPoint}");
         onHitTrigger?.Invoke();
         if(_brain as BossBrain)
             UIManager.Instanace.HandleBossGetDamage(damage);
