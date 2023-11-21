@@ -57,6 +57,7 @@ public class JumpNode : ActionNode
 
         DropEffect particle = PoolManager.Instance.Pop(_explosion.name) as DropEffect;
         particle.transform.position = brain.transform.position;
+        particle.transform.rotation = Quaternion.LookRotation(Vector3.up);
 
 
         Collider[] colliders = Physics.OverlapSphere((brain as BossBrain).transform.position, 3f, _playerLayerMask);

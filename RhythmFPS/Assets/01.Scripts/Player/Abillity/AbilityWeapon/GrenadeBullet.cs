@@ -25,12 +25,20 @@ public class GrenadeBullet : PoolableMono
     }
     private void OnTriggerEnter(Collider other)
     {
-        Explosion();
-        Vector3 point = other.ClosestPoint(transform.position);
-        Transform vfxEFfect =  PoolManager.Instance.Pop(_exprosionVfx.name).transform;
+        int layer = 1 << other.gameObject.layer;
+        if (other.gameObject.layer == LayerMask.NameToLayer("Ground") || other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        {
+            Explosion();
+            Vector3 point = other.ClosestPoint(transform.position);
+            Transform vfxEFfect = PoolManager.Instance.Pop(_exprosionVfx.name).transform;
 
-        vfxEFfect.position = point;
-        vfxEFfect.rotation = Quaternion.LookRotation(transform.position - point);
+            vfxEFfect.position = point;
+            vfxEFfect.forward = (GameManager.instance.PlayerTransform.position - vfxEFfect.position).normalized;
+
+            _rigid.velocity = Vector3.zero;
+            PoolManager.Instance.Push(this);
+        }
+
 
         _rigid.velocity = Vector3.zero;
         PushObject();
@@ -49,7 +57,7 @@ public class GrenadeBullet : PoolableMono
                     {
                         AgentMovement movement = ((PlayerHealth)damageable).transform.GetComponent<AgentMovement>();
                         movement.isAddDir = true;
-                        movement.AddForce((movement.transform.position+Vector3.up*0.5f - transform.position).normalized * (Vector3.Distance(movement.transform.position, transform.position) + 5));
+                        movement.AddForce((movement.transform.position + Vector3.up * 0.5f - transform.position).normalized * (Vector3.Distance(movement.transform.position, transform.position) + 5));
                         Debug.Log(damageable);
                         continue;
                     }
