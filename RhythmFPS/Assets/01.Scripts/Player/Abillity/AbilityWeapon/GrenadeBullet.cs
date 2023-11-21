@@ -33,7 +33,7 @@ public class GrenadeBullet : PoolableMono
         vfxEFfect.rotation = Quaternion.LookRotation(transform.position - point);
 
         _rigid.velocity = Vector3.zero;
-        PoolManager.Instance.Push(this);
+        PushObject();
     }
 
     private void Explosion()
