@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b08c63f9480ee644bedbd03f8aa7ad8, type: 3}
   m_Name: Stage1Boss 1
   m_EditorClassIdentifier: 
-  moveSpeed: 125
-  attackPower: 0
-  attackRange: 0
+  moveSpeed: 7
+  attackPower: 10
+  attackRange: 1
   attackDelay: 0
-  maxHitPoint: 50
+  maxHitPoint: 250
