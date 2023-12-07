@@ -2241,7 +2241,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: VOiD1 - Crypt
+  m_text: Of Far Different Nature - Crypt
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 191c85d053c814242b6d9fab0a91b9f9, type: 2}
   m_sharedMaterial: {fileID: 6383068405828875511, guid: 191c85d053c814242b6d9fab0a91b9f9,
